@@ -1,0 +1,122 @@
+<!-- 제이쿼리 사용 -->
+<!--   <script src="../js/lib/jquery-ui.js"></script>
+			<script src="../js/lib/nd_slider.js"></script> -->
+<script>
+  requirejs(['app/result'], function (result) {
+    result.init();
+  });
+
+  requirejs(['app/result_json'], function (result_json) {
+    result_json.init();
+  });
+</script>
+
+<script id="template1" type="text/x-handlebars-template">
+
+  {{#each data}}
+
+  <div class="container-store">
+    <div class="wrap_box">
+      <div class="visual">
+        <div class="result_box">
+
+          <img class="result_img_big" src="{{imgUrl}}" />
+          <!--          <img class="result_img_big" src="{{imgUrl}}" />-->
+
+          <div id="title" class="table-div main-title">
+            {{companyName}}
+          </div>
+          <!--          <a href=""><img src="images/result/img02.jpg" class="pht dn"></a>-->
+          <!--
+          <a href=""><img src="images/result/img02.jpg" class="pht dn"></a>
+          <a href=""><img src="images/result/img03.jpg" class="pht dn"></a>
+-->
+
+
+          <!--prev, next 버튼-->
+          <!--
+          <img src="images/result/main_visual_prev_on.png" alt="" class="prev">
+          <img src="images/result/main_visual_next_on.png" alt="" class="next">
+
+          <div class="thumbox">
+-->
+          <!-- 작은이미지 hover -->
+          <!--
+            <ul class="listbox" style="padding-top:0">
+              <li class="ll"><img class='ll-img' src="images/result/img_s01_on.jpg"></li>
+              <li class="ll"><img class='ll-img' src="images/result/img_s02_on.jpg"></li>
+              <li class="ll"><img class='ll-img' src="images/result/img_s03_on.jpg"></li>
+            </ul>
+-->
+          <!--          </div>-->
+          <!--thumbox-->
+        </div>
+        <!-- box -->
+      </div>
+      <!-- visual -->
+    </div>
+    <!-- wrap_box -->
+
+    <div class="explain">
+      <ul>
+        <li>{{adminTel}}</li>
+        <li>{{addressNew}}</li>
+        <li>위도 : {{lat}}</li>
+        <li>경도 : {{lon}}</li>
+      </ul>
+    </div>
+    <div class="table-div select-button">
+      <button class="detail-info button button--ujarak  button--text-thick">더보기</button>
+      <button class="detail-find button button--ujarak  button--text-thick">길찾기</button>
+      <button class="detail-share button button--ujarak  button--text-thick">공유하기</button>
+    </div>
+  </div>
+  <div class="table-div detail-explain-more">더보기의 상세</div>
+  <div class="table-div detail-explain-find">길찾기의 상세</div>
+  <div class="table-div detail-explain-share">공유하기의 상세</div>
+  {{/each}}
+
+
+</script>
+
+
+
+
+
+<div id="css_tabs">
+  <!--탭 유형-->
+  <input id="tab1" type="radio" name="tab" checked="checked" />
+  <input id="tab2" type="radio" name="tab" />
+  <input id="tab3" type="radio" name="tab" />
+
+  <!--탭 이름-->
+  <label for="tab1">노래방</label>
+  <label for="tab2">스터디카페</label>
+  <label for="tab3">PC방</label>
+
+  <!--내용-->
+  <div class="tab1_content">
+    <!--네모칸-->
+    <div id="resultJson"></div>
+
+
+  </div>
+  <!--tab1-->
+
+
+  <div class="tab2_content">
+
+    <br>Tab2 내용
+    <br> ab2 내용
+    <div id="title" class="table-div main-title">
+
+    </div>
+
+  </div>
+
+  <div class="tab3_content">
+    Tab3 내용
+  </div>
+
+</div>
+<!--css_tabs-->

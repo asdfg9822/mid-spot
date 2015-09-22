@@ -1,0 +1,216 @@
+<table id="spec_table" class="sidebar2-content">
+  <tr>
+    <td>
+      <button id="traffic">지하철·버스</button>
+    </td>
+    <td input class="btn btn-small btn-primary" id="food" type="button" value="음식" onclick="">음식</td>
+  </tr>
+  <tr>
+    <td input class="btn btn-small btn-primary" id="cafe" type="button" value="카페" onclick="">카페</td>
+    <td input class="btn btn-small btn-primary" id="stay" type="button" value="숙박" onclick="">숙박</td>
+  </tr>
+
+  <tr>
+    <td input class="btn btn-small btn-primary" id="hospital" type="button" value="병원·의료" onclick="">병원·의료</td>
+    <td input class="btn btn-small btn-primary" id="bank" type="button" value="은행" onclick="">은행</td>
+  </tr>
+
+  <tr>
+    <td input class="btn btn-small btn-primary" id="parking" type="button" value="주차장" onclick="">주차장</td>
+    <td input class="btn btn-small btn-primary" type="button" id="mart" value="마트·슈퍼" onclick="">마트</td>
+  </tr>
+
+  <tr>
+    <td input class="btn btn-small btn-primary" id="gasstation" type="button" value="주유소" onclick="">주유소</td>
+    <td input class="btn btn-small btn-primary" type="button" id="store" value="편의점" onclick="">편의점</td>
+  </tr>
+
+  <tr>
+    <td input class="btn btn-small btn-primary" type="button" id="living" value="생활·편의" onclick="">생활·편의</td>
+    <td input class="btn btn-small btn-primary" type="button" id="entertainment" value="영화·공연" onclick="">영화·공연</td>
+  </tr>
+
+  <tr>
+    <td input class="btn btn-small btn-primary" type="button" id="sport" value="스포츠시설" onclick="">스포츠시설</td>
+    <td input class="btn btn-small btn-primary" type="button" id="publicoffice" value="관공서" onclick="">관공서</td>
+  </tr>
+</table>
+
+<div id="category">
+
+  <div id="categoryTraffic">
+    <label>상세검색</label>
+    <select multiple class="form-control" id="TrafficList">
+      <option value="전체">전체</option>
+      <option value="지하철">지하철</option>
+      <option value="버스">버스</option>
+    </select>
+    <button id="submittraffic">확인</button>
+    <button id="closetraffic">닫기</button>
+  </div>
+
+
+
+  <div id="categoryFood">
+    <label>상세검색</label>
+    <select multiple class="form-control" id="Food">
+      <option value="전체">전체</option>
+      <option>한식</option>
+      <option>일식</option>
+      <option>중식</option>
+      <option>아시아퓨전</option>
+      <option>서양음식</option>
+      <option>패밀리레스토랑</option>
+      <option>분식</option>
+      <option>패스트푸드</option>
+      <option>피자</option>
+      <option>치킨</option>
+    </select>
+    <button>확인</button>
+    <button id="closefood">닫기</button>
+  </div>
+
+
+
+
+
+
+
+
+  <div id="categoryCafe">
+    <label>상세검색</label>
+    <select multiple class="form-control" id="Cafe">
+      <option>전체</option>
+      <option>카페</option>
+      <option>제과점</option>
+      <option>아이스크림</option>
+      <option>기타</option>
+    </select>
+    <button>확인</button>
+    <button id="closecafe">닫기</button>
+  </div>
+
+
+
+
+
+
+
+
+  <div id="categoryStay">
+    <label>상세검색</label>
+    <select multiple class="form-control" id="Stay">
+      <option>전체</option>
+      <option>호텔</option>
+      <option>펜션·민박</option>
+      <option>리조트·콘도</option>
+      <option>게스트하우스</option>
+      <option>캠핑장</option>
+      <option>모텔</option>
+      <option>여관</option>
+      <option>유스호스텔</option>
+      <option>레지던스</option>
+    </select>
+    <button>확인</button>
+    <button id="closestay">닫기</button>
+  </div>
+
+
+
+
+
+
+  <div id="categoryHospital">
+    <label>상세검색</label>
+    <select multiple class="form-control" id="Hospital">
+      <option>전체</option>
+      <option>종합병원</option>
+      <option>안과</option>
+      <option>피부과</option>
+      <option>정형외과</option>
+      <option>소아과</option>
+      <option>내과</option>
+      <option>이비인후과</option>
+      <option>치과</option>
+      <option>산부인과</option>
+      <option>기타병원</option>
+      <option>보건소</option>
+      <option>약국</option>
+      <option>한의원</option>
+    </select>
+    <button>확인</button>
+    <button id="closehospital">닫기</button>
+  </div>
+
+
+
+
+  <div id="categoryBank">
+    <label>상세검색</label>
+    <select multiple class="form-control" id="Bank">
+      <option>ATM</option>
+      <option>KB국민은행</option>
+      <option>우리은행</option>
+      <option>신한은행</option>
+      <option>농협</option>
+      <option>IBK기업은행</option>
+      <option>스탠다드차티드은행</option>
+      <option>새마을금고</option>
+      <option>기타은행</option>
+    </select>
+    <button>확인</button>
+    <button id="closebank">닫기</button>
+  </div>
+
+  <div id="categoryParking">
+    <label>상세검색</label>
+    <select multiple class="form-control" id="Parking">
+      <option>전체</option>
+      <option>공영주차장</option>
+      <option>공용주차장</option>
+      <option>환승주차장</option>
+    </select>
+    <button>확인</button>
+    <button id="closeparking">닫기</button>
+  </div>
+
+  <div id="categoryGasStation">
+    <label>상세검색</label>
+    <select multiple class="form-control" id="GasStation">
+      <option>전체주유소</option>
+      <option>전체충전소</option>
+      <option>GS주유소</option>
+      <option>SK주유소</option>
+      <option>에스오일주유소</option>
+      <option>E1충전소</option>
+      <option>SK충전소</option>
+      <option>에스오일충전소</option>
+      <option>현대오일뱅크충전소</option>
+    </select>
+    <button>확인</button>
+    <button id="closegasstation">닫기</button>
+  </div>
+
+  <div id="categoryLiving">
+    <label>상세검색</label>
+    <select multiple class="form-control" id="Living">
+      <option>전체</option>
+      <option>pc방</option>
+      <option>찜질방</option>
+      <option>미용실</option>
+      <option>노래방</option>
+      <option>독서실</option>
+      <option>세탁소</option>
+      <option>열쇠/구두수선</option>
+      <option>꽃집/화원</option>
+    </select>
+    <button>확인</button>
+    <button id="closeliving">닫기</button>
+  </div>
+
+</div>
+<script>
+  requirejs(['app/dest'], function (dest) {
+    //auth.init();
+  });
+</script>

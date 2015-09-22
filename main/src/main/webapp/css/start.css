@@ -1,0 +1,33 @@
+.start-search {
+  border: 1px solid dimgrey;
+  color: black;
+  width: 90%;
+  height: 100%;
+  font-size: 20px;
+}
+
+.button {
+  margin-left: 5%;
+  margin-top: 5%;
+  width: 90%;
+  height: 100%;
+  font-size: 25px;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  box-shadow: 0px 0px 0px;
+}
+
+.search-dest {}
+
+.panel-body {
+  color: black;
+  text-align: left;
+  font-size: 12px;
+}
+
+.panel-default {
+  width: 90%;
+  height: auto;
+  margin-left: 5%;
+  margin-top: 40%;
+}

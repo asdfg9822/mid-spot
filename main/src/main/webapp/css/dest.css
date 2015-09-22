@@ -1,0 +1,140 @@
+#spec_table table,
+#spec_table td {
+  text-align: left;
+  color: black;
+  width: 50%;
+  height: 30px;
+  font-size: 10px;
+  font-weight: 700;
+  text-align-last: start;
+}
+
+#spec_table button {
+  width: 100%;
+  height: 30px;
+  display: inline-flex;
+}
+
+#categoryTraffic {
+  display: none
+}
+
+#categoryFood {
+  display: none
+}
+
+#categoryCafe {
+  display: none
+}
+
+#categoryStay {
+  display: none
+}
+
+#categoryHospital {
+  display: none
+}
+
+#categoryBank {
+  display: none
+}
+
+#categoryParking {
+  display: none
+}
+
+#categoryGasStation {
+  display: none
+}
+
+#categoryLiving {
+  display: none
+}
+
+#category button {
+  color: black;
+}
+
+#spec_table {}
+
+.spec-icon {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  position: relative;
+  margin-right: 5px;
+  vertical-align: middle;
+  background-color: black;
+}
+
+span {}
+
+.side-bus {
+  -webkit-mask: url(../images/bus.png);
+  -webkit-mask-size: 100% 100%;
+}
+
+.side-food {
+  -webkit-mask: url(../images/spec_icon/food.png);
+  -webkit-mask-size: 100% 100%;
+}
+
+.side-cafe {
+  -webkit-mask: url(../images/spec_icon/cafe.png);
+  -webkit-mask-size: 100% 100%;
+}
+
+.side-stay {
+  -webkit-mask: url(../images/spec_icon/stay.png);
+  -webkit-mask-size: 100% 100%;
+}
+
+.side-hospital {
+  -webkit-mask: url(../images/spec_icon/hospital.png);
+  -webkit-mask-size: 100% 100%;
+}
+
+.side-bank {
+  -webkit-mask: url(../images/spec_icon/bank.png);
+  -webkit-mask-size: 100% 100%;
+}
+
+.side-parking {
+  -webkit-mask: url(../images/spec_icon/parking.png);
+  -webkit-mask-size: 100% 100%;
+}
+
+.side-mart {
+  -webkit-mask: url(../images/spec_icon/mart.png);
+  -webkit-mask-size: 100% 100%;
+}
+
+.side-gasstation {
+  -webkit-mask: url(../images/spec_icon/gasstation.png);
+  -webkit-mask-size: 100% 100%;
+}
+
+.side-store {
+  -webkit-mask: url(../images/spec_icon/store.png);
+  -webkit-mask-size: 100% 100%;
+}
+
+.side-entertainment {
+  -webkit-mask: url(../images/spec_icon/entertainment.png);
+  -webkit-mask-size: 100% 100%;
+}
+
+.side-sport {
+  -webkit-mask: url(../images/spec_icon/sport.png);
+  -webkit-mask-size: 100% 100%;
+}
+
+.side-living {
+  -webkit-mask: url(../images/spec_icon/living.png);
+  -webkit-mask-size: 100% 100%;
+}
+
+.side-publicoffice {
+  -webkit-mask: url(../images/spec_icon/publicoffice.png);
+  -webkit-mask-size: 100% 100%;
+}
