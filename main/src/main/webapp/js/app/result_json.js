@@ -90,9 +90,11 @@ define(['jquery', 'handlebars', 'app/common'], function ($, handlebars) {
           $('.active').show();
           /*------------End first img------------*/
           
+          console.log(data);
+          
           /*-- map --*/
-          var mapContainer = document.getElementById('.detail_map'),
-          mapOption = { 
+          var mapContainer = document.getElementById('detail_map_id');
+          var mapOption = { 
         	  center: new daum.maps.LatLng(33.450701, 126.570667), 
         	  level: 3 
           };

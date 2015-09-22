@@ -27,7 +27,7 @@ define(['jquery', 'app/common'], function ($) {
         }, "slow");
 
       });
-
+/*
       require(['//apis.daum.net/maps/maps3.js?apikey=' + window.daumMapKey], function () {
         console.log("daum map ok");
         var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -40,7 +40,7 @@ define(['jquery', 'app/common'], function ($) {
         var map = new daum.maps.Map(mapContainer, mapOption);
       });
 
-
+*/
 
 
       $(document).ready(function () {
