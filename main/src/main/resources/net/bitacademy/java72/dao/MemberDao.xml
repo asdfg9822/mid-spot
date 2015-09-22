@@ -4,10 +4,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="net.bitacademy.java72.dao.MemberDao">
   <resultMap type="Member" id="MemberMap">
-    <id     column="mno"      property="no" />
-    <result column="mname"    property="name" />
-    <result column="pwd"      property="password" />
-    <result column="cre_dt"   property="createDate" />
+    <id     column="memb_no"    property="memberNo" />
+    <result column="memb_nm"    	property="name" />
+    <result column="email"    	property="email" />
+    <result column="user_id"    	property="userId" />
+    <result column="get_site"    	property="getSite" />
+	<result column="addr_no"   	property="addressNo" />
+    <result column="addr_det"   	property="addressDetail" />
+    <result column="file_path"      	property="imgUrl" />
   </resultMap>
   
   <select id="list" parameterType="map" resultMap="MemberMap">
@@ -23,8 +27,8 @@
   </select>
   
   <insert id="insert" parameterType="Member">
-    INSERT INTO member(mname,email,pwd,tel,cre_dt,photo)
-    values(#{name},#{email},#{password},#{tel},now(),#{photo})
+    INSERT INTO memb_tb(email,memb_nm,user_id,get_site,addr_no,addr_det,file_path)
+    values(#{email},#{name},#{userId},#{getSite},#{addressNo},#{addressDetail},#{imgUrl})
   </insert>
   
   <delete id="delete" parameterType="int">

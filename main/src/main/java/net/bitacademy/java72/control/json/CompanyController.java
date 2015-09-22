@@ -41,7 +41,6 @@ public class CompanyController {
     result.put("pageSize", pageSize);
     */
     result.put("data", companyService.list());
-    
     return result;
   }
   

@@ -35,6 +35,12 @@ body {
   height: 50px;
 }
 
+#side-name {
+  font-size: 13px;
+  font-weight: 500;
+  color:
+}
+
 #sidebar1,
 #sidebar2 {
   color: white;

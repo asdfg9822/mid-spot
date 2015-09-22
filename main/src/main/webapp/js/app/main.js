@@ -1,4 +1,4 @@
-define(['jquery'], function ($) {
+define(['jquery','app/common'], function ($) {
 
   console.log("==>main.js Excute..!!");
 
@@ -39,23 +39,137 @@ define(['jquery'], function ($) {
     $('#content').load('html/result.html');
   });
 
-  /* 
-
-  $(document).on('login.success', function(event) {
-    //특정 모듈만 가져오기
-    var header = require('app/header');
-    header.loadLoginInfo();
-    $('#content').load('sub/board.html');
+  $('#side-profile').click(function () {
+    console.log("profile clicked!! ");
+    Login();
   });
 
-  $(document).on('logout.success', function(event) {
-    $('#content').load('sub/auth.html');
-    var header = require('app/header');
-    header.loadLoginInfo();
+  $('#side-setting').click(function () {
+    console.log("logout clicked!! ");
+
+    FB.api("/me/permissions", "DELETE", function (response) {
+      console.log("delete");
+      console.log(response); //gives true on app delete success 
+    });
+
+    FB.logout(function () {
+      document.location.reload();
+    });
   });
+
+
+  window.fbAsyncInit = function () {
+    /*FB.init({
+  appId: '410218975833438', // Set YOUR APP ID
+  status: true, // check login status
+  cookie: true, // enable cookies to allow the server to access the session
+  xfbml: true // parse XFBML
+});*/
+
+    FB.init({
+      appId: '410218975833438', // Set YOUR APP ID
+      status: true, // check login status
+      cookie: true, // enable cookies to allow the server to access the session
+      xfbml: true // parse XFBML
+    });
+
+
+    FB.Event.subscribe('auth.authResponseChange', function (response) {
+      if (response.status === 'connected') {
+        document.getElementById("message").innerHTML += "<br>Connected to Facebook";
+        //SUCCESS
+
+      } else if (response.status === 'not_authorized') {
+        document.getElementById("message").innerHTML += "<br>Failed to Connect";
+
+        //FAILED
+      } else {
+        document.getElementById("message").innerHTML += "<br>Logged Out";
+
+        //UNKNOWN ERROR
+      }
+    });
+
+  };
+
+  function Login() {
+    console.log("MY> Login()..Excute..!!");
+    FB.login(function (response) {
+      if (response.authResponse) {
+        getUserInfo();
+      } else {
+        console.log('User cancelled login or did not fully authorize.');
+      }
+    }, {
+      scope: 'public_profile,email,user_photos,user_friends'
+    });
+
+  }
   
-  sidebar2_dest
+  function insertUserInfo(response) {
+	  
+      $.ajax(contextRoot + '/json/member/insert.do',
+              {
+                method: 'POST',
+                dataType: 'json',
+                data: {
+                  name: response.name,
+                  email: response.email,
+                  userId: response.id,
+                  getSite: "FACEBOOK",
+                  imgUrl: response.picture.data.url
+                },
+                success: function(result) {
+                  if (result.data == 'success') {
+                    $('#cancelBtn').click();
+                    console.log("User Info Input Success..!!");
+                  } else {
+                	  console.log("User Info Input Fail..!!");
+                  }
+                }
+              });
+  }
+
   
-  */
+  function getUserInfo() {
+    FB.api('/me?fields=name,email,picture,friends', function (response) {
+
+    	
+    
+      console.log(response);
+    	  //mid-spot Database insert "User Info"
+    	  insertUserInfo(response);
+    	  
+    	  //Change User name, Profile Image
+    	  $('#side-name').text(response.name);
+    	  $('#side-profile').attr('src', response.picture.data.url);
+      
+    });
+  }
+
+  function Logout() {
+    FB.logout(function () {
+      document.location.reload();
+    });
+  }
+
+  // Load the SDK asynchronously
+  (function (d) {;
+    var js, id = 'facebook-jssdk',
+      ref = d.getElementsByTagName('script')[0];
+    if (d.getElementById(id)) {
+      return;
+    }
+    js = d.createElement('script');
+    js.id = id;
+    js.async = true;
+    js.src = "//connect.facebook.net/en_US/all.js";
+    ref.parentNode.insertBefore(js, ref)
+  }(document));
+
+
+
+
+
 
 });

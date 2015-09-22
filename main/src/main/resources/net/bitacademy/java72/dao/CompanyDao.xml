@@ -19,7 +19,7 @@
     <result column="img_no" 	property="imgNo" />
   </resultMap>
   
-  <select id="list" parameterType="map" resultMap="CompanyMap">
+  <select id="list"  resultMap="CompanyMap">
     SELECT *
     FROM comp_tb
     natural join comp_img_tb comp_no
