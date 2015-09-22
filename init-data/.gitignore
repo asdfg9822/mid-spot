@@ -3,3 +3,4 @@
 /.jshintrc
 /.tern-project
 /.settings/
+/node_modules/
