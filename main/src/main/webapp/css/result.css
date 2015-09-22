@@ -1,129 +1,97 @@
-/*
-.map-name {
-  margin-left: 15px;
-  border-style: solid solid none solid;
-  border-width: 2px;
-  border-color: black;
-  background-color: gainsboro;
-  width: 90;
-  height: 25px;
-  text-align: center;
-  font-size: ;
-  border-top-right-radius: 0.5em;
-  border-top-left-radius: 0.5em;
-}
-
-.map {
-  border: 2px solid black;
-  background-color: white;
-  height: 480px;
-  width: 650px;
-}
-
-.map1-no {
-  border-style: solid solid none solid;
-  border-width: 2px;
-  border-color: black;
-  background-color: dodgerblue;
-  text-align: center;
-  font-size: 20px;
-  height: 30px;
-  width: 30px;
-  margin-top: 15px;
-  margin-left: 15px;
-  float: left;
-}
-
-.map1-name {
-  border: 2px solid black;
-  height: 20px;
-  width: 60px;
-  margin-top: 18px;
-  margin-left: 60px;
-  text-align: center;
-  border-radius: 0.3em;
-}
-
-.map1 {
-  margin-top: 5px;
-  border: 2px solid black;
-  background-color: dodgerblue;
-  height: 180px;
-  width: 620px;
-  margin-left: 15px;
-}
-
-.map1-1 {
-  border: 1px solid black;
-  margin-top: 10px;
-  padding-left: 5px;
-  height: 130px;
-  width: 180px;
-  margin-left: 15px;
-  float: left;
-  overflow: hidden;
-}
-
-.map1-1-name {
-  margin-top: 140px;
-  text-align: center;
-  color: white;
-  font-size: 13px;
-  text-decoration: underline;
-  position: absolute;
-  float: left;
-}
-
-.map1-1:hover {
-  border: 2px solid darksalmon;
-}
-*/
-
-
-/*
-#testMap {
-  overflow: hidden;
-}
-*/
-
-
-/*big 이미지*/
-
-.result_img_big {
-  clear: both;
+.slideshow {
+  position: relative;
   width: 30%;
   height: 200px;
   float: left;
+  /*  overflow: hidden;*/
+}
+
+.slideshow img {
+  position: absolute;
+  /*  display: none;*/
+  /*  float: left;*/
+  width: 100%;
+  height: 100%;
+}
+
+
+/*position: absolute; 이렇게 해야 같은 위치에 계속 사진이 나옴*/
+
+
+/*
+.slideshow img:first-child {
+  clear: both;
+  display: block;
+}
+*/
+
+.img_prev,
+.img_next {
+  width: 1.5%;
+  height: 200px;
+  position: relative;
+  float: left;
+  cursor: pointer;
+  display: block;
+  padding-top: 90px;
+  background-color: #f0f0f0;
+}
+
+.img_prev {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 12px;
+}
+
+.img_prev img {
+  width: 60%;
+  margin-left: 3px;
+}
+
+.img_next img {
+  width: 60%;
+  margin-left: 3px;
 }
 
 .result_table_border {
   /*  border: 1px solid lightgray;*/
   width: 100%;
-  height: 230px;
+  height: 200px;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  z-index: 1;
 }
 
+.center_text {
+  float: left;
+  width: 35%;
+  height: 200px;
+}
 
-/*
-.container-store {
+.main-title {
+  /*  clear: both;*/
+  position: relative;
+  float: left;
   width: 100%;
-  height: 50%;
-  background: white;
-  padding-left: 1%;
-  padding-right: 1%;
+  height: 30px;
+  /*  width: 50%;*/
+  font-size: 17px;
+  /*  font-size: 25px;*/
+  /*  padding-bottom: 1%;*/
+  /*  margin-left: 10%;*/
+  background-color: lightgrey;
+  padding-top: 3px;
+  text-align: center;
+  border: 1px solid lightgray;
+  /*    line-height: 1.42857143;*/
 }
-*/
-
-
-/*
-.table-div {
-  margin: 5px;
-}
-*/
 
 .explain {
   float: left;
-  width: 40%;
+  width: 100%;
   height: 170px;
+  padding-top: 15px;
   /*  margin-left: 1%;*/
   /*  margin-top: 1%;*/
   /*  position: relative;*/
@@ -131,46 +99,69 @@
   border: 1px solid lightgray;
 }
 
-.main-title {
-  /*  clear: both;*/
-  /*  position: relative;*/
-  float: left;
-  width: 40%;
-  height: 30px;
-  /*  width: 50%;*/
-  font-size: 15px;
-  /*  font-size: 25px;*/
-  /*  padding-bottom: 1%;*/
-  /*  margin-left: 10%;*/
-  background-color: lightgrey;
-  padding-top: 5px;
-  text-align: center;
-  border: 1px solid lightgray;
-  /*  line-height: 1.42857143;*/
-}
-
 .select-button {
-  /*  clear: both;*/
-  position: relative;
-  float: left;
-  width: 30%;
+  display: inline-block;
+  width: 20%;
   height: 100%;
 }
 
 .detail-info,
 .detail-find,
 .detail-share {
-  clear: both;
   width: 100%;
-  font-size: 30px;
-  top: -40px;
+  height: 31%;
+  top: -12px;
   left: -10px;
+  font-size: 30px;
 }
+
+
+/*
+.button {
+  margin-left: 5%;
+  margin-top: 5%;
+  width: 90%;
+  height: 100%;
+  font-size: 25px;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  box-shadow: 0px 0px 0px;
+}
+*/
 
 .detail-explain-more,
 .detail-explain-find,
 .detail-explain-share {
-  border: 3px solid green;
-  width: 200px;
+  border: 2px solid green;
+  height: 200px;
   display: none;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.detail_map {
+  border: 1px solid black;
+  width: 31%;
+  height: 170px;
+  margin: 1%;
+  float: left;
+}
+
+.dtail_bar {
+  position: relative;
+  border: 1px solid lightgray;
+  height: 170px;
+  float: left;
+  margin-top: 1%;
+  margin-right: 1%;
+}
+
+.result_dtail_text {
+  border: 1px solid cadetblue;
+  width: 1%;
+  height: 30px;
+  margin-top: 1%;
+  float: left;
+  background-color: cadetblue;
 }

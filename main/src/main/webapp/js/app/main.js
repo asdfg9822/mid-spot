@@ -67,7 +67,7 @@ define(['jquery','app/common'], function ($) {
 });*/
 
     FB.init({
-      appId: '410218975833438', // Set YOUR APP ID
+      appId: FacebookAppId, // Set YOUR APP ID
       status: true, // check login status
       cookie: true, // enable cookies to allow the server to access the session
       xfbml: true // parse XFBML

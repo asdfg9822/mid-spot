@@ -5,77 +5,84 @@
   requirejs(['app/result'], function (result) {
     result.init();
   });
-
   requirejs(['app/result_json'], function (result_json) {
     result_json.init();
   });
 </script>
 
+
 <script id="template1" type="text/x-handlebars-template">
 
-  {{#each data}}
-
-  <div class="container-store">
-    <div class="wrap_box">
-      <div class="visual">
-        <div class="result_box">
-
-          <img class="result_img_big" src="{{imgUrl}}" />
-          <!--          <img class="result_img_big" src="{{imgUrl}}" />-->
-
-          <div id="title" class="table-div main-title">
-            {{companyName}}
+  <div class="result_table_border_area">
+    {{#each data}}
+    <div>
+      <div class="result_table_border">
+        <div>
+          <a class="img_prev"><img src="images/result/main_visual_prev_on.png"></a>
+          <div class="slideshow">
+            <img class="img_slider first" src="{{imgUrl}}">
+            <img class="img_slider second" src="images/result/img01.jpg">
+            <img class="img_slider third" src="images/result/img02.jpg">
+            <img class="img_slider fourth" src="images/result/img03.jpg">
           </div>
-          <!--          <a href=""><img src="images/result/img02.jpg" class="pht dn"></a>-->
-          <!--
-          <a href=""><img src="images/result/img02.jpg" class="pht dn"></a>
-          <a href=""><img src="images/result/img03.jpg" class="pht dn"></a>
--->
+          <a class="img_next"><img src="images/result/main_visual_next_on.png"></a>
 
-
-          <!--prev, next 버튼-->
-          <!--
-          <img src="images/result/main_visual_prev_on.png" alt="" class="prev">
-          <img src="images/result/main_visual_next_on.png" alt="" class="next">
-
-          <div class="thumbox">
--->
-          <!-- 작은이미지 hover -->
-          <!--
-            <ul class="listbox" style="padding-top:0">
-              <li class="ll"><img class='ll-img' src="images/result/img_s01_on.jpg"></li>
-              <li class="ll"><img class='ll-img' src="images/result/img_s02_on.jpg"></li>
-              <li class="ll"><img class='ll-img' src="images/result/img_s03_on.jpg"></li>
-            </ul>
--->
-          <!--          </div>-->
           <!--thumbox-->
+          <div class="center_text">
+            <div id="title" class="table-div main-title">
+              {{companyName}}
+            </div>
+
+            <div class="explain">
+              <ul>
+
+                <li>주소</li>
+                <ul>
+                  <li>{{addressOld}}</li>
+                </ul>
+                <li>전화번호</li>
+                <ul>
+                  <li>{{adminTel}}</li>
+                </ul>
+                <li>홈페이지</li>
+                <ul>
+                  <li>{{isWebPage}}</li>
+                </ul>
+                <li>분류</li>
+                <ul>
+                  <li>{{onGround}}</li>
+                </ul>
+
+              </ul>
+
+            </div>
+          </div>
+          <!--  center_text-->
+
+
+          <div class="select-button">
+            <button id="buttonInfo" class="detail-info button button--ujarak  button--text-thick">더보기</button>
+            <button class="detail-find button button--ujarak  button--text-thick">길찾기</button>
+            <button class="detail-share button button--ujarak  button--text-thick">공유하기</button>
+          </div>
         </div>
-        <!-- box -->
       </div>
-      <!-- visual -->
-    </div>
-    <!-- wrap_box -->
+      <div class="table-div detail-explain-more">
+        <!--map위치-->
+        <div class="detail_map">
 
-    <div class="explain">
-      <ul>
-        <li>{{adminTel}}</li>
-        <li>{{addressNew}}</li>
-        <li>위도 : {{lat}}</li>
-        <li>경도 : {{lon}}</li>
-      </ul>
+        </div>
+        <div class="dtail_bar"></div>
+        <div class="result_dtail_text">
+        </div>
+        <h2>{{companyName}}</h2>
+
+      </div>
+      <div class="table-div detail-explain-find">길찾기의 상세</div>
+      <div class="table-div detail-explain-share">공유하기의 상세</div>
     </div>
-    <div class="table-div select-button">
-      <button class="detail-info button button--ujarak  button--text-thick">더보기</button>
-      <button class="detail-find button button--ujarak  button--text-thick">길찾기</button>
-      <button class="detail-share button button--ujarak  button--text-thick">공유하기</button>
-    </div>
+    {{/each}}
   </div>
-  <div class="table-div detail-explain-more">더보기의 상세</div>
-  <div class="table-div detail-explain-find">길찾기의 상세</div>
-  <div class="table-div detail-explain-share">공유하기의 상세</div>
-  {{/each}}
-
 
 </script>
 
@@ -117,6 +124,10 @@
   <div class="tab3_content">
     Tab3 내용
   </div>
+
+
+
+
 
 </div>
 <!--css_tabs-->
