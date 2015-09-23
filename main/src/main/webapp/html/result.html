@@ -15,7 +15,7 @@
 
   <div class="result_table_border_area">
     {{#each data}}
-    <div>
+    <div class="result_table_border_area_2">
       <div class="result_table_border">
         <div>
           <a class="img_prev"><img src="images/result/main_visual_prev_on.png"></a>
@@ -69,7 +69,7 @@
       </div>
       <div class="table-div detail-explain-more">
         <!--map위치-->
-        <div id="detail_map_id" class="detail_map"></div>
+        <div id='detail_map_id_{{@index}}' class="detail_map" data-lat="{{lat}}" data-lon="{{lon}}"></div>
         <div class="detail_bar"></div>
         <div class="result_dtail_text">
         </div>
