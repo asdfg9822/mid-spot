@@ -1,86 +1,59 @@
 define(['jquery', 'app/common'], function ($) {
 
 
-
-
-
   return {
     init: function () {
-      console.log('->start->init()');
+        console.log('->start->init()');
+        console.log('->start->init()');
 
-      try {
-        document.execCommand('BackgroundImageCache', false, true);
-      } catch (e) {}
 
-      require(['http://openapi.map.naver.com/openapi/naverMap.naver?ver=2.0&key=' + navaerMapKey], function () {
-          console.log("naver map ok");
-          var oCenterPoint = new nhn.api.map.LatLng(37.5010226, 127.0396037);
-          nhn.api.map.setDefaultPoint('LatLng');
-          oMap = new nhn.api.map.Map('startMap', {
-            point: oCenterPoint,
-            zoom: 10,
-            enableWheelZoom: true,
-            enableDragPan: true,
-            enableDblClickZoom: false,
-            mapMode: 0,
-            activateTrafficMap: false,
-            activateBicycleMap: false,
-            minMaxLevel: [1, 14],
-            size: new nhn.api.map.Size(700, 600)
+        var mapContainer = document.getElementById('startMap'), // 지도를 표시할 div
+          mapOption = {
+            center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+            level: 3 // 지도의 확대 레벨
+          };
 
+        // 지도를 생성합니다
+        var map = new daum.maps.Map(mapContainer, mapOption);
+
+        // 주소-좌표 변환 객체를 생성합니다
+        var geocoder = new daum.maps.services.Geocoder();
+
+        //입력한 출발지 정보를 받아옵니다
+        $('#startSearch').click(function () {
+          var startPoint = $('#startInsert').val();
+
+          console.log(startPoint);
+          // 주소로 좌표를 검색합니다
+          geocoder.addr2coord('성남시 분당구 정자동 178-1', function (status, result) {
+
+            // 정상적으로 검색이 완료됐으면
+            if (status === daum.maps.services.Status.OK) {
+
+              var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
+
+              // 결과값으로 받은 위치를 마커로 표시합니다
+              var marker = new daum.maps.Marker({
+                map: map,
+                position: coords
+              });
+
+              // 인포윈도우로 장소에 대한 설명을 표시합니다
+              var infowindow = new daum.maps.InfoWindow({
+                content: '<div style="padding:5px;">출발지</div>'
+              });
+              infowindow.open(map, marker);
+            }
           });
-
-        }, function (err) {
-          console.log("naver map error");
-          //throw err; // maybe freak out a little?
-        }),
-        $(document).ready(function () {
-
-          $("#start-search").click(function () {
-            var address = $('#start-insert').val();
-            /*-------*/
-            $.ajax({
-              url: "http://openapi.map.naver.com/api/geocode",
-              dataType: "jsonp",
-              type: "post",
-              jsonp: "callback",
-              data: {
-                key: navaerMapKey, // API KEY
-                query: "경기도 성남시 분당구 정자동 178-1", // 검색어
-                output: "json" // JSONP 형식으로 호출하기 때문에 결과값 포맷은 json
-              },
-              success: function (data) {
-
-                console.log(data.result.items[0].point.x);
-                console.log(data.result.items[0].point.y);
-                var oSize = new nhn.api.map.Size(28, 37);
-                var oOffset = new nhn.api.map.Size(14, 37);
-                var oIcon = new nhn.api.map.Icon('http://static.naver.com/maps2/icons/pin_spot2.png', oSize, oOffset);
-                //icon 이미지를 바꿔서 사용할 수 있습니다.
-                var oPoint = new nhn.api.map.LatLng(data.result.items[0].point.y, data.result.items[0].point.x); //마커포인트 
-
-                var oMarker = new nhn.api.map.Marker(oIcon, {
-                  title: '마커타이틀',
-                  point: oPoint
-                });
-
-                oMap.setCenter(oPoint);
+        });
 
 
-                //oMarker.setPoint(data.result.items[0].point.y, data.result.items[0].point.x);
-
-                oMap.addOverlay(oMarker);
-                var oLabel1 = new nhn.api.map.MarkerLabel(); // - 마커 라벨 선언. 
-                oMap.addOverlay(oLabel1); // - 마커 라벨 지도에 추가. 기본은 라벨이 보이지 않는 상태로 추가됨. 
-
-              }
-            });
-            /*-------*/
-            $('#start-point').text(address);
-          });
-        });;
 
 
-    }
-  };
-});
+
+
+
+      } // End of init()
+  }; // End of Return
+
+}); // End of Define
