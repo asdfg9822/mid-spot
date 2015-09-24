@@ -8,7 +8,28 @@
 /*map 안보이게*/
 
 .map_hide {
+  display: block;
+}
+
+.map_hide,
+.map_hide1,
+.map_hide2 {
+  background-color: antiquewhite;
+  min-width: 100px;
+  max-width: 150px;
+  height: 150px;
+  margin-left: 9%;
+}
+
+.map_hide1,
+.map_hide2 {
   display: none;
+}
+
+#stationMap {
+  min-width: 100px;
+  max-width: 150px;
+  height: 150px;
 }
 
 

@@ -1,4 +1,4 @@
-define(['jquery', 'handlebars', 'app/common'], function ($, handlebars) {
+define(['jquery', 'handlebars', 'slider', 'app/common'], function ($, handlebars) {
   return {
     init: function () {
 
@@ -94,37 +94,75 @@ define(['jquery', 'handlebars', 'app/common'], function ($, handlebars) {
         /*------------End of Event------------*/
 
         $(document).ready(function () {
-          $.getJSON(contextRoot + "/json/company/list.do", function (data) {
+          $.getJSON(contextRoot + "/json/company/list.do", function (result) {
 
-            var source = $('#template1').html();
-            //          console.log(source);
+            /*----------- handlebars : Content ------------*/
+            var source = $('#resultContentScript').html();
             var template = handlebars.compile(source);
-            //          console.log(template);
+            var content = template(result);
+            $('#resultContentArea').html(content);
 
-            var content = template(data);
-
-            //          console.log("content : " + content);
-
-            $('#resultJson').html(content);
-
-
-            /*----------- first img------------*/
+            /*----------- Content Img Control------------*/
             var firstChild = $('.result_table_border_area .slideshow .first').addClass('active');
             $('.img_slider').hide();
             $('.active').show();
-            /*------------End first img------------*/
-
-            console.log(data);
-
-            /*-- map --*/
 
 
-            /*-- End map --*/
+            /*----------- handlebars : Sidebar ------------*/
+            source = $('#resultSideScript').html();
+            template = handlebars.compile(source);
+            content = template(result);
+            $('#resultSideArea').html(content);
+
+            /*----------- Sidebar Marker Control------------*/
+            sideMapControl(result);
 
           });
         });
 
+        function sideMapControl(result) {
+          var mapContainer = document.getElementById('stationMap'), // 지도를 표시할 div
+            mapOption = {
+              center: new daum.maps.LatLng(37.497941, 127.027609), // 지도의 중심좌표
+              level: 8 // 지도의 확대 레벨
+            };
 
+          // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+          var map = new daum.maps.Map(mapContainer, mapOption);
+
+          // 마커 이미지의 이미지 주소입니다
+
+
+          for (var i = 0; i < result.length; i++) {
+
+            var imageSrc = contextRoot + "/images/marker/marker_" + (i + 1) + ".png";
+            //http://127.0.0.1:9999/main/images/marker/marker_1.png
+            // 마커 이미지의 이미지 크기 입니다
+            var imageSize = new daum.maps.Size(24, 35);
+
+            // 마커 이미지를 생성합니다
+            var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
+
+            // 마커를 생성합니다
+            var marker = new daum.maps.Marker({
+              map: map, // 마커를 표시할 지도
+              position: new daum.maps.LatLng(result.data[i].lat, result.data[i].lon), // 마커를 표시할 위치
+              title: result.data[i].companyName, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+              image: markerImage // 마커 이미지
+            });
+
+            $.extend(marker, {
+              'section': i
+            });
+
+            //$('img[useMap]').css('background-color', 'red');
+
+            daum.maps.event.addListener(marker, 'click', function () {
+              var thisSection = $('.result_table_border_area_2[data-section=' + this.section + ']');
+              slideContent('section-' + this.section, -1, 3);
+            });
+          }
+        }
 
       } // End of init() 
   };

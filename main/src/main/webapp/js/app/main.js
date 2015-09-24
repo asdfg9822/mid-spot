@@ -1,4 +1,4 @@
-define(['jquery','app/common'], function ($) {
+define(['jquery', 'app/common'], function ($) {
 
   console.log("==>main.js Excute..!!");
 
@@ -105,45 +105,44 @@ define(['jquery','app/common'], function ($) {
     });
 
   }
-  
+
   function insertUserInfo(response) {
-	  
-      $.ajax(contextRoot + '/json/member/insert.do',
-              {
-                method: 'POST',
-                dataType: 'json',
-                data: {
-                  name: response.name,
-                  email: response.email,
-                  userId: response.id,
-                  getSite: "FACEBOOK",
-                  imgUrl: response.picture.data.url
-                },
-                success: function(result) {
-                  if (result.data == 'success') {
-                    $('#cancelBtn').click();
-                    console.log("User Info Input Success..!!");
-                  } else {
-                	  console.log("User Info Input Fail..!!");
-                  }
-                }
-              });
+
+    $.ajax(contextRoot + '/json/member/insert.do', {
+      method: 'POST',
+      dataType: 'json',
+      data: {
+        name: response.name,
+        email: response.email,
+        userId: response.id,
+        getSite: "FACEBOOK",
+        imgUrl: response.picture.data.url
+      },
+      success: function (result) {
+        if (result.data == 'success') {
+          $('#cancelBtn').click();
+          console.log("User Info Input Success..!!");
+        } else {
+          console.log("User Info Input Fail..!!");
+        }
+      }
+    });
   }
 
-  
+
   function getUserInfo() {
     FB.api('/me?fields=name,email,picture,friends', function (response) {
 
-    	
-    
+
+
       console.log(response);
-    	  //mid-spot Database insert "User Info"
-    	  insertUserInfo(response);
-    	  
-    	  //Change User name, Profile Image
-    	  $('#side-name').text(response.name);
-    	  $('#side-profile').attr('src', response.picture.data.url);
-      
+      //mid-spot Database insert "User Info"
+      insertUserInfo(response);
+
+      //Change User name, Profile Image
+      $('#side-name').text(response.name);
+      $('#side-profile').attr('src', response.picture.data.url);
+
     });
   }
 

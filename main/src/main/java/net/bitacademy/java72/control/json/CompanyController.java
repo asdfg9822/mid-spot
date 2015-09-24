@@ -1,6 +1,7 @@
 package net.bitacademy.java72.control.json;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import net.bitacademy.java72.domain.Company;
 import net.bitacademy.java72.service.CompanyService;
 
 @Controller("json.CompanyController")
@@ -40,7 +42,9 @@ public class CompanyController {
     
     result.put("pageSize", pageSize);
     */
-    result.put("data", companyService.list());
+    List<Company> list = companyService.list();
+    result.put("data", list);
+    result.put("length", list.size());
     return result;
   }
   
