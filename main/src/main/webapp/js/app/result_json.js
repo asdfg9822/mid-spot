@@ -135,7 +135,8 @@ define(['jquery', 'handlebars', 'slider', 'app/common'], function ($, handlebars
 
           for (var i = 0; i < result.length; i++) {
 
-            var imageSrc = contextRoot + "/images/marker/marker_" + (i + 1) + ".png";
+            //var imageSrc = contextRoot + "/images/marker/marker_" + (i + 1) + ".png";
+        	var imageSrc = "http://icons.iconarchive.com/icons/icons-land/vista-map-markers/256/Map-Marker-Ball-Azure-icon.png"; 
             //http://127.0.0.1:9999/main/images/marker/marker_1.png
             // 마커 이미지의 이미지 크기 입니다
             var imageSize = new daum.maps.Size(24, 35);

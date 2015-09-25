@@ -5,54 +5,35 @@
 }
 
 
-/*map 안보이게*/
+/*지도 스타일*/
 
-.map_hide {
-  display: block;
-}
-
-.map_hide,
-.map_hide1,
-.map_hide2 {
-  background-color: antiquewhite;
-  min-width: 100px;
+#stationMap {
+  /*  min-width: 100px;*/
   max-width: 150px;
   height: 150px;
   margin-left: 9%;
-}
-
-.map_hide1,
-.map_hide2 {
-  display: none;
-}
-
-#stationMap {
-  min-width: 100px;
-  max-width: 150px;
-  height: 150px;
+  z-index: 3;
+  border-left: 3px solid white;
+  border-right: 3px solid white;
 }
 
 
 /*버튼 스타일*/
 
 .menu_button {
-  min-width: 150px;
-  max-width: 200px;
+  width: 150px;
+  /*  max-width: 200px;*/
   display: block;
   margin-left: 9%;
   margin-bottom: 0%;
   padding: 1em 2em;
   border: none;
   position: relative;
-  z-index: 1;
+  z-index: 3;
 }
 
 
 /*버튼안 글자 스타일*/
-
-.menu_button > span {
-  /*  vertical-align: middle;*/
-}
 
 .button--quidel {
   overflow: hidden;

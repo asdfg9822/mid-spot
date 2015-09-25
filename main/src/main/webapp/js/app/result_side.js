@@ -1,62 +1,135 @@
 define(['jquery', 'app/common'], function ($) {
   return {
     init: function () {
-
       console.log("->result_side->init()");
-
-
+      
       $(document).ready(function () {
 
-        var submenu = $(".map_hide")
-        var submenu1 = $(".map_hide1")
-        var submenu2 = $(".map_hide2")
+        var first = false;
+        var second = true;
+        var third = true;
 
-        // menu 클래스 바로 하위에 있는 a 태그를 클릭했을때
-        $(".result_map_menu>.button_map_first").click(function () {
-          var submenu = $(this).next(".map_hide");
+        $(document).on('click','.result_map_menu>.button_map_first', function() {
 
-          // submenu 가 화면상에 보일때는 위로 보드랍게 접고 아니면 아래로 보드랍게 펼치기
-          if (submenu.is(":visible")) {
-            submenu.slideUp();
+          if (first == true && second == false && third == true) {
+
+            $(".button_map_second").animate({
+              "top": "+=150px"
+            }, "slow");
+
+            $("#stationMap").animate({
+              "top": "-=52px"
+            }, "slow"); 
+
+            first = false;
+            second = true;
+
+          } else if (first == true && second == true && third == false) {
+
+            $(".button_map_second").animate({
+              "top": "+=150px"
+            }, "slow");
+            $(".button_map_third").animate({
+              "top": "+=150px"
+            }, "slow");
+
+            $("#stationMap").animate({
+              "top": "-=105px"
+            }, "slow");
+
+            first = false;
+            third = true;
+
+
           } else {
-            submenu.slideDown();
-            submenu1.slideUp();
-            submenu2.slideUp();
+
+          }
+
+        });
+
+        
+        $(document).on('click','.result_map_menu>.button_map_second', function() {
+
+          if (first == false && second == true && third == true) {
+            $(".button_map_second").animate({
+              "top": "-=150px"
+            }, "slow");
+
+            $("#stationMap").animate({
+              "top": "+=52px"
+            }, "slow");
+            second = false;
+            first = true;
+          } else if (first == true && second == true && third == false) {
+            $(".button_map_third").animate({
+              "top": "+=150px"
+            }, "slow");
+
+            $("#stationMap").animate({
+              "top": "-=52px"
+            }, "slow");
+            second = false;
+            third = true;
+
+
+          } else {
+            $(".button_map_second").animate({
+              "top": "0px"
+            }, "slow");
+
+            $("#stationMap").animate({
+              "top": "0px"
+            }, "slow");
+            first = false;
+            second = true;
           }
         });
 
-        $(".result_map_menu>.button_map_second").click(function () {
-          var submenu1 = $(this).next(".map_hide1");
 
-          if (submenu1.is(":visible")) {
-            submenu1.slideUp();
+        $(document).on('click','.result_map_menu>.button_map_third', function() {
+
+          if (first == false && third == true && second == true) {
+            $(".button_map_second").animate({
+              "top": "-=150px"
+            }, "slow");
+            $(".button_map_third").animate({
+              "top": "-=150px"
+            }, "slow");
+
+            $("#stationMap").animate({
+              "top": "+=105px"
+            }, "slow");
+            first = true;
+            third = false;
+          } else if (first == true && third == true && second == false) {
+            $(".button_map_third").animate({
+              "top": "-=150px"
+            }, "slow");
+
+            $("#stationMap").animate({
+              "top": "+=52px"
+            }, "slow");
+            first = true;
+            second = true;
+            third = false;
           } else {
-            submenu1.slideDown();
-            submenu.slideUp();
-            submenu2.slideUp();
-          }
-        });
+            $(".button_map_second").animate({
+              "top": "0px"
+            }, "slow");
+            $(".button_map_third").animate({
+              "top": "0px"
+            }, "slow");
 
-        $(".result_map_menu>.button_map_third").click(function () {
-          var submenu2 = $(this).next(".map_hide2");
-
-          if (submenu2.is(":visible")) {
-            submenu2.slideUp();
-          } else {
-            submenu2.slideDown();
-            submenu.slideUp();
-            submenu1.slideUp();
+            $("#stationMap").animate({
+              "top": "0px"
+            }, "slow");
+            first = false;
+            third = true;
           }
+
+
         });
       });
-
-
-
-
-
-
-
-
 
     }
   };
