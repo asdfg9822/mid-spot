@@ -1,17 +1,17 @@
-<input type="text" id="startInsert" class="start-search">
-<input type="button" id="startSearch" class="button button--wapasha button--text-thick button--text-upper button--size-s" value="SEARCH">
-<!-- 입력 창 -->
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">검색한 목적지</h3>
-  </div>
-  <div id="start-point" class="panel-body">목 적 지</div>
+<div class="option">
+  <input type="text" id="keyword" class="start-search" value="인천 서구 봉수대로 141">
+  <button id="start-search-place" class="button button--wapasha button--text-thick button--text-upper button--size-s">SEARCH</button>
+  <button id="start-search-my" class="button button--wapasha button--text-thick button--text-upper button--size-s">MY</button>
+</div>
+<div id="menu_wrap">
+  <ul id="placesList"></ul>
+  <div id="pagination"></div>
 </div>
 <!-- <p id="start-point"></p> -->
 
 <script>
   requirejs(['app/start'], function (start) {
-    //start.insert();
+    start.init();
   });
 </script>
 <!--  입력값 출력하기 -->
