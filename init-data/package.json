@@ -12,6 +12,7 @@
     "body-parser": ">=1.13",
     "bootstrap": "^3.3.5",
     "express": ">4.0",
+    "hover.css": "^2.0.2",
     "jquery": "^2.1.4",
     "multer": ">=1.0",
     "mysql": "^2.9.0"

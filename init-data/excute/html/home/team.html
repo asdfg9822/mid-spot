@@ -1,0 +1,78 @@
+<h2>Team</h2>
+<section class="main">
+  <ul class="timeline">
+    <li class="event">
+      <input type="radio" name="tl-group" checked/>
+      <label></label>
+      <div class="thumb user-1"><span>팀장 최종혁</span></div>
+      <div class="content-perspective">
+        <div class="content">
+          <div class="content-inner">
+            <h3>Leader </h3>
+            <p>- Database 설계 및 초기 데이터 입력</p>
+            <p>- 다음 API를 활용하여 업체 정보 Insert</p>
+            <p>- Node.js, Express기반의 시스템 개발</p>
+            <p>- Spring MVC 기반의 싱글 페이지 개발</p>
+            <p>- Github를 이용한 소스 관리</p>
+            <p>- AWS EC2 Ubuntu Server 구축</p>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li class="event">
+      <input type="radio" name="tl-group" />
+      <label></label>
+      <div class="thumb user-2"><span>팀원 진혜란</span></div>
+      <div class="content-perspective">
+        <div class="content">
+          <div class="content-inner">
+            <h3>Front-end Specialist</h3>
+            <p>- jQuery를 활용한 Ajax 통신</p>
+            <p>- Animation 및 Event 처리</p>
+            <p>- Require.js를 이용한 JS 관리</p>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li class="event">
+      <input type="radio" name="tl-group" />
+      <label></label>
+      <div class="thumb user-3"><span>팀원 배재준</span></div>
+      <div class="content-perspective">
+        <div class="content">
+          <div class="content-inner">
+            <h3>Back-end Specialist</h3>
+            <p>- 로그인 및 세션 처리</p>
+            <p>- MyBatis를 이용한 SQL 처리</p>
+            <p>- Spring Framework</p>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li class="event">
+      <input type="radio" name="tl-group" />
+      <label></label>
+      <div class="thumb user-4"><span>팀원 김슬기</span></div>
+      <div class="content-perspective">
+        <div class="content">
+          <div class="content-inner">
+            <h3>Multi Player</h3>
+            <p>- Spring Controller 구현</p>
+            <p>- 다음 API Event 구현</p>
+            <p>- HTML, CSS 디자인 작업</p>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</section>
+
+
+<script>
+  requirejs(['app/home/team'], function (obj) {
+    obj.init();
+  });
+</script>

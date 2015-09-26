@@ -1,0 +1,16 @@
+.logo {
+  width: 30px;
+}
+
+.contact-content {
+  display: inline-block;
+  margin-top: 3%;
+}
+
+.contact-content span.email {
+  color: darkgrey;
+}
+
+.contact-page-area {
+  padding-top: 25px;
+}

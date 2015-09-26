@@ -1,0 +1,54 @@
+/* Mid-spot Middle Nav */
+
+.mid-nav {
+  margin: 3em auto;
+  max-width: 700px;
+}
+
+.mid-nav a {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.25em 0;
+  margin: 10px 10px;
+  display: inline-block;
+  font-size: 0.85em;
+}
+
+.mid-nav a.current {
+  opacity: 0.5;
+}
+
+
+/* Mid-spot  */
+
+.header-img {
+  width: 100px;
+  padding-top: 2.0em;
+}
+
+.mid-nav button {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.25em 0;
+  margin: 10px 10px;
+  display: inline-block;
+  font-size: 0.85em;
+  color: #B24E51;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  outline: none;
+}
+
+.mid-nav button.current {
+  text-decoration: underline;
+}
+
+
+/* Mid-spot  */
+
+.header-img {
+  width: 100px;
+  padding-top: 2.0em;
+}

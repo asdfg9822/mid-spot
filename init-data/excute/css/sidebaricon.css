@@ -1,0 +1,37 @@
+/* Common Sidebar Icon */
+
+.side-icon {
+  display: block;
+  background-color: #5f656f;
+  width: 42px;
+  height: 42px;
+  margin: 0 auto;
+}
+
+
+/* Icon Defenition */
+
+.icon-db-view {
+  -webkit-mask: url(../img/side_icon/db_view.png);
+  -webkit-mask-size: 100% 100%;
+}
+
+.icon-db-insert {
+  -webkit-mask: url(../img/side_icon/db_insert.png);
+  -webkit-mask-size: 100% 100%;
+}
+
+.icon-db-sql {
+  -webkit-mask: url(../img/side_icon/db_sql.png);
+  -webkit-mask-size: 100% 100%;
+}
+
+.icon-home {
+  -webkit-mask: url(../img/side_icon/home.png);
+  -webkit-mask-size: 100% 100%;
+}
+
+.icon-log {
+  -webkit-mask: url(../img/side_icon/log.png);
+  -webkit-mask-size: 100% 100%;
+}
