@@ -1,0 +1,77 @@
+<header class="codrops-header">
+  <h1>DB View<span>테이블 데이터 확인</span></h1>
+  <nav class="mid-nav">
+    <button id="navDTView" class="nav-button hvr-underline-from-center ">밑의 Table을 클릭하세요.</button>
+  </nav>
+</header>
+
+<div id="content">
+  <section id="viewContent">
+    <div class="tabs">
+      <nav>
+        <ul>
+          <li><a id="cate_tb" class="btnTableSelect" href="#"><span class="hvr-float-shadow">cate_tb</span></a></li>
+          <li><a id="comp_cate_tb" class="btnTableSelect" href="#"><span class="hvr-float-shadow">comp_cate_tb</span></a></li>
+          <li><a id="comp_img_tb" class="btnTableSelect" href="#"><span class="hvr-float-shadow">comp_img_tb</span></a></li>
+          <li><a id="comp_spec_tb" class="btnTableSelect" href="#"><span class="hvr-float-shadow">comp_spec_tb</span></a></li>
+        </ul>
+        <ul>
+          <li><a id="comp_tb" class="btnTableSelect" href="#"><span class="hvr-float-shadow">comp_tb</span></a></li>
+          <li><a id="like_comp_tb" class="btnTableSelect" href="#"><span class="hvr-float-shadow">like_comp_tb</span></a></li>
+          <li><a id="meet_tb" class="btnTableSelect" href="#"><span class="hvr-float-shadow">meet_tb</span></a></li>
+          <li><a id="memb_tb" class="btnTableSelect" href="#"><span class="hvr-float-shadow">memb_tb</span></a></li>
+        </ul>
+        <ul>
+          <li><a id="parti_tb" class="btnTableSelect" href="#"><span class="hvr-float-shadow">parti_tb</span></a></li>
+          <li><a id="rcmd_cate_tb" class="btnTableSelect" href="#"><span class="hvr-float-shadow">rcmd_cate_tb</span></a></li>
+          <li><a id="rcmd_plc_tb" class="btnTableSelect" href="#"><span class="hvr-float-shadow">rcmd_plc_tb</span></a></li>
+          <li><a id="spec_tb" class="btnTableSelect" href="#"><span class="hvr-float-shadow">spec_tb</span></a></li>
+        </ul>
+      </nav>
+      <div id="contentWrap">
+        <!--<script id="template1" type="text/x-handlebars-template">
+          {{#each data}}
+          <tr class="data-row">
+            <td>{{no}}</td>
+            <td><a class="titleLink" bno="{{no}}" href="#">{{title}}</a></td>
+            <td>{{yyyyMMdd}}</td>
+            <td>{{viewCount}}</td>
+          </tr>
+          {{/each}}
+        </script>-->
+
+        <script id="tableViewScript" type="text/x-handlebars-template">
+          <table id="tableView" class="display" cellspacing="0" width="100%">
+            <thead>
+              {{#each result}} {{#if @first}}
+              <tr>
+                {{#each this}}
+                <th>{{@key}}</th>
+                {{/each}}
+              </tr>
+              {{/if}} {{/each}}
+            </thead>
+            <tbody>
+              {{#each result}}
+              <tr>
+                {{#each this}}
+                <td>{{this}}</td>
+                {{/each}}
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </script>
+      </div>
+      <!-- /content -->
+      <!-- /tabs -->
+    </div>
+  </section>
+
+</div>
+
+<script>
+  requirejs(['app/view/main'], function (obj) {
+    obj.init();
+  });
+</script>

@@ -1,11 +1,6 @@
-/*
- * requirejs 라이브러리의 환경 설정
- */
+//  js/app : Mid-Spot JS
+//  lib/app : 외부 Library
 
-/*
- * baseUrl: 라이브러리를 찾는 기본 디렉토리
- * paths: 기본 디렉토리 외에 다른 디렉토리의 별명 설정 
- */
 requirejs.config({
   baseUrl: 'js',
   paths: {
@@ -14,9 +9,17 @@ requirejs.config({
     'handlebars': 'lib/handlebars-v3.0.3',
     'classie': 'lib/classie',
     'snap': 'lib/snap.svg-min',
-    'modernizr': 'lib/modernize.custom.63321'
+    'modernizr': 'lib/modernize.custom.63321',
+    'datatables': 'lib/jquery.dataTables.min',
+    'async': 'lib/requirejs-plugins/src/async'
+  },
+  shim: {
+    "datatables": {
+      "deps": ['jquery']
+    }
   }
 });
 
-// main.html을 위한 자바스크립트 로딩
+
+// index.html을 위한 자바스크립트 로딩
 requirejs(['app/init']);

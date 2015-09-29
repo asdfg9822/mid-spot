@@ -1,0 +1,14 @@
+#btnArea a {
+  background-color: aliceblue;
+}
+
+#contentWrap {
+  margin-top: 5%;
+  padding: 3%;
+  background-color: #928D87;
+  border-radius: 10px;
+}
+
+.tabs nav span {
+  font-weight: 800;
+}

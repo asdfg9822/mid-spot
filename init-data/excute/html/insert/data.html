@@ -1,0 +1,26 @@
+<div id="buttonArea">
+  초기 설정된 데이터를 입력
+  <br>
+  <button id="btnDTInit" href="#" class="">Init Data</button>
+  <br>
+  <br> 회사 정보 자동 입력
+  <br>
+  <input id="txtCompSearch" type="text" class="" placeholder="ex) 강남역 노래방 / 선릉역 하남돼지집">
+  <button class="" type="button">Insert</button>
+</div>
+
+
+<div id="dataInsertArea">
+  <!-- Example row of columns -->
+  <div class="row">
+    <span id="mapInfo">지도에 표시된 곳이 DB에 Insert됩니다.</span>
+    <div id="map"></div>
+  </div>
+</div>
+
+
+<script>
+  requirejs(['app/insert/data'], function (obj) {
+    obj.init();
+  });
+</script>

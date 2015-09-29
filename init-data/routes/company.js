@@ -14,6 +14,8 @@ var pool = mysql.createPool({
 });
 
 router.all('/insert.do', function (request, response) {
+
+  //Cross Origin Resource Sharing Allow
   response.writeHeader(200, {
     "Content-Type": "Application/json",
     "Access-Control-Allow-Origin": "*"

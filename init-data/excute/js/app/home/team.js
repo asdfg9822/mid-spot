@@ -1,14 +1,9 @@
-define(['jquery', 'snap', 'app/common'], function ($, Snap) {
+define(['jquery', 'app/common'], function ($) {
 
 
   return {
     init: function () {
-
-      console.log("MY> team.js init() excute()..!!");
-
-
-
-
+      console.log("MY> home/team.js init() excute()..!!");
 
     }
   };

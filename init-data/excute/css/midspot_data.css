@@ -1,0 +1,31 @@
+#dataInsertArea {
+  display: inline-block;
+  color: whitesmoke;
+  margin-top: 5%;
+  width: 80%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+#buttonArea {
+  display: inline-block;
+  text-align: left;
+}
+
+#buttonArea #txtCompSearch {
+  width: 300px;
+}
+
+#buttonArea input,
+#buttonArea button {
+  margin-top: 5px;
+  height: 35px;
+  font-size: 12px;
+}
+
+#map {
+  display: inline-block;
+  width: 400px;
+  height: 300px;
+  border-radius: 10px;
+}

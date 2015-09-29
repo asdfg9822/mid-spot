@@ -8,13 +8,15 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-// 정적 자원(HTML, CSS, JavaScript, Images, ...)을 
-// 처리하는 도구 등록
-app.use(express.static('www'));
-
+// URI : /company
 var company = require('./routes/company');
 app.use('/company', company);
 
+// URI : /table
+var table = require('./routes/table');
+app.use('/table', table);
+
+// URI : /
 app.get('/', function (req, res) {
   res.send('Hello World! This Page is Default Page. You Must Be Connect "company_info_write.html" ');
 });

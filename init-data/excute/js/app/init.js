@@ -4,32 +4,28 @@ define(['jquery', 'classie', 'snap', 'app/common'], function ($, classie, Snap) 
   //Sidebar navigation Events
   console.log("MY> home.js Excute..!! && Trigger navIntro");
   //Default Intro Click
-  $('#main').load('./html/home/main.html');
+  $('#main').load('./html/insert/main.html');
 
+  //Home Button
   $('#btnHome').click(function (event) {
     event.preventDefault();
     $('#main').load('./html/home/main.html');
     $('.menu__handle').trigger('click');
   });
 
+  //DB Insert Button
   $('#btnDBInsert').click(function (event) {
     event.preventDefault();
     $('#main').load('./html/insert/main.html');
     $('.menu__handle').trigger('click');
   });
 
+  //DB View Button
   $('#btnDBView').click(function (event) {
     event.preventDefault();
     $('#main').load('./html/view/main.html');
     $('.menu__handle').trigger('click');
   });
-
-  $('#btnLog').click(function (event) {
-    event.preventDefault();
-    $('#main').load('./html/log/main.html');
-    $('.menu__handle').trigger('click');
-  });
-
 
 
   //Sidebar Animation Events
