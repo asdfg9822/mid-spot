@@ -4,7 +4,7 @@ define(['jquery', 'classie', 'snap', 'app/common'], function ($, classie, Snap) 
   //Sidebar navigation Events
   console.log("MY> home.js Excute..!! && Trigger navIntro");
   //Default Intro Click
-  $('#main').load('./html/insert/main.html');
+  $('#main').load('./html/home/main.html');
 
   //Home Button
   $('#btnHome').click(function (event) {
