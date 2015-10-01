@@ -1,4 +1,4 @@
-define(['jquery', 'classie', 'snap', 'app/common'], function ($, classie, Snap) {
+define(['jquery', 'classie', 'snap'], function ($, classie, Snap) {
 
 
   //Sidebar navigation Events

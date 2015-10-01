@@ -1,4 +1,4 @@
-define(['jquery', 'app/common'], function ($) {
+define(['jquery'], function ($) {
 
 
   return {

@@ -11,13 +11,15 @@ requirejs.config({
     'snap': 'lib/snap.svg-min',
     'modernizr': 'lib/modernize.custom.63321',
     'datatables': 'lib/jquery.dataTables.min',
-    'async': 'lib/requirejs-plugins/src/async'
+    'async': 'lib/async'
   },
   shim: {
     "datatables": {
       "deps": ['jquery']
     }
   }
+
+
 });
 
 
