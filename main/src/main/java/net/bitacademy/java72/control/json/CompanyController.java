@@ -143,7 +143,7 @@ public class CompanyController {
         new HashMap<String,Object>();
     
     result.put("pageNo", pageNo);
-    
+     
     int totalCount = boardService.countAll();
     int lastPageNo = totalCount / pageSize;
     if ((totalCount % pageSize)  > 0) {
