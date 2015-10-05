@@ -35,8 +35,14 @@ requirejs.config({
     'm-dropdown.min': 'lib/m-dropdown.min',
     'm-radio': 'lib/m-radio',
     'm-radio.min': 'lib/m-radio.min',
-    'slider': 'lib/slider'
-  }
+    'slider': 'lib/slider',
+	'datatables' : 'lib/jquery.dataTables.min'
+	},
+	shim : {
+		"datatables" : {
+			"deps" : [ 'jquery' ]
+		}
+	}
 });
 
 // main.html을 위한 자바스크립트 로딩

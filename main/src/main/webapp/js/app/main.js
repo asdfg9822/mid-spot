@@ -6,13 +6,22 @@ define(['jquery', 'app/common'], function ($) {
 
   // #sidebar2 첫 번째 아이템 제목, 내용 채우기
   //$('#sidebar2-item1-content').load('html/test.html');
-
+  $('#side-company').click(function (event) {
+		console.log('클릭ehla');
+		event.preventDefault();
+	    $('#sidebar2 #sidebar2-title-text').empty();
+	    $('#sidebar2-item1-title').empty();
+	    $('#sidebar2-item1-content').empty();
+	    $('#content').load('html/company_main.html');
+	  }); // company 이동 기능
+  
   $('#groupMenu').click(function (event) {
     event.preventDefault();
     $('#sidebar2 #sidebar2-title-text').text("그룹");
     $('#sidebar2-item1-title').text("접속한 사용자입니다.");
     $('#sidebar2-item1-content').empty();
-    $('#content').empty();
+    $('#content').load('html/meet.html');
+    
   });
 
   $('#destMenu').click(function (event) {
@@ -42,6 +51,9 @@ define(['jquery', 'app/common'], function ($) {
   $('#side-profile').click(function () {
     console.log("profile clicked!! ");
     Login();
+  
+
+    
   });
 
   $('#side-setting').click(function () {

@@ -61,8 +61,9 @@
 
             <div class="select-button">
               <button id="buttonInfo" class="detail-info button button--ujarak  button--text-thick">더보기</button>
-              <button class="detail-find button button--ujarak  button--text-thick">길찾기</button>
+              <button id="buttonFind" class="detail-find button button--ujarak  button--text-thick">길찾기</button>
               <button class="detail-share button button--ujarak  button--text-thick">공유하기</button>
+
             </div>
           </div>
         </div>
@@ -75,7 +76,15 @@
           <h2>{{companyName}}</h2>
 
         </div>
-        <div class="table-div detail-explain-find">길찾기의 상세</div>
+        <div class="table-div detail-explain-find">
+          <!--map위치-->
+          <div id='detail_road_id_{{@index}}' class="detail_road" data-lat="{{lat}}" data-lon="{{lon}}"></div>
+          <!--길찾기위치-->
+          <div class="result_road_Content">
+
+          </div>
+
+        </div>
         <div class="table-div detail-explain-share">공유하기의 상세</div>
       </div>
       {{/each}}
@@ -83,9 +92,16 @@
   </div>
 </script>
 
+<script id="resultRoadContentScript" type="text/x-handlebars-template">
+  {{#with info}}
+  <div class="result_road_title">{{firstStartStation}} -> {{lastEndStation}}</div>
+  <div class="result_road_time">{{totalTime}}분</div>
+  {{/with}} {{#each this.subPath}}
+  <div class="result_road_traffic">{{trafficType}} {{guide}} {{sectionTime}}분</div>
+  {{/each}}
 
 
-
+</script>
 
 <div id="css_tabs">
   <!--탭 유형-->
