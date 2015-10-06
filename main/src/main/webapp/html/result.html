@@ -1,6 +1,3 @@
-<!-- 제이쿼리 사용 -->
-<!--   <script src="../js/lib/jquery-ui.js"></script>
-			<script src="../js/lib/nd_slider.js"></script> -->
 <script>
   requirejs(['app/result'], function (result) {
     result.init();
@@ -59,12 +56,42 @@
             <!--  center_text-->
 
 
-            <div class="select-button">
-              <button id="buttonInfo" class="detail-info button button--ujarak  button--text-thick">더보기</button>
-              <button id="buttonFind" class="detail-find button button--ujarak  button--text-thick">길찾기</button>
-              <button class="detail-share button button--ujarak  button--text-thick">공유하기</button>
 
+            <!--버튼 부분 수정 10.06-->
+            <div class="select-button">
+              <ul class="ca-menu">
+                <li>
+                  <a href="#">
+                    <span class="ca-icon">L</span>
+                    <div class="ca-content">
+                      <h2 class="ca-main">더보기</h2>
+                      <h3 class="ca-sub">detail information view</h3>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="ca-icon">?</span>
+                    <div class="ca-content">
+                      <h2 class="ca-main">길찾기</h2>
+                      <h3 class="ca-sub">find the way with a map</h3>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="ca-icon">.</span>
+                    <div class="ca-content">
+                      <h2 class="ca-main">공유하기</h2>
+                      <h3 class="ca-sub">share information</h3>
+                    </div>
+                  </a>
+                </li>
+              </ul>
             </div>
+            <!-- END 버튼 부분 수정 10.06-->
+
+
           </div>
         </div>
         <div class="table-div detail-explain-more">
@@ -103,44 +130,32 @@
 
 </script>
 
-<div id="css_tabs">
-  <!--탭 유형-->
-  <input id="tab1" type="radio" name="tab" checked="checked" />
-  <input id="tab2" type="radio" name="tab" />
-  <input id="tab3" type="radio" name="tab" />
+<!--tab 수정 10.06-->
 
-  <!--탭 이름-->
-  <label for="tab1">노래방</label>
-  <label for="tab2">스터디카페</label>
-  <label for="tab3">PC방</label>
+<div class="result_container">
 
-  <!--내용-->
-  <div class="tab1_content">
-    <!--네모칸-->
-    <div id="resultContentArea"></div>
+  <div id="tabs" class="tabs">
+    <nav>
+      <ul>
+        <li><a href="#section-1" class="icon-shop"><span>Shop</span></a></li>
+        <li><a href="#section-2" class="icon-cup"><span>Drinks</span></a></li>
+        <li><a href="#section-3" class="icon-food"><span>Food</span></a></li>
+      </ul>
+    </nav>
+    <div class="result_content">
+      <section id="section-1">
 
+      </section>
+      <section id="section-2">
 
-  </div>
-  <!--tab1-->
+      </section>
+      <section id="section-3">
 
-
-  <div class="tab2_content">
-
-    <br>Tab2 내용
-    <br> ab2 내용
-    <div id="title" class="table-div main-title">
+      </section>
 
     </div>
-
+    <!-- /content -->
   </div>
-
-  <div class="tab3_content">
-    Tab3 내용
-  </div>
-
-
-
-
-
+  <!-- /tabs -->
 </div>
-<!--css_tabs-->
+<!-- END tab 수정 10.06-->

@@ -18,7 +18,7 @@ app.use('/table', table);
 
 // URI : /
 app.get('/', function (req, res) {
-	res.send('Hello World! This Page is Default Page. You Must Be Connect "company_info_write.html" ');
+	res.send('Hello World! This Page is Default Page. You Must Be Connect "Brackets" ');
 });
 
 var server = app.listen(8888, function () {

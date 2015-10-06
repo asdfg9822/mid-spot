@@ -80,5 +80,5 @@
   border: 1px solid #777;
   width: 80%;
   height: 700px;
-  overflow: auto;
+  overflow: visible;
 }
