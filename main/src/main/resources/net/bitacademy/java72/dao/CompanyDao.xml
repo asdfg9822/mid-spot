@@ -22,7 +22,7 @@
   <select id="list"  resultMap="CompanyMap">
     SELECT *
     FROM comp_tb
-    natural join comp_img_tb comp_no
+    natural join comp_img_tb comp_no order by comp_no limit 0,15
   </select>
 </mapper>
 

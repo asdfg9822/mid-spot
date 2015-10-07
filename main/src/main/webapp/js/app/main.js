@@ -8,6 +8,9 @@ define(['jquery', 'app/common'], function ($) {
 		$("#wrapper").toggleClass("toggled");
 	});
 
+
+
+
 	// #sidebar2의 메인 타이틀 바꾸기
 
 	// #sidebar2 첫 번째 아이템 제목, 내용 채우기
@@ -51,15 +54,14 @@ define(['jquery', 'app/common'], function ($) {
 		$('#sidebar2-item1-title').text("click 해주세요 ~");
 		$('#sidebar2 #sidebar2-title-text').text("결과보기");
 		$('#sidebar2-item1-content').load('html/result_side.html');
-		$('#content').load('html/result.html');
+		$('#content').load('html/result_jh.html');
 	});
+
+	$('#resultMenu').trigger('click');
 
 	$('#side-profile').click(function () {
 		console.log("profile clicked!! ");
 		Login();
-
-
-
 	});
 
 	$('#side-setting').click(function () {

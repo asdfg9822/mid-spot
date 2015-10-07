@@ -12,12 +12,24 @@
 	border: none;
 }
 
+#wrapper {
+	padding-left: 0;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
+
 #sidebarWrap {
 	font-size: 1em;
 	text-align: left;
 	margin: 0 auto 2em;
 	max-width: 1200px;
 	text-align: center;
+}
+
+#wrapper.toggled {
+	padding-left: 250px;
 }
 
 #sidebarWrap .main_person {
@@ -63,6 +75,24 @@
 
 
 /* End of Mid Spot */
+
+
+/* Content */
+
+#page-content-wrapper {
+	width: 100%;
+	top: 60px;
+	position: absolute;
+	padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+	position: absolute;
+	margin-right: -250px;
+}
+
+
+/* End of Content */
 
 
 /* Icon Def */

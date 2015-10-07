@@ -27,7 +27,7 @@ a:hover {
 .tabs {
   position: relative;
   width: 79%;
-  overflow: hidden;
+  /*overflow: hidden;*/
   /*  margin: 1em 0 2em;*/
   margin-top: 2em;
   margin-left: em;
