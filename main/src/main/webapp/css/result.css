@@ -1,223 +1,253 @@
-/*이미지*/
+	/*이미지*/
 
-.slideshow img {
-	/*  position: absolute;*/
-	/*  display: none;*/
-	float: left;
-	width: 150px;
-	height: 100px;
-	margin: 20px 5px 0px 5px;
-}
+	.slideshow img {
+		/*  position: absolute;*/
+		/*  display: none;*/
+		float: left;
+		width: 150px;
+		height: 100px;
+		margin: 20px 5px 0px 5px;
+	}
 
-.result_table_border {
-	/*  border: 1px solid lightgray;*/
-	width: 100%;
-	border: 1px solid #DCDCDC;
-	border-radius: 10px;
-	margin-bottom: 10px;
-	overflow: hidden;
-	z-index: 1;
-}
+	.result_table_border {
+		/*  border: 1px solid lightgray;*/
+		width: 115%;
+		border: 1px solid #DCDCDC;
+		border-radius: 10px;
+		margin-bottom: 10px;
+		overflow: hidden;
+		z-index: 1;
+	}
 
-.center_text {
-	float: left;
-	width: 35%;
-	height: 200px;
-}
+	.center_text {
+		float: left;
+		width: 35%;
+		height: 200px;
+	}
 
-.main-title {
-	/*  clear: both;*/
-	position: relative;
-	float: left;
-	width: 100%;
-	height: 30px;
-	/*  width: 50%;*/
-	font-size: 17px;
-	/*  font-size: 25px;*/
-	/*  padding-bottom: 1%;*/
-	/*  margin-left: 10%;*/
-	background-color: lightgrey;
-	padding-top: 3px;
-	text-align: center;
-	border: 1px solid lightgray;
-	/*    line-height: 1.42857143;*/
-}
+	.main-title {
+		/*  clear: both;*/
+		position: relative;
+		float: left;
+		width: 100%;
+		height: 30px;
+		/*  width: 50%;*/
+		font-size: 17px;
+		/*  font-size: 25px;*/
+		/*  padding-bottom: 1%;*/
+		/*  margin-left: 10%;*/
+		background-color: lightgrey;
+		padding-top: 3px;
+		text-align: center;
+		border: 1px solid lightgray;
+		/*    line-height: 1.42857143;*/
+	}
 
-.explain {
-	float: left;
-	width: 100%;
-	height: 170px;
-	padding-top: 15px;
-	/*  margin-left: 1%;*/
-	/*  margin-top: 1%;*/
-	/*  position: relative;*/
-	background: #FAFAFA;
-	border: 1px solid lightgray;
-}
+	.explain {
+		float: left;
+		width: 100%;
+		height: 170px;
+		padding-top: 15px;
+		/*  margin-left: 1%;*/
+		/*  margin-top: 1%;*/
+		/*  position: relative;*/
+		background: #FAFAFA;
+		border: 1px solid lightgray;
+	}
 
-.select-button {
-	display: inline-block;
-	width: 20%;
-	height: 100%;
-	margin-top: 10px;
-}
+	.select-button {
+		display: inline-block;
+		width: 20%;
+		height: 100%;
+		margin-top: 10px;
+	}
 
-.detail-explain-more,
-.detail-explain-find,
-.detail-explain-share {
-	border: 2px solid green;
-	height: 200px;
-	display: none;
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
-	margin-bottom: 10px;
-}
+	.detail-explain-more,
+	.detail-explain-find,
+	.detail-explain-share {
+		border: 2px solid green;
+		height: 200px;
+		display: none;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+		margin-bottom: 10px;
+	}
+	/*더보기 지도*/
 
+	.detail_map {
+		border: 1px solid black;
+		width: 31%;
+		height: 170px;
+		margin: 1%;
+		float: left;
+	}
 
-/*더보기 지도*/
+	.detail_bar {
+		position: relative;
+		border: 1px solid lightgray;
+		height: 170px;
+		float: left;
+		margin-top: 1%;
+		margin-right: 1%;
+	}
 
-.detail_map {
-	border: 1px solid black;
-	width: 31%;
-	height: 170px;
-	margin: 1%;
-	float: left;
-}
+	.result_dtail_text {
+		border: 1px solid cadetblue;
+		width: 1%;
+		height: 30px;
+		margin-top: 1%;
+		float: left;
+		background-color: cadetblue;
+	}
+	/*길찾기 지도 */
 
-.detail_bar {
-	position: relative;
-	border: 1px solid lightgray;
-	height: 170px;
-	float: left;
-	margin-top: 1%;
-	margin-right: 1%;
-}
+	.detail_road {
+		position: border: 1px solid black;
+		width: 31%;
+		height: 170px;
+		margin: 1%;
+		float: left;
+	}
 
-.result_dtail_text {
-	border: 1px solid cadetblue;
-	width: 1%;
-	height: 30px;
-	margin-top: 1%;
-	float: left;
-	background-color: cadetblue;
-}
+	.result_road_title {
+		position: relative;
+		border: 1px solid lightgray;
+		width: 50%;
+		height: 30px;
+		float: left;
+		margin-top: 1%;
+		margin-right: 1%;
+		padding-top: 0.5%;
+		text-align: center;
+	}
 
+	.result_road_time {
+		position: relative;
+		border: 1px solid red;
+		width: 8%;
+		height: 30px;
+		float: left;
+		margin-top: 1%;
+		margin-bottom: 1%;
+		margin-right: 1%;
+		text-align: center;
+	}
 
-/*길찾기 지도 */
+	.result_road_traffic {
+		position: relative;
+		float: left;
+		border-bottom: 1px solid brown;
+		width: 8%;
+		height: 25px;
+		margin-right: 1%;
+		text-align: center;
+		font-size: 10px;
+		padding-top: 1%;
+	}
 
-.detail_road {
-	position: border: 1px solid black;
-	width: 31%;
-	height: 170px;
-	margin: 1%;
-	float: left;
-}
+	.shop_detail_time dd {
+		float: left;
+		margin-left: 10px;
+		margin-right: 10px;
+	}
 
-.result_road_title {
-	position: relative;
-	border: 1px solid lightgray;
-	width: 50%;
-	height: 30px;
-	float: left;
-	margin-top: 1%;
-	margin-right: 1%;
-	padding-top: 0.5%;
-	text-align: center;
-}
+	.shop_detail_time img {
+		width: 10px;
+	}
 
-.result_road_time {
-	position: relative;
-	border: 1px solid red;
-	width: 8%;
-	height: 30px;
-	float: left;
-	margin-top: 1%;
-	margin-bottom: 1%;
-	margin-right: 1%;
-	text-align: center;
-}
+	.shop_detail dt {
+		float: left;
+		padding-right: 3px;
+	}
 
-.result_road_traffic {
-	position: relative;
-	float: left;
-	border-bottom: 1px solid brown;
-	width: 8%;
-	height: 25px;
-	margin-right: 1%;
-	text-align: center;
-	font-size: 10px;
-	padding-top: 1%;
-}
+	.shop_detail_tel dd {
+		color: coral;
+	}
 
-.shop_detail_time dd {
-	float: left;
-	margin-left: 10px;
-	margin-right: 10px;
-}
+	.shop_detail_text {
+		margin-top: 20px;
+		margin-left: 5px;
+		float: left;
+		width: 43%;
+	}
 
-.shop_detail_time img {
-	width: 10px;
-}
+	.shop_name h4 {
+		margin: 0px;
+		margin-bottom: 10px;
+		font-weight: bold;
+		text-decoration: underline;
+		/*  margin-bottom: 10px;*/
+	}
 
-.shop_detail dt {
-	float: left;
-	padding-right: 3px;
-}
+	.shop_detail_text dd,
+	dt {
+		margin-bottom: 7px;
+	}
 
-.shop_detail_tel dd {
-	color: coral;
-}
+	.shop_detail_recommend {
+		clear: left;
+		float: left;
+		color: dimgray;
+		font-size: 12px;
+		margin-top: 4px;
+	}
 
-.shop_detail_text {
-	margin-top: 20px;
-	margin-left: 5px;
-	float: left;
-	width: 43%;
-}
+	.shop_detail_get img {
+		width: 20px;
+		margin-left: 6px;
+	}
 
-.shop_name h4 {
-	margin: 0px;
-	margin-bottom: 10px;
-	font-weight: bold;
-	text-decoration: underline;
-	/*  margin-bottom: 10px;*/
-}
+	.shop_detail_get {
+		border: 1px solid red;
+		float: left;
+		margin-left: 10px;
+		padding: 1px;
+		width: 50px;
+		height: auto;
+		border-radius: 5px;
+		margin-bottom: 5px;
+	}
 
-.shop_detail_text dd,
-dt {
-	margin-bottom: 7px;
-}
+	.comp_title {
+		color: dimgrey;
+		font-weight: bold;
+		font-size: 1.5em;
+	}
 
-.shop_detail_recommend {
-	clear: left;
-	float: left;
-	color: dimgray;
-	font-size: 12px;
-	margin-top: 4px;
-}
+	.col-md-4 {
+		max-width: 300px;
+	}
 
-.shop_detail_get img {
-	width: 20px;
-	margin-left: 6px;
-}
+	.height-250 {
+		max-height: 250px;
+	}
 
-.shop_detail_get {
-	border: 1px solid red;
-	float: left;
-	margin-left: 10px;
-	padding: 1px;
-	width: 50px;
-	height: auto;
-	border-radius: 5px;
-	margin-bottom: 5px;
-}
+	.img-responsive {
+		display: block;
+		max-height: 300px;
+		min-height: 200px;
+	}
 
-.comp_title {
-	color: dimgrey;
-	font-weight: bold;
-	font-size: 1.5em;
-}
+	.vcenter {
+		vertical-align: middle;
+	}
 
-.img-responsive {
-	max-height: 300px;
-}
+	.addr_info:before {
+		content: "주소: ";
+		font-weight: bold;
+	}
+
+	.tel_info {
+		color: coral;
+	}
+
+	.tel_info:before {
+		content: "전화번호: ";
+		color: #333;
+		font-weight: bold;
+	}
+
+	.web_info:before {
+		content: "홈페이지: ";
+		font-weight: bold;
+	}
