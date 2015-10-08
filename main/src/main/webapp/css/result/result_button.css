@@ -78,6 +78,7 @@ body {
 		.ca-content .ca-main {
 			font-size: 1.2em;
 			padding-top: 4%;
+			margin-right: 3px;
 		}
 		.ca-menu {
 			display: block;
@@ -173,7 +174,7 @@ body {
 		line-height: 63px;
 		position: absolute;
 		width: 80px;
-		left: 10px;
+		left: 5px;
 		text-align: center;
 		-webkit-transition: all 300ms linear;
 		-moz-transition: all 300ms linear;
