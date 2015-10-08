@@ -11,7 +11,7 @@
 
 	.result_table_border {
 		/*  border: 1px solid lightgray;*/
-		width: 115%;
+		width: 100%;
 		border: 1px solid #DCDCDC;
 		border-radius: 10px;
 		margin-bottom: 10px;
