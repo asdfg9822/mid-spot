@@ -56,10 +56,7 @@
 	}
 
 	.select-button {
-		display: inline-block;
-		width: 20%;
-		height: 100%;
-		margin-top: 10px;
+
 	}
 
 	.detail-explain-more,
@@ -215,7 +212,12 @@
 	}
 
 	.col-md-4 {
-		max-width: 300px;
+		max-width: 500px;
+	}
+
+	.col-md-4 img {
+		height: 100%;
+		width: 100%;
 	}
 
 	.height-250 {
@@ -250,4 +252,18 @@
 	.web_info:before {
 		content: "홈페이지: ";
 		font-weight: bold;
+	}
+	/* Landscape phones and portrait tablets */
+	/*-- Desktop Half Tab --*/
+
+	@media (max-width: 950px) {
+		.img-responsive {
+			display: block;
+			border-radius: 2%;
+			/*			max-width: 400px;
+			max-height: 400px;*/
+		}
+		.half-size {
+			padding: 0em 0em 2em 5em;
+		}
 	}
