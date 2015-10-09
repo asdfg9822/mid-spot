@@ -38,10 +38,10 @@ public class MeetController {
   }
   
   @RequestMapping("/detail")
-  public Object detail(int no) {
+  public Object detail(int meetNo) {
     Map<String,Object> result = 
         new HashMap<String,Object>();
-    result.put("data", meetService.get(no));
+    result.put("data", meetService.get(meetNo));
     
     return result;
   }

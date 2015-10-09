@@ -26,8 +26,8 @@ public class MeetServiceImpl implements MeetService {
         new HashMap<String,Object>();
     paramMap.put("startIndex", startIndex);
     paramMap.put("pageSize", pageSize);
-    
     return meetDao.list(paramMap);
+    
   }
 
   @Override
@@ -46,8 +46,8 @@ public class MeetServiceImpl implements MeetService {
   }
 
   @Override
-  public Meet get(int no) {
-    return meetDao.get(no);
+  public Meet get(int meetNo) {
+    return meetDao.get(meetNo);
   }
 
   @Override

@@ -23,11 +23,26 @@ public class Meet implements Serializable {
   protected String    meetDate;
   protected String imgUrl;
   protected int  memberNo; 
+  protected int partiNo;
+  protected String memberName;
   
   
   
   
   
+  
+  public String getMemberName() {
+    return memberName;
+  }
+  public void setMemberName(String memberName) {
+    this.memberName = memberName;
+  }
+  public int getPartiNo() {
+    return partiNo;
+  }
+  public void setPartiNo(int partiNo) {
+    this.partiNo = partiNo;
+  }
   public int getMemberNo() {
     return memberNo;
   }
@@ -57,11 +72,6 @@ public class Meet implements Serializable {
   }
   public void setImgUrl(String imgUrl) {
     this.imgUrl = imgUrl;
-  }
-  @Override
-  public String toString() {
-    return "Meet [meetNo=" + meetNo + ", meetName=" + meetName + ", meetDate="
-        + meetDate + ", imgUrl=" + imgUrl + ", memberNo=" + memberNo + "]";
   }
 
   

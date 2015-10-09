@@ -6,7 +6,8 @@ define(['jquery', 'handlebars', 'slider', 'app/common'], function ($, handlebars
 
 				/*------------Click Event------------*/
 				$(document).ready(function () {
-					$(document).on('click', ".ca-menu > .detail-info", function () {
+					$(document).on('click', ".ca-menu > .detail-info", function (event) {
+							event.preventDefault();
 							var slideFind = $(this).parents().children(".detail-explain-find");
 							var slideShare = $(this).parents().children(".detail-explain-share");
 							var slideMore = $(this).parents().children(".detail-explain-more");
@@ -14,7 +15,8 @@ define(['jquery', 'handlebars', 'slider', 'app/common'], function ($, handlebars
 							slideShare.slideUp();
 							slideMore.slideToggle("slow");
 						}),
-						$(document).on('click', ".ca-menu > .detail-find", function () {
+						$(document).on('click', ".ca-menu > .detail-find", function (event) {
+							event.preventDefault();
 							var slideFind = $(this).parents().children(".detail-explain-find");
 							var slideShare = $(this).parents().children(".detail-explain-share");
 							var slideMore = $(this).parents().children(".detail-explain-more");
@@ -22,7 +24,8 @@ define(['jquery', 'handlebars', 'slider', 'app/common'], function ($, handlebars
 							slideMore.slideUp();
 							slideFind.slideToggle("slow");
 						}),
-						$(document).on('click', ".ca-menu > .detail-share", function () {
+						$(document).on('click', ".ca-menu > .detail-share", function (event) {
+							event.preventDefault();
 							var slideFind = $(this).parents().children(".detail-explain-find");
 							var slideShare = $(this).parents().children(".detail-explain-share");
 							var slideMore = $(this).parents().children(".detail-explain-more");

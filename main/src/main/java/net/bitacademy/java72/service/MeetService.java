@@ -9,7 +9,7 @@ public interface MeetService {
   int delete(int no);
   int update(Meet meet);
   int insert(Meet meet);
-  Meet get(int no);
+  Meet get(int meetNo);
   int countAll();
 }
 

@@ -29,7 +29,8 @@ define(['jquery', 'app/common'], function ($) {
 		$('#sidebar2 #sidebar2-title-text').text("그룹");
 		$('#sidebar2-item1-title').text("접속한 사용자입니다.");
 		$('#sidebar2-item1-content').empty();
-		$('#content').load('html/meet.html');
+		 $('#content').load('html/meet_list.html');
+		 
 
 	});
 

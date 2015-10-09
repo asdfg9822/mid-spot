@@ -9,6 +9,9 @@
     <result column="meet_dt"    property="meetDate" />
     <result column="img_path" property="meetImg" />
     <result column="memb_no" property="memberNo" />
+    <result column="parti_no" property="partiNo" />
+    <result column="memb_nm" property="memberName"/>
+    
     
     
   </resultMap>
@@ -18,7 +21,7 @@
    <select id="list" parameterType="map" resultMap="MeetMap">
     SELECT meet_no, memb_no, meet_nm, meet_dt
     FROM meet_tb
-    where memb_no=14
+    where memb_no=1
     ORDER BY meet_no desc
   </select>
   
@@ -46,13 +49,13 @@
       att_file1=#{attachFile1}  
     WHERE bno=#{no}      
   </update>
-  <!--  
-  <select id="get" parameterType="int" resultMap="BoardMap">
-    SELECT bno, title, content, cre_dt, att_file1
-    FROM board10
-    WHERE bno=#{value}
+  
+  <select id="get" parameterType="int" resultMap="MeetMap">
+    SELECT * 
+    FROM meet_tb 
+    natural join parti_tb where meet_no=1 limit 0,1
   </select>
-  -->  
+    
 </mapper>
 
 
