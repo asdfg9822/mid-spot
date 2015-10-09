@@ -1,12 +1,13 @@
-section {
-	padding: 0px 0px;
-	max-width: 1024px;
-	width: 70%;
+#categorySection1,
+#categorySection2,
+#categorySection3,
+#categorySection4,
+#categorySection5,
+#categorySection6,
+#categorySection7,
+#categorySection8 {
+	width: 100%;
 	height: 100%;
-}
-
-.row {
-	max-width: 1024px;
 }
 
 div a:HOVER {
@@ -55,19 +56,17 @@ div a:visited {
 	width: 25%;
 	height: 15%;
 	text-align: center;
-	font-size: 35px;
+	font-size: 150%;
 	color: #f2f2f2;
 	background-color: #333333;
 	padding-top: 3%;
-	padding-bottom: 1%;
+	padding-bottom: 2%;
 	border-radius: 5px;
 	-webkit-transition: background 0.2s ease-out;
- -moz-transition: background 0.2s ease-out;
- -o-transition: background 0.2s ease-out;
- -ms-transition: background 0.2s ease-out;
- transition: background 0.2s ease-out;
-
-
+	-moz-transition: background 0.2s ease-out;
+	-o-transition: background 0.2s ease-out;
+	-ms-transition: background 0.2s ease-out;
+	transition: background 0.2s ease-out;
 }
 
 #categoryFood:HOVER {
@@ -80,7 +79,78 @@ div a:visited {
 	background-position: center center;
 	
 }
+#categoryLife:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/RoundIcons-Free-Set-52.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+	
+}
+#categoryTravle:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/RoundIcons-Free-Set-38.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+	
+}
+#categorySport:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/RoundIcons-Free-Set-18.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+	
+}
+#categoryEducation:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/RoundIcons-Free-Set-54.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+	
+}
+#categoryCulture:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/RoundIcons-Free-Set-07.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+	
+}
+#categoryInstitution:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/RoundIcons-Free-Set-55.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+	
+}
+#categoryTransfer:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/RoundIcons-Free-Set-22.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+	
+}
 
+/* #categoryFood2 */
 #categoryFood2-1, 
 #categoryFood2-2, 
 #categoryFood2-3, 
@@ -90,49 +160,221 @@ div a:visited {
 #categoryFood2-7, 
 #categoryFood2-8, 
 #categoryFood2-9 {
-	margin-top: 10%;
-	width: 100%;
-	height: 100%;
+	margin-top: 2%;
+	margin-left: 2%;
+	width: 25%;
+	height: 15%;
 	text-align: center;
-	font-size: 35px;
+	font-size: 150%;
 	color: #f2f2f2;
 	background-color: #dc4c40;
-	padding-top: 10%;
-	padding-bottom: 10%;
+	padding-top: 3%;
+	padding-bottom: 2%;
 	border-radius: 5px;
-	position: absolute;
+	-webkit-transition: background 0.2s ease-out;
+	-moz-transition: background 0.2s ease-out;
+	-o-transition: background 0.2s ease-out;
+	-ms-transition: background 0.2s ease-out;
+	transition: background 0.2s ease-out;
 }
 
+#categoryFood2-1:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categoryFood2/food-iconset2.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+
+#categoryFood2-2:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categoryFood2/food-iconset1.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+#categoryFood2-3:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categoryFood2/food-iconset8.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+} 
+#categoryFood2-4:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categoryFood2/food-iconset7.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+#categoryFood2-5:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categoryFood2/food-iconset6.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+} 
+#categoryFood2-6:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categoryFood2/food-iconset9.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+#categoryFood2-7:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categoryFood2/food-iconset4.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+} 
+#categoryFood2-8:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categoryFood2/food-iconset5.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+} 
+#categoryFood2-9:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categoryFood2/food-iconset3.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+/* categoryLife2 */
 #categoryLife2-1,
 #categoryLife2-2,
 #categoryLife2-3,
 #categoryLife2-4,
 #categoryLife2-5 {
-	margin-top: 10%;
-	width: 100%;
-	height: 100%;
+	margin-top: 2%;
+	margin-left: 2%;
+	width: 25%;
+	height: 15%;
 	text-align: center;
-	font-size: 35px;
+	font-size: 150%;
 	color: #f2f2f2;
 	background-color: #e3c800;
-	padding-top: 10%;
-	padding-bottom: 10%;
+	padding-top: 3%;
+	padding-bottom: 2%;
 	border-radius: 5px;
+	-webkit-transition: background 0.2s ease-out;
+	-moz-transition: background 0.2s ease-out;
+	-o-transition: background 0.2s ease-out;
+	-ms-transition: background 0.2s ease-out;
+	transition: background 0.2s ease-out;
 }
+
+#categoryLife2-1:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categoryLife/man415.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+#categoryLife2-2:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categoryLife/girl43.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+#categoryLife2-3:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categoryLife/hair9.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+#categoryLife2-4:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categoryLife/tshirt18.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+#categoryLife2-5:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categoryLife/musical181.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+/* #categoryTravle2 */
 
 #categoryTravle2-1,
 #categoryTravle2-2 {
-	margin-top: 10%;
-	width: 100%;
-	height: 100%;
-	text-align: center;
-	font-size: 35px;
-	color: #f2f2f2;
 	background-color: #84b74f;
-	padding-top: 10%;
-	padding-bottom: 10%;
+	margin-top: 2%;
+	margin-left: 2%;
+	width: 25%;
+	height: 15%;
+	text-align: center;
+	font-size: 150%;
+	color: #f2f2f2;
+	padding-top: 3%;
+	padding-bottom: 2%;
 	border-radius: 5px;
+	-webkit-transition: background 0.2s ease-out;
+	-moz-transition: background 0.2s ease-out;
+	-o-transition: background 0.2s ease-out;
+	-ms-transition: background 0.2s ease-out;
+	transition: background 0.2s ease-out;
 }
+
+#categoryTravle2-1:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categoryTravle/accomodation1.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+#categoryTravle2-2:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categoryTravle/london.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+/* #categorySport2 */
 
 #categorySport2-1,
 #categorySport2-2,
@@ -142,74 +384,244 @@ div a:visited {
 #categorySport2-6,
 #categorySport2-7,
 #categorySport2-8 {
-	margin-top: 10%;
-	width: 100%;
-	height: 100%;
-	text-align: center;
-	font-size: 35px;
-	color: #f2f2f2;
 	background-color: #d80073;
-	padding-top: 10%;
-	padding-bottom: 10%;
+	margin-top: 2%;
+	margin-left: 2%;
+	width: 25%;
+	height: 15%;
+	text-align: center;
+	font-size: 150%;
+	color: #f2f2f2;
+	padding-top: 3%;
+	padding-bottom: 2%;
 	border-radius: 5px;
+	-webkit-transition: background 0.2s ease-out;
+	-moz-transition: background 0.2s ease-out;
+	-o-transition: background 0.2s ease-out;
+	-ms-transition: background 0.2s ease-out;
+	transition: background 0.2s ease-out;
 }
 
+#categorySport2-1:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categorySport/baseball6.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+#categorySport2-2:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categorySport/sprint.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+#categorySport2-3:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categorySport/speed7.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+#categorySport2-4:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categorySport/silhouette66.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+#categorySport2-5:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categorySport/bowling3.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+#categorySport2-6:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categorySport/game75.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+#categorySport2-7:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categorySport/ball72.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+#categorySport2-8:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categorySport/climb.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+/* #categoryCulture2 */
 #categoryCulture2-1,
 #categoryCulture2-2 {
-	margin-top: 10%;
-	width: 100%;
-	height: 100%;
-	text-align: center;
-	font-size: 35px;
-	color: #f2f2f2;
 	background-color: #00aba9;
-	padding-top: 10%;
-	padding-bottom: 10%;
+	margin-top: 2%;
+	margin-left: 2%;
+	width: 25%;
+	height: 15%;
+	text-align: center;
+	font-size: 150%;
+	color: #f2f2f2;
+	padding-top: 3%;
+	padding-bottom: 2%;
 	border-radius: 5px;
+	-webkit-transition: background 0.2s ease-out;
+	-moz-transition: background 0.2s ease-out;
+	-o-transition: background 0.2s ease-out;
+	-ms-transition: background 0.2s ease-out;
+	transition: background 0.2s ease-out;
+}
+#categoryCulture2-1:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categoryCulture/monument2.png");
+	background-repeat: no-repeat;
+	background-position: center center;
 }
 
+#categoryCulture2-2:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categoryCulture/popcorn6.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+/* #categoryEducation2 */
 #categoryEducation2-1,
 #categoryEducation2-2 {
-	margin-top: 10%;
-	width: 100%;
-	height: 100%;
-	text-align: center;
-	font-size: 35px;
-	color: #f2f2f2;
 	background-color: #4b0096;
-	padding-top: 10%;
-	padding-bottom: 10%;
+	margin-top: 2%;
+	margin-left: 2%;
+	width: 25%;
+	height: 15%;
+	text-align: center;
+	font-size: 150%;
+	color: #f2f2f2;
+	padding-top: 3%;
+	padding-bottom: 2%;
 	border-radius: 5px;
+	-webkit-transition: background 0.2s ease-out;
+	-moz-transition: background 0.2s ease-out;
+	-o-transition: background 0.2s ease-out;
+	-ms-transition: background 0.2s ease-out;
+	transition: background 0.2s ease-out;
 }
-
+#categoryEducation2-1:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categoryEducation/girl17.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+#categoryEducation2-2:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categoryEducation/businessman239.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+	
+/* #categoryInstitution2 */
 #categoryInstitution2-1,
 #categoryInstitution2-2 {
-	margin-top: 10%;
-	width: 100%;
-	height: 100%;
-	text-align: center;
-	font-size: 35px;
-	color: #f2f2f2;
 	background-color: #fa6800;
-	padding-top: 10%;
-	padding-bottom: 10%;
-	border-radius: 5px;	
-}
-
-#categoryTransfer2-1 {
-	margin-top: 10%;
-	width: 100%;
-	height: 100%;
+	margin-top: 2%;
+	margin-left: 2%;
+	width: 25%;
+	height: 15%;
 	text-align: center;
-	font-size: 35px;
+	font-size: 150%;
 	color: #f2f2f2;
-	background-color: #16499a;
-	padding-top: 10%;
-	padding-bottom: 10%;
-	border-radius: 5px;		
+	padding-top: 3%;
+	padding-bottom: 2%;
+	border-radius: 5px;
+	-webkit-transition: background 0.2s ease-out;
+	-moz-transition: background 0.2s ease-out;
+	-o-transition: background 0.2s ease-out;
+	-ms-transition: background 0.2s ease-out;
+	transition: background 0.2s ease-out;
+}
+#categoryInstitution2-1:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categoryInstitution/building86.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+#categoryInstitution2-2:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categoryInstitution/policeman10.png");
+	background-repeat: no-repeat;
+	background-position: center center;
 }
 
+/* #categoryTransfer2 */
+#categoryTransfer2-1 {
+	background-color: #16499a;
+	margin-top: 2%;
+	margin-left: 2%;
+	width: 25%;
+	height: 15%;
+	text-align: center;
+	font-size: 150%;
+	color: #f2f2f2;
+	padding-top: 3%;
+	padding-bottom: 2%;
+	border-radius: 5px;
+	-webkit-transition: background 0.2s ease-out;
+	-moz-transition: background 0.2s ease-out;
+	-o-transition: background 0.2s ease-out;
+	-ms-transition: background 0.2s ease-out;
+	transition: background 0.2s ease-out;
+}
 
+#categoryTransfer2-1:HOVER {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #f2f2f2;
+	background-image: url("../images/dest/category/categoryTransfer/subway1.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
 
 
 

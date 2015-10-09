@@ -21,10 +21,10 @@ define([
 		init: function () {
 			console.log("==>dest.js Excute..!!");
 
-			$('#portfolioModal1').click(function(event) {
+			$('#categorys1').click(function(event) {
 				event.preventDefault();
-				console.log('#portfolioModal1');
-				
+				console.log('categoryFood');
+				$( '.categorySection2' ).scrollTop( 300 );
 			});
 
 		} //init 종료
