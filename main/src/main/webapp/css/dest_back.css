@@ -1,0 +1,215 @@
+section {
+	padding: 0px 0px;
+	max-width: 1024px;
+	width: 70%;
+	height: 100%;
+}
+
+.row {
+	max-width: 1024px;
+}
+
+div a:HOVER {
+	/*	*/
+	text-decoration: none;
+}
+
+div a:link {
+	/*	*/
+	text-decoration: none;
+}
+
+div a:visited {
+	/*	*/
+	text-decoration: none;
+}
+
+#categoryNm,
+#categoryNm1,
+#categoryNm2,
+#categoryNm3,
+#categoryNm4,
+#categoryNm5,
+#categoryNm6,
+#categoryNm7,
+#categoryNm8 {
+	width: 100%;
+	height: 10%;
+	margin-top: 1%;
+	padding-top: 2%;
+	padding-bottom: 3%;
+	background-color: #f2f2f2;
+	font-size: 150%;
+	box-shadow: 2px 2px 2px #888888;
+	text-align: center;
+}
+
+#categoryLife,
+#categoryTravle,
+#categorySport,
+#categoryEducation,
+#categoryCulture,
+#categoryInstitution,
+#categoryTransfer,
+#categoryFood {
+	margin-top: 5%;
+	width: 25%;
+	height: 15%;
+	text-align: center;
+	font-size: 35px;
+	color: #f2f2f2;
+	background-color: #333333;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	border-radius: 5px;
+}
+
+#categoryFood2-1, 
+#categoryFood2-2, 
+#categoryFood2-3, 
+#categoryFood2-4, 
+#categoryFood2-5, 
+#categoryFood2-6, 
+#categoryFood2-7, 
+#categoryFood2-8, 
+#categoryFood2-9 {
+	margin-top: 10%;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	font-size: 35px;
+	color: #f2f2f2;
+	background-color: #dc4c40;
+	padding-top: 10%;
+	padding-bottom: 10%;
+	border-radius: 5px;
+	position: absolute;
+}
+
+#categoryLife2-1,
+#categoryLife2-2,
+#categoryLife2-3,
+#categoryLife2-4,
+#categoryLife2-5 {
+	margin-top: 10%;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	font-size: 35px;
+	color: #f2f2f2;
+	background-color: #e3c800;
+	padding-top: 10%;
+	padding-bottom: 10%;
+	border-radius: 5px;
+}
+
+#categoryTravle2-1,
+#categoryTravle2-2 {
+	margin-top: 10%;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	font-size: 35px;
+	color: #f2f2f2;
+	background-color: #84b74f;
+	padding-top: 10%;
+	padding-bottom: 10%;
+	border-radius: 5px;
+}
+
+#categorySport2-1,
+#categorySport2-2,
+#categorySport2-3,
+#categorySport2-4,
+#categorySport2-5,
+#categorySport2-6,
+#categorySport2-7,
+#categorySport2-8 {
+	margin-top: 10%;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	font-size: 35px;
+	color: #f2f2f2;
+	background-color: #d80073;
+	padding-top: 10%;
+	padding-bottom: 10%;
+	border-radius: 5px;
+}
+
+#categoryCulture2-1,
+#categoryCulture2-2 {
+	margin-top: 10%;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	font-size: 35px;
+	color: #f2f2f2;
+	background-color: #00aba9;
+	padding-top: 10%;
+	padding-bottom: 10%;
+	border-radius: 5px;
+}
+
+#categoryEducation2-1,
+#categoryEducation2-2 {
+	margin-top: 10%;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	font-size: 35px;
+	color: #f2f2f2;
+	background-color: #4b0096;
+	padding-top: 10%;
+	padding-bottom: 10%;
+	border-radius: 5px;
+}
+
+#categoryInstitution2-1,
+#categoryInstitution2-2 {
+	margin-top: 10%;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	font-size: 35px;
+	color: #f2f2f2;
+	background-color: #fa6800;
+	padding-top: 10%;
+	padding-bottom: 10%;
+	border-radius: 5px;	
+}
+
+#categoryTransfer2-1 {
+	margin-top: 10%;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	font-size: 35px;
+	color: #f2f2f2;
+	background-color: #16499a;
+	padding-top: 10%;
+	padding-bottom: 10%;
+	border-radius: 5px;		
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

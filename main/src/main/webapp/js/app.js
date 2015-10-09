@@ -36,7 +36,9 @@ requirejs.config({
 		'm-radio': 'lib/m-radio',
 		'm-radio.min': 'lib/m-radio.min',
 		'slider': 'lib/slider',
-		'datatables': 'lib/jquery.dataTables.min'
+		'datatables': 'lib/jquery.dataTables.min',
+		'hoverdir': 'lib/hoverdir/jquery.hoverdir',
+		'modernizr': 'lib/hoverdir/modernizr.custom.97074'
 	},
 	shim: {
 		"datatables": {
@@ -46,5 +48,4 @@ requirejs.config({
 });
 
 // main.html을 위한 자바스크립트 로딩
-//requirejs(['app/main']);
 requirejs(['app/main']);

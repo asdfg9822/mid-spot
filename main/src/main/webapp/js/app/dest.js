@@ -12,14 +12,21 @@ define([
 		'jquery.fileupload-audio',
 		'jquery.fileupload-video',
 		'jquery.fileupload-validate',
+		'modernizr',
+		'hoverdir',
 		'app/common'
 		], function ($, handlebars) {
 
-  return {
-	init : function() {
-		console.log("==>dest.js Excute..!!");
-  
+	return {
+		init: function () {
+			console.log("==>dest.js Excute..!!");
 
-    }
-  };
+			$('#portfolioModal1').click(function(event) {
+				event.preventDefault();
+				console.log('#portfolioModal1');
+				
+			});
+
+		} //init 종료
+	};
 });

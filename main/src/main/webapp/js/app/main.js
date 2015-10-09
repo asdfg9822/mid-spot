@@ -2,12 +2,6 @@ define(['jquery', 'app/common'], function ($) {
 
 	console.log("==>main.js Excute..!!");
 
-	$("#menuToggle").click(function (e) {
-		e.preventDefault();
-		console.log("mesnuToggle");
-		$("#wrapper").toggleClass("toggled");
-	});
-
 	// #sidebar2의 메인 타이틀 바꾸기
 
 	// #sidebar2 첫 번째 아이템 제목, 내용 채우기
@@ -35,7 +29,7 @@ define(['jquery', 'app/common'], function ($) {
 		$('#sidebar2 #sidebar2-title-text').text("목적 설정");
 		$('#sidebar2-item1-title').text("목적지를 입력하세요.");
 		$('#sidebar2-item1-content').load('html/dest_spec_search.html');
-		$('#content').empty();
+		$('#content').load('html/dest.html');
 	});
 
 	$('#startMenu').click(function (event) {
@@ -67,7 +61,7 @@ define(['jquery', 'app/common'], function ($) {
 
 		FB.api("/me/permissions", "DELETE", function (response) {
 			console.log("delete");
-			console.log(response); //gives true on app delete success
+			console.log(response); //gives true on app delete success 
 		});
 
 		FB.logout(function () {
@@ -183,6 +177,7 @@ define(['jquery', 'app/common'], function ($) {
 		js.src = "//connect.facebook.net/en_US/all.js";
 		ref.parentNode.insertBefore(js, ref)
 	}(document));
+
 
 
 

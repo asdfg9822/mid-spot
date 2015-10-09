@@ -27,7 +27,6 @@ define([
       $('#company-insert').click(function (event) {
     	  event.preventDefault();
     	  $('#content').load('html/company_main.html');
-    	  alert('업체 등록이 완료 되었습니다.');
       });
 
     }

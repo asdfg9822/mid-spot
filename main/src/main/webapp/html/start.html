@@ -1,3 +1,17 @@
+
+<div class="option">
+  <input type="text" id="keyword" class="start-search" value="인천 서구 봉수대로 141">
+  <button id="start-search-place" class="button button--wapasha button--text-thick button--text-upper button--size-s">SEARCH</button>
+  <button id="start-search-my" class="button button--wapasha button--text-thick button--text-upper button--size-s">MY</button>
+</div>
+<div id="menu_wrap">
+  <ul id="placesList"></ul>
+  <div id="pagination"></div>
+</div>
+<!-- <p id="start-point"></p> -->
+<div class="map_wrap">
+  <div id="map" style="height: 500px; "></div>
+</div>
 <table>
   <tr>
     <th>parti_no</th>
@@ -19,10 +33,6 @@
     </td>
   </tr>
 </table>
-<div class="map_wrap">
-  <div id="map" style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
-
-</div>
 
 <script>
   requirejs(['app/start'], function (start) {
