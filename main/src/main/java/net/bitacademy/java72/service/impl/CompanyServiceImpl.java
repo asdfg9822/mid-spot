@@ -1,6 +1,8 @@
 package net.bitacademy.java72.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,19 +16,21 @@ public class CompanyServiceImpl implements CompanyService {
   @Autowired CompanyDao companyDao;
   
   @Override
-  public List<Company> list() {
-    /*
+  public List<Company> list(int currCnt, int listCnt) {
+
+	  /*
 	  int startIndex = (pageNo - 1) * pageSize;
     if (startIndex < 0) {
       startIndex = 0;
     }
-    
+    */
     Map<String,Object> paramMap = 
         new HashMap<String,Object>();
-    paramMap.put("startIndex", startIndex);
-    paramMap.put("pageSize", pageSize);
-    */
-    return companyDao.list();
+
+    paramMap.put("currCnt", currCnt);
+    paramMap.put("listCnt", listCnt);
+
+    return companyDao.list(paramMap);
   }
 /*
   @Override

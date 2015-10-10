@@ -5,7 +5,7 @@ import java.util.List;
 import net.bitacademy.java72.domain.Company;
 
 public interface CompanyService {
-  List<Company> list();
+  List<Company> list(int currCnt, int listCnt);
   /*int delete(int no);
   int update(Board board);
   int insert(Board board);
