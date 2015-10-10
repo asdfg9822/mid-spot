@@ -5,11 +5,21 @@ define(['jquery', 'handlebars', 'slider', 'app/common'], function ($, handlebars
 			console.log("->result_json->init()");
 
 			var moduleObj = this;
-			moduleObj.listCompany(0, 10);
+			//Default Load
+			moduleObj.listCompany(0, 10, $('#section-1'));
+
+			$(document).on('click', '.btnCate', function (event) {
+				event.preventDefault();
+				var section = $($(this).attr('data-section'));
+				section.find('.result_table_border_area').empty();
+				moduleObj.listCompany(0, 10, section);
+			});
 
 			$(window).scroll(function () {
 				if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-					moduleObj.listCompany($('.result_table_border_area > div').length, 5);
+					var section = $($('.tab-current a').attr('data-section'));
+
+					moduleObj.listCompany($('.result_table_border_area > div').length, 5, section);
 				}
 			});
 
@@ -191,9 +201,10 @@ define(['jquery', 'handlebars', 'slider', 'app/common'], function ($, handlebars
 			}
 
 		}, // End of init()
-		listCompany: function (currCnt, listCnt) {
+		listCompany: function (currCnt, listCnt, section) {
 			$(document).ready(function () {
 				$.getJSON(contextRoot + "/json/company/list.do", {
+					cateNo: section.attr('data-cate-no'),
 					currCnt: currCnt,
 					listCnt: listCnt
 				}, function (result) {
@@ -203,7 +214,7 @@ define(['jquery', 'handlebars', 'slider', 'app/common'], function ($, handlebars
 					var template = handlebars.compile(source);
 					var content = template(result);
 					//load가 아님 append
-					$('#section-1 .result_table_border_area').append(content);
+					section.find('.result_table_border_area').append(content);
 
 				});
 
