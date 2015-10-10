@@ -1,5 +1,6 @@
 package net.bitacademy.java72.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,7 +31,14 @@ public class CompanyServiceImpl implements CompanyService {
     paramMap.put("currCnt", currCnt);
     paramMap.put("listCnt", listCnt);
 
-    return companyDao.list(paramMap);
+    List<Company> list = new ArrayList<Company>();
+    list = companyDao.list2(paramMap);
+    for (Company company : list) {
+		System.out.println("company");
+		System.out.println(company.getDistance());
+	}
+
+    return companyDao.list3(paramMap);
   }
 /*
   @Override

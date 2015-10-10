@@ -6,7 +6,7 @@ var router = express.Router(); //URL Routing Module
 //DB Connection 
 var pool = mysql.createPool({
 	connectionLimit: 10,
-	host: '192.168.1.28',
+	host: '127.0.0.1',
 	port: 3306,
 	user: 'java72',
 	password: 'java72',
@@ -47,14 +47,14 @@ router.all('/insert.do', function (request, response) {
 	}
 
 	function companyImageInsert(comp_no, imageUrl) {
-		console.log("companyImageInsert() Info --> comp_no : " + comp_no + " imageUrl :" + imageUrl);
+		//console.log("companyImageInsert() Info --> comp_no : " + comp_no + " imageUrl :" + imageUrl);
 		pool.query(
 			'insert into comp_img_tb(comp_no,img_path) values (?,?);', [comp_no, imageUrl],
 			function (err, rows) {
 				if (err) {
 					console.log("companyImageInsert() fail --> " + err);
 				} else {
-					console.log("companyImageInsert() --> comp_no : " + comp_no + " imageUrl :" + imageUrl);
+					//console.log("companyImageInsert() --> comp_no : " + comp_no + " imageUrl :" + imageUrl);
 				}
 			});
 	}
@@ -77,75 +77,46 @@ router.all('/insert.do', function (request, response) {
 	function cateInsert(place) {
 		var categoryArr = place.category.split(">");
 
-		/*		console.log(categoryArr);
-				console.log(categoryArr.length);
-
-				var arrayVal = cateCustom(categoryArr);
-
-				function cateCustom(categoryArr) {
-					var arrayVal = [];
-					for (var i = 0; i < 7; i++) {
-						arrayVal.push("");
-					}
-					for (var i = 0; i < categoryArr.length; i++) {
-						arrayVal[i] = categoryArr[i].trim();
-					}
-
-					console.log(arrayVal);
-					console.log(arrayVal.length);
-					return arrayVal;
-				}
-
-				pool.query(
-					'insert into cate_tb(cate_nm1,cate_nm2,cate_nm3,cate_nm4,cate_nm5,cate_nm6,cate_nm7,cate_dp) values (?,?,?,?,?,?,?,?);', [arrayVal[0], arrayVal[1], arrayVal[2], arrayVal[3], arrayVal[4], arrayVal[5], arrayVal[6], categoryArr.length],
-					function (err, rows) {
-						if (err) {
-							console.log(err);
-						}
-					});*/
-
+		var arrayVal = [];
+		for (var j = 0; j < 7; j++) {
+			arrayVal.push("");
+		}
+		for (var j = 0; j < categoryArr.length; j++) {
+			arrayVal[j] = categoryArr[j].trim();
+		}
 
 		for (var i = 0; i < categoryArr.length; i++) {
 			var category = categoryArr[i].trim();
-			console.log("==>cateInsert()==>category : " + category) + "DP :" + category[i + 1];
-
-			var arrayVal = [];
-			for (var j = 0; j < 7; j++) {
-				arrayVal.push("");
-			}
-			for (var j = 0; j < categoryArr.length; j++) {
-				arrayVal[j] = categoryArr[j].trim();
-			}
-
-			console.log("1:" +
-				arrayVal[0]);
-			console.log("2:" +
-				arrayVal[1]);
+			//console.log("==>cateInsert()==>category : " + category + "DP :" + (i + 1));
 			pool.query(
-					'insert into cate_tb(cate_nm,cate_dp,cate_nm1,cate_nm2,cate_nm3,cate_nm4,cate_nm5,cate_nm6,cate_nm7) values (?,?,?,?,?,?,?,?,?);', [category, i + 1, arrayVal[0], arrayVal[1], arrayVal[2], arrayVal[3], arrayVal[4], arrayVal[5], arrayVal[6]],
-					function (err, rows) {
-						console.log("rows:" + rows);
-						if (err) {
-							console.log(err);
-						}
-					}),
+				'insert into cate_tb(cate_nm,cate_dp,cate_nm1,cate_nm2,cate_nm3,cate_nm4,cate_nm5,cate_nm6,cate_nm7) values (?,?,?,?,?,?,?,?,?);', [category, i + 1, arrayVal[0], arrayVal[1], arrayVal[2], arrayVal[3], arrayVal[4], arrayVal[5], arrayVal[6]],
+				function (err, rows) {
+					//console.log("rows:" + rows);
+					if (err) {
+						console.log(err);
+					}
+				});
+		}
+
+		for (var i = 0; i < categoryArr.length; i++) {
+			(function (category) {
 				pool.query(
 					'select cate_no from cate_tb where cate_nm=?', [category],
 					function (err, rows) {
 
+						console.log("for[" + category + "]");
 						if (err) {
 							console.log(err);
 						} else if (rows[0]) {
 							getCompanyNoByKakaoNo(place.id, function (companyNo) {
-								console.log(rows[0].cate_no);
-								console.log("cateInsert() --> companyNo: " + companyNo);
+								//console.log("cateInsert() --> companyNo: " + companyNo);
 								compCateInsert(companyNo, rows[0].cate_no);
 							});
 						}
 					});
+			})(categoryArr[i].trim());
 		}
 	}
-
 
 	function compCateInsert(companyNo, categoryNo) {
 		pool.query(

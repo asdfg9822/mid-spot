@@ -202,6 +202,7 @@ define(['jquery', 'handlebars', 'slider', 'app/common'], function ($, handlebars
 					var source = $('#resultContentScript').html();
 					var template = handlebars.compile(source);
 					var content = template(result);
+					//load가 아님 append
 					$('#section-1 .result_table_border_area').append(content);
 
 				});

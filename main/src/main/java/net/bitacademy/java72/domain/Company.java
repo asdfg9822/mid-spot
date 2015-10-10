@@ -12,6 +12,7 @@ import java.io.Serializable;
  * => 메서드가 없다. 단지 JVM에게 직렬화를 허용한다고 표시하는 용도로 사용한다.
  */
 public class Company implements Serializable {
+
 	/*
 	 * 질력화될 때 데이터의 버전 정보도 함께 저장된다. 나중에 바이트 배열을 다시 객체로 복원할 때, 버전을 검사하는 데 사용한다.
 	 */
@@ -32,7 +33,30 @@ public class Company implements Serializable {
 	protected boolean onGround;
 	protected String imgUrl;
 	protected String imgNo;
+	protected float distance;
+
+
+	@Override
+	public String toString() {
+		return "Company [no=" + no + ", kakaoId=" + kakaoId + ", companyName=" + companyName + ", adminTel=" + adminTel
+				+ ", addressOld=" + addressOld + ", addressNew=" + addressNew + ", lat=" + lat + ", lon=" + lon
+				+ ", isElevator=" + isElevator + ", isWebPage=" + isWebPage + ", onGround=" + onGround + ", imgUrl="
+				+ imgUrl + ", imgNo=" + imgNo + "]";
+	}
 	
+
+	public float getDistance() {
+		return distance;
+	}
+
+
+
+	public void setDistance(float distance) {
+		this.distance = distance;
+	}
+
+
+
 	public String getImgUrl() {
 		return imgUrl;
 	}
