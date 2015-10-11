@@ -34,8 +34,8 @@
 								<br>
 								<div class="shop_detail_recommend" style="margin-top:20px;">
 									{{companyName}}을 <span style="color:blue;font-weight:bold">추천</span>해주세요 !
-									<a href="#">
-										<img src="http://megaicons.net/static/img/icons_sizes/19/240/128/heart-icon.png" style="width:20px;"> <span>0</span>
+									<a href="#" class="comp_like_btn" data-no="{{no}}">
+										<img class="like_img" src="/images/result/like_img_off1.png" style="width:20px;" data-isLike="{{isLike}}"> <span>{{likeCnt}}</span>
 									</a>
 								</div>
 							</div>
@@ -116,10 +116,6 @@
 </script>
 
 
-
-
-
-
 <!--tab 수정 10.06-->
 
 <div class="result_container">
@@ -127,18 +123,25 @@
 	<div id="tabs" class="tabs">
 		<nav>
 			<ul>
-				<li><a href="#section-2" class="btnCate icon-cup" data-section="#section-1"><span>Drinks</span></a></li>
-				<li><a href="#section-1" class="btnCate icon-shop" data-section="#section-{{@index}}"><span>{{cateNm}}</span></a></li>
+				<li><a href="#tab-sec-1" class="btnCate icon-cup" data-section="#tabSection-1"><span>Drinks</span></a></li>
+				<li><a href="#tab-sec-2" class="btnCate icon-cup" data-section="#tabSection-2"><span>Drinks</span></a></li>
+				<li><a href="#section-1" class="btnCate icon-shop" data-section="#tabSection-{{@index}}"><span>{{cateNm}}</span></a></li>
 			</ul>
 		</nav>
 		<div class="result_content">
-			<section id="section-1" data-cate-no="2">
+			<section id="tabSection-1" data-cate-no="2">
 				<div class="slider">
 					<div class="result_table_border_area slidercontent">
 					</div>
 				</div>
 			</section>
-			<section id="section-{{@index}}" data-cate-no="{{cateNo}}">
+			<section id="tabSection-2" data-cate-no="3">
+				<div class="slider">
+					<div class="result_table_border_area slidercontent">
+					</div>
+				</div>
+			</section>
+			<section id="tabSection-{{@index}}" data-cate-no="{{cateNo}}">
 				<div class="slider">
 					<div class="result_table_border_area slidercontent">
 					</div>

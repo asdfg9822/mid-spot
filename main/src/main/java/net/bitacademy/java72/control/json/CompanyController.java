@@ -16,8 +16,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.google.gson.Gson;
-
 import net.bitacademy.java72.domain.Company;
 import net.bitacademy.java72.service.CompanyService;
 
@@ -30,8 +28,9 @@ public class CompanyController {
 	ServletContext servletContext;
 
 	@RequestMapping("/list")
-	public Object list(@RequestParam(required = false, defaultValue = "1") int currCnt,
-			@RequestParam(required = false, defaultValue = "3") int listCnt) {
+	public Object list(@RequestParam(required = false, defaultValue = "0") int currCnt,
+			@RequestParam(required = false, defaultValue = "5") int listCnt,
+			@RequestParam(required = false, defaultValue = "1") int cateNo) {
 
 		System.out.println("currCnt:" + currCnt);
 		System.out.println("listCnt:" + listCnt);
@@ -43,21 +42,7 @@ public class CompanyController {
 		result.put("currCnt", currCnt);
 		result.put("listCnt", listCnt);
 
-		/*
-		int totalCnt = CompanyService.cntAll();
-		int lastPageNo = totalCnt / listCnt;
-		if ((totalCnt % listCnt) > 0) {
-			lastPageNo++;
-		}
-
-		if (currCnt < lastPageNo) {
-			result.put("isNextPage", true);
-		} else {
-			result.put("isNextPage", false);
-		}
-	 	*/
-
-		List<Company> list = companyService.list(currCnt, listCnt);
+		List<Company> list = companyService.list(currCnt, listCnt, cateNo);
 		result.put("data", list);
 		result.put("length", list.size());
 		return result;
@@ -108,53 +93,38 @@ public class CompanyController {
 		}
 		return result;
 	}
-	/*
-	 * @RequestMapping("/detail") public Object detail(int no) {
-	 * Map<String,Object> result = new HashMap<String,Object>();
-	 * result.put("data", boardService.get(no));
-	 *
-	 * return result; }
-	 *
-	 * @RequestMapping("/insert") public Object insert(Board board) throws
-	 * Exception { int count = boardService.insert(board);
-	 *
-	 * Map<String,Object> result = new HashMap<String,Object>(); if (count > 0)
-	 * { result.put("data", "success"); } else { result.put("data", "failure");
-	 * }
-	 *
-	 * return result; }
-	 *
-	 * @RequestMapping("/list") public Object list(
-	 *
-	 * @RequestParam(required=false, defaultValue="1") int pageNo,
-	 *
-	 * @RequestParam(required=false, defaultValue="3") int pageSize) {
-	 *
-	 * Map<String,Object> result = new HashMap<String,Object>();
-	 *
-	 * result.put("pageNo", pageNo);
-	 *
-	 * int totalCount = boardService.countAll(); int lastPageNo = totalCount /
-	 * pageSize; if ((totalCount % pageSize) > 0) { lastPageNo++; }
-	 *
-	 * if (pageNo < lastPageNo) { // 다음 페이지가 있다면 result.put("isNextPage", true);
-	 * } else { result.put("isNextPage", false); }
-	 *
-	 * result.put("pageSize", pageSize);
-	 *
-	 * result.put("data", boardService.list(pageNo, pageSize));
-	 *
-	 * return result; }
-	 *
-	 * @RequestMapping("/update") public Object boardUpdate (Board board) throws
-	 * Exception {
-	 *
-	 * int count = boardService.update(board);
-	 *
-	 * Map<String,Object> result = new HashMap<String,Object>(); if (count > 0)
-	 * { result.put("data", "success"); } else { result.put("data", "failure");
-	 * }
-	 *
-	 * return result; }
-	 */
+
+	@RequestMapping("/likeCnt")
+	public Object like(@RequestParam(required = true) int compNo) {
+
+		System.out.println("/json/company/likeCnt.do excute..!!");
+
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("likeCnt", companyService.likeCnt(compNo));
+
+		return result;
+	}
+
+
+	@RequestMapping("/likeUp")
+	public Object likeUp(@RequestParam(required = true) int compNo) {
+
+		int membNo = 1;
+		int partiNo = 1;
+
+		System.out.println("/json/company/likeCnt.do excute..!!");
+
+		Map<String, Object> result = new HashMap<String, Object>();
+
+		if(companyService.isLike(compNo,membNo,partiNo) > 0) {
+			result.put("like", "off");
+			result.put("likeCnt", companyService.likeDown(compNo,membNo,partiNo));
+		} else {
+			result.put("like", "on");
+			result.put("likeCnt", companyService.likeUp(compNo,membNo,partiNo));
+		}
+
+		return result;
+	}
+
 }

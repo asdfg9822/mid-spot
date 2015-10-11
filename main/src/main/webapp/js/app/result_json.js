@@ -4,23 +4,35 @@ define(['jquery', 'handlebars', 'slider', 'app/common'], function ($, handlebars
 
 			console.log("->result_json->init()");
 
+
+
 			var moduleObj = this;
 			//Default Load
-			moduleObj.listCompany(0, 10, $('#section-1'));
+			moduleObj.listCompany(0, 10, $('#tabSection-1'));
 
-			$(document).on('click', '.btnCate', function (event) {
+			$('#tabs').on('click', '.btnCate', function (event) {
 				event.preventDefault();
+				event.stopPropagation();
+
 				var section = $($(this).attr('data-section'));
 				section.find('.result_table_border_area').empty();
 				moduleObj.listCompany(0, 10, section);
 			});
 
 			$(window).scroll(function () {
-				if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+				var scrollTop = $(window).scrollTop();
+				var documentTop = $(document).height() - $(window).height();
+				if (scrollTop - 1 <= documentTop && documentTop < scrollTop + 1) {
 					var section = $($('.tab-current a').attr('data-section'));
-
+					console.log("ok");
 					moduleObj.listCompany($('.result_table_border_area > div').length, 5, section);
 				}
+			});
+
+			$('#tabs').on('click', '.comp_like_btn', function (event) {
+				event.preventDefault();
+				var currBtn = $(this);
+				moduleObj.like(currBtn);
 			});
 
 			/*------------Click Event------------*/
@@ -214,11 +226,28 @@ define(['jquery', 'handlebars', 'slider', 'app/common'], function ($, handlebars
 					var template = handlebars.compile(source);
 					var content = template(result);
 					//load가 아님 append
+
+					console.log(result);
+
 					section.find('.result_table_border_area').append(content);
+					$('.like_img[data-isLike=' + 1 + ']').attr('src', '/images/result/like_img.png');
 
 				});
 
 			});
+		},
+		like: function (currBtn) {
+			$.getJSON(contextRoot + "/json/company/likeUp.do", {
+					compNo: currBtn.attr('data-no')
+				},
+				function (result) {
+					if (result.like == "off") {
+						currBtn.find('img').attr('src', '/images/result/like_img_off1.png');
+					} else {
+						currBtn.find('img').attr('src', '/images/result/like_img.png');
+					}
+					currBtn.find('span').text(result.likeCnt);
+				});
 		}
 	};
 });

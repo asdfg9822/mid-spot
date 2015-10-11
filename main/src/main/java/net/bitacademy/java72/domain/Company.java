@@ -34,6 +34,8 @@ public class Company implements Serializable {
 	protected String imgUrl;
 	protected String imgNo;
 	protected float distance;
+	protected int likeCnt;
+	protected int isLike;
 
 
 	@Override
@@ -41,9 +43,32 @@ public class Company implements Serializable {
 		return "Company [no=" + no + ", kakaoId=" + kakaoId + ", companyName=" + companyName + ", adminTel=" + adminTel
 				+ ", addressOld=" + addressOld + ", addressNew=" + addressNew + ", lat=" + lat + ", lon=" + lon
 				+ ", isElevator=" + isElevator + ", isWebPage=" + isWebPage + ", onGround=" + onGround + ", imgUrl="
-				+ imgUrl + ", imgNo=" + imgNo + "]";
+				+ imgUrl + ", imgNo=" + imgNo + ", distance=" + distance + ", likeCnt=" + likeCnt + "]";
 	}
+
 	
+	public int getIsLike() {
+		return isLike;
+	}
+
+	public void setIsLike(int isLike) {
+		this.isLike = isLike;
+	}
+
+
+
+
+	public int getLikeCnt() {
+		return likeCnt;
+	}
+
+
+
+	public void setLikeCnt(int likeCnt) {
+		this.likeCnt = likeCnt;
+	}
+
+
 
 	public float getDistance() {
 		return distance;
@@ -164,3 +189,4 @@ public class Company implements Serializable {
 	}
 
 }
+

@@ -16,6 +16,10 @@ app.use('/company', company);
 var table = require('./routes/table');
 app.use('/table', table);
 
+// URI : /base
+var base = require('./routes/base');
+app.use('/base', base);
+
 // URI : /
 app.get('/', function (req, res) {
 	res.send('Hello World! This Page is Default Page. You Must Be Connect "Brackets" ');

@@ -30,8 +30,6 @@ router.all('/create.do', function (request, response) {
 			response.end();
 		});
 	});
-
-
 });
 
 // URI : /table/delete.do

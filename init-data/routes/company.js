@@ -40,6 +40,7 @@ router.all('/insert.do', function (request, response) {
 						if (place.imageUrl.trim() != "") {
 							companyImageInsert(companyNo, place.imageUrl);
 						}
+
 					});
 					cateInsert(place);
 				}
@@ -76,6 +77,8 @@ router.all('/insert.do', function (request, response) {
 
 	function cateInsert(place) {
 		var categoryArr = place.category.split(">");
+
+		console.log(categoryArr);
 
 		var arrayVal = [];
 		for (var j = 0; j < 7; j++) {
@@ -127,6 +130,40 @@ router.all('/insert.do', function (request, response) {
 				}
 			});
 	}
+
+	var jsonData = JSON.stringify({
+		success: "true"
+	});
+	response.write(jsonData);
+	response.end();
+});
+
+
+router.all('/likeRandom.do', function (request, response) {
+
+	//Cross Origin Resource Sharing Allow
+	response.writeHeader(200, {
+		"Content-Type": "Application/json",
+		"Access-Control-Allow-Origin": "*"
+	});
+
+	pool.query(
+		'select comp_no, memb_no, parti_no from parti_tb natural join memb_tb memb_no cross join comp_tb order by rand() limit 2000;',
+		function (err, rows) {
+			if (err) {
+				console.log(err);
+			} else {
+				for (var i = 0; i < rows.length; i++) {
+					console.log("comp_no:" + rows[i].comp_no + "/ memb_no:" + rows[i].memb_no + "/ parti_no:" + rows[i].parti_no);
+					pool.query('insert into like_comp_tb(comp_no,memb_no,parti_no) values(?,?,?);', [rows[i].comp_no, rows[i].memb_no, rows[i].memb_no], function () {
+						if (err) {
+							console.log(err);
+						}
+					});
+				}
+				console.log(rows.length);
+			}
+		});
 
 	var jsonData = JSON.stringify({
 		success: "true"

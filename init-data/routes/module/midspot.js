@@ -46,6 +46,12 @@ exports.db.sqlFile = function (sqlFile, callback) {
 };
 
 //Table Create
+exports.db.dtBaseInsert = function (callback) {
+	var sqlFile = path.join(__dirname, '../../database/base_data_1.sql');
+	exports.db.sqlFile(sqlFile, callback);
+};
+
+//Table Create
 exports.db.tbCreate = function (callback) {
 	var sqlFile = path.join(__dirname, '../../database/create_table.sql');
 	exports.db.sqlFile(sqlFile, callback);

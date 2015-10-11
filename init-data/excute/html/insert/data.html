@@ -3,30 +3,34 @@
 </style>
 
 <div id="buttonArea">
-  초기 설정된 데이터를 입력
-  <br>
-  <span><a id="btnDTInit" href="#" class="btn btn-sm animated-button victoria-three">임의 데이터 입력</a></span>
-  <br>
-  <br> 회사 정보 자동 입력
-  <br>
-  <div>
-    <input id="txtCompSearch" type="text" class="" placeholder="ex) 강남역 노래방 / 선릉역 하남돼지집">
-    <a id="btnCompSearch" href="#" class="btn btn-sm animated-button victoria-three">Insert</a>
-  </div>
+	초기 설정된 데이터를 입력
+	<br>
+	<span><a id="btnDTInit" href="#" class="btn btn-sm animated-button victoria-three">기본 데이터 입력1</a></span>memb_tb / meet_tb / parti_tb
+	<span><a id="btnDTInit2" href="#" class="btn btn-sm animated-button victoria-three">기본 데이터 입력2</a></span>comp_tb / cate_tb / comp_cate_tb
+	<br> / like_comp_tb
+	<span><a id="btnDTInit3" href="#" class="btn btn-sm animated-button victoria-three">기본 데이터 입력3</a></span>like_comp_tb
+	<br>
+	<br>
+	<br> 회사 정보 자동 입력
+	<br>
+	<div>
+		<input id="txtCompSearch" type="text" class="" placeholder="ex) 강남역 노래방 / 선릉역 하남돼지집">
+		<a id="btnCompSearch" href="#" class="btn btn-sm animated-button victoria-three">Insert</a>
+	</div>
 </div>
 <br>
 <div id="dataInsertArea">
-  <!-- Example row of columns -->
-  <div class="row">
-    <span id="mapInfo">지도에 표시된 곳이 DB에 Insert됩니다.</span>
-    <br>
-    <div id="map"></div>
-  </div>
+	<!-- Example row of columns -->
+	<div class="row">
+		<span id="mapInfo">지도에 표시된 곳이 DB에 Insert됩니다.</span>
+		<br>
+		<div id="map"></div>
+	</div>
 </div>
 
 
 <script>
-  requirejs(['app/insert/data'], function (obj) {
-    obj.init();
-  });
+	requirejs(['app/insert/data'], function (obj) {
+		obj.init();
+	});
 </script>

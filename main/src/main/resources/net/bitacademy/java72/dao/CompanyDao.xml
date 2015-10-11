@@ -19,31 +19,70 @@
 		<result column="img_no" property="imgNo" />
 	</resultMap>
 
-	<select id="list" parameterType="map" resultMap="CompanyMap">
+	<select id="listAll" parameterType="map" resultMap="CompanyMap">
 		SELECT *,
 		FROM comp_tb
 		natural join comp_img_tb comp_no order by comp_no limit
 		#{currCnt},#{listCnt}
 	</select>
 
-	 <select id="list2" parameterType="map" resultMap="CompanyMap">
-    SELECT *, round( 6371 * acos( cos( radians(37.539523) ) * cos( radians( comp_tb.lat ) )  * cos( radians( comp_tb.lon ) - radians(127.228149) )+ sin( radians(37.539523) ) * sin( radians( comp_tb.lat ) ) ) ,2) AS distance
-    FROM comp_tb
-    natural join comp_img_tb comp_no
-    HAVING distance &lt; 5
-    ORDER BY distance
-    LIMIT
-    #{currCnt},#{listCnt}
-  </select>
-  
-  <select id="list3" parameterType="map" resultMap="CompanyMap">
-    SELECT *, round( 6371 * acos( cos( radians(37.539523) ) * cos( radians( comp_tb.lat ) )  * cos( radians( comp_tb.lon ) - radians(127.228149) )+ sin( radians(37.539523) ) * sin( radians( comp_tb.lat ) ) ) ,2) AS distance
+	<select id="rcmdList" parameterType="map" resultMap="CompanyMap">
+		SELECT *,
+		round( 6371 * acos( cos( radians(37.539523) ) * cos( radians(
+		comp_tb.lat ) ) * cos( radians( comp_tb.lon ) - radians(127.228149) )+
+		sin( radians(37.539523) ) * sin( radians( comp_tb.lat ) ) ) ,2) AS
+		distance,
+		(select count(like_comp_tb.comp_no) from like_comp_tb where like_comp_tb.comp_no=comp_tb.comp_no) as likeCnt,
+		(select count(like_comp_tb.comp_no) from like_comp_tb where like_comp_tb.comp_no=comp_tb.comp_no AND parti_no=#{partiNo} AND memb_no=#{membNo}) as isLike
+		FROM comp_tb
+		left outer join comp_img_tb using(comp_no)
+		natural join comp_cate_tb comp_no
+		where cate_no=#{cateNo}
+		HAVING distance &lt; 5
+		ORDER BY distance
+		LIMIT
+		#{currCnt},#{listCnt}
+	</select>
+
+	<select id="list3" parameterType="map" resultMap="CompanyMap">
+    SELECT *,
+    round( 6371 * acos( cos( radians(37.539523) ) * cos( radians(
+    comp_tb.lat ) ) * cos( radians( comp_tb.lon ) - radians(127.228149) )+
+    sin( radians(37.539523) ) * sin( radians( comp_tb.lat ) ) ) ,2) AS
+    distance,
+    (select count(like_comp_tb.comp_no) from like_comp_tb where like_comp_tb.comp_no=comp_tb.comp_no) as likeCnt
     FROM comp_tb
     left outer join comp_img_tb using(comp_no)
+    natural join comp_cate_tb comp_no
+    where cate_no=#{cateNo}
     HAVING distance &lt; 5
     ORDER BY distance
     LIMIT
     #{currCnt},#{listCnt}
+	</select>
+
+	<insert id="insert" parameterType="Board">
+		INSERT INTO board10(title,content,pwd,cre_dt,att_file1)
+		values(#{title},#{content},#{password},now(),#{attachFile1})
+	</insert>
+
+	<select id="likeCnt" parameterType="int" resultType="int">
+		SELECT count(*) FROM like_comp_tb WHERE comp_no=#{compNo}
+	</select>
+
+  <insert id="likeUp" parameterType="map">
+    INSERT INTO like_comp_tb(comp_no,memb_no,parti_no)
+    VALUES(#{compNo},#{membNo},#{partiNo})
+  </insert>
+
+  <insert id="likeDown" parameterType="map">
+    DELETE FROM like_comp_tb
+    WHERE parti_no=#{partiNo} AND memb_no=#{membNo} AND comp_no=#{compNo}
+  </insert>
+
+  <select id="isLike" parameterType="map" resultType="int">
+    SELECT count(*) FROM like_comp_tb
+    WHERE parti_no=#{partiNo} AND memb_no=#{membNo} AND comp_no=#{compNo}
   </select>
 
 </mapper>

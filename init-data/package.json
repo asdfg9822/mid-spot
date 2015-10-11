@@ -19,6 +19,7 @@
     "jsdom": "^6.5.1",
     "multer": ">=1.0",
     "mysql": "^2.9.0",
+    "node-sass-middleware": "^0.9.6",
     "path": "^0.12.7"
   }
 }

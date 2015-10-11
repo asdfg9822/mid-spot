@@ -14,63 +14,99 @@ import net.bitacademy.java72.service.CompanyService;
 
 @Service
 public class CompanyServiceImpl implements CompanyService {
-  @Autowired CompanyDao companyDao;
-  
-  @Override
-  public List<Company> list(int currCnt, int listCnt) {
+	@Autowired
+	CompanyDao companyDao;
 
-	  /*
-	  int startIndex = (pageNo - 1) * pageSize;
-    if (startIndex < 0) {
-      startIndex = 0;
-    }
-    */
-    Map<String,Object> paramMap = 
-        new HashMap<String,Object>();
+	@Override
+	public List<Company> list(int currCnt, int listCnt, int cateNo) {
 
-    paramMap.put("currCnt", currCnt);
-    paramMap.put("listCnt", listCnt);
+		int membNo = 1;
+		int partiNo = 1;
 
-    List<Company> list = new ArrayList<Company>();
-    list = companyDao.list2(paramMap);
-    for (Company company : list) {
-		System.out.println("company");
-		System.out.println(company.getDistance());
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+
+		paramMap.put("currCnt", currCnt);
+		paramMap.put("listCnt", listCnt);
+		paramMap.put("cateNo", cateNo);
+		paramMap.put("membNo", membNo);
+		paramMap.put("partiNo", partiNo);
+
+		return companyDao.rcmdList(paramMap);
 	}
 
-    return companyDao.list3(paramMap);
-  }
-/*
-  @Override
-  public int delete(int no) {
-    return boardDao.delete(no);
-  }
+	@Override
+	public List<Company> listAll(int currCnt, int listCnt) {
 
-  @Override
-  public int update(Board board) {
-    return boardDao.update(board);
-  }
+		Map<String, Object> paramMap = new HashMap<String, Object>();
 
-  @Override
-  public int insert(Board board) {
-    return boardDao.insert(board);
-  }
+		paramMap.put("currCnt", currCnt);
+		paramMap.put("listCnt", listCnt);
 
-  @Override
-  public Board get(int no) {
-    return boardDao.get(no);
-  }
 
-  @Override
-  public int countAll() {
-    return boardDao.countAll();
-  }
-  
-  */
+		return companyDao.listAll(paramMap);
+	}
+
+	@Override
+	public int likeCnt(int compNo) {
+		return companyDao.likeCnt(compNo);
+	}
+
+	@Override
+	public int likeUp(int compNo, int membNo, int partiNo) {
+
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("compNo", compNo);
+		paramMap.put("membNo", membNo);
+		paramMap.put("partiNo", partiNo);
+		if(companyDao.likeUp(paramMap) > 0) {
+			System.out.println("like Success");
+		} else {
+			System.out.println("like Fail");
+		}
+
+		return companyDao.likeCnt(compNo);
+	}
+
+	@Override
+	public int isLike(int compNo, int membNo, int partiNo) {
+
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("compNo", compNo);
+		paramMap.put("membNo", membNo);
+		paramMap.put("partiNo", partiNo);
+
+		return companyDao.isLike(paramMap);
+	}
+
+	@Override
+	public int likeDown(int compNo, int membNo, int partiNo) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("compNo", compNo);
+		paramMap.put("membNo", membNo);
+		paramMap.put("partiNo", partiNo);
+		if(companyDao.likeDown(paramMap) > 0) {
+			System.out.println("like Down Success");
+		} else {
+			System.out.println("like Down Fail");
+		}
+
+		return companyDao.likeCnt(compNo);
+	}
+
+
+
+	/*
+	 * @Override public int delete(int no) { return boardDao.delete(no); }
+	 *
+	 * @Override public int update(Board board) { return boardDao.update(board);
+	 * }
+	 *
+	 * @Override public int insert(Board board) { return boardDao.insert(board);
+	 * }
+	 *
+	 * @Override public Board get(int no) { return boardDao.get(no); }
+	 *
+	 * @Override public int countAll() { return boardDao.countAll(); }
+	 *
+	 */
 }
-
-
-
-
-
-

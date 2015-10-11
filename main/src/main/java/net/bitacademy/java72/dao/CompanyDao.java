@@ -6,24 +6,13 @@ import java.util.Map;
 import net.bitacademy.java72.domain.Company;
 
 public interface CompanyDao {
-  //List<Company> list(Map<String,Object> paramMap);
-  List<Company> list(Map<String, Object> paramMap);
-  List<Company> list2(Map<String, Object> paramMap);
-  List<Company> list3(Map<String, Object> paramMap);
-  /*int delete(int no);
-  int update(Board board);
-  int insert(Board board);
-  Board get(int no);
-  int countAll();*/
+	// List<Company> list(Map<String,Object> paramMap);
+	List<Company> listAll(Map<String, Object> paramMap);
+	List<Company> rcmdList(Map<String, Object> paramMap);
+	List<Company> list3(Map<String, Object> paramMap);
+	//String[] like(Map<String, Object> paramMap);
+	int likeCnt(int compNo);
+	int likeUp(Map<String, Object> paramMap);
+	int isLike(Map<String, Object> paramMap);
+	int likeDown(Map<String, Object> paramMap);
 }
-
-
-
-
-
-
-
-
-
-
-

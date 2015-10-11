@@ -4,22 +4,52 @@ define(['jquery', 'app/common'], function ($) {
 
 		init: function () {
 
+			var moduleObj = this;
+
 			$('#btnDTInit').click(function (event) {
+				event.preventDefault();
+				moduleObj.baseInput();
+			});
+
+			$('#btnDTInit2').click(function (event) {
 				event.preventDefault();
 				init_comp_tb_insert();
 			});
+
+			$('#btnDTInit3').click(function (event) {
+				event.preventDefault();
+				moduleObj.likeRandom();
+			});
+
+			function init_base1_insert() {
+
+			}
 
 			function init_comp_tb_insert() {
 				console.log("init_comp_tb_insert() Excute..!!");
 
 				var inputData = [
-        "강남역 미즈컨테이너",
-        "강남역 하남돼지집",
-        "하남시 하남돼지집",
-        "선릉역 술집",
-        "강남역 노래방",
-        "하남시 노래방"
-      ];
+					"강남역 미즈컨테이너",
+					"강남역 하남돼지집",
+					"하남시 하남돼지집",
+					"선릉역 술집",
+					"강남역 노래방",
+					"하남시 노래방",
+					"강남역 맛집",
+					"강남역 술집",
+					"강남역 고기",
+					"강남역 삼겹살",
+					"강남역 무한",
+					"강남역 소",
+					"하남시 소고기",
+					"하남시 칼국수",
+					"하남시 식당",
+					"하남시 삼겹살",
+					"하남시 김밥",
+					"하남시 베스킨",
+					"하남시 카페",
+					"하남시 스타벅스"
+				];
 				for (var i = 0; i < inputData.length; i++) {
 					console.log("[" + inputData[i] + "] input");
 					company_info_search(inputData[i]);
@@ -113,6 +143,23 @@ define(['jquery', 'app/common'], function ($) {
 				});
 			}
 
+		},
+		baseInput: function () {
+			var moudleObj = this;
+
+			$.getJSON(contextRoot + "/base/insert.do",
+				function (result) {
+					console.log("/table/show.do result");
+					console.log(result);
+				});
+		},
+		likeRandom: function () {
+			var moudleObj = this;
+
+			$.getJSON(contextRoot + "/company/likeRandom.do",
+				function (result) {
+					console.log(result);
+				});
 		}
 	};
 });

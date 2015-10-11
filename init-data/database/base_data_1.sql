@@ -1,0 +1,35 @@
+insert into memb_tb(email,memb_nm,user_id,get_site) values('user1@test.com','user1',19785468,'FACEBOOK');
+insert into memb_tb(email,memb_nm,user_id,get_site) values('user2@test.com','user2',19785468,'FACEBOOK');
+insert into memb_tb(email,memb_nm,user_id,get_site) values('user3@test.com','user3',19785468,'FACEBOOK');
+insert into memb_tb(email,memb_nm,user_id,get_site) values('user4@test.com','user4',19785468,'KAKAO');
+insert into memb_tb(email,memb_nm,user_id,get_site) values('user5@test.com','user5',19785468,'KAKAO');
+insert into memb_tb(email,memb_nm,user_id,get_site) values('user6@test.com','user6',19785468,'KAKAO');
+insert into memb_tb(email,memb_nm,user_id,get_site) values('user7@test.com','user7',19785468,'KAKAO');
+insert into memb_tb(email,memb_nm,user_id,get_site) values('user8@test.com','user8',19785468,'ROBOT');
+insert into memb_tb(email,memb_nm,user_id,get_site) values('user9@test.com','user9',19785468,'ROBOT');
+insert into memb_tb(email,memb_nm,user_id,get_site) values('user10@test.com','user10',19785468,'ROBOT');
+
+insert into meet_tb(memb_no, meet_nm, meet_dt) values(1, '모임1', 20150803101010);
+insert into meet_tb(memb_no, meet_nm, meet_dt) values(2, '모임2', 20151111111111);
+insert into meet_tb(memb_no, meet_nm, meet_dt) values(3, '모임3', 20150403020105);
+insert into meet_tb(memb_no, meet_nm, meet_dt) values(4, '모임4', 20151231020103);
+insert into meet_tb(memb_no, meet_nm, meet_dt) values(5, '모임5', 20150908121100);
+
+insert into parti_tb(parti_no,memb_no,lat,lon) values(1,1,"127.1110537","37.5088508");
+insert into parti_tb(parti_no,memb_no,lat,lon) values(1,2,"111.1234567","12.9874654");
+insert into parti_tb(parti_no,memb_no,lat,lon) values(1,3,"222.1312533", "13.2142356");
+insert into parti_tb(parti_no,memb_no,lat,lon) values(1,4,"111.1210678","13.5088132");
+insert into parti_tb(parti_no,memb_no,lat,lon) values(1,5,"123.111111","22,242345");
+insert into parti_tb(parti_no,memb_no,lat,lon) values(2,1,"127.1197892","37.5042508");
+insert into parti_tb(parti_no,memb_no,lat,lon) values(2,2,"127.1197892","37.5043428");
+insert into parti_tb(parti_no,memb_no) values(3,3);
+insert into parti_tb(parti_no,memb_no) values(3,4);
+insert into parti_tb(parti_no,memb_no) values(3,5);
+insert into parti_tb(parti_no,memb_no) values(4,2);
+insert into parti_tb(parti_no,memb_no) values(2,3);
+insert into parti_tb(parti_no,memb_no) values(2,4);
+insert into parti_tb(parti_no,memb_no) values(1,6);
+insert into parti_tb(parti_no,memb_no) values(2,7);
+insert into parti_tb(parti_no,memb_no) values(2,8);
+insert into parti_tb(parti_no,memb_no) values(2,9);
+insert into parti_tb(parti_no,memb_no) values(3,9);
