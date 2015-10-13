@@ -1,167 +1,164 @@
-<div id="company-info" style="width:500px;">
- 	<div id="company-info-insert" class="form-group">
-    <label for="exampleInputEmail1">상호명</label>
-    <input class="form-control" id="comp-name" placeholder="상호명">
+<div id="company-info">
+	<div class="companyTitle">업체 등록 하기</div>
+	<table class="company-info-table">
+		<tr class="comp_nm">
+			<th>상호명</th>
+			<td>
+				<input type="text" placeholder="상호명">
+			</td>
+		</tr>
+		<tr class="admin_tel">
+			<th>관리자 연락처</th>
+			<td>
+				<input type="tel" placeholder="관리자 연락처">
+			</td>
+		</tr>
+		<tr class="comp_tel">
+			<th>가게 연락처</th>
+			<td>
+				<input type="tel" placeholder="가게 연락처">
+			</td>
+		</tr>
+		<tr class="elev_bl">
+			<th>엘리베이터</th>
+			<td>
+				있음
+				<input type="checkbox" value="option1"> 없음
+				<input type="checkbox" value="option1">
+			</td>
+		</tr>
+		<tr class="ground_bl">
+			<th>위치</th>
+			<td>
+				지상
+				<input type="checkbox" value="option2">
+				<br>지하
+				<input type="checkbox" value="option3">
+			</td>
+		</tr>
+		<tr class="web_addr">
+			<!--	web_bl도 있음	-->
+			<th>홈페이지</th>
+			<td>
+				<input type="checkbox" value="option4">
+				<!-- 임시로 넣어둠-->
+				<input type="tel" placeholder="홈페이지">
+			</td>
+		</tr>
+		<tr class="open_dt">
+			<th>영업 시작</th>
+			<td>
+				<input type="time" class="form-control" placeholder="Time">
+			</td>
+		</tr>
+		<tr class="close_dt">
+			<th>마감 시작</th>
+			<td>
+				<input type="time" class="form-control" placeholder="Time">
+			</td>
+		</tr>
+		<tr class="post_no">
+			<th>우편번호</th>
+			<td>
+				<input type="text" style="width:60px; height:20px; border:1px solid #ccc;"> ----
+				<input type="text" style="width:60px; height:20px; border:1px solid #ccc;">
+			</td>
+		</tr>
+		<tr class="addr_no">
+			<th>주소번호</th>
+			<td>
+				<input type="text" placeholder="주소번호">
+			</td>
+		</tr>
+		<tr class="addr_old">
+			<th>구주소</th>
+			<td>
+				<input type="text" placeholder="구주소">
+			</td>
+		</tr>
+		<tr class="addr_new">
+			<th>신주소</th>
+			<td>
+				<input type="text" placeholder="신주소">
+			</td>
+		</tr>
+		<tr class="lat">
+			<th>위도</th>
+			<td>
+				<input type="text" placeholder="위도">
+			</td>
+		</tr>
+		<tr class="lon">
+			<th>경도</th>
+			<td>
+				<input type="text" placeholder="경도">
+			</td>
+		</tr>
+		<tr class="img_path">
+			<th>사진</th>
+			<td>
+				<input type="file" id="inputFile1">
+				<input type="file" id="inputFile2">
+				<input type="file" id="inputFile3">
+			</td>
+		</tr>
+	</table>
+	<button id="company-insert" class="btn btn-default" id="">업체 등록</button>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="companyTitle">상세 등록 하기</div>
+	<table class="company-detail-table">
+		<tr class="comp_no">
+			<th>업종 선택</th>
+			<td>
+				<a id="categorys" class="categorys-select">
+					<div class="col-sm-4" id="categoryFood-company">음식</div>
+				</a>
+				<a id="categorys" class="categorys-select">
+					<div class="col-sm-4" id="categoryLife-company">가정,생활</div>
+				</a>
+				<a id="categorys" class="categorys-select">
+					<div class="col-sm-4" id="categoryTravle-company">여행</div>
+				</a>
+				<a id="categorys" class="categorys-select">
+					<div class="col-sm-4" id="categorySport-company">스포츠</div>
+				</a>
+				<a id="categorys" class="categorys-select">
+					<div class="col-sm-4" id="categoryCulture-company">문화,예술</div>
+				</a>
+				<a id="categorys" class="categorys-select">
+					<div class="col-sm-4" id="categoryEducation-company">교육,학문</div>
+				</a>
+				<a id="categorys" class="categorys-select">
+					<div class="col-sm-4" id="categoryInstitution-company">공공기관</div>
+				</a>
+				<a id="categorys" class="categorys-select">
+					<div class="col-sm-4" id="categoryTransfer-company">교통,수송</div>
+				</a>
+			</td>
+		</tr>
+		<tr class="lon">
+			<th>경도</th>
+			<td>
+				<input type="text" placeholder="경도">
+			</td>
+		</tr>
+	</table>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 
-    <!-- Single button -->
-		
-		
-   <div class="btn-group">
-			<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-				 카테고리-3<span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<li><a href="#">이탈리안</a></li>
-				<li><a href="#">육류,고기</a></li>
-				<li><a href="#">해물,생선</a></li>
-				<li><a href="#">여관,모텔</a></li>
-				<li><a href="#">노래방</a></li>
-				<li><a href="#">수목원,식물원</a></li>
-				<li><a href="#">문화유적</a></li>
-				<li><a href="#">산</a></li>
-				<li><a href="#">종교유적지</a></li>
-				<li><a href="#">테마거리</a></li>
-				<li><a href="#">전망대</a></li>
-				<li><a href="#">관광농원</a></li>
-				<li><a href="#">오븐에 빠진 닭</a></li>
-				<li><a href="#">호프,요리주점</a></li>
-				<li><a href="#">일본식주점</a></li>
-				<li><a href="#">와인바</a></li>
-				<li><a href="#">토스트</a></li>
-				<li><a href="#">주먹밥</a></li>
-				<li><a href="#">피자</a></li>
-				<li><a href="#">산봉우리</a></li>
-				<li><a href="#">등산정보</a></li>
-				<li><a href="#">등산로</a></li>
-				<li><a href="#">국립공원</a></li>
-				<li><a href="#">샘터,약수터</a></li>
-				<li><a href="#">펜션</a></li>
-				<li><a href="#">테마카페</a></li>
-				<li><a href="#">독서실</a></li>
-				<li><a href="#">스터디센터</a></li>
-				<li><a href="#">전자오락실</a></li>
-				<li><a href="#">영화관</a></li>
-				<li><a href="#">한정식</a></li>
-				<li><a href="#">찌개,전골</a></li>
-				<li><a href="#">수제비</a></li>
-				<li><a href="#">실내포장마차</a></li>
-				<li><a href="#">설렁탕</a></li>
-				<li><a href="#">냉면</a></li>
-				<li><a href="#">양꼬치</a></li>
-				<li><a href="#">감자탕</a></li>
-				<li><a href="#">전통찻집</a></li>
-				<li><a href="#">스케이트장</a></li>
-				<li><a href="#">볼링장</a></li>
-				<li><a href="#">당구장,포켓볼</a></li>
-				<li><a href="#">야구장</a></li>
-				<li><a href="#">노동조합</a></li>
-				<li><a href="#">호텔</a></li>
-				<li><a href="#">숙박시설관리운영</a></li>
-				<li><a href="#">나이트,클럽</a></li>
-				<li><a href="#">수영장</a></li>
-				<li><a href="#">행정기관관련기타</a></li>
-				<li><a href="#">공연장,연극극장</a></li>
-				<li><a href="#">주차장</a></li>
-				<li><a href="#">골프연습장</a></li>
-				<li><a href="#">테니스장</a></li>
-				<li><a href="#">도서관</a></li>
-			</ul>
-		</div>
-   <div class="btn-group">
-			<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-				 카테고리-4<span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<li><a href="#">삼겹살</a></li>
-				<li><a href="#">한나낙지마당</a></li>
-				<li><a href="#">락휴노래연습장</a></li>
-				<li><a href="#">불상,석불</a></li>
-				<li><a href="#">먹자골목</a></li>
-				<li><a href="#">향교,서당</a></li>
-				<li><a href="#">탑,비석</a></li>
-				<li><a href="#">유적지</a></li>
-				<li><a href="#">산성,성곽</a></li>
-				<li><a href="#">교동전선생</a></li>
-				<li><a href="#">와라와라</a></li>
-				<li><a href="#">수노래연습장</a></li>
-				<li><a href="#">이삭토스트</a></li>
-				<li><a href="#">봉구스밥버거</a></li>
-				<li><a href="#">미스터피자</a></li>
-				<li><a href="#">북카페</a></li>
-				<li><a href="#">피자헛</a></li>
-				<li><a href="#">롯데시네마</a></li>
-				<li><a href="#">CJCGV</a></li>
-				<li><a href="#">명동보리밥</a></li>
-				<li><a href="#">불고기,두루치기</a></li>
-				<li><a href="#">갈비</a></li>
-				<li><a href="#">곱창,막창</a></li>
-				<li><a href="#">닭요리</a></li>
-				<li><a href="#">오가다</a></li>
-				<li><a href="#">특급호텔</a></li>
-				<li><a href="#">옥토버훼스트</a></li>
-				<li><a href="#">맥주바켓</a></li>
-			</ul>
-		</div>
-   <div class="btn-group">
-			<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-				 카테고리-5<span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<li><a href="#">하남돼지집</a></li>
-				<li><a href="#">소우가</a></li>
-			</ul>
-		</div>
-    
-    <br>
-    <label for="exampleInputEmail1">전화번호</label>
-    <input type="tel" class="form-control" id="comp-name" placeholder="전화번호">
-    
-    <label class="checkbox-inline">
-  		<input type="checkbox" id="inlineCheckbox1" value="option1"> 엘레베이터
-		</label>
-   
- 	<div class="checkbox">
-		<label><input type="checkbox" name="optionsRadios" id="optionsRadios1" value="option1" checked>지상</label>
-		<label><input type="checkbox" name="optionsRadios" id="optionsRadios1" value="option1">지하</label>
-	</div>
-		<label class="checkbox-inline">
-				<input type="checkbox" id="inlineCheckbox1" value="option1"> 홈페이지
-		</label>
-   	<input type="url" id="comp-email" class="form-control" placeholder="홈페이지 주소를 입력하세요">
-   
-    <label for="exampleInputPassword1">영업 시작시간</label>
-    <input type="time" class="form-control" placeholder="Time">
-    
-    <label for="exampleInputPassword1">영업 종료시간</label>
-    <input type="time" class="form-control" placeholder="Time">
-    
-    <label for="exampleInputEmail1">우편번호</label>
-    <input class="form-control" id="comp-name" placeholder="우편번호">
-    
-    <label for="exampleInputEmail1">주소</label>
-    <input class="form-control" id="comp-name" placeholder="주소">
-    
-    <label for="exampleInputEmail1">지도</label>
-    <img src="images/test01.png" alt="..." class="img-thumbnail" style="height:100px;">
-    
-    <label for="exampleInputEmail1">위도</label>
-    <input type="number" class="form-control" id="comp-name" placeholder="위도">
-    
-    <label for="exampleInputEmail1">경도</label>
-    <input type="number" class="form-control" id="comp-name" placeholder="경도">
-    
-    <label for="exampleInputFile">파일 업로드</label>
-    <input type="file" id="exampleInputFile1">
-    <input type="file" id="exampleInputFile2">
-    <input type="file" id="exampleInputFile4">
-    
-  <button id="company-insert" class="btn btn-default" id="">업체 등록</button>
-  </div>
+
 </div>
 
 
 <script>
-  requirejs(['app/company'],function (company) {
-    company.init();
-  });
+	requirejs(['app/company'], function (company) {
+		company.init();
+	});
 </script>
