@@ -1,0 +1,33 @@
+
+
+
+<table class="table table-bordered" id="meeting">
+  <tr>
+    <th>모임 이름</th>
+    <td>
+      <input id="meetName" type='text'>
+    </td>
+  </tr>
+  <tr>
+    <th>모임일</th>
+    <td>
+      <input id="meetDate" type='datetime-local' value='datetime'>
+    </td>
+  </tr>
+  
+  
+  <tr>
+  <th></th>
+    <td>
+      <input id="meet-Submit" type='button' value='등록'>
+      <input type='reset' value='취소'>
+    </td>
+  </tr>
+</table>
+
+<script>
+  requirejs(['app/meet'], function (meet) {
+    meet.init();
+    
+  });
+</script>

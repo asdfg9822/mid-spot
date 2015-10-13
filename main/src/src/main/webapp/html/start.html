@@ -1,0 +1,74 @@
+<style>
+#content .option {
+	float: left;
+	width: 90%;
+	margin-bottom: 3%;
+	margin-left: 2%;
+}
+
+#content #keyword {
+	margin-top: 1%; margin-left : 3%;
+	border: 1px solid #f2f2f2;
+	color: #999999;
+	width: 45%;
+	height: 30px;
+	font-size: 12px;
+	float: left;
+	border: 2px solid #555555;
+	margin-left: 3%;
+}
+
+#start-search-place, #start-search-my {
+	width: 15%;
+	height: 40px; float : left;
+	color: black;
+	background-color: white;
+	border: 1px solid #999999;
+	margin-left: 3%;
+	float: left;
+}
+
+#start-search-place:HOVER, #start-search-my:HOVER {
+	border: 1px solid black;
+}
+</style>
+
+<div class="option">
+	<input type="text" id="keyword" class="start-search"
+		value="서울특별시 서초구 서초동 1327-15번지">
+
+	<button id="start-search-place">검 색</button>
+	<button id="start-search-my">내 위치</button>
+
+</div>
+<div id="menu_wrap">
+	<ul id="placesList"></ul>
+	<div id="pagination"></div>
+</div>
+<div class="map_wrap">
+	<div id="map"
+		style="width: 80%; height: 400px; margin-top: 2px; position: relative; overflow: hidden; margin-left: 3%;"></div>
+</div>
+<br>
+<br>
+<table>
+	<tr>
+		<th>parti_no</th>
+		<td><input type='text' id='parti_no'></td>
+	</tr>
+	<tr>
+		<th>memb_no</th>
+		<td><input type='text' id='memb_no'></td>
+	</tr>
+	<tr>
+		<th></th>
+		<td>
+			<button id='insertLat1'>등 록</button> <!--       <input type='reset' value='취소'> -->
+		</td>
+	</tr>
+</table>
+<script>
+	requirejs([ 'app/start' ], function(start) {
+		start.init();
+	});
+</script>
