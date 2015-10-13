@@ -46,7 +46,7 @@ define(['jquery', 'app/common'], function ($) {
 		event.preventDefault();
 		$('#sidebar2 #sidebar2-title-text').text("출발지 설정");
 		$('#sidebar2-item1-title').text("출발지를 입력하세요.");
-		$('#sidebar2-item1-content').load('html/start_insert.html');
+//		$('#sidebar2-item1-content').load('html/start_insert.html');
 		$('#content').load('html/start.html');
 	});
 
@@ -55,7 +55,7 @@ define(['jquery', 'app/common'], function ($) {
 		$('#sidebar2-item1-title').text("click 해주세요 ~");
 		$('#sidebar2 #sidebar2-title-text').text("결과보기");
 		$('#sidebar2-item1-content').load('html/result_side.html');
-		$('#content').load('html/result_jh.html');
+		$('#content').load('html/start.html');
 	});
 
 	$('#resultMenu').trigger('click');
