@@ -39,7 +39,7 @@ define(['jquery', 'app/common'], function ($) {
 		$('#sidebar2 #sidebar2-title-text').text("목적 설정");
 		$('#sidebar2-item1-title').text("목적지를 입력하세요.");
 		$('#sidebar2-item1-content').load('html/dest_spec_search.html');
-		$('#content').empty();
+		$('#content').load('html/dest.html');
 	});
 
 	$('#startMenu').click(function (event) {

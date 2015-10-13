@@ -12,12 +12,8 @@
     <result column="parti_no" property="partiNo" />
     <result column="memb_nm" property="memberName"/>
     
-    
-    
   </resultMap>
   
-  
-   
    <select id="list" parameterType="map" resultMap="MeetMap">
     SELECT meet_no, memb_no, meet_nm, meet_dt
     FROM meet_tb
@@ -37,6 +33,7 @@
     INSERT INTO meet_tb(meet_nm,meet_dt,memb_no)
     values(#{meetName},#{meetDate},#{memberNo})
   </insert>
+  
   
   <delete id="delete" parameterType="int">
     DELETE FROM board10 WHERE bno=#{value}
