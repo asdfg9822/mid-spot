@@ -42,6 +42,11 @@ public class DestServiceImpl implements DestService {
     return destDao.insert(dest);
   }
 
+  @Override
+  public Dest listSpec(Dest dest) {
+    return destDao.listSpec(dest);
+  }
+
 //  @Override
 //  public Dest get(int no) {
 //    return destDao.get(no);

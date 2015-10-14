@@ -9,9 +9,17 @@ public class Dest implements Serializable {
 	protected int meet_no;
 	protected int cate_no;
 	protected String cate_nm;
+	protected String spec_nm;
+	
 
 	
 	
+  public String getSpec_nm() {
+    return spec_nm;
+  }
+  public void setSpec_nm(String spec_nm) {
+    this.spec_nm = spec_nm;
+  }
   public String getCate_nm() {
     return cate_nm;
   }

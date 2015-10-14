@@ -61,20 +61,22 @@ public class DestController {
     return result;
   }
     
+
+*/
   
-  @RequestMapping("/detail")
-  public Object detail(int no) {
+  @RequestMapping("/listSpec")
+  public Object listSpec(Dest dest) {
+    System.out.println("/json/dest/listSpec.do excute..!!");
     Map<String,Object> result = 
         new HashMap<String,Object>();
-    result.put("data", destService.get(no));
+    result.put("data", destService.listSpec(dest));
     
     return result;
   }
-*/
   
   @RequestMapping("/insert")
   public Object insert(Dest dest) throws Exception {
-      System.out.println("/json/dest/insert.do excute..!!");
+      
       int count = destService.insert(dest);
       
       Map<String,Object> result = 

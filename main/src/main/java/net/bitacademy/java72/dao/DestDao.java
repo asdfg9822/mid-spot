@@ -8,8 +8,10 @@ public interface DestDao {
 //  int delete(int no);
 //  int update(Board board);
     int insert(Dest dest);
+    Dest listSpec(Dest dest);
 //    Dest get(int no);
 //  int countAll();
+
 }
 
 

@@ -3,17 +3,26 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="net.bitacademy.java72.dao.DestDao">
-  <resultMap type="Dest" id="DestMap">
-	<id     column="meet_no"   property="meet_no" />
-    <result column="cate_no"    property="cate_no" />
-    <result column="cate_nm"    property="cate_nm" />
-  </resultMap>
+	<resultMap type="Dest" id="DestMap">
+		<id column="meet_no" property="meet_no" />
+		<result column="cate_no" property="cate_no" />
+		<result column="cate_nm" property="cate_nm" />
+		<result column="spec_nm" property="spec_nm" />
+	</resultMap>
 
-  <insert id="insert" parameterType="Dest" > 
-    insert into rcmd_cate_tb (meet_no,cate_no)
-    values(#{meet_no},(select cate_no from cate_tb where cate_nm=#{cate_nm}));
-  </insert>
-  
+	<insert id="insert" parameterType="Dest">
+		insert into rcmd_cate_tb
+		(meet_no,cate_no)
+		values(#{meet_no},(select cate_no from cate_tb where
+		cate_nm=#{cate_nm}));
+	</insert>
+
+	<select id="listSpec" parameterType="Dest" resultMap="DestMap">
+		select spec_nm from spec_tb	t1
+		left outer join cate_tb t2 on t1.cate_no=t2.cate_no
+		where t2.cate_nm=#{spec_nm};
+	</select>
+
 </mapper>
 
 
