@@ -20,7 +20,7 @@
 	<select id="listSpec" parameterType="Dest" resultMap="DestMap">
 		select spec_nm from spec_tb	t1
 		left outer join cate_tb t2 on t1.cate_no=t2.cate_no
-		where t2.cate_nm=#{spec_nm};
+		where t2.cate_nm=#{cate_nm};
 	</select>
 
 </mapper>
