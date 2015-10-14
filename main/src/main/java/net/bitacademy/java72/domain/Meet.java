@@ -26,11 +26,6 @@ public class Meet implements Serializable {
   protected int partiNo;
   protected String memberName;
   
-  
-  
-  
-  
-  
   public String getMemberName() {
     return memberName;
   }

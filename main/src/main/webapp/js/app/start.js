@@ -49,7 +49,7 @@ define([
 
 							var locPosition = new daum.maps.LatLng(lat, lon),
 								// 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-								message = '<div style="padding:5px;">' + result[0].roadAddress.name + result[0].jibunAddress.name + lat + '<br>' + lon + '</div>'; // 인포윈도우에 표시될 내용입니다
+								message = '<div style="padding:5px;">' + result[0].roadAddress.name + result[0].jibunAddress.name + '</div>'; // 인포윈도우에 표시될 내용입니다
 						}
 
 						// 마커와 인포윈도우를 표시합니다
@@ -92,7 +92,7 @@ define([
 
 						// 인포윈도우로 장소에 대한 설명을 표시합니다
 						var infowindow = new daum.maps.InfoWindow({
-							content: '<div style="padding:5px;">' + result.addr[0].title + '<br>' + result.addr[0].lat + '<br>' + result.addr[0].lng + '</div>', // 인포윈도우에 표시될 내용입니다
+							content: '<div style="padding:5px;">' + result.addr[0].title  + '</div>', // 인포윈도우에 표시될 내용입니다
 							removable: true
 						});
 						infowindow.open(map, marker);

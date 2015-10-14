@@ -229,7 +229,7 @@ define(['jquery', 'handlebars', 'slider', 'app/common'], function ($, handlebars
 					console.log(result);
 
 					section.find('.result_table_border_area').append(content);
-					$('.like_img[data-isLike=' + 1 + ']').attr('src', '/images/result/like_img.png');
+					$('.like_img[data-isLike=' + 1 + ']').attr('src', '. /images/result/like_img.png');
 
 				});
 
@@ -241,9 +241,9 @@ define(['jquery', 'handlebars', 'slider', 'app/common'], function ($, handlebars
 				},
 				function (result) {
 					if (result.like == "off") {
-						currBtn.find('img').attr('src', '/images/result/like_img_off1.png');
+						currBtn.find('img').attr('src', './images/result/like_img_off1.png');
 					} else {
-						currBtn.find('img').attr('src', '/images/result/like_img.png');
+						currBtn.find('img').attr('src', './images/result/like_img.png');
 					}
 					currBtn.find('span').text(result.likeCnt);
 				});

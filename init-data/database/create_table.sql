@@ -174,8 +174,7 @@ ALTER TABLE COMP_CATE_TB
 -- 추천클래스
 CREATE TABLE RCMD_CATE_TB (
 	MEET_NO INTEGER NOT NULL COMMENT '모임번호', -- 모임번호
-	CATE_NO INTEGER NOT NULL COMMENT '카테고리일련번호', -- 카테고리일련번호
-	MEMB_NO INTEGER NOT NULL COMMENT '회원번호' -- 회원번호
+	CATE_NO INTEGER NOT NULL COMMENT '카테고리일련번호' -- 카테고리일련번호
 )
 COMMENT '추천클래스';
 
@@ -184,8 +183,7 @@ ALTER TABLE RCMD_CATE_TB
 	ADD CONSTRAINT PK_RCMD_CATE_TB -- 추천클래스 기본키
 		PRIMARY KEY (
 			MEET_NO, -- 모임번호
-			CATE_NO, -- 카테고리일련번호
-			MEMB_NO  -- 회원번호
+			CATE_NO  -- 카테고리일련번호
 		);
 
 -- 참여자

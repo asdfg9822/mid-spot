@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import net.bitacademy.java72.dao.MeetDao;
 import net.bitacademy.java72.domain.Meet;
 import net.bitacademy.java72.service.MeetService;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 @Service
 public class MeetServiceImpl implements MeetService {
@@ -44,6 +44,7 @@ public class MeetServiceImpl implements MeetService {
   public int insert(Meet meet) {
     return meetDao.insert(meet);
   }
+  
 
   @Override
   public Meet get(int meetNo) {

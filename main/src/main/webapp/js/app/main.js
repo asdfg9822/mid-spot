@@ -1,4 +1,4 @@
-define(['jquery', 'app/common'], function ($) {
+ define(['jquery', 'app/common'], function ($) {
 
 	console.log("==>main.js Excute..!!");
 
@@ -9,7 +9,14 @@ define(['jquery', 'app/common'], function ($) {
 		$("#wrapper").toggleClass("toggled");
 	});
 
-	//Header 모임정보 Button
+	$('#companyMenu').click(function (event) {
+		event.preventDefault();
+		$('#sidebar2 #sidebar2-title-text').empty();
+		$('#sidebar2-item1-title').empty();
+		$('#sidebar2-item1-content').empty();
+		$('#content').load('html/company_main.html');
+	}); // company 이동 기능
+
 	$('#groupMenu').click(function (event) {
 		event.preventDefault();
 		$('#content').load('html/meet_list.html');
@@ -18,14 +25,14 @@ define(['jquery', 'app/common'], function ($) {
 	$('#destMenu').click(function (event) {
 		event.preventDefault();
 		$('#sidebar2-item1-content').load('html/dest_spec_search.html');
-		$('#content').empty();
+		$('#content').load('html/dest.html');
 	});
 	//Header 출발 Button
 	$('#startMenu').click(function (event) {
 		event.preventDefault();
 		$('#sidebar2 #sidebar2-title-text').text("출발지 설정");
 		$('#sidebar2-item1-title').text("출발지를 입력하세요.");
-		$('#sidebar2-item1-content').load('html/start_insert.html');
+//		$('#sidebar2-item1-content').load('html/start_insert.html');
 		$('#content').load('html/start.html');
 	});
 	//Header 중간여기 Button
