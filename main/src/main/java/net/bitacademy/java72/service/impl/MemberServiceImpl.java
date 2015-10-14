@@ -13,71 +13,76 @@ import net.bitacademy.java72.service.MemberService;
 
 @Service
 public class MemberServiceImpl implements MemberService {
-  @Autowired MemberDao memberDao;
-  
-  @Override
-  public List<Member> list(int pageNo, int pageSize) {
-    int startIndex = (pageNo - 1) * pageSize;
-    if (startIndex < 0) {
-      startIndex = 0;
-    }
-    
-    Map<String,Object> paramMap = 
-        new HashMap<String,Object>();
-    paramMap.put("startIndex", startIndex);
-    paramMap.put("pageSize", pageSize);
-    
-    return memberDao.list(paramMap);
-  }
+	@Autowired
+	MemberDao memberDao;
 
-  @Override
-  public int delete(int no) {
-    return memberDao.delete(no);
-  }
+	@Override
+	public List<Member> list(int pageNo, int pageSize) {
+		int startIndex = (pageNo - 1) * pageSize;
+		if (startIndex < 0) {
+			startIndex = 0;
+		}
 
-  @Override
-  public int update(Member member) {
-    return memberDao.update(member);
-  }
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("startIndex", startIndex);
+		paramMap.put("pageSize", pageSize);
 
-  @Override
-  public int insert(Member member) {
-    return memberDao.insert(member);
-  }
+		return memberDao.list(paramMap);
+	}
 
-  @Override
-  public Member get(int no) {
-    return memberDao.get(no);
-  }
+	@Override
+	public int delete(int no) {
+		return memberDao.delete(no);
+	}
 
-  @Override
-  public Member getUser(String email, String password) {
-    HashMap<String,String> map = 
-        new HashMap<String,String>();
-    map.put("email", email);
-    map.put("password", password);
-    
-    return memberDao.exist(map);
-  }
+	@Override
+	public int update(Member member) {
+		return memberDao.update(member);
+	}
 
-  @Override
-  public int countAll() {
-    return memberDao.countAll();
-  }
+	@Override
+	public int insert(Member member) {
+		return memberDao.insert(member);
+	}
 
-  @Override
-  public boolean existEmail(String email) {
-    if (memberDao.countEmail(email) > 0) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+	@Override
+	public Member get(int no) {
+		return memberDao.get(no);
+	}
+
+	@Override
+	public Member getUser(String email, String password) {
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("email", email);
+		map.put("password", password);
+
+		return memberDao.exist(map);
+	}
+
+	@Override
+	public int countAll() {
+		return memberDao.countAll();
+	}
+
+	@Override
+	public Member fbGetUser(String userId) {
+		return memberDao.fbGetUser(userId);
+	}
+
+	@Override
+	public boolean existEmail(String email) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int fbExist(String userId) {
+		// TODO Auto-generated method stub
+		int count = 0;
+		if(memberDao.fbExist(userId) > 0) {
+			count = 1;
+		}
+		return count;
+	}
 
 }
-
-
-
-
-
-

@@ -24,7 +24,6 @@ define(['jquery', 'handlebars', 'slider', 'app/common'], function ($, handlebars
 				var documentTop = $(document).height() - $(window).height();
 				if (scrollTop - 1 <= documentTop && documentTop < scrollTop + 1) {
 					var section = $($('.tab-current a').attr('data-section'));
-					console.log("ok");
 					moduleObj.listCompany($('.result_table_border_area > div').length, 5, section);
 				}
 			});

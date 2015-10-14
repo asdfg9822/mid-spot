@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import net.bitacademy.java72.domain.Company;
+import net.bitacademy.java72.domain.Member;
 import net.bitacademy.java72.service.CompanyService;
 
 @Controller("json.CompanyController")
@@ -35,6 +37,9 @@ public class CompanyController {
 		System.out.println("currCnt:" + currCnt);
 		System.out.println("listCnt:" + listCnt);
 
+		int membNo = 1;
+		int partiNo = 1;
+
 		Map<String, Object> result = new HashMap<String, Object>();
 
 		System.out.println("/json/company/list.do excute..!!");
@@ -42,7 +47,9 @@ public class CompanyController {
 		result.put("currCnt", currCnt);
 		result.put("listCnt", listCnt);
 
-		List<Company> list = companyService.list(currCnt, listCnt, cateNo);
+		System.out.println("session test : " + "membNo-> " + membNo);
+
+		List<Company> list = companyService.list(currCnt, listCnt, cateNo, membNo, partiNo);
 		result.put("data", list);
 		result.put("length", list.size());
 		return result;
@@ -105,25 +112,22 @@ public class CompanyController {
 		return result;
 	}
 
-
 	@RequestMapping("/likeUp")
 	public Object likeUp(@RequestParam(required = true) int compNo) {
 
 		int membNo = 1;
 		int partiNo = 1;
 
-		System.out.println("/json/company/likeCnt.do excute..!!");
-
+		System.out.println("/json/company/likeUp.do excute..!!");
 		Map<String, Object> result = new HashMap<String, Object>();
 
-		if(companyService.isLike(compNo,membNo,partiNo) > 0) {
+		if (companyService.isLike(compNo, membNo, partiNo) > 0) {
 			result.put("like", "off");
-			result.put("likeCnt", companyService.likeDown(compNo,membNo,partiNo));
+			result.put("likeCnt", companyService.likeDown(compNo, membNo, partiNo));
 		} else {
 			result.put("like", "on");
-			result.put("likeCnt", companyService.likeUp(compNo,membNo,partiNo));
+			result.put("likeCnt", companyService.likeUp(compNo, membNo, partiNo));
 		}
-
 		return result;
 	}
 

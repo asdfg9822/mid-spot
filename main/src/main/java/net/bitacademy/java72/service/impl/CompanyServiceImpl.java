@@ -1,6 +1,5 @@
 package net.bitacademy.java72.service.impl;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,10 +17,7 @@ public class CompanyServiceImpl implements CompanyService {
 	CompanyDao companyDao;
 
 	@Override
-	public List<Company> list(int currCnt, int listCnt, int cateNo) {
-
-		int membNo = 1;
-		int partiNo = 1;
+	public List<Company> list(int currCnt, int listCnt, int cateNo, int membNo, int partiNo) {
 
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 

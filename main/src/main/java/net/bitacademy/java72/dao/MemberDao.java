@@ -14,6 +14,8 @@ public interface MemberDao {
   Member exist(Map<String,String> map);
   int countAll();
   int countEmail(String email);
+  Member fbGetUser(String userId);
+  int fbExist(String userId);
 }
 
 

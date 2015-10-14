@@ -2,46 +2,25 @@ define(['jquery', 'app/common'], function ($) {
 
 	console.log("==>main.js Excute..!!");
 
+	//Sidebar Toggle
 	$("#menuToggle").click(function (e) {
 		e.preventDefault();
 		console.log("mesnuToggle");
 		$("#wrapper").toggleClass("toggled");
 	});
 
-
-
-
-	// #sidebar2의 메인 타이틀 바꾸기
-
-	// #sidebar2 첫 번째 아이템 제목, 내용 채우기
-	//$('#sidebar2-item1-content').load('html/test.html');
-	$('#side-company').click(function (event) {
-		console.log('클릭ehla');
-		event.preventDefault();
-		$('#sidebar2 #sidebar2-title-text').empty();
-		$('#sidebar2-item1-title').empty();
-		$('#sidebar2-item1-content').empty();
-		$('#content').load('html/company_main.html');
-	}); // company 이동 기능
-
+	//Header 모임정보 Button
 	$('#groupMenu').click(function (event) {
 		event.preventDefault();
-		$('#sidebar2 #sidebar2-title-text').text("그룹");
-		$('#sidebar2-item1-title').text("접속한 사용자입니다.");
-		$('#sidebar2-item1-content').empty();
-		 $('#content').load('html/meet_list.html');
-		 
-
+		$('#content').load('html/meet_list.html');
 	});
-
+	//Header 목적 Button
 	$('#destMenu').click(function (event) {
 		event.preventDefault();
-		$('#sidebar2 #sidebar2-title-text').text("목적 설정");
-		$('#sidebar2-item1-title').text("목적지를 입력하세요.");
 		$('#sidebar2-item1-content').load('html/dest_spec_search.html');
 		$('#content').empty();
 	});
-
+	//Header 출발 Button
 	$('#startMenu').click(function (event) {
 		event.preventDefault();
 		$('#sidebar2 #sidebar2-title-text').text("출발지 설정");
@@ -49,7 +28,7 @@ define(['jquery', 'app/common'], function ($) {
 		$('#sidebar2-item1-content').load('html/start_insert.html');
 		$('#content').load('html/start.html');
 	});
-
+	//Header 중간여기 Button
 	$('#resultMenu').click(function (event) {
 		event.preventDefault();
 		$('#sidebar2-item1-title').text("click 해주세요 ~");
@@ -58,14 +37,22 @@ define(['jquery', 'app/common'], function ($) {
 		$('#content').load('html/result_jh.html');
 	});
 
-	$('#resultMenu').trigger('click');
+	//Login Info, Login Form Toggle
+	$('#loginSuccess').click(function () {
+		console.log("login");
+		$('#sideLoginInfo').toggle();
+		$('#sideLoginForm').toggle();
+		$('#headLoginInfo').toggle();
+		$('#headLoginForm').toggle();
+	});
 
-	$('#side-profile').click(function () {
-		console.log("profile clicked!! ");
+	//FACEBOOK Login Button
+	$('#btnFBLogin').click(function () {
 		Login();
 	});
 
-	$('#side-setting').click(function () {
+	//FACEBOOK Logout Button
+	$('#logout').click(function () {
 		console.log("logout clicked!! ");
 
 		FB.api("/me/permissions", "DELETE", function (response) {
@@ -78,14 +65,7 @@ define(['jquery', 'app/common'], function ($) {
 		});
 	});
 
-
 	window.fbAsyncInit = function () {
-		/*FB.init({
-  appId: '410218975833438', // Set YOUR APP ID
-  status: true, // check login status
-  cookie: true, // enable cookies to allow the server to access the session
-  xfbml: true // parse XFBML
-});*/
 
 		FB.init({
 			appId: FacebookAppId, // Set YOUR APP ID
@@ -94,30 +74,43 @@ define(['jquery', 'app/common'], function ($) {
 			xfbml: true // parse XFBML
 		});
 
-
 		FB.Event.subscribe('auth.authResponseChange', function (response) {
 			if (response.status === 'connected') {
-				document.getElementById("message").innerHTML += "<br>Connected to Facebook";
+				console.log("connected to FACEBOOK");
 				//SUCCESS
-
+				getProfileInfo();
 			} else if (response.status === 'not_authorized') {
-				document.getElementById("message").innerHTML += "<br>Failed to Connect";
-
-				//FAILED
+				console.log("not_authorized");
 			} else {
-				document.getElementById("message").innerHTML += "<br>Logged Out";
-
-				//UNKNOWN ERROR
+				console.log("logged out");
 			}
 		});
 
 	};
 
+	var getUserInfo = function () {
+		FB.api('/me?fields=name,email,picture,friends', function (response) {
+			$.ajax(contextRoot + '/json/member/fbGetUser.do', {
+				method: 'POST',
+				dataType: 'json',
+				data: {
+					userId: response.id
+				},
+				success: function (result) {
+					console.log("FACEBOOK User Info GET..!!");
+					sessionStorage.setItem('member', result.member);
+					console.log(result);
+				}
+			});
+
+		});
+	}
+
 	function Login() {
 		console.log("MY> Login()..Excute..!!");
 		FB.login(function (response) {
 			if (response.authResponse) {
-				getUserInfo();
+				getProfileInfo();
 			} else {
 				console.log('User cancelled login or did not fully authorize.');
 			}
@@ -127,7 +120,7 @@ define(['jquery', 'app/common'], function ($) {
 
 	}
 
-	function insertUserInfo(response) {
+	function insertUserInfo(response, callback) {
 
 		$.ajax(contextRoot + '/json/member/insert.do', {
 			method: 'POST',
@@ -140,30 +133,71 @@ define(['jquery', 'app/common'], function ($) {
 				imgUrl: response.picture.data.url
 			},
 			success: function (result) {
-				if (result.data == 'success') {
-					$('#cancelBtn').click();
-					console.log("User Info Input Success..!!");
-				} else {
-					console.log("User Info Input Fail..!!");
+				console.log("FACEBOOK User Info Insert..!!");
+				if (typeof callback === 'function') {
+					callback();
 				}
 			}
 		});
 	}
 
+	function updateUserInfo(response, callback) {
 
-	function getUserInfo() {
+		$.ajax(contextRoot + '/json/member/update.do', {
+			method: 'POST',
+			dataType: 'json',
+			data: {
+				name: response.name,
+				email: response.email,
+				userId: response.id,
+				getSite: "FACEBOOK",
+				imgUrl: response.picture.data.url
+			},
+			success: function (result) {
+				console.log("FACEBOOK User Info Update..!!");
+				if (typeof callback === 'function') {
+					callback();
+				}
+			}
+		});
+	}
+
+	function fbUserExist(response, callback) {
+		$.ajax(contextRoot + '/json/member/fbExist.do', {
+			method: 'POST',
+			dataType: 'json',
+			data: {
+				userId: response.id
+			},
+			success: function (result) {
+				if (result.data == 'yes') {
+					console.log("User Exist..!!");
+					updateUserInfo(response, callback);
+				} else {
+					insertUserInfo(response, callback);
+					console.log("User No..!!");
+				}
+			}
+		});
+	}
+
+	function getProfileInfo() {
 		FB.api('/me?fields=name,email,picture,friends', function (response) {
 
-
-
-			console.log(response);
-			//mid-spot Database insert "User Info"
-			insertUserInfo(response);
+			//Checking FB User && Update User Info
+			fbUserExist(response, getUserInfo);
 
 			//Change User name, Profile Image
-			$('#side-name').text(response.name);
-			$('#side-profile').attr('src', response.picture.data.url);
+			$('#sideUserName').text(response.name);
+			$('#sideUserImg').attr('src', response.picture.data.url);
+			$('#headUserName').text(response.name);
+			$('#headUserImg').attr('src', response.picture.data.url);
 
+			//Login From , Login Info Toggle
+			$('#sideLoginInfo').show();
+			$('#headLoginInfo').show();
+			$('#sideLoginForm').hide();
+			$('#headLoginForm').hide();
 		});
 	}
 
@@ -186,10 +220,6 @@ define(['jquery', 'app/common'], function ($) {
 		js.src = "//connect.facebook.net/en_US/all.js";
 		ref.parentNode.insertBefore(js, ref)
 	}(document));
-
-
-
-
 
 
 });

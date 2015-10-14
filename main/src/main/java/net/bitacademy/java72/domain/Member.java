@@ -15,7 +15,13 @@ public class Member implements Serializable {
 	protected String addressDetail;
 	protected String imgUrl;
 	
-	
+	@Override
+	public String toString() {
+		return "Member [memberNo=" + memberNo + ", name=" + name + ", email=" + email + ", userId=" + userId
+				+ ", getSite=" + getSite + ", addressNo=" + addressNo + ", addressDetail=" + addressDetail + ", imgUrl="
+				+ imgUrl + "]";
+	}
+
 	public String getGetSite() {
 		return getSite;
 	}
