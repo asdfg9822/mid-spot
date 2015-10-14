@@ -39,8 +39,10 @@
   </insert>
   
   <delete id="delete" parameterType="int">
-    DELETE FROM board10 WHERE bno=#{value}
+    DELETE FROM parti_tb WHERE meet_no=#{value}
+  
   </delete>
+  
 
   <update id="update" parameterType="Board">
     UPDATE board10 SET 

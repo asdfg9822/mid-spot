@@ -23,8 +23,8 @@ public class MeetController {
   
   
   @RequestMapping("/delete")
-  public Object delete(int no) {
-    int count = meetService.delete(no);
+  public Object delete(int meetNo) {
+    int count = meetService.delete(meetNo);
 
     Map<String,Object> result = 
         new HashMap<String,Object>();

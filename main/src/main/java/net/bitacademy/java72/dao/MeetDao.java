@@ -7,7 +7,7 @@ import net.bitacademy.java72.domain.Meet;
 
 public interface MeetDao {
   List<Meet> list(Map<String,Object> paramMap);
-  int delete(int no);
+  int delete(int meetNo);
   int update(Meet meet);
   int insert(Meet meet);
   Meet get(int meetNo);

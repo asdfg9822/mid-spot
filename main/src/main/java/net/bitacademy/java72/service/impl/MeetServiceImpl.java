@@ -14,25 +14,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class MeetServiceImpl implements MeetService {
   @Autowired MeetDao meetDao;
+ 
   
   @Override
   public List<Meet> list(int pageNo, int pageSize) {
-    int startIndex = (pageNo - 1) * pageSize;
-    if (startIndex < 0) {
-      startIndex = 0;
-    }
-    
     Map<String,Object> paramMap = 
         new HashMap<String,Object>();
-    paramMap.put("startIndex", startIndex);
-    paramMap.put("pageSize", pageSize);
     return meetDao.list(paramMap);
     
   }
 
   @Override
-  public int delete(int no) {
-    return meetDao.delete(no);
+  public int delete(int meetNo) {
+    return meetDao.delete(meetNo);
   }
 
   @Override
@@ -42,7 +36,9 @@ public class MeetServiceImpl implements MeetService {
 
   @Override
   public int insert(Meet meet) {
+    
     return meetDao.insert(meet);
+    
   }
 
   @Override

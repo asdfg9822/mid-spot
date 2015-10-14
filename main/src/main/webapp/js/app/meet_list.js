@@ -2,27 +2,9 @@ define([ 'jquery', 'classie', 'snapsvg-min', 'handlebars' ], function($,
 		classie, Snap, handlebars) {
 
 	return {
-		detailMeet : function(meetNo) {
-
-			$(".trigger1").click(
-					function() {
-						$(".element2").toggle(
-								$.getJSON(contextRoot
-										+ '/json/meet/detail.do?meetNo=' + 1,
-										function(result) {
-											var data = result.data;
-											$('#MeetNo').val(data.meetNo);
-											$('#MemberNo').val(data.memberNo);
-											$('#MeetName').val(data.meetName);
-											$('#MeetDate').val(data.meetDate);
-											$('#MemberName').val(data.memberName);
-											console.log(data);
-										}));
-						$(".element1").toggle();
-					});
-		},
 
 		init : function() {
+
 			var moduleObj = this;
 			$.getJSON(contextRoot + '/json/meet/list.do', function(result) {
 
@@ -38,7 +20,7 @@ define([ 'jquery', 'classie', 'snapsvg-min', 'handlebars' ], function($,
 
 				function SVGCollapser(el, options) {
 					this.el = el;
-					this.init();
+					this.init(this);
 				}
 
 				SVGCollapser.prototype.init = function() {
@@ -99,7 +81,6 @@ define([ 'jquery', 'classie', 'snapsvg-min', 'handlebars' ], function($,
 						open : this.shapeEl.getAttribute('data-morph-open'),
 						close : this.shapeEl.getAttribute('data-morph-close')
 					};
-
 					this.isOpen = false;
 					this.initEvents();
 				};
@@ -107,6 +88,7 @@ define([ 'jquery', 'classie', 'snapsvg-min', 'handlebars' ], function($,
 				SVGExpander.prototype.initEvents = function() {
 					this.trigger1.addEventListener('click', this.toggle
 							.bind(this));
+
 				};
 
 				SVGExpander.prototype.toggle = function() {
@@ -136,14 +118,54 @@ define([ 'jquery', 'classie', 'snapsvg-min', 'handlebars' ], function($,
 						}, 250);
 					}
 					this.isOpen = !this.isOpen;
+					console.log(self);
 				};
 
 				[].slice.call(document.querySelectorAll('.box--collapser'))
 						.forEach(function(el) {
 							new SVGCollapser(el);
 						});
-				new SVGExpander(document.getElementById('expander'));
+				[].slice.call(document.querySelectorAll('.box--expander'))
+						.forEach(function(el) {
+							new SVGExpander(el);
+						});
+
+				// new SVGExpander(document.getElementById('expander'));
+
+				$(document).ready(
+						function() {
+							$(".trigger1").click(
+									function() {
+										console.log();
+										$(this).parents('.each-box').find(
+												'.element1').toggle();
+										$(this).parents('.each-box').find(
+												'.element2').toggle();
+									})
+
+						});
+
+
+				$('.trigger').click(function(event) {
+					event.preventDefault();
+					moduleObj.deleteMeet($(this).attr('data-no'));
+				});
+
 			});
+		},
+
+		deleteMeet : function(meetNo) {
+			var moduleObj = this;
+			console.log(meetNo);
+			$.getJSON(contextRoot + '/json/meet/delete.do?meetNo=' + meetNo,
+					function(result) {
+						console.log(result);
+						if (result.data == 'success') {
+							alert('삭제 성공입니다.');
+						} else {
+							alert('삭제할 수 없습니다.');
+						}
+					});
 
 		}
 
