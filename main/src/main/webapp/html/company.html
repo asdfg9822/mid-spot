@@ -1,5 +1,58 @@
+<script>
+	requirejs([ 'app/company' ], function(company) {
+		company.init();
+		company.listSpec();
+		company.insertSpec();
+	});
+</script>
+
+<script id="spec-template" type="text/x-handlebars-template">
+		{{#each data}}
+		<tr>
+			<th>{{spec_nm}}</th>
+			<td><input type="text" class="specVl" ></td>
+		</tr>
+		{{/each}}
+	</script>
+
+
 <div id="company-info">
-<!-- 	<div class="companyTitle">업체 등록 하기</div>
+	<div class="companyTitle">상세 등록 하기</div>
+
+	<table class="company-detail-table">
+		<tr class="comp_no">
+			<th>업종 선택</th>
+			<td><a id="categorys" class="categorys-select">
+					<div class="col-sm-4" id="categoryFood-company">음식점</div>
+			</a> <a id="categorys" class="categorys-select">
+					<div class="col-sm-4" id="categoryLife-company">가정,생활</div>
+			</a> <a id="categorys" class="categorys-select">
+					<div class="col-sm-4" id="categoryTravle-company">여행</div>
+			</a> <a id="categorys" class="categorys-select">
+					<div class="col-sm-4" id="categorySport-company">스포츠,레저</div>
+			</a> <a id="categorys" class="categorys-select">
+					<div class="col-sm-4" id="categoryCulture-company">문화,예술</div>
+			</a> <a id="categorys" class="categorys-select">
+					<div class="col-sm-4" id="categoryEducation-company">교육,학문</div>
+			</a> <a id="categorys" class="categorys-select">
+					<div class="col-sm-4" id="categoryInstitution-company">사회,공공기관</div>
+			</a> <a id="categorys" class="categorys-select">
+					<div class="col-sm-4" id="categoryTransfer-company">교통,수송</div>
+			</a></td>
+		</tr>
+		<tbody id="content-placeholder">
+		</tbody>
+	</table>
+	
+	<br>
+	<button id="company-spec-insert" class="btn btn-default" id="">업체 상세
+		등록</button>
+	
+
+	<br> <br> <br> <br> <br>
+
+
+	<div class="companyTitle">업체 등록 하기</div>
 	<table class="company-info-table">
 		<tr class="comp_nm">
 			<th>상호명</th>
@@ -26,10 +79,10 @@
 			</td>
 		</tr>
 		<tr class="web_addr">
-				web_bl도 있음	
+			web_bl도 있음
 			<th>홈페이지</th>
-			<td><input type="checkbox" value="option4"> 임시로 넣어둠
-				<input type="tel" placeholder="홈페이지"></td>
+			<td><input type="checkbox" value="option4"> 임시로 넣어둠 <input
+				type="tel" placeholder="홈페이지"></td>
 		</tr>
 		<tr class="open_dt">
 			<th>영업 시작</th>
@@ -71,55 +124,14 @@
 		</tr>
 		<tr class="img_path">
 			<th>사진</th>
-			<td>
-				<input type="file" id="inputFile1" class="inputFileBtn">
-				<input type="file" id="inputFile2" class="inputFileBtn">
-				<input type="file" id="inputFile3" class="inputFileBtn">
+			<td><input type="file" id="inputFile1" class="inputFileBtn">
+				<br> <input type="file" id="inputFile2" class="inputFileBtn">
+				<br> <input type="file" id="inputFile3" class="inputFileBtn">
 			</td>
 		</tr>
 	</table>
 	<button id="company-insert" class="btn btn-default" id="">업체
 		등록</button>
 	<br> <br> <br> <br> <br>
-	
-	 -->
-	
-	<div class="companyTitle">상세 등록 하기</div>
-	<table class="company-detail-table">
-		<tr class="comp_no">
-			<th>업종 선택</th>
-			<td><a id="categorys" class="categorys-select">
-					<div class="col-sm-4" id="categoryFood-company">음식점</div>
-			</a> <a id="categorys" class="categorys-select">
-					<div class="col-sm-4" id="categoryLife-company">가정,생활</div>
-			</a> <a id="categorys" class="categorys-select">
-					<div class="col-sm-4" id="categoryTravle-company">여행</div>
-			</a> <a id="categorys" class="categorys-select">
-					<div class="col-sm-4" id="categorySport-company">스포츠,레저</div>
-			</a> <a id="categorys" class="categorys-select">
-					<div class="col-sm-4" id="categoryCulture-company">문화,예술</div>
-			</a> <a id="categorys" class="categorys-select">
-					<div class="col-sm-4" id="categoryEducation-company">교육,학문</div>
-			</a> <a id="categorys" class="categorys-select">
-					<div class="col-sm-4" id="categoryInstitution-company">사회,공공기관</div>
-			</a> <a id="categorys" class="categorys-select">
-					<div class="col-sm-4" id="categoryTransfer-company">교통,수송</div>
-			</a></td>
-		</tr>
-		<tr class="lon">
-			<th class="specNm"></th>
-			<td><input type="text" placeholder="경도"></td>
-		</tr>
-	</table>
-	<br> <br> <br> <br> <br>
-
 
 </div>
-
-
-<script>
-	requirejs([ 'app/company' ], function(company) {
-		company.init();
-		company.listSpec();
-	});
-</script>

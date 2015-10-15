@@ -18,7 +18,7 @@
 
  	$('#companyMenu').click(function (event) {
  		event.preventDefault();
- 		$('#content').load('html/company_main.html');
+ 		$('#content').load('html/company.html');
  	}); // company 이동 기능
 
  	$('#groupMenu').click(function (event) {

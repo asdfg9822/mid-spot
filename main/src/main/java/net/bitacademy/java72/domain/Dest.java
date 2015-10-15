@@ -10,10 +10,38 @@ public class Dest implements Serializable {
 	protected int cate_no;
 	protected String cate_nm;
 	protected String spec_nm;
+	protected int spec_no;
+	protected int comp_no;
+	protected String spec_vl;
+	protected String comp_nm;
 	
-
 	
 	
+	public int getComp_no() {
+    return comp_no;
+  }
+  public void setComp_no(int comp_no) {
+    this.comp_no = comp_no;
+  }
+  public String getSpec_vl() {
+    return spec_vl;
+  }
+  public void setSpec_vl(String spec_vl) {
+    this.spec_vl = spec_vl;
+  }
+  public String getComp_nm() {
+    return comp_nm;
+  }
+  public void setComp_nm(String comp_nm) {
+    this.comp_nm = comp_nm;
+  }
+	
+  public int getSpec_no() {
+    return spec_no;
+  }
+  public void setSpec_no(int spec_no) {
+    this.spec_no = spec_no;
+  }
   public String getSpec_nm() {
     return spec_nm;
   }

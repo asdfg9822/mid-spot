@@ -1,16 +1,17 @@
 package net.bitacademy.java72.dao;
 
+import java.util.List;
+
 import net.bitacademy.java72.domain.Dest;
 
 public interface DestDao {
-  //List<Company> list(Map<String,Object> paramMap);
-//  List<Company> list();
+  List<Dest> list(Dest dest);
 //  int delete(int no);
 //  int update(Board board);
     int insert(Dest dest);
-    Dest listSpec(Dest dest);
 //    Dest get(int no);
 //  int countAll();
+    int insertSpec(Dest dest);
 
 }
 
