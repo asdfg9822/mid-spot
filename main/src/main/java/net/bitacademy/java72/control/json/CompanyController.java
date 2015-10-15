@@ -116,10 +116,10 @@ public class CompanyController {
 	}
 
 	@RequestMapping("/likeUp")
-	public Object likeUp(@RequestParam(required = true) int compNo) {
-
-		int membNo = 1;
-		int partiNo = 1;
+	public Object likeUp(
+			@RequestParam(required = true) int compNo,
+			@RequestParam(required = true) int membNo,
+			@RequestParam(required = true) int partiNo) {
 
 		System.out.println("/json/company/likeUp.do excute..!!");
 		Map<String, Object> result = new HashMap<String, Object>();

@@ -28,6 +28,7 @@ define(['jquery', 'handlebars', 'slider', 'app/common'], function ($, handlebars
 				}
 			});
 
+			//Like Button Click Event
 			$('#tabs').on('click', '.comp_like_btn', function (event) {
 				event.preventDefault();
 				var currBtn = $(this);
@@ -244,10 +245,18 @@ define(['jquery', 'handlebars', 'slider', 'app/common'], function ($, handlebars
 			});
 		},
 		like: function (currBtn) {
+
+			var member = JSON.parse(sessionStorage.getItem('member'));
+
 			$.getJSON(contextRoot + "/json/company/likeUp.do", {
-					compNo: currBtn.attr('data-no')
+					compNo: currBtn.attr('data-no'),
+					membNo: member.memberNo,
+					partiNo: sessionStorage.getItem('meetNo')
 				},
 				function (result) {
+
+					console.log(result);
+
 					if (result.like == "off") {
 						currBtn.find('img').attr('src', './images/result/like_img_off1.png');
 					} else {
