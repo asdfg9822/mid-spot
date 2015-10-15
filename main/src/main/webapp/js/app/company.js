@@ -19,21 +19,33 @@ define([ 'jquery', 'handlebars', 'bootstrap', 'jquery.ui.widget',
 				alert('업체 등록이 완료 되었습니다.');
 			});
 
-			/*
-			 * $('.categorys-select').click(function(event){
-			 * event.preventDefault();
-			 * console.log($(this).find('div').text().trim()); });
-			 */
-		},
-		listSpec : function() {
-
-			$('.categorys-select').click(function(event) {
-				event.preventDefault();
-				var name = $(this).find('div').text().trim();
-				console.log('name :' + name);
-
-			});
-
-		} /* listSpec() */
+		}, listSpec : function() {
+		      $.getJSON(contextRoot + '/json/member/list.do',  function(result) {
+		          
+		          var tbody = $('#listTable tbody');
+		          $('.data-row').remove();
+		          
+		          // handlebars 라이브러리를 이용하여 테이블 tr 태그 생성 
+		          var source = $('#template1').html();
+		          var template = handlebars.compile(source);
+		          var content = template(result);
+		          $('#listTable tbody').html(content);
+		          
+		      });
+		    }//listSpec()
 	};
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+

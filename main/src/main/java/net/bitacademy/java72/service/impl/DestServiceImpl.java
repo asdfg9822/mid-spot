@@ -1,5 +1,9 @@
 package net.bitacademy.java72.service.impl;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,9 +47,12 @@ public class DestServiceImpl implements DestService {
   }
 
   @Override
-  public Dest listSpec(Dest dest) {
+  public List<Dest> listSpec(Dest dest) {
+    Map<String,Object> paramMap = 
+      new HashMap<String,Object>();
     return destDao.listSpec(dest);
   }
+
 
 //  @Override
 //  public Dest get(int no) {

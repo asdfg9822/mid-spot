@@ -1,7 +1,16 @@
 
+<!--
+<script id="categorySpecList" type="text/x-handlebars-template">
+{{#each data}}
+		<th class="categorySpecNm">{{spec_nm}}</th>
+{{/each}}
+</script>
+ -->
+
 <!-- <td class="categorySpec-select"></td>  -->
 
-<div id="company-info">
+ <div id="company-info">
+ 
 	<div class="companyTitle">업체 등록 하기</div>
 	<table class="company-info-table">
 		<tr class="comp_nm">
@@ -107,15 +116,27 @@
 			</a></td>
 		</tr>
 		<tr id="categorySpec">
-
+			<th class="categorySpecNm">{{spec_nm}}</th>
 		</tr>
 	</table>
 	<br> <br> <br> <br> <br>
 </div>
 
+<script id="template1" type="text/x-handlebars-template">
+{{#each data}}
+<tr id="categorySpecHandle">
+  <td>{{no}}</td>
+  <td><a class="nameLink" no="{{no}}" href="#">{{name}}</a></td>
+  <td>{{email}}</td>
+  <td>{{tel}}</td>
+  <td>{{yyyyMMdd}}</td>
+</tr> 
+{{/each}}
+</script>
+
 <script>
 	requirejs([ 'app/company' ], function(company) {
 		company.init();
-		company.listSpec();
+		/* company.listSpec(); */
 	});
 </script>
