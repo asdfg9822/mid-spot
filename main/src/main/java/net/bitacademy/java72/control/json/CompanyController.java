@@ -30,15 +30,18 @@ public class CompanyController {
 	ServletContext servletContext;
 
 	@RequestMapping("/list")
-	public Object list(@RequestParam(required = false, defaultValue = "0") int currCnt,
-			@RequestParam(required = false, defaultValue = "5") int listCnt,
-			@RequestParam(required = false, defaultValue = "1") int cateNo) {
+	public Object list(
+			@RequestParam(required = true) int membNo,
+			@RequestParam(required = true) int partiNo,
+			@RequestParam(required = true) int currCnt,
+			@RequestParam(required = true) int listCnt,
+			@RequestParam(required = true) int cateNo) {
 
+		System.out.println("membNo:" + membNo);
+		System.out.println("meetNo:" + partiNo);
+		System.out.println("cateNo:" + cateNo);
 		System.out.println("currCnt:" + currCnt);
 		System.out.println("listCnt:" + listCnt);
-
-		int membNo = 1;
-		int partiNo = 1;
 
 		Map<String, Object> result = new HashMap<String, Object>();
 

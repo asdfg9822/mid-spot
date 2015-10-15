@@ -202,8 +202,6 @@ define(['jquery', 'handlebars', 'slider', 'app/common'], function ($, handlebars
 						'section': i
 					});
 
-					//$('img[useMap]').css('background-color', 'red');
-
 					daum.maps.event.addListener(marker, 'click', function () {
 						var thisSection = $('.result_table_border_area_2[data-section=' + this.section + ']');
 						slideContent('section-' + this.section, -1, 3);
@@ -214,24 +212,34 @@ define(['jquery', 'handlebars', 'slider', 'app/common'], function ($, handlebars
 		}, // End of init()
 		listCompany: function (currCnt, listCnt, section) {
 			$(document).ready(function () {
-				$.getJSON(contextRoot + "/json/company/list.do", {
-					cateNo: section.attr('data-cate-no'),
-					currCnt: currCnt,
-					listCnt: listCnt
-				}, function (result) {
 
-					/*----------- handlebars : Content ------------*/
-					var source = $('#resultContentScript').html();
-					var template = handlebars.compile(source);
-					var content = template(result);
-					//load가 아님 append
+				var member = JSON.parse(sessionStorage.getItem('member'));
 
-					console.log(result);
+				$.ajax(contextRoot + '/json/company/list.do', {
+					method: 'POST',
+					dataType: 'json',
+					data: {
+						membNo: member.memberNo,
+						partiNo: sessionStorage.getItem('meetNo'),
+						cateNo: section.attr('data-cate-no'),
+						currCnt: currCnt,
+						listCnt: listCnt
+					},
+					success: function (result) {
+						/*----------- handlebars : Content ------------*/
+						var source = $('#resultContentScript').html();
+						var template = handlebars.compile(source);
+						var content = template(result);
+						//load가 아님 append
 
-					section.find('.result_table_border_area').append(content);
-					$('.like_img[data-isLike=' + 1 + ']').attr('src', '. /images/result/like_img.png');
+						console.log(result);
 
+						section.find('.result_table_border_area').append(content);
+						$('.like_img[data-isLike=' + 1 + ']').attr('src', '. /images/result/like_img.png');
+
+					}
 				});
+
 
 			});
 		},

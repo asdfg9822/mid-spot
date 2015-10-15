@@ -92,7 +92,7 @@ define([
 
 						// 인포윈도우로 장소에 대한 설명을 표시합니다
 						var infowindow = new daum.maps.InfoWindow({
-							content: '<div style="padding:5px;">' + result.addr[0].title  + '</div>', // 인포윈도우에 표시될 내용입니다
+							content: '<div style="padding:5px;">' + result.addr[0].title + '</div>', // 인포윈도우에 표시될 내용입니다
 							removable: true
 						});
 						infowindow.open(map, marker);
@@ -145,6 +145,11 @@ define([
 
 			console.log('lat=' + lat);
 			console.log('lng=' + lon);
+			var meetNo = sessionStorage.getItem('meetNo');
+			console.log("접속된 방 번호 :" + meetNo);
+			var member = JSON.parse(sessionStorage.getItem('member'));
+			$('#parti_no').val(meetNo);
+			$('#memb_no').val(member.memberNo);
 
 			$('#insertLat1').click(function (event) {
 				event.preventDefault();
@@ -152,8 +157,8 @@ define([
 					method: 'POST',
 					dataType: 'json',
 					data: {
-						parti_no: $('#parti_no').val(),
-						memb_no: $('#memb_no').val(),
+						parti_no: meetNo,
+						memb_no: member.memberNo,
 						lat: lat,
 						lon: lon
 					},
