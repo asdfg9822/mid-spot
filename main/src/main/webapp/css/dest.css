@@ -58,7 +58,8 @@ div a:visited {
 	margin-top: 2%;
 	margin-left: 2%;
 	width: 30%;
-	height: 30%;
+	height: 15%;
+	min-height: 80px;
 	text-align: center;
 	font-size: 150%;
 	color: #f2f2f2;
@@ -166,8 +167,9 @@ div a:visited {
 #categoryFood2-9 {
 	margin-top: 2%;
 	margin-left: 2%;
-	width: 25%;
+	width: 30%;
 	height: 15%;
+	min-height: 80px;
 	text-align: center;
 	font-size: 150%;
 	color: #f2f2f2;
@@ -274,8 +276,9 @@ div a:visited {
 #categoryLife2-5 {
 	margin-top: 2%;
 	margin-left: 2%;
-	width: 25%;
+	width: 30%;
 	height: 15%;
+	min-height: 80px;
 	text-align: center;
 	font-size: 150%;
 	color: #f2f2f2;
@@ -343,8 +346,9 @@ div a:visited {
 	background-color: #84b74f;
 	margin-top: 2%;
 	margin-left: 2%;
-	width: 25%;
+	width: 30%;
 	height: 15%;
+	min-height: 80px;
 	text-align: center;
 	font-size: 150%;
 	color: #f2f2f2;
@@ -391,8 +395,9 @@ div a:visited {
 	background-color: #d80073;
 	margin-top: 2%;
 	margin-left: 2%;
-	width: 25%;
+	width: 30%;
 	height: 15%;
+	min-height: 80px;
 	text-align: center;
 	font-size: 150%;
 	color: #f2f2f2;
@@ -485,8 +490,9 @@ div a:visited {
 	background-color: #00aba9;
 	margin-top: 2%;
 	margin-left: 2%;
-	width: 25%;
+	width: 30%;
 	height: 15%;
+	min-height: 80px;
 	text-align: center;
 	font-size: 150%;
 	color: #f2f2f2;
@@ -525,8 +531,9 @@ div a:visited {
 	background-color: #4b0096;
 	margin-top: 2%;
 	margin-left: 2%;
-	width: 25%;
+	width: 30%;
 	height: 15%;
+	min-height: 80px;
 	text-align: center;
 	font-size: 150%;
 	color: #f2f2f2;
@@ -564,8 +571,9 @@ div a:visited {
 	background-color: #fa6800;
 	margin-top: 2%;
 	margin-left: 2%;
-	width: 25%;
+	width: 30%;
 	height: 15%;
+	min-height: 80px;
 	text-align: center;
 	font-size: 150%;
 	color: #f2f2f2;
@@ -602,8 +610,9 @@ div a:visited {
 	background-color: #16499a;
 	margin-top: 2%;
 	margin-left: 2%;
-	width: 25%;
+	width: 30%;
 	height: 15%;
+	min-height: 80px;
 	text-align: center;
 	font-size: 150%;
 	color: #f2f2f2;
