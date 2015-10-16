@@ -18,7 +18,6 @@ define([
 					console.log($(this).text().trim());
 				});
 
-
 				$('.categorys-select').click(function (event) {
 					event.preventDefault();
 

@@ -13,19 +13,17 @@
 #categorySection7,
 #categorySection8 {
 	width: 100%;
-	height: 500px;
+	height: 100%;
+	min-height: 400px;
 }
 
 div a:HOVER {
-	/*	*/
 	text-decoration: none;
 }
 div a:link {
-	/*	*/
 	text-decoration: none;
 }
 div a:visited {
-	/*	*/
 	text-decoration: none;
 }
 
@@ -42,7 +40,7 @@ div a:visited {
 	height: 10%;
 	margin-top: 1%;
 	padding-top: 2%;
-	padding-bottom: 7%;
+	padding-bottom: 4%;
 	background-color: #f2f2f2;
 	font-size: 130%;
 	box-shadow: 2px 2px 2px #888888;
@@ -59,8 +57,8 @@ div a:visited {
 #categoryFood {
 	margin-top: 2%;
 	margin-left: 2%;
-	width: 25%;
-	height: 20%;
+	width: 30%;
+	height: 30%;
 	text-align: center;
 	font-size: 150%;
 	color: #f2f2f2;
