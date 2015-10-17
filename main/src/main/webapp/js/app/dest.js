@@ -51,7 +51,7 @@ define([
 						window.scroll(0, getOffsetTop(document.getElementById("categoryNm8")));
 					}
 				});
-
+/*d*/
 				var categoryList = new Array(); // 배열을 만들어서 선택한 id값 저장할 배열 생성
 
 				$('.btn_cate_select').click(function (event) {
