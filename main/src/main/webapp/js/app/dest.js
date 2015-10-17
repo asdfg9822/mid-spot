@@ -58,16 +58,25 @@ define([
 					event.preventDefault();
 					
 					categoryList.push($(this).find('div').text().trim());
+					var cate = $(this).find('div').text().trim();
+					console.log(categoryList);
 					
-					var tag = "<th class='category-selected'>"
-						+$(this).find('div').text().trim()
-						+"</th>";
+					var tag = "<div class='category-selected' id='"+cate+"'>"
+						+$(this).find('div').text().trim()+"</div>";
 					
-					$(".category-selected-list").append(tag);
-					
-					console.log(tag);
-//					
+					$(".category-selected-list").after(tag);
 				});
+				
+				$('#categoryNm').click(function (event) {
+					event.preventDefault();
+					
+					console.log($(this).find('div#한식.category-selected').attr('id'));
+					
+//					$(this).find('th').removeClass('category-selected', 1000);
+					
+				});
+				
+				
 
 				$('#insertRcmd').click(function (event) {
 					console.log('인서트 실행 준비');

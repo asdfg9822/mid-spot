@@ -28,22 +28,8 @@ div a:visited {
 	text-decoration: none;
 }
 
-.category-selected-list th {
-	height: 100%;
-	max-height: 100px;
-	min-height: 50px;
-	background-color: #16499a;
-	border: 1px solid #f2f2f2;
-	color: white;
-	text-align: center;
-	border-left-width: 1em;
-	border-right-width: 1em;
-	padding: 1em;
-}
-
 #insertRcmd {
-	width: 70%;
-	height: 120%;
+	width: 15%;
 	text-align: center;
 	color: #333333;
 	font-size: 100%;
@@ -51,6 +37,9 @@ div a:visited {
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	outline-style: none;
+	display: inline-block;
+	padding-top: 1em;
+	padding-bottom: 1em;
 }
 
 #insertRcmd:ACTIVE {
@@ -61,6 +50,21 @@ div a:visited {
 #category-permision-info {
 	color: red;
 	font-size: 80%;
+}
+
+.category-selected {
+	width: 20%;
+	height: 100%;
+	max-height: 100px;
+	min-height: 20px;
+	background-color: #16499a;
+	border: 1px solid #f2f2f2;
+	color: white;
+	text-align: center;
+	display: inline-block;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	margin-right: 1%;
 }
 
 #categoryNm,
