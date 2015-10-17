@@ -46,6 +46,17 @@ public class DestController {
     return result;
   }
   
+  @RequestMapping("/listPermision")
+  public Object listPermision(Dest dest) {
+    System.out.println("listPermision");
+    Map<String,Object> result = 
+        new HashMap<String,Object>();
+    
+    result.put("data", destService.listPermision(dest));
+    
+    return result;
+  }
+  
   /*@RequestMapping("/delete")
   public Object delete(int no) {
     int count = boardService.delete(no);

@@ -43,6 +43,10 @@ public class DestServiceImpl implements DestService {
     // TODO Auto-generated method stub
     return destDao.insertSpec(dest);
   }
+  @Override
+  public List<Dest> listPermision(Dest dest) {
+    return destDao.listPermision(dest);
+  }
 
 
 //  @Override

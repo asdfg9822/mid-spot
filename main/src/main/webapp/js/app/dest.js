@@ -69,7 +69,6 @@ define([
 //					
 				});
 
-
 				$('#insertRcmd').click(function (event) {
 					console.log('인서트 실행 준비');
 					event.preventDefault();
@@ -77,29 +76,40 @@ define([
 					var meetNo = sessionStorage.getItem('meetNo');
 					console.log("접속된 방 번호 :" + meetNo);
 					
+//					var membNo = 
+					var member = JSON.parse(sessionStorage.getItem('member'));
+					var memberNo = member.memberNo;
+					console.log('w접속자 번호 :'+memberNo);
 					
-					if(meetNo != null) {
-						//선택한 카테고리갯수 만큼 입력
-						for (index = 0; index < categoryList.length; index++) {
-							$.ajax(contextRoot + '/json/dest/insert.do', {
-								method: 'POST',
-								dataType: 'json',
-								data: {
-									meet_no: meetNo,
-									cate_nm: categoryList[index]
-								},
-							});
-							$('#category-permision-info').remove();
-						}
-					} else {
-						if ($("#category-permision-info").text() == '') {
-							var permisiontag = "카테고리를 입력할 수 있는 권한이 없습니다.";
-							$("#category-permision-info").append(permisiontag);
+					$.getJSON(contextRoot + '/json/dest/listPermision.do?memb_no='
+							+ memberNo, function(result) {
+						var meetNoPermision = result.data[0].meet_no;
+
+						if(meetNo == meetNoPermision) {
+							//선택한 카테고리갯수 만큼 입력
+							for (index = 0; index < categoryList.length; index++) {
+								$.ajax(contextRoot + '/json/dest/insert.do', {
+									method: 'POST',
+									dataType: 'json',
+									data: {
+										meet_no: meetNo,
+										cate_nm: categoryList[index]
+									},
+								});
+								$('#category-permision-info').remove();
+							}
+						} else {
+							if ($("#category-permision-info").text() == '') {
+								var permisiontag = "카테고리를 입력할 수 있는 권한이 없습니다.";
+								$("#category-permision-info").append(permisiontag);
+							}
+							
 						}
 						
-					}
-					console.log('입력 종료');
+					});
+					
 
+					
 				});
 
 			} //init 종료

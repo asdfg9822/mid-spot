@@ -14,10 +14,19 @@ public class Dest implements Serializable {
 	protected int comp_no;
 	protected String spec_vl;
 	protected String comp_nm;
+	protected int memb_no;
+	
+
+  
 	
 	
-	
-	public int getComp_no() {
+	public int getMemb_no() {
+    return memb_no;
+  }
+  public void setMemb_no(int memb_no) {
+    this.memb_no = memb_no;
+  }
+  public int getComp_no() {
     return comp_no;
   }
   public void setComp_no(int comp_no) {

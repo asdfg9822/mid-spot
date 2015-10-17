@@ -3,7 +3,7 @@
  	console.log("==>main.js Excute..!!");
 
  	/*------------Test Value Zone ---------*/
- 	sessionStorage.setItem('meetNo', 4);
+ 	sessionStorage.setItem('meetNo', 24);
 
 
  	/*------------End of Test Value Zone ---------*/

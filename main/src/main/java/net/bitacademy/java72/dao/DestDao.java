@@ -12,6 +12,7 @@ public interface DestDao {
 //    Dest get(int no);
 //  int countAll();
     int insertSpec(Dest dest);
+    List<Dest> listPermision(Dest dest);
 
 }
 

@@ -8,10 +8,11 @@
 		<result column="cate_no" property="cate_no" />
 		<result column="cate_nm" property="cate_nm" />
 		<result column="spec_nm" property="spec_nm" />
-		<result column="spec_no" property="spec_no" /> <!--  -->
+		<result column="spec_no" property="spec_no" /> <!--insertSpec -->
 		<result column="comp_no" property="comp_no" />
 		<result column="spec_vl" property="spec_vl" />
 		<result column="comp_nm" property="comp_nm" />
+		<result column="memb_no" property="memb_no" /><!--listPermision  -->
 	</resultMap>
 
 	<insert id="insert" parameterType="Dest">
@@ -22,19 +23,30 @@
 	</insert>
 
 	<select id="list" parameterType="Dest" resultMap="DestMap">
-		select spec_nm,t1.cate_no
+		select
+		spec_nm,t1.cate_no
 		from spec_tb t1
-		left outer join cate_tb t2 on t1.cate_no=t2.cate_no
+		left outer join cate_tb t2 on
+		t1.cate_no=t2.cate_no
 		where t2.cate_nm=#{cate_nm};
 	</select>
 
 	<insert id="insertSpec" parameterType="Dest">
 		insert into comp_spec_tb
 		(spec_no,comp_no,spec_vl)
-		values ((select spec_no from spec_tb where cate_no=#{cate_no} and
+		values ((select spec_no from spec_tb where
+		cate_no=#{cate_no} and
 		spec_nm=#{spec_nm}),
-		(select comp_no from comp_tb where comp_nm=#{comp_nm}),#{spec_vl});
+		(select comp_no from comp_tb
+		where comp_nm=#{comp_nm}),#{spec_vl});
 	</insert>
+
+	<select id="listPermision" parameterType="Dest" resultMap="DestMap">
+		select meet_no
+		from meet_tb t1
+		left outer join memb_tb t2 on t1.memb_no=t2.memb_no
+		where t2.memb_no=#{memb_no};
+	</select>
 
 </mapper>
 
