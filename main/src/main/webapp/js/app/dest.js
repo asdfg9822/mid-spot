@@ -1,5 +1,6 @@
 define([
 		'jquery',
+		'handlebars',
 		'bootstrap',
 		'jquery.ui.widget',
 		'jquery.iframe-transport',
@@ -7,7 +8,7 @@ define([
 		'canvas-to-blob',
 		'load-image',
 		'app/common'
-		], function ($) {
+		], function ($, handlebars) {
 
 	return {
 		init: function () {
@@ -55,8 +56,16 @@ define([
 
 				$('.btn_cate_select').click(function (event) {
 					event.preventDefault();
+					
 					categoryList.push($(this).find('div').text().trim());
-					console.log(categoryList);
+					
+					var tag = "<th class='category-selected'>"
+						+$(this).find('div').text().trim()
+						+"</th>";
+					
+					$(".category-selected-list").append(tag);
+					console.log(tag);
+					
 				});
 
 
