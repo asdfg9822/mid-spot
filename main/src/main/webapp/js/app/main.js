@@ -1,4 +1,4 @@
- define(['jquery', 'app/common'], function ($) {
+ define(['jquery', 'app/common', 'bootstrap'], function ($) {
 
  	console.log("==>main.js Excute..!!");
 
@@ -21,6 +21,11 @@
  		$('#content').load('html/company_main.html');
  	}); // company 이동 기능
 
+ 	$('#homeMenu').click(function (event) {
+ 		event.preventDefault();
+ 		$('#content').load('html/home.html');
+ 	});
+
  	$('#groupMenu').click(function (event) {
  		event.preventDefault();
  		$('#content').load('html/meet_list.html');
@@ -28,7 +33,7 @@
  	//Header 목적 Button
  	$('#destMenu').click(function (event) {
  		event.preventDefault();
- 		$('#sidebar2-item1-content').load('html/dest_spec_search.html');
+ 		$('#sidebar-item1-content').load('html/dest_spec_search.html');
  		$('#content').load('html/dest.html');
  	});
  	//Header 출발 Button

@@ -1,7 +1,7 @@
 /* Mid Spot Custom Styles */
 
 #mainNav {
-	background-color: #337ab7;
+	background-color: #3b5999;
 	border: none;
 }
 
@@ -91,6 +91,24 @@
 
 
 /* Icon Def */
+
+.logo {
+	display: block;
+	padding: 3px;
+	background-color: #fff;
+	color: #3B5999;
+	height: 28px;
+	width: 28px;
+	margin: 9px;
+	margin-right: 2px;
+	margin-left: 15px;
+	font-size: 20px;
+	font-weight: 700;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 0 0 1px;
+	border-radius: 2px;
+}
 
 
 /*-------------File Icon Definition --------------*/
@@ -209,7 +227,8 @@
 	height: 100%;
 	margin-left: -250px;
 	overflow-y: auto;
-	background: #FAFAFA;
+	color: white;
+	background-color: #444444;
 	-webkit-transition: all 0.5s ease;
 	-moz-transition: all 0.5s ease;
 	-o-transition: all 0.5s ease;

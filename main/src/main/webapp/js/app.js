@@ -43,6 +43,9 @@ requirejs.config({
 	shim: {
 		"datatables": {
 			"deps": ['jquery']
+		},
+		"bootstrap": {
+			"deps": ['jquery']
 		}
 	}
 });
