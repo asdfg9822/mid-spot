@@ -64,8 +64,9 @@ define([
 						+"</th>";
 					
 					$(".category-selected-list").append(tag);
-					console.log(tag);
 					
+					console.log(tag);
+//					
 				});
 
 
@@ -75,19 +76,29 @@ define([
 
 					var meetNo = sessionStorage.getItem('meetNo');
 					console.log("접속된 방 번호 :" + meetNo);
-
-					//선택한 카테고리갯수 만큼 입력
-					for (index = 0; index < categoryList.length; index++) {
-						$.ajax(contextRoot + '/json/dest/insert.do', {
-							method: 'POST',
-							dataType: 'json',
-							data: {
-								meet_no: meetNo,
-								cate_nm: categoryList[index]
-							},
-						});
-						console.log(categoryList[index]);
+					
+					
+					if(meetNo != null) {
+						//선택한 카테고리갯수 만큼 입력
+						for (index = 0; index < categoryList.length; index++) {
+							$.ajax(contextRoot + '/json/dest/insert.do', {
+								method: 'POST',
+								dataType: 'json',
+								data: {
+									meet_no: meetNo,
+									cate_nm: categoryList[index]
+								},
+							});
+							$('#category-permision-info').remove();
+						}
+					} else {
+						if ($("#category-permision-info").text() == '') {
+							var permisiontag = "카테고리를 입력할 수 있는 권한이 없습니다.";
+							$("#category-permision-info").append(permisiontag);
+						}
+						
 					}
+					console.log('입력 종료');
 
 				});
 

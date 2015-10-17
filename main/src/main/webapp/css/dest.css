@@ -58,6 +58,10 @@ div a:visited {
 	background-color:  #333333; 
 }
 
+#category-permision-info {
+	color: red;
+	font-size: 80%;
+}
 
 #categoryNm,
 #categoryNm1,
