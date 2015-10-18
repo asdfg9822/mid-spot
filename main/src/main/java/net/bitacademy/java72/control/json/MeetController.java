@@ -126,6 +126,21 @@ public class MeetController {
     return result;
   }
   
+  @RequestMapping("/parti")
+  public Object parti(
+		  @RequestParam(required=false, defaultValue="1") int membNo) {
+    
+    Map<String,Object> result = 
+        new HashMap<String,Object>();
+    
+    List<PartiMemb> list = meetService.partiMembList(2);
+    for (PartiMemb partiMemb : list) {
+		System.out.println(partiMemb);
+	}
+    
+    return result;
+  }
+  
 }
 
 
