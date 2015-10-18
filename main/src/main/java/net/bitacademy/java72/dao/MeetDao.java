@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import net.bitacademy.java72.domain.Meet;
+import net.bitacademy.java72.domain.PartiMemb;
 
 public interface MeetDao {
   List<Meet> list(Map<String,Object> paramMap);
@@ -12,6 +13,7 @@ public interface MeetDao {
   int insert(Meet meet);
   Meet get(int meetNo);
   int countAll();
+  List<PartiMemb> partiMembList(int partiNo);
 }
 
 

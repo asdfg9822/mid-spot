@@ -3,54 +3,75 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="net.bitacademy.java72.dao.MeetDao">
-  <resultMap type="Meet" id="MeetMap">
-    <id     column="meet_no"      property="meetNo" />
-    <result column="meet_nm"   property="meetName" />
-    <result column="meet_dt"    property="meetDate" />
-    <result column="img_path" property="meetImg" />
-    <result column="memb_no" property="memberNo" />
-    <result column="parti_no" property="partiNo" />
-    <result column="memb_nm" property="memberName"/>
-    
-  </resultMap>
-  
-   <select id="list" parameterType="map" resultMap="MeetMap">
-    SELECT meet_no, memb_no, meet_nm, meet_dt
-    FROM meet_tb
-    where memb_no=1
-    ORDER BY meet_no desc
-  </select>
-  
-  
-  
-  <select id="countAll" resultType="int">
-    SELECT count(*) 
-    FROM meet_tb
-  </select>
-  
-  
-   <insert id="insert" parameterType="Meet">
-    INSERT INTO meet_tb(meet_nm,meet_dt,memb_no)
-    values(#{meetName},#{meetDate},#{memberNo})
-  </insert>
-  
-  
-  <delete id="delete" parameterType="int">
-    DELETE FROM board10 WHERE bno=#{value}
-  </delete>
+	<resultMap type="Meet" id="MeetMap">
+		<id column="meet_no" property="meetNo" />
+		<result column="meet_nm" property="meetName" />
+		<result column="meet_dt" property="meetDate" />
+		<result column="img_path" property="meetImg" />
+		<result column="memb_no" property="memberNo" />
+		<result column="parti_no" property="partiNo" />
+		<result column="memb_nm" property="memberName" />
+
+	</resultMap>
+
+	<resultMap type="PartiMemb" id="PartiMembMap">
+		<result column="parti_no" property="partiNo" />
+		<result column="memb_no" property="membNo" />
+		<result column="memb_nm" property="membNm" />
+		<result column="email" property="email" />
+		<result column="get_site" property="getSite" />
+		<result column="lat" property="lat" />
+		<result column="lon" property="lon" />
+		<result column="status" property="status" />
+		<result column="notice_dt" property="noticeDate" />
+	</resultMap>
+
+	<select id="list" parameterType="map" resultMap="MeetMap">
+		SELECT meet_no, memb_no, meet_nm, meet_dt
+		FROM meet_tb
+		where memb_no=1
+		ORDER BY meet_no desc
+	</select>
+
+
+
+	<select id="countAll" resultType="int">
+		SELECT count(*)
+		FROM meet_tb
+	</select>
+
+
+	<insert id="insert" parameterType="Meet">
+		INSERT INTO meet_tb(meet_nm,meet_dt,memb_no)
+		values(#{meetName},#{meetDate},#{memberNo})
+	</insert>
+
+
+	<delete id="delete" parameterType="int">
+		DELETE FROM board10 WHERE bno=#{value}
+	</delete>
 
 	<update id="update" parameterType="Board">
 		UPDATE board10 SET
 		title=#{title},
 		content=#{content},
 		att_file1=#{attachFile1}
-		WHERE bno=#{no}
+		WHERE
+		bno=#{no}
 	</update>
 
 	<select id="get" parameterType="int" resultMap="MeetMap">
 		SELECT *
-		FROM meet_tb
+		FROM
+		meet_tb
 		natural join parti_tb where meet_no=1 limit 0,1
+	</select>
+
+	<select id="partiMembList" parameterType="int" resultMap="PartiMembMap">
+		SELECT *
+		FROM memb_tb
+		NATURAL JOIN parti_tb memb_no
+		WHERE parti_no=#{partiNo};
 	</select>
 
 </mapper>

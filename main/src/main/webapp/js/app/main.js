@@ -26,10 +26,11 @@
  		$('#content').load('html/home.html');
  	});
 
- 	$('#groupMenu').click(function (event) {
+ 	$('#meetMenu').click(function (event) {
  		event.preventDefault();
  		$('#content').load('html/meet_list.html');
  	});
+
  	//Header 목적 Button
  	$('#destMenu').click(function (event) {
  		event.preventDefault();
@@ -49,6 +50,8 @@
  		event.preventDefault();
  		$('#content').load('html/result_jh.html');
  	});
+
+ 	$('#meetMenu').trigger('click');
 
  	//Login Info, Login Form Toggle
  	$('#loginSuccess').click(function () {

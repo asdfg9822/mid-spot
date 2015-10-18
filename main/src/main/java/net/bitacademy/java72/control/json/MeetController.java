@@ -1,17 +1,19 @@
 package net.bitacademy.java72.control.json;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
-
-import net.bitacademy.java72.domain.Meet;
-import net.bitacademy.java72.service.MeetService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import net.bitacademy.java72.domain.Meet;
+import net.bitacademy.java72.domain.PartiMemb;
+import net.bitacademy.java72.service.MeetService;
 
 @Controller("json.MeetController")
 @RequestMapping("/json/meet")
@@ -19,8 +21,6 @@ public class MeetController {
   @Autowired MeetService meetService;
   @Autowired ServletContext servletContext;
 
-  
-  
   
   @RequestMapping("/delete")
   public Object delete(int no) {
@@ -111,6 +111,21 @@ public class MeetController {
     
     return result;
   }
+  
+  @RequestMapping("/parti")
+  public Object parti() {
+    
+    Map<String,Object> result = 
+        new HashMap<String,Object>();
+    
+    List<PartiMemb> list = meetService.partiMembList(2);
+    for (PartiMemb partiMemb : list) {
+		System.out.println(partiMemb);
+	}
+    
+    return result;
+  }
+  
 }
 
 

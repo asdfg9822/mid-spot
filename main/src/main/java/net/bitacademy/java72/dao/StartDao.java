@@ -1,5 +1,8 @@
 package net.bitacademy.java72.dao;
 
+import java.util.List;
+
+import net.bitacademy.java72.domain.PartiMemb;
 import net.bitacademy.java72.domain.Start;
 
 public interface StartDao {
@@ -10,6 +13,7 @@ public interface StartDao {
     int insert(Start start);
 //  Board get(int no);
 //  int countAll();
+    List<PartiMemb> partiMembList(int partiNo);
 }
 
 

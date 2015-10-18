@@ -11,11 +11,30 @@
     <result column="status" 	property="status" />
     <result column="notice_dt"  property="createDate" />
   </resultMap>
+  
+  <resultMap type="PartiMemb" id="PartiMembMap">
+    <result column="parti_no"    property="partiNo" />
+    <result column="memb_no"    property="membNo" />
+    <result column="memb_nm"    property="membNm" />
+    <result column="email"    property="email" />
+    <result column="get_site"    property="getSite" />
+    <result column="lat"        property="lat" />
+    <result column="lon"      property="lon" />
+    <result column="status"   property="status" />
+    <result column="notice_dt"  property="noticeDate" />
+  </resultMap>
 
   <insert id="insert" parameterType="Start">
     insert into parti_tb(parti_no, memb_no, lat, lon, notice_dt) 
     values(#{parti_no},#{memb_no},#{lat},#{lon},now());
   </insert>
+  
+   <select id="partiMembList" parameterType="int" resultMap="PartiMembMap">
+    SELECT * 
+    FROM memb_tb 
+    NATURAL JOIN parti_tb memb_no 
+    WHERE parti_no=#{partiNo};
+  </select>
   
 </mapper>
 
