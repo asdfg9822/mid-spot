@@ -3,7 +3,7 @@
  	console.log("==>main.js Excute..!!");
 
  	/*------------Test Value Zone ---------*/
- 	sessionStorage.setItem('meetNo', 24);
+ 	sessionStorage.setItem('meetNo', 23);
 
 
  	/*------------End of Test Value Zone ---------*/
@@ -39,9 +39,9 @@
  	//Header 출발 Button
  	$('#startMenu').click(function (event) {
  		event.preventDefault();
- 		$('#sidebar2 #sidebar2-title-text').text("출발지 설정");
- 		$('#sidebar2-item1-title').text("출발지를 입력하세요.");
- 		//		$('#sidebar2-item1-content').load('html/start_insert.html');
+ 		$('#sidebar-item1-title').remove();
+ 		$('#sidebar-item1-content').remove();
+ 		$('#sidebar-item2-content').load('html/start_side.html');
  		$('#content').load('html/start.html');
  	});
  	//Header 중간여기 Button
