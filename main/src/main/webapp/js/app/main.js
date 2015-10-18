@@ -3,7 +3,7 @@
  	console.log("==>main.js Excute..!!");
 
  	/*------------Test Value Zone ---------*/
- 	sessionStorage.setItem('meetNo', 4);
+ 	sessionStorage.setItem('meetNo', 24);
 
 
  	/*------------End of Test Value Zone ---------*/
@@ -18,7 +18,7 @@
 
  	$('#companyMenu').click(function (event) {
  		event.preventDefault();
- 		$('#content').load('html/company_main.html');
+ 		$('#content').load('html/company.html');
  	}); // company 이동 기능
 
  	$('#homeMenu').click(function (event) {

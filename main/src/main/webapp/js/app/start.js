@@ -42,7 +42,7 @@ define([
 					var coord = new daum.maps.LatLng(lat, lon);
 					var callback = function (status, result) {
 						if (status === daum.maps.services.Status.OK) {
-
+							
 							// 요청위치에 건물이 없는 경우 도로명 주소는 빈값입니다
 							/* console.log('도로명 주소 : ' + result[0].roadAddress.name);
 							console.log('지번 주소 : ' + result[0].jibunAddress.name); */
@@ -54,7 +54,7 @@ define([
 
 						// 마커와 인포윈도우를 표시합니다
 						displayMarker(locPosition, message);
-
+						
 					};
 
 					geocoder.coord2detailaddr({
@@ -69,12 +69,11 @@ define([
 
 				// 주소로 좌표를 검색합니다
 				var geocoder = new daum.maps.services.Geocoder();
-
-				// 장소 검색 객체를 생성합니다
-				var ps = new daum.maps.services.Places();
-
+				
 				// 입력 받을 키워드
 				var keyword = document.getElementById('keyword').value;
+				
+//				ps.keywordSearch(keyword, placesSearchCB); 
 
 				geocoder.addr2coord(keyword, function (status, result) {
 
@@ -82,7 +81,7 @@ define([
 					if (status === daum.maps.services.Status.OK) {
 
 						var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
-
+						
 						// 결과값으로 받은 위치를 마커로 표시합니다
 						var marker = new daum.maps.Marker({
 							map: map,
@@ -100,6 +99,7 @@ define([
 						// 지도 중심좌표를 접속위치로 변경합니다
 						map.setCenter(coords);
 						moduleObj.insertStart(coords);
+						
 
 					} else {
 						alert('해당 주소가 없습니다.');
@@ -138,10 +138,8 @@ define([
 
 		},
 		insertStart: function (locPosition) {
-			console.log('원래위도' + locPosition.vb);
-			console.log('원래경도' + locPosition.wb);
-			var lat = locPosition.vb;
-			var lon = locPosition.wb;
+			var lat = locPosition.zb;
+			var lon = locPosition.yb;
 
 			console.log('lat=' + lat);
 			console.log('lng=' + lon);

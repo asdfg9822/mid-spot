@@ -4,7 +4,7 @@ table.company-detail-table {
 	border-spacing: 0;
 	text-align: left;
 	line-height: 1.5;
-	width: 80%;
+	width: 90%;
 	line-height: 1.5;
 	border-top: 1px solid #ccc;
 	border-left: 1px solid #ccc;
@@ -75,7 +75,8 @@ table.company-detail-table input {
 #categoryTransfer-company,
 #categoryFood-company {
 	width: 30%;
-	height: 30px;
+	height: 100%;
+	min-height: 45px;
 	text-align: center;
 	font-size: 100%;
 	color: #333333;
@@ -103,4 +104,9 @@ table.company-detail-table input {
 #categoryFood-company:active {
 	color: #f2f2f2;
 	background-color: #333333;
+}
+
+#company-insert,
+#company-spec-insert {
+	width: 90%;
 }

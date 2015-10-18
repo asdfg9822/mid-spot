@@ -13,20 +13,58 @@
 #categorySection7,
 #categorySection8 {
 	width: 100%;
-	height: 500px;
-}
+	height: 100%;
+	min-height: 400px;
+} 
+
 
 div a:HOVER {
-	/*	*/
 	text-decoration: none;
 }
 div a:link {
-	/*	*/
 	text-decoration: none;
 }
 div a:visited {
-	/*	*/
 	text-decoration: none;
+}
+
+#insertRcmd {
+	width: 15%;
+	text-align: center;
+	color: #333333;
+	font-size: 100%;
+	background-color: white;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	outline-style: none;
+	display: inline-block;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+#insertRcmd:ACTIVE {
+	color:white;
+	background-color:  #333333; 
+}
+
+#category-permision-info {
+	color: red;
+	font-size: 80%;
+}
+
+.category-selected {
+	width: 20%;
+	height: 100%;
+	max-height: 100px;
+	min-height: 20px;
+	background-color: #16499a;
+	border: 1px solid #f2f2f2;
+	color: white;
+	text-align: center;
+	display: inline-block;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	margin-right: 1%;
 }
 
 #categoryNm,
@@ -42,7 +80,7 @@ div a:visited {
 	height: 10%;
 	margin-top: 1%;
 	padding-top: 2%;
-	padding-bottom: 7%;
+	padding-bottom: 4%;
 	background-color: #f2f2f2;
 	font-size: 130%;
 	box-shadow: 2px 2px 2px #888888;
@@ -59,8 +97,9 @@ div a:visited {
 #categoryFood {
 	margin-top: 2%;
 	margin-left: 2%;
-	width: 25%;
-	height: 20%;
+	width: 30%;
+	height: 15%;
+	min-height: 80px;
 	text-align: center;
 	font-size: 150%;
 	color: #f2f2f2;
@@ -168,8 +207,9 @@ div a:visited {
 #categoryFood2-9 {
 	margin-top: 2%;
 	margin-left: 2%;
-	width: 25%;
+	width: 30%;
 	height: 15%;
+	min-height: 80px;
 	text-align: center;
 	font-size: 150%;
 	color: #f2f2f2;
@@ -276,8 +316,9 @@ div a:visited {
 #categoryLife2-5 {
 	margin-top: 2%;
 	margin-left: 2%;
-	width: 25%;
+	width: 30%;
 	height: 15%;
+	min-height: 80px;
 	text-align: center;
 	font-size: 150%;
 	color: #f2f2f2;
@@ -345,8 +386,9 @@ div a:visited {
 	background-color: #84b74f;
 	margin-top: 2%;
 	margin-left: 2%;
-	width: 25%;
+	width: 30%;
 	height: 15%;
+	min-height: 80px;
 	text-align: center;
 	font-size: 150%;
 	color: #f2f2f2;
@@ -393,8 +435,9 @@ div a:visited {
 	background-color: #d80073;
 	margin-top: 2%;
 	margin-left: 2%;
-	width: 25%;
+	width: 30%;
 	height: 15%;
+	min-height: 80px;
 	text-align: center;
 	font-size: 150%;
 	color: #f2f2f2;
@@ -487,8 +530,9 @@ div a:visited {
 	background-color: #00aba9;
 	margin-top: 2%;
 	margin-left: 2%;
-	width: 25%;
+	width: 30%;
 	height: 15%;
+	min-height: 80px;
 	text-align: center;
 	font-size: 150%;
 	color: #f2f2f2;
@@ -527,8 +571,9 @@ div a:visited {
 	background-color: #4b0096;
 	margin-top: 2%;
 	margin-left: 2%;
-	width: 25%;
+	width: 30%;
 	height: 15%;
+	min-height: 80px;
 	text-align: center;
 	font-size: 150%;
 	color: #f2f2f2;
@@ -566,8 +611,9 @@ div a:visited {
 	background-color: #fa6800;
 	margin-top: 2%;
 	margin-left: 2%;
-	width: 25%;
+	width: 30%;
 	height: 15%;
+	min-height: 80px;
 	text-align: center;
 	font-size: 150%;
 	color: #f2f2f2;
@@ -604,8 +650,9 @@ div a:visited {
 	background-color: #16499a;
 	margin-top: 2%;
 	margin-left: 2%;
-	width: 25%;
+	width: 30%;
 	height: 15%;
+	min-height: 80px;
 	text-align: center;
 	font-size: 150%;
 	color: #f2f2f2;
