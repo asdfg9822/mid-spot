@@ -1,7 +1,6 @@
 package net.bitacademy.java72.domain;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 public class Member implements Serializable {
 	private static final long serialVersionUID = 1L;

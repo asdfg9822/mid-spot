@@ -4,7 +4,31 @@
 	}
 </style>
 
-<div class="row pricing-table">
+
+<script id="meetListScript" type="text/x-handlebars-template">
+	{{#each data}}
+	<div class="col-md-4">
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<h3 class="text-center">{{meetDate}}</h3></div>
+			<div class="panel-body text-center">
+				<p class="lead" style="font-size:40px"><strong>{{meetName}}</strong></p>
+			</div>
+			<ul class="list-group list-group-flush text-center">
+				<li class="list-group-item"><i class="icon-ok text-danger"></i> 방장:<span class="master_name" data-id="{{masterNo}}">{{masterName}}</span> / 참여 인원 : {{partiList.length}}</li>
+				<li class="list-group-item"><i class="icon-ok text-danger"></i>{{#each partiList}} <span class="member_name" data-id="{{memberNo}}">{{memberName}}</span> {{/each}}</li>
+				<li class="list-group-item"><i class="icon-ok text-danger"></i> 공유 URL : <a href="#">http://local.midspot.com/main?meetNo={{meetNo}}</a></li>
+			</ul>
+			<div class="panel-footer">
+				<a class="enter_btn btn btn-lg btn-block btn-success" data-no="{{meetNo}}" href="https://creativemarket.com/artlabs/12114-Bootstrap-3.0.-pricing-tables-flat">입장하기
+				</a>
+			</div>
+		</div>
+	</div>
+	{{/each}}
+</script>
+
+<div id="meetListArea" class="row pricing-table">
 	<div class="col-md-4">
 		<div class="panel panel-danger">
 			<div class="panel-heading">
@@ -18,10 +42,9 @@
 				<li class="list-group-item"><i class="icon-ok text-danger"></i> 공유 URL : {{URL}}</li>
 			</ul>
 			<div class="panel-footer">
-				<a class="btn btn-lg btn-block btn-danger" href="https://creativemarket.com/artlabs/12114-Bootstrap-3.0.-pricing-tables-flat">입장하기</a>
+				<a class="btn btn-lg btn-block btn-success" href="https://creativemarket.com/artlabs/12114-Bootstrap-3.0.-pricing-tables-flat">입장하기</a>
 			</div>
 		</div>
-
 	</div>
 	<div class="col-md-4">
 		<div class="panel panel-info">
@@ -62,3 +85,10 @@
 
 	</div>
 </div>
+
+
+<script>
+	requirejs(['app/meet_list'], function (meet) {
+		meet.init();
+	});
+</script>

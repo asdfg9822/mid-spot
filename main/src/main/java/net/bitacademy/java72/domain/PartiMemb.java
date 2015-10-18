@@ -7,8 +7,8 @@ public class PartiMemb implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	protected int partiNo; 
-	protected int membNo; 
-	protected String membNm;
+	protected int memberNo;
+	protected String memberName;
 	protected String email;
 	protected String getSite;
 	protected String addressNo;
@@ -19,25 +19,37 @@ public class PartiMemb implements Serializable {
 	protected String status;
 	protected String noticeDate;
 	
+	@Override
+	public String toString() {
+		return "PartiMemb [partiNo=" + partiNo + ", memberNo=" + memberNo + ", memberName=" + memberName + ", email="
+				+ email + ", getSite=" + getSite + ", addressNo=" + addressNo + ", addressDet=" + addressDet
+				+ ", imageUrl=" + imageUrl + ", lat=" + lat + ", lon=" + lon + ", status=" + status + ", noticeDate="
+				+ noticeDate + "]";
+	}
 	
+	public int getMemberNo() {
+		return memberNo;
+	}
+
+	public void setMemberNo(int memberNo) {
+		this.memberNo = memberNo;
+	}
+
+	public String getMemberName() {
+		return memberName;
+	}
+
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+
 	public int getPartiNo() {
 		return partiNo;
 	}
 	public void setPartiNo(int partiNo) {
 		this.partiNo = partiNo;
 	}
-	public int getMembNo() {
-		return membNo;
-	}
-	public void setMembNo(int membNo) {
-		this.membNo = membNo;
-	}
-	public String getMembNm() {
-		return membNm;
-	}
-	public void setMembNm(String membNm) {
-		this.membNm = membNm;
-	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -92,11 +104,5 @@ public class PartiMemb implements Serializable {
 	public void setNoticeDate(String noticeDate) {
 		this.noticeDate = noticeDate;
 	}
-	@Override
-	public String toString() {
-		return "PartiMemb [partiNo=" + partiNo + ", membNo=" + membNo + ", membNm=" + membNm + ", email=" + email
-				+ ", getSite=" + getSite + ", addressNo=" + addressNo + ", addressDet=" + addressDet + ", imageUrl="
-				+ imageUrl + ", lat=" + lat + ", lon=" + lon + ", status=" + status + ", noticeDate=" + noticeDate
-				+ "]";
-	}
+
 }

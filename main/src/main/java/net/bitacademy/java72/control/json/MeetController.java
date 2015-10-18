@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import net.bitacademy.java72.domain.Meet;
+import net.bitacademy.java72.domain.MyMeet;
 import net.bitacademy.java72.domain.PartiMemb;
 import net.bitacademy.java72.service.MeetService;
 
@@ -126,21 +127,17 @@ public class MeetController {
     return result;
   }
   
-  @RequestMapping("/parti")
-  public Object parti(
-		  @RequestParam(required=false, defaultValue="1") int membNo) {
+  @RequestMapping("/myMeetList")
+  public Object myMeetList(
+		  @RequestParam(required=false, defaultValue="2") int membNo) {
     
     Map<String,Object> result = 
         new HashMap<String,Object>();
     
-    List<PartiMemb> list = meetService.partiMembList(2);
-    for (PartiMemb partiMemb : list) {
-		System.out.println(partiMemb);
-	}
+    result.put("data", meetService.myMeetList(membNo));
     
     return result;
   }
-  
 }
 
 

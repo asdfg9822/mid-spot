@@ -16,8 +16,8 @@
 
 	<resultMap type="PartiMemb" id="PartiMembMap">
 		<result column="parti_no" property="partiNo" />
-		<result column="memb_no" property="membNo" />
-		<result column="memb_nm" property="membNm" />
+		<result column="memb_no" property="memberNo" />
+		<result column="memb_nm" property="memberName" />
 		<result column="email" property="email" />
 		<result column="get_site" property="getSite" />
 		<result column="lat" property="lat" />
@@ -26,11 +26,31 @@
 		<result column="notice_dt" property="noticeDate" />
 	</resultMap>
 
+	<resultMap type="MyMeet" id="MyMeetMap">
+		<result column="memb_no" property="memberNo" />
+		<result column="meet_no" property="meetNo" />
+		<result column="meet_nm" property="meetName" />
+		<result column="meet_dt" property="meetDate" />
+		<result column="masterNo" property="masterNo" />
+		<result column="masterName" property="masterName" />
+	</resultMap>
+
+	<resultMap type="Parti" id="PartiMap">
+    <result column="parti_no" property="memberNo" />
+    <result column="memb_no" property="meetNo" />
+    <result column="lat" property="meetName" />
+    <result column="meet_dt" property="meetDate" />
+    <result column="masterNo" property="masterNo" />
+    <result column="masterName" property="masterName" />
+  </resultMap>
+
 	<select id="list" parameterType="map" resultMap="MeetMap">
-		SELECT meet_no, memb_no, meet_nm, meet_dt
+		SELECT meet_no,
+		memb_no, meet_nm, meet_dt
 		FROM meet_tb
 		where memb_no=1
-		ORDER BY meet_no desc
+		ORDER BY meet_no
+		desc
 	</select>
 
 
@@ -42,13 +62,15 @@
 
 
 	<insert id="insert" parameterType="Meet">
-		INSERT INTO meet_tb(meet_nm,meet_dt,memb_no)
+		INSERT INTO
+		meet_tb(meet_nm,meet_dt,memb_no)
 		values(#{meetName},#{meetDate},#{memberNo})
 	</insert>
 
 
 	<delete id="delete" parameterType="int">
-		DELETE FROM board10 WHERE bno=#{value}
+		DELETE FROM board10 WHERE
+		bno=#{value}
 	</delete>
 
 	<update id="update" parameterType="Board">
@@ -68,10 +90,19 @@
 	</select>
 
 	<select id="partiMembList" parameterType="int" resultMap="PartiMembMap">
-		SELECT *
+		SELECT
+		*
 		FROM memb_tb
 		NATURAL JOIN parti_tb memb_no
-		WHERE parti_no=#{partiNo};
+		WHERE parti_no=#{value};
+	</select>
+
+	<select id="myMeetList" parameterType="int" resultMap="MyMeetMap">
+		SELECT parti_tb.memb_no, meet_tb.meet_no, meet_tb.meet_nm, meet_tb.meet_dt, meet_tb.memb_no masterNo, memb_tb.memb_nm masterName
+		FROM meet_tb NATURAL JOIN memb_tb
+		LEFT OUTER JOIN parti_tb ON meet_no=parti_no
+		WHERE parti_tb.memb_no=#{value} AND parti_no is not null
+		ORDER BY meet_dt desc;
 	</select>
 
 </mapper>

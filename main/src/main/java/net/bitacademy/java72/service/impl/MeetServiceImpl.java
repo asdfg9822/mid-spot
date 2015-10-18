@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import net.bitacademy.java72.dao.MeetDao;
 import net.bitacademy.java72.domain.Meet;
+import net.bitacademy.java72.domain.MyMeet;
 import net.bitacademy.java72.domain.PartiMemb;
 import net.bitacademy.java72.service.MeetService;
 
@@ -60,5 +61,16 @@ public class MeetServiceImpl implements MeetService {
 	public List<PartiMemb> partiMembList(int partiNo) {
 		// TODO Auto-generated method stub
 		return meetDao.partiMembList(partiNo);
+	}
+
+	@Override
+	public List<MyMeet> myMeetList(int membNo) {
+		// TODO Auto-generated method stub
+		List<MyMeet> list = meetDao.myMeetList(membNo);
+		for (MyMeet myMeet : list) {
+			myMeet.setPartiList(meetDao.partiMembList(myMeet.getMeetNo()));
+		}
+
+		return list;
 	}
 }

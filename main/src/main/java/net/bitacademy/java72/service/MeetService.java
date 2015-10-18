@@ -3,6 +3,7 @@ package net.bitacademy.java72.service;
 import java.util.List;
 
 import net.bitacademy.java72.domain.Meet;
+import net.bitacademy.java72.domain.MyMeet;
 import net.bitacademy.java72.domain.PartiMemb;
 
 public interface MeetService {
@@ -13,6 +14,7 @@ public interface MeetService {
   Meet get(int meetNo);
   int countAll();
   List<PartiMemb> partiMembList(int partiNo);
+  List<MyMeet> myMeetList(int membNo);
 }
 
 
