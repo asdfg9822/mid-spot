@@ -1,6 +1,7 @@
 package net.bitacademy.java72.control.json;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
@@ -18,12 +19,12 @@ public class DestController {
   @Autowired DestService destService;
   @Autowired ServletContext servletContext;
 
-  /*@RequestMapping("/list")
-  public Object list() {
+  @RequestMapping("/list")
+  public Object list(Dest dest) {
     System.out.println("list");
     Map<String,Object> result = 
         new HashMap<String,Object>();
-    
+   /* 
     
     result.put("pageNo", pageNo);
     
@@ -39,12 +40,31 @@ public class DestController {
       result.put("isNextPage", false);
     }
     
-    result.put("pageSize", pageSize);
+    result.put("pageSize", pageSize);*/
     
-    result.put("data", companyService.list());
+    result.put("data", destService.list(dest));
     
     return result;
-  }*/
+  }
+  
+  @RequestMapping("/listPermision")
+  public Object listPermision(Dest dest) {
+    System.out.println("listPermision");
+    Map<String,Object> result = 
+        new HashMap<String,Object>();
+    
+    List<Dest> list = destService.listPermision(dest);
+    
+    if(list.size() == 0) {
+    	result.put("result", "no");
+    } else {
+    	result.put("result", "yes");
+    }
+    
+    result.put("data", list);
+    
+    return result;
+  }
   
   /*@RequestMapping("/delete")
   public Object delete(int no) {
@@ -63,16 +83,7 @@ public class DestController {
     
 
 */
-  
-  @RequestMapping("/listSpec")
-  public Object listSpec(Dest dest) {
-    System.out.println("/json/dest/listSpec.do excute..!!");
-    Map<String,Object> result = 
-        new HashMap<String,Object>();
-    result.put("data", destService.listSpec(dest));
-    
-    return result;
-  }
+
   
   @RequestMapping("/insert")
   public Object insert(Dest dest) throws Exception {
@@ -121,11 +132,12 @@ public class DestController {
     
     return result;
   }
+  */
   
-  @RequestMapping("/update")
-  public Object boardUpdate (Board board) throws Exception {
+  @RequestMapping("/insertSpec")
+  public Object insertSpec (Dest dest) throws Exception {
 
-    int count = boardService.update(board);
+    int count = destService.insertSpec(dest);
 
     Map<String,Object> result = 
         new HashMap<String,Object>();
@@ -136,7 +148,7 @@ public class DestController {
     }
     
     return result;
-  }*/
+  }
 }
 
 

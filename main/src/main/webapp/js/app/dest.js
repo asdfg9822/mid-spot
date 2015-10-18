@@ -1,5 +1,6 @@
 define([
 		'jquery',
+		'handlebars',
 		'bootstrap',
 		'jquery.ui.widget',
 		'jquery.iframe-transport',
@@ -7,7 +8,7 @@ define([
 		'canvas-to-blob',
 		'load-image',
 		'app/common'
-		], function ($) {
+		], function ($, handlebars) {
 
 	return {
 		init: function () {
@@ -17,7 +18,6 @@ define([
 					event.preventDefault();
 					console.log($(this).text().trim());
 				});
-
 
 				$('.categorys-select').click(function (event) {
 					event.preventDefault();
@@ -51,15 +51,30 @@ define([
 						window.scroll(0, getOffsetTop(document.getElementById("categoryNm8")));
 					}
 				});
-
+/*d*/
 				var categoryList = new Array(); // 배열을 만들어서 선택한 id값 저장할 배열 생성
 
 				$('.btn_cate_select').click(function (event) {
 					event.preventDefault();
+					
 					categoryList.push($(this).find('div').text().trim());
+					var cate = $(this).find('div').text().trim();
 					console.log(categoryList);
+					
+					var tag = "<div class='category-selected' id='"+cate+"'>"
+						+$(this).find('div').text().trim()+"</div>";
+					
+					$(".category-selected-list").after(tag);
 				});
-
+				
+				$('#categoryNm').click(function (event) {
+					event.preventDefault();
+					
+					console.log($(this).find('div#한식.category-selected').attr('id'));
+					
+				});
+				
+				
 
 				$('#insertRcmd').click(function (event) {
 					console.log('인서트 실행 준비');
@@ -67,20 +82,36 @@ define([
 
 					var meetNo = sessionStorage.getItem('meetNo');
 					console.log("접속된 방 번호 :" + meetNo);
-
-					//선택한 카테고리갯수 만큼 입력
-					for (index = 0; index < categoryList.length; index++) {
-						$.ajax(contextRoot + '/json/dest/insert.do', {
-							method: 'POST',
-							dataType: 'json',
-							data: {
-								meet_no: meetNo,
-								cate_nm: categoryList[index]
-							},
-						});
-						console.log(categoryList[index]);
-					}
-
+					
+//					var membNo = 
+					var member = JSON.parse(sessionStorage.getItem('member'));
+					var memberNo = member.memberNo;
+					console.log('w접속자 번호 :'+memberNo);
+					
+					$.getJSON(contextRoot + '/json/dest/listPermision.do?memb_no='
+							+ memberNo, function(result) {
+						
+						if((result.result == "yes") && (meetNo == result.data[0].meet_no)) {
+							//선택한 카테고리갯수 만큼 입력
+							for (index = 0; index < categoryList.length; index++) {
+								$.ajax(contextRoot + '/json/dest/insert.do', {
+									method: 'POST',
+									dataType: 'json',
+									data: {
+										meet_no: meetNo,
+										cate_nm: categoryList[index]
+									},
+								});
+								$('#category-permision-info').remove();
+							}
+						} else {
+							if ($("#category-permision-info").text() == '') {
+								var permisiontag = "카테고리를 입력할 수 있는 권한이 없습니다.";
+								$("#category-permision-info").append(permisiontag);
+							}
+						}
+					});
+					
 				});
 
 			} //init 종료
