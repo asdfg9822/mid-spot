@@ -21,14 +21,6 @@ define([
 			
 			
 			
-			
-			
-			
-			
-			
-			
-			
-			
 			var moduleObj = this;
 
 			var mapContainer = document.getElementById('map'), // 지도를 표시할 div
@@ -150,10 +142,11 @@ define([
 		},
 		insertStart: function (locPosition) {
 			var lat = locPosition.zb;
-			var lon = locPosition.yb;
+	        var lon = locPosition.yb;
+	        
+	        console.log("위도"+lat);
+	        console.log("경도"+lon);
 
-			console.log('lat=' + lat);
-			console.log('lng=' + lon);
 			var meetNo = sessionStorage.getItem('meetNo');
 			console.log("접속된 방 번호 :" + meetNo);
 			var member = JSON.parse(sessionStorage.getItem('member'));
@@ -173,8 +166,37 @@ define([
 					},
 				});
 			});
-
-		} /* insert() */
+			
+		}, /* insert() */
+		partiMembList: function(partiNo) {
+			var partiNo = 1; 
+			console.log('partiNo:'+partiNo);
+			
+			$.getJSON(contextRoot
+					+ '/json/start/partiMembList.do?parti_no='+partiNo,
+					function(result) {
+				
+				var source = $('#parti-user-template').html();
+				var template = handlebars.compile(source);
+				var content = template(result);
+				$(".parti-user-info").html(content);
+				
+				var size = result.size;
+				
+				var tag = "<div id='parti-info-total' style='padding-left:10%;'>"+size+"</div>";
+				
+				$("#parti-info").after(tag);
+			});
+			
+		}
 
 	};
 });
+
+
+
+
+
+
+
+

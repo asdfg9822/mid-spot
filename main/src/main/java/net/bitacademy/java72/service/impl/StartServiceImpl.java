@@ -1,5 +1,7 @@
 package net.bitacademy.java72.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,6 +54,12 @@ public class StartServiceImpl implements StartService {
 //    return boardDao.countAll();
 //  }
 //  
+@Override
+public List<Start> partiMembList(Start start) {
+  // TODO Auto-generated method stub
+  return startDao.partiMembList(start);
+}
+
   
 }
 

@@ -1,6 +1,7 @@
 package net.bitacademy.java72.control.json;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
@@ -18,33 +19,18 @@ public class StartController {
   @Autowired StartService startService;
   @Autowired ServletContext servletContext;
 
-  /*@RequestMapping("/list")
-  public Object list() {
-    System.out.println("list");
+  @RequestMapping("/partiMembList")
+  public Object partiMembList(Start start) {
+    System.out.println("partiMembList");
     Map<String,Object> result = 
         new HashMap<String,Object>();
     
-    
-    result.put("pageNo", pageNo);
-    
-    int totalCount = boardService.countAll();
-    int lastPageNo = totalCount / pageSize;
-    if ((totalCount % pageSize)  > 0) {
-      lastPageNo++;
-    }
-    
-    if (pageNo < lastPageNo) { // 다음 페이지가 있다면
-      result.put("isNextPage", true);
-    } else {
-      result.put("isNextPage", false);
-    }
-    
-    result.put("pageSize", pageSize);
-    
-    result.put("data", companyService.list());
+    List<Start> list = startService.partiMembList(start);
+    result.put("size", list.size());
+    result.put("data", startService.partiMembList(start));
     
     return result;
-  }*/
+  }
   
   /*@RequestMapping("/delete")
   public Object delete(int no) {

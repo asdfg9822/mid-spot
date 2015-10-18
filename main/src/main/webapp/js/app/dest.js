@@ -66,13 +66,13 @@ define([
 					
 					$(".category-selected-list").after(tag);
 				});
-				
+				/*
 				$('#categoryNm').click(function (event) {
 					event.preventDefault();
 					
 					console.log($(this).find('div#한식.category-selected').attr('id'));
 					
-				});
+				});*/
 				
 				
 

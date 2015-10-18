@@ -14,6 +14,7 @@ public interface MeetDao {
   Meet get(int meetNo);
   int countAll();
   List<PartiMemb> partiMembList(int partiNo);
+  Object partiMembList(PartiMemb partiMemb);
 }
 
 
