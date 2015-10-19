@@ -48,6 +48,8 @@ define([
 				console.log(size);
 				// 주소로 좌표를 검색합니다
 				
+//				console.log(result.data[2].file_path);
+				
 				// 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
 				var bounds = new daum.maps.LatLngBounds();    
 
@@ -60,10 +62,18 @@ define([
 					        title : result.data[index].memb_nm // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
 					    });
 					    
+					    if (result.data[index].file_path == null) {
+					    	result.data[index].file_path = 'images/start-img/user.png';
+					    }
 					    
 					 // 인포윈도우로 장소에 대한 설명을 표시합니다
 						var infowindow = new daum.maps.InfoWindow({
-							content: '<div style="padding:3px;">' + result.data[index].memb_nm + '</div>', // 인포윈도우에 표시될 내용입니다
+							content: '<div style="width:100%; text-align: center;">'
+								+ '<img src="'
+								+ result.data[index].file_path
+								+'" style="width:40%;  border-radius:50%; padding: 2%;" >'
+								+ result.data[index].memb_nm 
+								+ '</div>', // 인포윈도우에 표시될 내용입니다
 							removable: true
 						});
 						infowindow.open(map, marker);
