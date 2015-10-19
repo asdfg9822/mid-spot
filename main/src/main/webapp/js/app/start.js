@@ -20,6 +20,7 @@ define([
 			console.log('->start->init()');
 			
 			var moduleObj = this;
+			var statusMy = 0;
 
 			var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 				mapOption = {
@@ -116,9 +117,6 @@ define([
 				} //for 문 인원수 별로
 				 map.setBounds(bounds); // 지도에 마커의 위치만큼 표시
 				 
-				console.log(markerList);
-				console.log(infowindowList);
-				
 			});
 
 			$('#start-search-my').click(function () {
@@ -134,7 +132,6 @@ define([
 					var coord = new daum.maps.LatLng(lat, lon);
 					var callback = function (status, result) {
 						if (status === daum.maps.services.Status.OK) {
-							
 							var locPosition = new daum.maps.LatLng(lat, lon),
 								message = '<div style="padding:5px;">현재 위치</div>'; // 인포윈도우에 표시될 내용입니다
 						}
@@ -150,10 +147,55 @@ define([
 				}); // 접속 위치 얻기
 
 			}); // 내위치 찾기
+			
+
+			// 지도에 마커와 인포윈도우를 표시하는 함수입니다
+			function displayMarker(locPosition, message) {
+				// 마커를 생성합니다
+				var marker = new daum.maps.Marker({
+					map: map,
+					clickable: true,
+					position: locPosition,
+					draggable: true
+				});
+
+				var iwContent = message, // 인포윈도우에 표시할 내용
+					iwRemoveable = true;
+
+				// 인포윈도우를 생성합니다
+				var infowindow = new daum.maps.InfoWindow({
+					content: iwContent,
+					removable: iwRemoveable
+				});
+
+				// 인포윈도우를 마커위에 표시합니다
+				infowindow.open(map, marker);
+
+				// 지도 중심좌표를 접속위치로 변경합니다
+//				map.setCenter(locPosition);
+				map.panTo(locPosition);
+
+				// 현재 지도의 레벨을 3으로 설정
+			    var level = 3;
+			    map.setLevel(level);
+				
+				// 마커에 클릭이벤트를 등록합니다
+				daum.maps.event.addListener(marker, 'click', function() {
+				      // 마커 위에 인포윈도우를 표시합니다
+				      infowindow.open(map, marker);  
+				});
+				daum.maps.event.addListener(marker, 'rightclick', function() {
+					marker.setVisible(false);
+				     infowindow.close(map, marker);  
+				});
+				
+				moduleObj.insertStart(locPosition);
+								
+			}
 
 			$('#start-search-place').click(function () {
-
-
+				var status = 1;
+				console.log('처음status'+status);
 				// 주소로 좌표를 검색합니다
 				var geocoder = new daum.maps.services.Geocoder();
 				
@@ -176,6 +218,7 @@ define([
 							position: coords,
 							draggable: true
 						});
+						
 
 						// 인포윈도우로 장소에 대한 설명을 표시합니다
 						var infowindow = new daum.maps.InfoWindow({
@@ -183,16 +226,22 @@ define([
 								+ result.addr[0].buildingAddress + '</div>', // 인포윈도우에 표시될 내용입니다
 							removable: true
 						});
+						
 						infowindow.open(map, marker);
 
 						// 지도 중심좌표를 접속위치로 변경합니다
-						map.setCenter(coords);
+//						map.setCenter(coords);
+						map.panTo(coords);
+						
+						// 현재 지도의 레벨을 3으로 설정
+					    var level = 3;
+					    map.setLevel(level);
+						
 						moduleObj.insertStart(coords);
 						
 						// 마커에 클릭이벤트를 등록합니다
 						daum.maps.event.addListener(marker, 'click', function() {
 						      // 마커 위에 인포윈도우를 표시합니다
-							
 						      infowindow.open(map, marker);  
 						});
 						
@@ -201,7 +250,7 @@ define([
 						     infowindow.close(map, marker);  
 						});
 						
-						console.log(result.addr[0].lat, result.addr[0].lng);
+//						console.log(result.addr[0].lat, result.addr[0].lng);
 
 					} else {
 						alert('해당 주소가 없습니다.');
@@ -210,45 +259,6 @@ define([
 
 			}); /* 클릭 함수 */
 
-			// 지도에 마커와 인포윈도우를 표시하는 함수입니다
-			function displayMarker(locPosition, message) {
-
-				// 마커를 생성합니다
-				var marker = new daum.maps.Marker({
-					map: map,
-					clickable: true,
-					position: locPosition,
-					draggable: true
-				});
-
-				var iwContent = message, // 인포윈도우에 표시할 내용
-					iwRemoveable = true;
-
-				// 인포윈도우를 생성합니다
-				var infowindow = new daum.maps.InfoWindow({
-					content: iwContent,
-					removable: iwRemoveable
-				});
-
-				// 인포윈도우를 마커위에 표시합니다
-				infowindow.open(map, marker);
-
-				// 지도 중심좌표를 접속위치로 변경합니다
-				map.setCenter(locPosition);
-				
-				// 마커에 클릭이벤트를 등록합니다
-				daum.maps.event.addListener(marker, 'click', function() {
-				      // 마커 위에 인포윈도우를 표시합니다
-				      infowindow.open(map, marker);  
-				});
-				daum.maps.event.addListener(marker, 'rightclick', function() {
-					marker.setVisible(false);
-				     infowindow.close(map, marker);  
-				});
-				
-				moduleObj.insertStart(locPosition);
-								
-			}
 
 		},
 		insertStart: function(locPosition) {
