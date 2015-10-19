@@ -51,6 +51,7 @@ define([
 				// 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
 				var bounds = new daum.maps.LatLngBounds();    
 				var markerList = new Array();
+				var infowindowList = new Array();
 
 				for (var index=0; index < size; index++) {
 					    
@@ -78,13 +79,12 @@ define([
 								+ '</div>', // 인포윈도우에 표시될 내용입니다
 							removable: true
 						});
+						infowindowList.push(infowindow);
 						
 						infowindow.open(map, marker);
 						
 						// 마커에 클릭이벤트를 등록합니다
 						daum.maps.event.addListener(marker, 'click', function() {
-						      // 마커 위에 인포윈도우를 표시합니다
-							console.log(this.ud);
 							
 							for (var index=0; index < size; index++) {
 								if (result.data[index].memb_nm == this.ud) {
@@ -95,10 +95,20 @@ define([
 											+'" style="width:40%;  border-radius:50%; padding: 2%;" >'
 											+ result.data[index].memb_nm 
 											+ '</div>');
+							      // 마커 위에 인포윈도우를 표시합니다
 									infowindow.open(map, markerList[index]);
 								}
 							} //선택한 마커의 정보를 출력
 					
+						});
+						
+						daum.maps.event.addListener(marker, 'rightclick', function() {
+							for (var index=0; index < size; index++) {
+								if (result.data[index].memb_nm == this.ud) {
+									markerList[index].setVisible(false); 	
+									infowindowList[index].close();
+								}
+							} //선택한 마커의 정보를 출력
 						});
 						
 					 bounds.extend(new daum.maps.LatLng(result.data[index].lat, result.data[index].lon));
@@ -107,6 +117,7 @@ define([
 				 map.setBounds(bounds); // 지도에 마커의 위치만큼 표시
 				 
 				console.log(markerList);
+				console.log(infowindowList);
 				
 			});
 
@@ -127,12 +138,11 @@ define([
 							var locPosition = new daum.maps.LatLng(lat, lon),
 								message = '<div style="padding:5px;">현재 위치</div>'; // 인포윈도우에 표시될 내용입니다
 						}
-
 						// 마커와 인포윈도우를 표시합니다
 						displayMarker(locPosition, message);
 						
 					};
-
+					
 					geocoder.coord2detailaddr({
 						coord: coord,
 						callback: callback
@@ -142,6 +152,7 @@ define([
 			}); // 내위치 찾기
 
 			$('#start-search-place').click(function () {
+
 
 				// 주소로 좌표를 검색합니다
 				var geocoder = new daum.maps.services.Geocoder();
@@ -168,7 +179,8 @@ define([
 
 						// 인포윈도우로 장소에 대한 설명을 표시합니다
 						var infowindow = new daum.maps.InfoWindow({
-							content: '<div style="padding:5px;">' + result.addr[0].title + '</div>', // 인포윈도우에 표시될 내용입니다
+							content: '<div style="padding:5px;">검색한 위치 <br>' 
+								+ result.addr[0].buildingAddress + '</div>', // 인포윈도우에 표시될 내용입니다
 							removable: true
 						});
 						infowindow.open(map, marker);
@@ -180,7 +192,13 @@ define([
 						// 마커에 클릭이벤트를 등록합니다
 						daum.maps.event.addListener(marker, 'click', function() {
 						      // 마커 위에 인포윈도우를 표시합니다
+							
 						      infowindow.open(map, marker);  
+						});
+						
+						daum.maps.event.addListener(marker, 'rightclick', function() {
+							marker.setVisible(false);
+						     infowindow.close(map, marker);  
 						});
 						
 						console.log(result.addr[0].lat, result.addr[0].lng);
@@ -223,7 +241,11 @@ define([
 				      // 마커 위에 인포윈도우를 표시합니다
 				      infowindow.open(map, marker);  
 				});
-
+				daum.maps.event.addListener(marker, 'rightclick', function() {
+					marker.setVisible(false);
+				     infowindow.close(map, marker);  
+				});
+				
 				moduleObj.insertStart(locPosition);
 								
 			}
