@@ -2,90 +2,45 @@
 	.row {
 		background-color: white;
 	}
+
+	.btnMeetRemove {
+		color: black
+	}
 </style>
 
-
+<!-- Meet Exist Script -->
 <script id="meetListScript" type="text/x-handlebars-template">
 	{{#each data}}
 	<div class="col-md-4">
-		<div class="panel panel-success">
+		<div class="panel {{#compare masterNo memberNo}}panel-success{{/compare}}">
 			<div class="panel-heading">
 				<h3 class="text-center">{{meetDate}}</h3></div>
 			<div class="panel-body text-center">
 				<p class="lead" style="font-size:40px"><strong>{{meetName}}</strong></p>
 			</div>
 			<ul class="list-group list-group-flush text-center">
-				<li class="list-group-item"><i class="icon-ok text-danger"></i> 방장:<span class="master_name" data-id="{{masterNo}}">{{masterName}}</span> / 참여 인원 : {{partiList.length}}</li>
+				<li class="list-group-item"><i class="icon-ok text-danger"></i> 방장:<span class="master_name" data-id="{{masterNo}}">{{masterName}}</span> / 참여 인원 : {{partiList.length}} {{#compare masterNo memberNo}} / <a href="#" class="btnMeetRemove hvr-icon-sink-away">모임삭제{{/compare}}</a></li>
 				<li class="list-group-item"><i class="icon-ok text-danger"></i>{{#each partiList}} <span class="member_name" data-id="{{memberNo}}">{{memberName}}</span> {{/each}}</li>
 				<li class="list-group-item"><i class="icon-ok text-danger"></i> 공유 URL : <a href="#">http://local.midspot.com/main?meetNo={{meetNo}}</a></li>
 			</ul>
 			<div class="panel-footer">
-				<a class="enter_btn btn btn-lg btn-block btn-success" data-no="{{meetNo}}" href="https://creativemarket.com/artlabs/12114-Bootstrap-3.0.-pricing-tables-flat">입장하기
-				</a>
+				<a class="enter_btn btn btn-lg btn-block {{#compare masterNo memberNo}}btn-success{{/compare}}" data-no="{{meetNo}}" href="https://creativemarket.com/artlabs/12114-Bootstrap-3.0.-pricing-tables-flat">입장하기</a>
 			</div>
 		</div>
 	</div>
 	{{/each}}
 </script>
 
-<div id="meetListArea" class="row pricing-table">
-	<div class="col-md-4">
-		<div class="panel panel-danger">
-			<div class="panel-heading">
-				<h3 class="text-center">{{모임 시간}}</h3></div>
-			<div class="panel-body text-center">
-				<p class="lead" style="font-size:40px"><strong>{{모임 이름}}</strong></p>
-			</div>
-			<ul class="list-group list-group-flush text-center">
-				<li class="list-group-item"><i class="icon-ok text-danger"></i> 참여 인원 : {{참여 인원}}</li>
-				<li class="list-group-item"><i class="icon-ok text-danger"></i> {{참여자}}</li>
-				<li class="list-group-item"><i class="icon-ok text-danger"></i> 공유 URL : {{URL}}</li>
-			</ul>
-			<div class="panel-footer">
-				<a class="btn btn-lg btn-block btn-success" href="https://creativemarket.com/artlabs/12114-Bootstrap-3.0.-pricing-tables-flat">입장하기</a>
-			</div>
+<script id="meetZeroScript" type="text/x-handlebars-template">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1>새로운 모임을 생성하세요</h1>
+
 		</div>
 	</div>
-	<div class="col-md-4">
-		<div class="panel panel-info">
-			<div class="panel-heading">
-				<h3 class="text-center">PRO PLAN</h3></div>
-			<div class="panel-body text-center">
-				<p class="lead" style="font-size:40px"><strong>$10 / month</strong></p>
-			</div>
-			<ul class="list-group list-group-flush text-center">
-				<li class="list-group-item"><i class="icon-ok text-danger"></i> Personal use</li>
-				<li class="list-group-item"><i class="icon-ok text-danger"></i> Unlimited projects</li>
-				<li class="list-group-item"><i class="icon-ok text-danger"></i> 27/7 support</li>
-			</ul>
-			<div class="panel-footer">
-				<a class="btn btn-lg btn-block btn-info" href="https://creativemarket.com/artlabs/12114-Bootstrap-3.0.-pricing-tables-flat">BUY
-                            NOW!</a>
-			</div>
-		</div>
+</script>
 
-	</div>
-	<div class="col-md-4">
-		<div class="panel panel-success">
-			<div class="panel-heading">
-				<h3 class="text-center">FREE PLAN</h3></div>
-			<div class="panel-body text-center">
-				<p class="lead" style="font-size:40px"><strong>$10 / month</strong></p>
-			</div>
-			<ul class="list-group list-group-flush text-center">
-				<li class="list-group-item"><i class="icon-ok text-danger"></i> Personal use</li>
-				<li class="list-group-item"><i class="icon-ok text-danger"></i> Unlimited projects</li>
-				<li class="list-group-item"><i class="icon-ok text-danger"></i> 27/7 support</li>
-			</ul>
-			<div class="panel-footer">
-				<a class="btn btn-lg btn-block btn-success" href="https://creativemarket.com/artlabs/12114-Bootstrap-3.0.-pricing-tables-flat">BUY
-                            NOW!</a>
-			</div>
-		</div>
-
-	</div>
-</div>
-
+<div id="meetListArea" class="row pricing-table"> </div>
 
 <script>
 	requirejs(['app/meet_list'], function (meet) {

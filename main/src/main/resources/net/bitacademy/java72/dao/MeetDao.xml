@@ -53,6 +53,9 @@
 		desc
 	</select>
 
+  <select id="lastMeetNo" resultType="int" parameterType="int">
+    select * from meet_tb where memb_no=#{value} order by meet_no desc limit 0,1;
+  </select>
 
 
 	<select id="countAll" resultType="int">

@@ -28,6 +28,8 @@
 
  	$('#meetMenu').click(function (event) {
  		event.preventDefault();
+ 		$('#sidebar-item1-title > b').text('모임을 만드세요.');
+ 		$('#sidebar-item1-content').load('html/meet_side.html');
  		$('#content').load('html/meet_list.html');
  	});
 

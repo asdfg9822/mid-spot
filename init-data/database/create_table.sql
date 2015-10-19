@@ -328,7 +328,8 @@ ALTER TABLE RCMD_CATE_TB
 		)
 		REFERENCES MEET_TB ( -- 모임
 			MEET_NO -- 모임번호
-		);
+		)
+		ON DELETE CASCADE;
 
 -- 추천클래스
 ALTER TABLE RCMD_CATE_TB
@@ -348,7 +349,8 @@ ALTER TABLE PARTI_TB
 		)
 		REFERENCES MEET_TB ( -- 모임
 			MEET_NO -- 모임번호
-		);
+		)
+		ON DELETE CASCADE;
 
 -- 참여자
 ALTER TABLE PARTI_TB
@@ -368,7 +370,8 @@ ALTER TABLE LIKE_COMP_TB
 		)
 		REFERENCES MEET_TB ( -- 모임
 			MEET_NO -- 모임번호
-		);
+		)
+		ON DELETE CASCADE;
 
 -- 좋아요업체
 ALTER TABLE LIKE_COMP_TB
@@ -380,7 +383,8 @@ ALTER TABLE LIKE_COMP_TB
 		REFERENCES PARTI_TB ( -- 참여자
 			PARTI_NO, -- 모임번호
 			MEMB_NO   -- 회원번호
-		);
+		)
+		ON DELETE CASCADE;
 
 -- 좋아요업체
 ALTER TABLE LIKE_COMP_TB
@@ -390,7 +394,8 @@ ALTER TABLE LIKE_COMP_TB
 		)
 		REFERENCES COMP_TB ( -- 업체
 			COMP_NO -- 업체번호
-		);
+		)
+		ON DELETE CASCADE;
 
 -- 추천장소
 ALTER TABLE RCMD_PLC_TB
@@ -400,7 +405,8 @@ ALTER TABLE RCMD_PLC_TB
 		)
 		REFERENCES MEET_TB ( -- 모임
 			MEET_NO -- 모임번호
-		);
+		)
+		ON DELETE CASCADE;
 
 -- 스펙 상세
 ALTER TABLE SPEC_TB

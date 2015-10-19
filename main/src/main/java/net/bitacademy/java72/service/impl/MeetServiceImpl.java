@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import net.bitacademy.java72.dao.MeetDao;
+import net.bitacademy.java72.dao.PartiDao;
 import net.bitacademy.java72.domain.Meet;
 import net.bitacademy.java72.domain.MyMeet;
 import net.bitacademy.java72.domain.PartiMemb;
@@ -17,6 +18,8 @@ import net.bitacademy.java72.service.MeetService;
 public class MeetServiceImpl implements MeetService {
 	@Autowired
 	MeetDao meetDao;
+	@Autowired
+	PartiDao partiDao;
 
 	@Override
 	public List<Meet> list(int pageNo, int pageSize) {
@@ -44,7 +47,20 @@ public class MeetServiceImpl implements MeetService {
 
 	@Override
 	public int insert(Meet meet) {
-		return meetDao.insert(meet);
+		int count = meetDao.insert(meet);
+
+		Map<String,Object> paramMap = new HashMap<String,Object>();
+		paramMap.put("partiNo", meetDao.lastMeetNo(meet.getMemberNo()));
+		paramMap.put("membNo", meet.getMemberNo());
+
+		int count2 = partiDao.insert(paramMap);
+
+		int result = 0;
+		if((count+count2) == 2) {
+			result = 1;
+		}
+
+		return result;
 	}
 
 	@Override

@@ -12,6 +12,7 @@ public interface MeetDao {
   int delete(int no);
   int update(Meet meet);
   int insert(Meet meet);
+  int lastMeetNo(int no);
   Meet get(int meetNo);
   int countAll();
   List<PartiMemb> partiMembList(int partiNo);
