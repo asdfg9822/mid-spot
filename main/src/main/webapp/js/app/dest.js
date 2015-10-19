@@ -13,6 +13,8 @@ define([
 	return {
 		init: function () {
 				console.log("==>dest.js Excute..!!");
+				var categoryList = new Array(); // 배열을 만들어서 선택한 id값 저장할 배열 생성
+				var category = new Array();
 
 				$('.categoryNm').click(function (event) {
 					event.preventDefault();
@@ -51,30 +53,25 @@ define([
 						window.scroll(0, getOffsetTop(document.getElementById("categoryNm8")));
 					}
 				});
-/*d*/
-				var categoryList = new Array(); // 배열을 만들어서 선택한 id값 저장할 배열 생성
 
 				$('.btn_cate_select').click(function (event) {
 					event.preventDefault();
 					
-					categoryList.push($(this).find('div').text().trim());
-					var cate = $(this).find('div').text().trim();
+					category.push($(this).find('div').text().trim());
+					
+					$.each(category, function(i, el){
+						if($.inArray(el, categoryList) === -1) categoryList.push(el);
+					});
+					
 					console.log(categoryList);
 					
-					var tag = "<div class='category-selected' id='"+cate+"'>"
-						+$(this).find('div').text().trim()+"</div>";
+					var cate = $(this).find('div').text().trim();
+					
+					var tag = "<button class='category-selected' id='"+cate+"'>"
+						+$(this).find('div').text().trim()+"</button>";
 					
 					$(".category-selected-list").after(tag);
 				});
-				/*
-				$('#categoryNm').click(function (event) {
-					event.preventDefault();
-					
-					console.log($(this).find('div#한식.category-selected').attr('id'));
-					
-				});*/
-				
-				
 
 				$('#insertRcmd').click(function (event) {
 					console.log('인서트 실행 준비');
