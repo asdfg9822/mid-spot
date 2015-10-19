@@ -1,0 +1,80 @@
+.clear {
+  overflow: hidden;
+  width: 100%;
+}
+
+/*첫 사진제외하고 보이지 않게하기*/
+
+.dn {
+  display: none;
+}
+
+/*큰사진+작은사진 width조절*/
+.wrap_box .box {
+  width: 30%;
+  position: absolute;
+}
+
+/*큰사진 크기조절*/
+.wrap_box .visual .pht {
+  position: absolute;
+  left: 0;
+  width: 250px;
+  height: 250px;
+}
+
+/*작은사진 div*/
+.thumbox {
+  position: absolute;
+  right: 0px;
+  width: 80%;
+}
+
+.listbox {
+  margin: 0 auto;
+  padding: 0 0 0 0;
+  width: 30%;
+  list-style: none;
+  background: #131313;
+}
+
+
+/*작은사진 각각 높이 설정*/
+
+.ll {
+  overflow: hidden;
+  margin: 0 0 0 0;
+  cursor: pointer;
+  height: 83px;
+  display: block;
+  transition: ease-in-out;
+}
+
+
+.ll:b {
+  opacity: 1;
+}
+.ll-img {
+  opacity: .5;
+  transition: opacity .5s ease-in-out;
+}
+
+.ll-img:hover {
+  opacity: 1;
+}
+
+/*다른사진 보기 클릭버튼*/
+
+.wrap_box .visual .prev {
+  position: absolute;
+  top: 197px;
+  left: 19px;
+  cursor: pointer;
+}
+
+.wrap_box .visual .next {
+  position: absolute;
+  top: 197px;
+  right: 298px;
+  cursor: pointer;
+}

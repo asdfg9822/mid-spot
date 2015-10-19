@@ -1,6 +1,7 @@
 package net.bitacademy.java72.control.json;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
@@ -8,6 +9,8 @@ import javax.servlet.ServletContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.mysql.fabric.xmlrpc.base.Array;
 
 import net.bitacademy.java72.domain.Start;
 import net.bitacademy.java72.service.StartService;
@@ -18,33 +21,36 @@ public class StartController {
   @Autowired StartService startService;
   @Autowired ServletContext servletContext;
 
-  /*@RequestMapping("/list")
-  public Object list() {
-    System.out.println("list");
+  @RequestMapping("/partiMembList")
+  public Object partiMembList(Start start) {
+    System.out.println("partiMembList");
     Map<String,Object> result = 
         new HashMap<String,Object>();
     
+    List<Start> list = startService.partiMembList(start);
     
-    result.put("pageNo", pageNo);
+    result.put("size", list.size());
+    result.put("data", startService.partiMembList(start));
     
-    int totalCount = boardService.countAll();
-    int lastPageNo = totalCount / pageSize;
-    if ((totalCount % pageSize)  > 0) {
-      lastPageNo++;
-    }
+//    String[] latList = new String[list.size()];
+//    String[] lonList = new String[list.size()];
     
-    if (pageNo < lastPageNo) { // 다음 페이지가 있다면
-      result.put("isNextPage", true);
-    } else {
-      result.put("isNextPage", false);
-    }
-    
-    result.put("pageSize", pageSize);
-    
-    result.put("data", companyService.list());
+//    for (int index=0; index < list.size(); index++) {
+      
+//      System.out.println(list.get(index).getLat());
+//      System.out.println(list.get(index).getLon());
+      
+//      latList[index] = list.get(index).getLat();
+//      lonList[index] = list.get(index).getLon();
+//      result.put(latList[index], list.get(index).getLat());
+//      result.put(lonList[index], list.get(index).getLon());
+//      
+//      System.out.println(latList[index]);
+//      System.out.println(lonList[index]);
+//    }
     
     return result;
-  }*/
+  }
   
   /*@RequestMapping("/delete")
   public Object delete(int no) {

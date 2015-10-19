@@ -1,0 +1,109 @@
+{
+  categoryNo: 11,
+  categoryName: "생활·편의",
+  classNo: 4,
+  className: "노래방",
+  data: {
+    [
+      {
+        title: "마이크",
+        specs: {
+          [
+            {
+              spec: "무선마이크",
+              specNo: 1
+            },
+            {
+              spec: "유선마이크",
+              specNo: 2
+            }
+        ]
+        }
+      },
+      {
+        title: "방구조",
+        specs: {
+          [
+            {
+              spec: "온돌형",
+              specNo: 3
+            },
+            {
+              spec: "탁자형",
+              specNo: 4
+            },
+            {
+              spec: "카페형",
+              specNo: 5
+            },
+            {
+              spec: "락스타형",
+              specNo: 6
+            }
+        ]
+        }
+      },
+      {
+        title: "반주기",
+        specs: {
+          [
+            {
+              spec: "무선마이크",
+              specNo: 7
+            },
+            {
+              spec: "유선마이크",
+              specNo: 8
+            }
+        ]
+        }
+      },
+      {
+        title: "악기 유무",
+        specs: {
+          [
+            {
+              spec: "무선마이크",
+              specNo: 9
+            },
+            {
+              spec: "유선마이크",
+              specNo: 10
+            }
+        ]
+        }
+      },
+      {
+        title: "위치",
+        specs: {
+          [
+            {
+              spec: "무선마이크",
+              specNo: 11
+            },
+            {
+              spec: "유선마이크",
+              specNo: 12
+            }
+        ]
+        }
+      },
+      {
+        title: "주류구매",
+        specs: {
+          [
+            {
+              spec: "무선마이크",
+              specNo: 13
+            },
+            {
+              spec: "유선마이크",
+              specNo: 14
+            }
+        ]
+        }
+      }
+
+    ]
+  }
+}

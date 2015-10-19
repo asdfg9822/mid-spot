@@ -13,6 +13,37 @@ public class Start implements Serializable {
 	protected String lon;
 	protected String status;
 	protected Date createDate;
+	protected String memb_nm;
+	protected String email;
+	protected String get_site;
+	protected String file_path;
+	
+	
+	
+	public String getMemb_nm() {
+    return memb_nm;
+  }
+  public void setMemb_nm(String memb_nm) {
+    this.memb_nm = memb_nm;
+  }
+  public String getEmail() {
+    return email;
+  }
+  public void setEmail(String email) {
+    this.email = email;
+  }
+  public String getGet_site() {
+    return get_site;
+  }
+  public void setGet_site(String get_site) {
+    this.get_site = get_site;
+  }
+  public String getFile_path() {
+    return file_path;
+  }
+  public void setFile_path(String file_path) {
+    this.file_path = file_path;
+  }
 
 	public int getParti_no() {
 		return parti_no;
