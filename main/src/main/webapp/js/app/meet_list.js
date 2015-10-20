@@ -7,8 +7,19 @@ define(['jquery', 'handlebars', 'bootstrap', 'app/common'], function ($, handleb
 			//초기 Meet List
 			moduleObj.listMeet();
 			/*------- Events --------*/
-			$('#btnMeetSubmit').off('click').click(function () {
+			$('#btnMeetSubmit').off('click').click(function (e) {
+				e.preventDefault();
 				moduleObj.insertMeet();
+			});
+
+			$(document).on('click', '.btnMeetRemove', function (e) {
+				e.preventDefault();
+				sessionStorage.setItem('removeMeetNo', $(this).attr('data-no'));
+			});
+
+			$('#btnMeetRemove').off('click').click(function (e) {
+				e.preventDefault();
+				moduleObj.deleteMeet(sessionStorage.getItem('removeMeetNo'));
 			});
 
 			/*---- End of Events ----*/
@@ -104,6 +115,10 @@ define(['jquery', 'handlebars', 'bootstrap', 'app/common'], function ($, handleb
 				console.log(result);
 
 
+				$.extend(result, {
+					'url': contextRoot + "/test.html?meetNo="
+				});
+
 
 				// Meet Count Zero Exception Processing
 				if (result.data.length > 0) {
@@ -124,8 +139,25 @@ define(['jquery', 'handlebars', 'bootstrap', 'app/common'], function ($, handleb
 				event.preventDefault();
 				sessionStorage.setItem('meetNo', $(this).attr('data-no'));
 				console.log("session meetNo = " + sessionStorage.getItem('meetNo'));
+				$(document).trigger('enterMeet');
+			});
+		},
+		deleteMeet: function (meetNo) {
+
+			var moduleObj = this;
+
+			$.getJSON(contextRoot + '/json/meet/delete.do', {
+				meetNo: meetNo
+			}, function (result) {
+				$('#modalMeetRemove').modal('hide');
+
+				if (result.data === "success") {
+					console.log("Meet (" + meetNo + ") Remove " + result.data);
+				}
+
+				moduleObj.listMeet();
+
 			});
 		}
 	}
-
 });

@@ -72,8 +72,8 @@
 
 
 	<delete id="delete" parameterType="int">
-		DELETE FROM board10 WHERE
-		bno=#{value}
+		DELETE FROM meet_tb WHERE
+		meet_no=#{value}
 	</delete>
 
 	<update id="update" parameterType="Board">

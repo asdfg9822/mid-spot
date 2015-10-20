@@ -24,8 +24,8 @@ public class MeetController {
 
   
   @RequestMapping("/delete")
-  public Object delete(int no) {
-    int count = meetService.delete(no);
+  public Object delete(int meetNo) {
+    int count = meetService.delete(meetNo);
 
     Map<String,Object> result = 
         new HashMap<String,Object>();
@@ -34,15 +34,6 @@ public class MeetController {
     } else {
       result.put("data", "failure");
     }
-    
-    return result;
-  }
-  
-  @RequestMapping("/detail")
-  public Object detail(int meetNo) {
-    Map<String,Object> result = 
-        new HashMap<String,Object>();
-    result.put("data", meetService.get(meetNo));
     
     return result;
   }
@@ -96,22 +87,7 @@ public class MeetController {
     
     return result;
   }
-  
-  @RequestMapping("/update")
-  public Object meetUpdate (Meet meet) throws Exception {
 
-    int count = meetService.update(meet);
-
-    Map<String,Object> result = 
-        new HashMap<String,Object>();
-    if (count > 0) {
-      result.put("data", "success");
-    } else {
-      result.put("data", "failure");
-    }
-    
-    return result;
-  }
   
   @RequestMapping("/parti")
   public Object parti() {

@@ -2,9 +2,11 @@
 
  	console.log("==>main.js Excute..!!");
 
- 	/*------------Test Value Zone ---------*/
- 	sessionStorage.setItem('meetNo', 24);
 
+
+ 	/*------------Test Value Zone ---------*/
+ 	//sessionStorage.setItem('meetNo', 24);
+ 	//sessionStorage.setItem('sessionStatus', false);
 
  	/*------------End of Test Value Zone ---------*/
 
@@ -33,6 +35,10 @@
  		$('#content').load('html/meet_list.html');
  	});
 
+ 	$(document).on('enterMeet', function (event) {
+ 		$('#destMenu').trigger('click');
+ 	});
+
  	//Header 목적 Button
  	$('#destMenu').click(function (event) {
  		event.preventDefault();
@@ -53,7 +59,7 @@
  		$('#content').load('html/result_jh.html');
  	});
 
- 	$('#meetMenu').trigger('click');
+ 	//$('#meetMenu').trigger('click');
 
  	//Login Info, Login Form Toggle
  	$('#loginSuccess').click(function () {
@@ -64,10 +70,43 @@
  		$('#headLoginForm').toggle();
  	});
 
+ 	(function ($) {
+ 		$.getQuery = function (query) {
+ 			query = query.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+ 			var expr = "[\\?&]" + query + "=([^&#]*)";
+ 			var regex = new RegExp(expr);
+ 			var results = regex.exec(window.location.href);
+ 			if (results !== null) {
+ 				return results[1];
+ 				return decodeURIComponent(results[1].replace(/\+/g, " "));
+ 			} else {
+ 				return false;
+ 			}
+ 		};
+ 	})(jQuery);
+
+ 	// Document load
+ 	$(function () {
+ 		var urlData = $.getQuery('meetNo');
+
+ 		if (urlData !== false) {
+ 			sessionStorage.setItem('meetNo', urlData);
+ 			console.log("session meetNo", sessionStorage.getItem('meetNo'));
+ 			$('#startMenu').trigger('click');
+
+ 			var sessionStatus = sessionStorage.getItem('sessionStatus');
+ 			if (sessionStatus === "false") {
+ 				$('#btnFBLogin').trigger('click');
+ 			}
+ 		}
+ 	});
+
  	//FACEBOOK Login Button
  	$('#btnFBLogin').click(function () {
  		Login();
  	});
+
+
 
  	//FACEBOOK Logout Button
  	$('#logout').click(function () {
@@ -83,6 +122,8 @@
  		});
  	});
 
+ 	//$('#logout').trigger('click');
+
  	window.fbAsyncInit = function () {
 
  		FB.init({
@@ -97,11 +138,16 @@
  				console.log("connected to FACEBOOK");
  				//SUCCESS
  				getProfileInfo();
+ 				sessionStorage.setItem('sessionStatus', true);
+
  			} else if (response.status === 'not_authorized') {
  				console.log("not_authorized");
+ 				sessionStorage.setItem('sessionStatus', false);
  			} else {
  				console.log("logged out");
+ 				sessionStorage.setItem('sessionStatus', false);
  			}
+
  		});
 
  	};
@@ -179,6 +225,9 @@
  			}
  		});
  	}
+
+ 	//function partiUserExist(
+
 
  	function fbUserExist(response, callback) {
  		$.ajax(contextRoot + '/json/member/fbExist.do', {

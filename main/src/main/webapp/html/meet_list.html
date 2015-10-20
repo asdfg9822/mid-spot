@@ -12,19 +12,20 @@
 <script id="meetListScript" type="text/x-handlebars-template">
 	{{#each data}}
 	<div class="col-md-4">
-		<div class="panel {{#compare masterNo memberNo}}panel-success{{/compare}}">
+		<div class="panel {{#compare masterNo memberNo}}panel-success{{/compare}} {{#compare masterNo memberNo operator='!='}}panel-info{{/compare}}">
 			<div class="panel-heading">
 				<h3 class="text-center">{{meetDate}}</h3></div>
 			<div class="panel-body text-center">
 				<p class="lead" style="font-size:40px"><strong>{{meetName}}</strong></p>
 			</div>
 			<ul class="list-group list-group-flush text-center">
-				<li class="list-group-item"><i class="icon-ok text-danger"></i> 방장:<span class="master_name" data-id="{{masterNo}}">{{masterName}}</span> / 참여 인원 : {{partiList.length}} {{#compare masterNo memberNo}} / <a href="#" class="btnMeetRemove hvr-icon-sink-away">모임삭제{{/compare}}</a></li>
+				<li class="list-group-item"><i class="icon-ok text-danger"></i> 방장:<span class="master_name" data-id="{{masterNo}}">{{masterName}}</span> / 참여 인원 : {{partiList.length}} {{#compare masterNo memberNo}} / <a href="#" class="btnMeetRemove hvr-icon-sink-away" data-no="{{meetNo}}" data-toggle="modal" data-target=".bs-example-modal-sm">모임삭제{{/compare}}</a></li>
 				<li class="list-group-item"><i class="icon-ok text-danger"></i>{{#each partiList}} <span class="member_name" data-id="{{memberNo}}">{{memberName}}</span> {{/each}}</li>
-				<li class="list-group-item"><i class="icon-ok text-danger"></i> 공유 URL : <a href="#">http://local.midspot.com/main?meetNo={{meetNo}}</a></li>
+				<li class="list-group-item"><i class="icon-ok text-danger"></i> 공유 URL : <a href="#">{{../url}}{{meetNo}}</a></li>
 			</ul>
 			<div class="panel-footer">
-				<a class="enter_btn btn btn-lg btn-block {{#compare masterNo memberNo}}btn-success{{/compare}}" data-no="{{meetNo}}" href="https://creativemarket.com/artlabs/12114-Bootstrap-3.0.-pricing-tables-flat">입장하기</a>
+				<a class="enter_btn btn btn-lg btn-block {{#compare masterNo memberNo}}btn-success{{/compare}}
+				{{#compare masterNo memberNo operator='!='}}btn-info{{/compare}}" data-no="{{meetNo}}" href="https://creativemarket.com/artlabs/12114-Bootstrap-3.0.-pricing-tables-flat">입장하기</a>
 			</div>
 		</div>
 	</div>
