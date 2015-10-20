@@ -1,155 +1,171 @@
 <script>
-	requirejs(['app/result'], function (result) {
-		result.init();
-	});
-	requirejs(['app/result_json'], function (result_json) {
-		result_json.init();
-	});
+  requirejs(['app/result'], function (result) {
+    result.init();
+  });
+  requirejs(['app/result_json'], function (result_json) {
+    result_json.init();
+  });
 </script>
 
 <script id="resultContentScript" type="text/x-handlebars-template">
-	{{#each data}}
-	<div id="section-{{@index}}" class="result_table_border_area_2" data-section="{{@index}}">
-		<div class="result_table_border">
-			<div>
-				<div class="row">
-					<div class="col-md-4 center-block text-center vcenter">
-						<span class="comp_title">{{companyName}}</span>
-						<img class="img-responsive img_slider first vcenter" src="{{imgUrl}}" alt="사진없음">
-					</div>
+  {{#each data}}
+  <div id="section-{{@index}}" class="result_table_border_area_2" data-section="{{@index}}">
+    <div class="result_table_border">
+      <div>
+        <div class="row">
+          <div class="col-md-4 center-block text-center vcenter">
 
-					<hr>
+            <span class="comp_title">{{companyName}}</span>
+            <img class="img-responsive img_slider first vcenter" src="{{imgUrl}}" alt="사진없음">
+          </div>
 
-					<div class="col-md-4 center-block">
-						<div class="center-block half-size" style="text-align:left;">
-							<div style="display:inline-block;font-size:1.5em;">
-								<div style="margin-bottom:0.5em;"><b style="color:orange">강남역</b>에서 <b style="color:orange">{{distance}}</b>km</div>
-								<span class="addr_info">{{addressOld}}</span>
-								<br>
-								<span class="tel_info">{{adminTel}}</span>
-								<br>
-								<span class="web_info">{{isWebPage}}</span>
-								<br>
-								<span class="">OPEN : 09:00 / CLOSE : 24:00</span>
-								<br>
-								<div class="shop_detail_recommend" style="margin-top:20px;">
-									{{companyName}}을 <span style="color:blue;font-weight:bold">추천</span>해주세요 !
-									<a href="#" class="comp_like_btn" data-no="{{no}}">
-										<img class="like_img" src="images/result/like_img_off1.png" style="width:20px;" data-isLike="{{isLike}}"> <span>{{likeCnt}}</span>
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
+          <hr>
 
-					<div class="col-md-2">
-						<div class="select-button">
-							<ul class="ca-menu">
-								<li class="detail-info">
-									<a href="#">
-										<span class="ca-icon">L</span>
-										<div class="ca-content">
-											<h2 class="ca-main">더보기</h2>
-											<h3 class="ca-sub">detail information view</h3>
-										</div>
-									</a>
-								</li>
-								<li class="detail-find">
-									<a href="#">
-										<span class="ca-icon">?</span>
-										<div class="ca-content">
-											<h2 class="ca-main">길찾기</h2>
-											<h3 class="ca-sub">find the way with a map</h3>
-										</div>
-									</a>
-								</li>
-								<li class="detail-share">
-									<a href="#">
-										<span class="ca-icon">.</span>
-										<div class="ca-content">
-											<h2 class="ca-main">공유하기</h2>
-											<h3 class="ca-sub">share information</h3>
-										</div>
-									</a>
-								</li>
-							</ul>
-						</div>
-						<!-- End of select-button-->
-					</div>
-					<!-- End of col-md-2 -->
-				</div>
-			</div>
-		</div>
-		<div class="table-div detail-explain-more">
-			<!--map위치-->
-			<div id='detail_map_id_{{@index}}' class="detail_map" data-lat="{{lat}}" data-lon="{{lon}}"></div>
-			<div class="detail_bar"></div>
-			<div class="result_dtail_text">
-			</div>
-			<h2>{{companyName}}</h2>
+          <div class="col-md-4 center-block">
+            <div class="center-block half-size" style="text-align:left;">
+              <div style="display:inline-block;font-size:1.4em;">
+                <div class="result_distance" style="margin-bottom:0.5em;">
+                  <b class="result_pick" style="color:orange;"></b>에서
+                  <b style="color:orange">{{distance}}</b>km</div>
+                <span class="addr_info">{{addressOld}}</span>
+                <br>
+                <span class="tel_info">{{adminTel}}</span>
+                <br>
+                <span class="web_info">{{isWebPage}}</span>
+                <br>
+                <span style="font-size:1.0em;">
+                OPEN : <img src="images/result/sun.png" style="width:15px;"> 09:00 / 
+                CLOSE : <img src="images/result/moon.png" style="width:13px;"> 24:00</span>
+                <br>
+                <div class="shop_detail_recommend" style="margin-top:20px;">
+                  {{companyName}}을 <span style="color:#6495ED;font-weight:bold">추천</span>해주세요 !
+                  <a href="#" class="comp_like_btn" data-no="{{no}}">
+                    <img class="like_img" src="images/result/like_img_off1.png" style="width:20px;" data-isLike="{{isLike}}">
+                    <span>{{likeCnt}}</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
 
-		</div>
-		<div class="table-div detail-explain-find">
-			<!--map위치-->
-			<div id='detail_road_id_{{@index}}' class="detail_road" data-lat="{{lat}}" data-lon="{{lon}}"></div>
-			<!--길찾기위치-->
-			<div class="result_road_Content">
+          <div class="col-md-2">
+            <div class="select-button">
+              <ul class="ca-menu">
+                <li class="detail-info">
+                  <a href="#">
+                    <span class="ca-icon">L</span>
+                    <div class="ca-content">
+                      <h2 class="ca-main">더보기</h2>
+                      <h3 class="ca-sub">detail information view</h3>
+                    </div>
+                  </a>
+                </li>
+                <li class="detail-find" data-lat="{{lat}}" data-lon="{{lon}}">
+                  <a href="#">
+                    <span class="ca-icon">?</span>
+                    <div class="ca-content">
+                      <h2 class="ca-main">길찾기</h2>
+                      <h3 class="ca-sub">find the way with a map</h3>
+                    </div>
+                  </a>
+                </li>
+                <li class="detail-share">
+                  <a href="#">
+                    <span class="ca-icon">.</span>
+                    <div class="ca-content">
+                      <h2 class="ca-main">공유하기</h2>
+                      <h3 class="ca-sub">share information</h3>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <!-- End of select-button-->
+          </div>
+          <!-- End of col-md-2 -->
+        </div>
+      </div>
+    </div>
+    <div class="table-div detail-explain-more">
+      <!--map위치-->
+      <div id='detail_map_id_{{@index}}' class="detail_map" data-lat="{{lat}}" data-lon="{{lon}}"></div>
+      <div class="detail_bar"></div>
+      <div class="result_dtail_text">
+      </div>
+      <h3>{{companyName}} <span style="color:coral;">SPEC</span></h3>
 
-			</div>
 
-		</div>
-		<div class="table-div detail-explain-share">공유하기의 상세</div>
-	</div>
-	{{/each}}
+    </div>
+    <div class="table-div detail-explain-find">
+      <!--map위치-->
+      <div id='detail_road_id_{{@index}}' class="detail_road" data-lat="{{lat}}" data-lon="{{lon}}"></div>
+      <!--길찾기위치-->
+      <div class="result_road_Content">
+      </div>
+
+    </div>
+    <div class="table-div detail-explain-share">공유하기의 상세</div>
+  </div>
+  {{/each}}
 
 </script>
+
+<script id="resultPick2ContentScript" type="text/x-handlebars-template">
+  {{#each data}} {{/each}}
+</script>
+
 
 <script id="resultRoadContentScript" type="text/x-handlebars-template">
-	{{#with info}}
-	<div class="result_road_title">{{firstStartStation}} -> {{lastEndStation}}</div>
-	<div class="result_road_time">{{totalTime}}분</div>
-	{{/with}} {{#each this.subPath}}
-	<div class="result_road_traffic">{{trafficType}} {{guide}} {{sectionTime}}분</div>
-	{{/each}}
+  {{#with info}}
 
+  <div class="result_road_title">
+    <h4>{{firstStartStation}} <img src="images/result/arrow.png" style="width:15px;"> {{lastEndStation}}
+      <span class="result_road_time">{{totalTime}}분</span> </h4> {{/with}}
+  </div>
+  {{#each this.subPath}}
+  <div class="result_road_guide">
+    <div class="result_road_traffic">
+      {{#list trafficType}} {{trafficType}} {{/list}} <span>{{sectionTime}}분</span>
+    </div>
+    <div class="result_road_text">
+      {{#list2 guide}} {{guide}} {{/list2}}
+    </div>
+  </div>
 
+  <br> {{/each}}
 </script>
 
 
-<!--tab 수정 10.06-->
+<script id="resultCateTitleScript" type="text/x-handlebars-template">
+  {{#each data}}
+  <li>
+    <a href="#tab-sec-1" class="btnCate icon-cup" data-section="#tabSection-{{@index}}"> <span>{{cateNm}}</span></a>
+  </li>
+  {{/each}}
+</script>
+
+<script id="resultCateSectionScript" type="text/x-handlebars-template">
+  {{#each data}}
+  <section id="tabSection-{{@index}}" data-cate-no="{{cateNo}}">
+    <div class="slider">
+      <div class="result_table_border_area slidercontent"></div>
+    </div>
+  </section>
+  {{/each}}
+
+</script>
 
 <div class="result_container">
 
-	<div id="tabs" class="tabs">
-		<nav>
-			<ul>
-				<li><a href="#tab-sec-1" class="btnCate icon-cup" data-section="#tabSection-1"><span>Drinks</span></a></li>
-				<li><a href="#tab-sec-2" class="btnCate icon-cup" data-section="#tabSection-2"><span>Drinks</span></a></li>
-				<li><a href="#section-1" class="btnCate icon-shop" data-section="#tabSection-{{@index}}"><span>{{cateNm}}</span></a></li>
-			</ul>
-		</nav>
-		<div class="result_content">
-			<section id="tabSection-1" data-cate-no="2">
-				<div class="slider">
-					<div class="result_table_border_area slidercontent">
-					</div>
-				</div>
-			</section>
-			<section id="tabSection-2" data-cate-no="3">
-				<div class="slider">
-					<div class="result_table_border_area slidercontent">
-					</div>
-				</div>
-			</section>
-			<section id="tabSection-{{@index}}" data-cate-no="{{cateNo}}">
-				<div class="slider">
-					<div class="result_table_border_area slidercontent">
-					</div>
-				</div>
-			</section>
-		</div>
-		<!-- /content -->
-	</div>
-	<!-- /tabs -->
+  <div id="tabs" class="tabs">
+    <nav>
+      <ul id="cateNameArea">
+      </ul>
+    </nav>
+    <div id="cateSectionArea" class="result_content">
+    </div>
+    <!-- /content -->
+  </div>
+  <!-- /tabs -->
 </div>
 <!-- END tab 수정 10.06-->

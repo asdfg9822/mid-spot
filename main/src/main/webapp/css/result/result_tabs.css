@@ -213,5 +213,6 @@ p.info {
 }*/
 
 .row {
-	background-color: #f7f7f9;
+  background-color: #f7f7f9;
+  padding: 5px;
 }

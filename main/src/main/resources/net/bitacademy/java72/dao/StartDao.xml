@@ -17,6 +17,13 @@
     values(#{parti_no},#{memb_no},#{lat},#{lon},now());
   </insert>
   
+  <select id="start" resultMap="StartMap" parameterType="map"> 
+  	SELECT parti_no, memb_no, lat, lon
+    FROM parti_tb
+    WHERE parti_no = #{parti_no} AND memb_no = #{memb_no}
+  </select>
+  
+  
 </mapper>
 
 

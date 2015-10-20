@@ -4,25 +4,41 @@
   });
 </script>
 
-
 <script id="resultSideScript" type="text/x-handlebars-template">
 
-<div id="sideMenu">
+  <div id="sideMenu" class="pick_name">
+
+    <!--
+ <div class="result_map_menu">
+  <button class="button_map_first menu_button button--quidel button--inverted"><span class="pick_name"></span></button>
+</div>
+-->
+    <!--    <div id="stationMap"></div>-->
+
+    <!--
+<div class="result_map_menu">
+  <button class="button_map_second menu_button button--quidel button--inverted "><span>신촌역</span></button>
+
   <div class="result_map_menu">
-    <button class="button_map_first menu_button button--quidel button--inverted"><span>강남역</span></button>
+    <button class="button_map_third menu_button button--quidel button--inverted "><span>서울역</span></button>
+
+  </div>
+</div>
+-->
+
   </div>
   <div id="stationMap"></div>
 
-  <div class="result_map_menu ">
-    <button class="button_map_second menu_button button--quidel button--inverted "><span>신촌역</span></button>
 
-    <div class="result_map_menu ">
-      <button class="button_map_third menu_button button--quidel button--inverted "><span>서울역</span></button>
+</script>
 
-    </div>
+<script id="resultPickContentScript" type="text/x-handlebars-template">
+  {{#each data}}
+  <div class="result_map_menu" data-section="#pickSection-{{@index}}">
+    <button class="button_map_first menu_button button--quidel button--inverted" id="pickSection-{{@index}}" data-rcmdPlc="{{rcmdPlc}}" data-lat="{{lat}}" data-lon="{{lon}}">
+      <span>{{rcmdPlc}}</span></button>
   </div>
-</div>
-
+  {{/each}}
 </script>
 
 <div id="resultSideArea"></div>

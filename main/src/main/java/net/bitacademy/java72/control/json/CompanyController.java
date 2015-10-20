@@ -19,7 +19,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import net.bitacademy.java72.domain.Company;
 import net.bitacademy.java72.domain.Member;
+import net.bitacademy.java72.domain.Pick;
+import net.bitacademy.java72.domain.Start;
 import net.bitacademy.java72.service.CompanyService;
+import net.bitacademy.java72.service.PickService;
+import net.bitacademy.java72.service.StartService;
 
 @Controller("json.CompanyController")
 @RequestMapping("/json/company")
@@ -28,6 +32,10 @@ public class CompanyController {
 	CompanyService companyService;
 	@Autowired
 	ServletContext servletContext;
+	@Autowired 
+	StartService startService;
+	@Autowired
+	PickService pickService;
 
 	@RequestMapping("/list")
 	public Object list(
@@ -42,6 +50,21 @@ public class CompanyController {
 		System.out.println("cateNo:" + cateNo);
 		System.out.println("currCnt:" + currCnt);
 		System.out.println("listCnt:" + listCnt);
+		
+//		String lat = null;
+//		String lon = null;
+//			
+//		List<Pick> pickGet = pickService.pickGet(); 
+//		
+//		for (Pick list : pickGet) {
+//			lat = (String)list.getLat();
+//			lon = (String)list.getLon();
+//		}
+//		
+//		System.out.println("picklat:" + lat);
+//		System.out.println("picklon:" + lon);
+		
+		
 
 		Map<String, Object> result = new HashMap<String, Object>();
 
@@ -59,14 +82,33 @@ public class CompanyController {
 	}
 
 	@RequestMapping("/pubTrans")
-	public Object pubTrans(@RequestParam(required = false, defaultValue = "127.11040408554267") String sX,
-			@RequestParam(required = false, defaultValue = "37.509756362942284") String sY,
+	public Object pubTrans(
+			@RequestParam(required = true) int membNo,
+			@RequestParam(required = true) int partiNo,
 			@RequestParam(required = false, defaultValue = "127.13806175828525") String eX,
 			@RequestParam(required = false, defaultValue = "37.48078441518208") String eY) {
 		// int count = companyService.delete(no);
 
 		Map<String, Object> result = new HashMap<String, Object>();
 
+		System.out.println("eX"+eX);
+		System.out.println("eY"+eY);
+		String sX = null;
+		String sY = null;
+
+		System.out.println("길찾기" + membNo);
+		System.out.println(partiNo);
+
+		List<Start> start = startService.start(partiNo, membNo);
+		
+
+		for (Start list : start) {
+			sX = (String)list.getLat();
+			sY = (String)list.getLon();
+		}
+		
+		
+		
 		BufferedReader rd = null;
 		try {
 

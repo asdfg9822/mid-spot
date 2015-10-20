@@ -3,7 +3,7 @@
  	console.log("==>main.js Excute..!!");
 
  	/*------------Test Value Zone ---------*/
- 	sessionStorage.setItem('meetNo', 24);
+ 	sessionStorage.setItem('meetNo', 4);
 
 
  	/*------------End of Test Value Zone ---------*/
@@ -47,6 +47,7 @@
  	//Header 중간여기 Button
  	$('#resultMenu').click(function (event) {
  		event.preventDefault();
+ 		$('#sidebar-item1-content').load('html/result_side.html');
  		$('#content').load('html/result_jh.html');
  	});
 
