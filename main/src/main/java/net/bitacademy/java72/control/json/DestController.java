@@ -79,9 +79,9 @@ public class DestController {
     return result;
   }
   
-  /*@RequestMapping("/delete")
-  public Object delete(int no) {
-    int count = boardService.delete(no);
+  @RequestMapping("/delete")
+  public Object delete(Dest dest) {
+    int count = destService.delete(dest);
 
     Map<String,Object> result = 
         new HashMap<String,Object>();
@@ -93,9 +93,6 @@ public class DestController {
     
     return result;
   }
-    
-
-*/
 
   
   @RequestMapping("/insert")

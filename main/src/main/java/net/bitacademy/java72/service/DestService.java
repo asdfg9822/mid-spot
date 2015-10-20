@@ -15,6 +15,7 @@ public interface DestService {
   int insertSpec(Dest dest);
   List<Dest> listPermision(Dest dest);
   List<Dest> listPartiSelect(Dest dest);
+  int delete(Dest dest);
 }
 
 

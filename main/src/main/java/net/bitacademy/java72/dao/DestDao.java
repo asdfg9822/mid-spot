@@ -6,7 +6,7 @@ import net.bitacademy.java72.domain.Dest;
 
 public interface DestDao {
   List<Dest> list(Dest dest);
-//  int delete(int no);
+  int delete(Dest dest);
 //  int update(Board board);
     int insert(Dest dest);
 //    Dest get(int no);

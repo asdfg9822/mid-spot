@@ -52,6 +52,11 @@ public class DestServiceImpl implements DestService {
     // TODO Auto-generated method stub
     return destDao.listPartiSelect(dest);
   }
+  @Override
+  public int delete(Dest dest) {
+    // TODO Auto-generated method stub
+    return destDao.delete(dest);
+  }
 
 
   
