@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.bitacademy.java72.dao.PickDao">
+	<resultMap type="Pick" id="PickMap">
+		<id column="Meet_no" property="meetNo" />
+		<result column="Rcmd_plc" property="rcmdPlc" />
+		<result column="lat" property="lat" />
+		<result column="lon" property="lon" />
+	</resultMap>
+
+	<select id="pickList" resultMap="PickMap" parameterType="int">
+		SELECT meet_no, rcmd_plc, lat, lon
+		FROM rcmd_plc_tb
+		where meet_no= #{meetNo}
+	</select>
+
+</mapper>
