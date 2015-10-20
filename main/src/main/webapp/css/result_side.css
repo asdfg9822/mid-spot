@@ -1,5 +1,19 @@
 /*커서 모양(손가락)*/
 
+
+/*
+#sidebar-item1-content {
+  width: 150px;
+  height: 280px;
+  border: 1px solid red;
+  margin-left: 9%;
+}
+*/
+
+#pickSection-1 {
+  margin-top: 150px;
+}
+
 .menu_button {
   cursor: pointer;
 }
@@ -9,9 +23,10 @@
 
 #stationMap {
   /*  min-width: 100px;*/
-  max-width: 150px;
+  margin-top: -250px;
+  width: 150px;
   height: 150px;
-  margin-left: 9%;
+  margin-left: 40px;
   z-index: 3;
   border-left: 3px solid white;
   border-right: 3px solid white;
@@ -22,9 +37,9 @@
 
 .menu_button {
   width: 150px;
-  /*  max-width: 200px;*/
+  height: 50px;
   display: block;
-  margin-left: 9%;
+  margin-left: 40px;
   margin-bottom: 0%;
   padding: 1em 2em;
   border: none;
@@ -71,7 +86,7 @@
 /*버튼 박스 배경색 */
 
 .button--quidel.button--inverted::after {
-  background: red;
+  background: #20B2AA;
 }
 
 
@@ -95,14 +110,14 @@
 /*바뀌는 배경색*/
 
 .button--quidel.button--inverted::before {
-  background: coral;
+  background: #1E90FF;
 }
 
 
 /*바뀌는 글자색 */
 
 .button--quidel.button--inverted:hover {
-  color: coral;
+  color: #1E90FF;
 }
 
 

@@ -14,6 +14,11 @@ public class Start implements Serializable {
 	protected String status;
 	protected Date createDate;
 
+	@Override
+	public String toString() {
+		return "Start [parti_no=" + parti_no + ", memb_no=" + memb_no + ", lat=" + lat + ", lon=" + lon + ", status="
+				+ status + ", createDate=" + createDate + "]";
+	}
 	public int getParti_no() {
 		return parti_no;
 	}

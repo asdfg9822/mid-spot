@@ -50,6 +50,9 @@
 	<!-- Custom CSS -->
 	<link href="css/midspot_thema/simple-sidebar.css" rel="stylesheet">
 
+	<!-- result_side CSS -->
+	<link href="css/result_side.css" rel="stylesheet">
+
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -57,11 +60,11 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-
 	<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=25a8fae1fa67b3e279039cf4a74b4ac9&libraries=services"></script>
 </head>
 
 <body style="background-color:white">
+
 	<div class="navbar navbar-blue navbar-fixed-top">
 		<div class="navbar-header">
 			<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
@@ -80,18 +83,6 @@
 				<li><a id="startMenu" href="#"><i class="glyphicon glyphicon-map-marker"></i> Start</a></li>
 				<li><a id="resultMenu" href="#"><i class="glyphicon glyphicon-ok"></i> Result</a></li>
 			</ul>
-			<!--<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> 최종혁&nbsp;&nbsp;</a>
-					<ul class="dropdown-menu">
-						<li><a href="">로그아웃</a></li>
-						<li><a href="">More</a></li>
-						<li><a href="">More</a></li>
-						<li><a href="">More</a></li>
-						<li><a href="">More</a></li>
-					</ul>
-				</li>
-			</ul>-->
 		</nav>
 	</div>
 	<div id="wrapper">
@@ -107,8 +98,8 @@
 					</div>
 				</div>
 				<div id="sidebar-item1-area" style="margin-top:3em;">
-					<span id="sidebar-item1-title"><b>sidebar-item1-title</b></span>
-					<div id="sidebar-item1-content" style="background-color:white;margin:0.3em 5%;border:1px solid #ccc ">sidebar-item1-content</div>
+					<span id="sidebar-item1-title"><b>추천장소</b></span>
+					<div id="sidebar-item1-content" style="margin:0.3em;"></div>
 				</div>
 
 				<div id="sidebar-item2-area" style="margin-top:3em;">
@@ -144,7 +135,6 @@
 			</div>
 		</div>
 		<!-- /#page-content-wrapper -->
-
 	</div>
 	<!-- /#wrapper -->
 
