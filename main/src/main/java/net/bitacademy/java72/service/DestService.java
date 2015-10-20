@@ -14,6 +14,7 @@ public interface DestService {
 //  int countAll();*/
   int insertSpec(Dest dest);
   List<Dest> listPermision(Dest dest);
+  List<Dest> listPartiSelect(Dest dest);
 }
 
 

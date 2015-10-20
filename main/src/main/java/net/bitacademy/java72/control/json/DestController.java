@@ -66,6 +66,19 @@ public class DestController {
     return result;
   }
   
+
+  @RequestMapping("/listPartiSelect")
+  public Object listPartiSelect(Dest dest) {
+    System.out.println("listPartiSelect");
+    Map<String,Object> result = 
+        new HashMap<String,Object>();
+    
+    result.put("data", destService.listPartiSelect(dest));
+    System.out.println(result);
+    
+    return result;
+  }
+  
   /*@RequestMapping("/delete")
   public Object delete(int no) {
     int count = boardService.delete(no);

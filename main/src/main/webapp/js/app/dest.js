@@ -133,6 +133,126 @@ define([
 					
 				});
 
-			} //init 종료
+			}, //init 종료
+			listPartiSelect: function() {
+				var meetNo = sessionStorage.getItem('meetNo');
+				var cateNm = new Array();
+				var cateNmList = new Array();
+				
+				console.log('meetNo'+meetNo);
+
+				$.getJSON(contextRoot + '/json/dest/listPartiSelect.do?meet_no='
+						+ meetNo, function(result) {
+					
+//					for (var index=0; index < result.data.length; index++) {
+//						cateNm.push(result.data[index].cate_nm1)
+//					}
+//					
+//					$.each(cateNm, function(i, el){
+//						if($.inArray(el, cateNmList) === -1) cateNmList.push(el);
+//					});
+					
+//					console.log(result.data);
+//					console.log('================');
+					
+					
+					
+					
+					for (var index=0; index < result.data.length; index++) {
+//						console.log(result.data[index].cate_nm1);
+//						console.log('================');
+						
+						if (result.data[index].cate_nm1 == '음식점') {
+							console.log(result.data[index].cate_nm);
+							
+							var tag = "<div class='category' >"
+								+result.data[index].cate_nm
+								+"</div>";
+							$("#음식").after(tag);
+							
+						} else if (result.data[index].cate_nm1 == '가정,생활') {
+							console.log(result.data[index].cate_nm);
+							
+							var tag = "<div class='category' >"
+								+result.data[index].cate_nm
+								+"</div>";
+							$("#가정").after(tag);
+							
+						} else if (result.data[index].cate_nm1 == '여행') {
+							console.log(result.data[index].cate_nm);
+							
+							var tag = "<div class='category' >"
+								+result.data[index].cate_nm
+								+"</div>";
+							$("#여행").after(tag);
+							
+						} else if (result.data[index].cate_nm1 == '스포츠,레저') {
+							console.log(result.data[index].cate_nm);
+							
+							var tag = "<div class='category' >"
+								+result.data[index].cate_nm
+								+"</div>";
+							$("#스포츠").after(tag);
+							
+						} else if (result.data[index].cate_nm1 == '문화,예술') {
+							console.log(result.data[index].cate_nm);
+							
+							var tag = "<div class='category' >"
+								+result.data[index].cate_nm
+								+"</div>";
+							$("#문화").after(tag);
+							
+						} else if (result.data[index].cate_nm1 == '교육,학문') {
+							console.log(result.data[index].cate_nm);
+							
+							var tag = "<div class='category' >"
+								+result.data[index].cate_nm
+								+"</div>";
+							$("#교육").after(tag);
+							
+						} else if (result.data[index].cate_nm1 == '사회,공공기관') {
+							console.log(result.data[index].cate_nm);
+							
+							var tag = "<div class='category' >"
+								+result.data[index].cate_nm
+								+"</div>";
+							$("#공공기관").after(tag);
+							
+						} else if (result.data[index].cate_nm1 == '교통,수송') {
+							console.log(result.data[index].cate_nm);
+							
+							var tag = "<div class='category' >"
+								+result.data[index].cate_nm
+								+"</div>";
+							$("#교통").after(tag);
+							
+						}
+						
+					}
+					
+					
+				});
+			} // listPartiSelect 종료
 	};
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

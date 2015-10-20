@@ -1,0 +1,114 @@
+<style>
+#sidebar-item2-content {
+	width: 100%;
+	min-width: 200px;
+	height: 100%;
+	min-height: 400px;
+	background-color: white;
+}
+
+
+div a:HOVER {
+	text-decoration: none;
+}
+div a:link {
+	text-decoration: none;
+}
+div a:visited {
+	text-decoration: none;
+}
+
+.parti-user-list {
+	width: 100%;
+	min-width: 200px;
+	height: 100%;
+}
+
+.parti-info-title {
+	width: 40%;
+	min-width: 100px;
+	height: 100%;
+}
+
+#parti-info {
+	text-align: left; 
+	font-size: 80%; 
+	color: #00aba9;
+	display: inline-block;
+}
+
+.categoryNmSide {
+	width: 96%;
+	height: 10%;
+	border-bottom: 1px solid black;
+	font-size: 100%;
+	text-align: left;
+	display: inline-block;
+	float: left;
+	margin-top: 2%;
+	margin-left: 2%;
+}
+
+.category {
+	width: 30%;
+	min-width: 20px;
+	height: 100%;
+	min-height: 20px;
+	display: inline-block;
+	text-align: left;
+	float: left;
+	font-size: 80%;
+	font-weight: bold;
+	background-color: white;
+	color: #00aba9;
+	margin-left: 1%;
+}
+
+
+</style>
+
+<script>
+	requirejs([ 'app/dest' ], function(dest) {
+		dest.listPartiSelect();
+	});
+</script>
+
+<script id="parti-categoryNm-template" type="text/x-handlebars-template">
+{{#each data}}
+	<div class="categoryNmList" meet_no="{{meet_no}}">{{cate_nm1}}</div>
+{{/each}}
+</script>
+
+<script id="parti-category-template" type="text/x-handlebars-template">
+{{#each data}}
+	<div class="col-sm-4 categoryList" id="{{cate_no}}">{{cate_nm}}</div>
+{{/each}}
+</script>
+
+<div class="parti-user-list">
+	<div class="parti-info-title">
+		<div id="parti-info">선택된 카테고리</div>
+	</div>
+	 <div class="parti-category-info"> 
+		<div class="categoryNmSide" id="음식">음식</div>
+		<div class="categoryNmSide" id="가정">가정,생활</div>
+		<div class="categoryNmSide" id="여행">여행</div>
+		<div class="categoryNmSide" id="스포츠">스포츠</div>
+		<div class="categoryNmSide" id="문화">문화,예술</div>
+		<div class="categoryNmSide" id="교육">교육,학문</div>
+		<div class="categoryNmSide" id="공공기관">공공기관</div>
+		<div class="categoryNmSide" id="교통">교통,수송</div>
+		
+	</div> 
+</div>
+
+
+	
+
+
+
+
+
+
+
+

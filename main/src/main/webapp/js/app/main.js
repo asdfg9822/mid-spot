@@ -16,7 +16,7 @@
  		$("#wrapper").toggleClass("toggled");
  	});
 
- 	$('#companyMenu').click(function (event) {
+ 	$('#resultCompany').click(function (event) {
  		event.preventDefault();
  		$('#content').load('html/company.html');
  	}); // company 이동 기능
@@ -34,7 +34,9 @@
  	//Header 목적 Button
  	$('#destMenu').click(function (event) {
  		event.preventDefault();
- 		$('#sidebar-item1-content').load('html/dest_spec_search.html');
+ 		$('#sidebar-item1-title').remove();
+ 		$('#sidebar-item1-content').remove();
+ 		$('#sidebar-item2-content').load('html/dest_side.html');
  		$('#content').load('html/dest.html');
  	});
  	//Header 출발 Button
