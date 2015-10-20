@@ -83,7 +83,6 @@ define([
 						$.each(category, function(i, el){
 							if($.inArray(el, categoryList) === -1) categoryList.push(el);
 						});
-						categoryList.shift();
 					} 
 					
 					for (var index=0; index < categoryList.length; index++) {

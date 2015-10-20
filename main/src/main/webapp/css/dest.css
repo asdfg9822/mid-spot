@@ -83,6 +83,20 @@ div a:visited {
 	font-size: 130%;
 	box-shadow: 2px 2px 2px #888888;
 	text-align: center;
+	@media screen and (min-width:375px) and (max-width:758px) {
+		#categoryNm,
+		#categoryNm1,
+		#categoryNm2,
+		#categoryNm3,
+		#categoryNm4,
+		#categoryNm5,
+		#categoryNm6,
+		#categoryNm7,
+		#categoryNm8 {
+			width: 40%;
+			max-width: 300px;
+		}
+	}
 }
 
 #categoryLife,
