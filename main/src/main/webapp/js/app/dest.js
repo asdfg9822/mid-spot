@@ -56,21 +56,44 @@ define([
 
 				$('.btn_cate_select').click(function (event) {
 					event.preventDefault();
+					$(".category-selected").remove();
 					
-					category.push($(this).find('div').text().trim());
+					// 카테고리 3개 이상 등록 불가능하게 예외처리
+					if (category.length < 3) {
+						category.push($(this).find('div').text().trim());
+						
+					} else if (category.length = 3) {
+						category.shift();
+						category.push($(this).find('div').text().trim());
+					}
 					
-					$.each(category, function(i, el){
-						if($.inArray(el, categoryList) === -1) categoryList.push(el);
-					});
+					if (categoryList.length < 3) {
+						$.each(category, function(i, el){
+							if($.inArray(el, categoryList) === -1) categoryList.push(el);
+						});
+					} else if (categoryList.length = 3){
+						categoryList.shift();
 					
-					console.log(categoryList);
+						$.each(category, function(i, el){
+							if($.inArray(el, categoryList) === -1) categoryList.push(el);
+						});
+					} else if (categoryList.length = 4){
+						categoryList.shift();
+						categoryList.shift();
+						$.each(category, function(i, el){
+							if($.inArray(el, categoryList) === -1) categoryList.push(el);
+						});
+						categoryList.shift();
+					} 
 					
-					var cate = $(this).find('div').text().trim();
+					for (var index=0; index < categoryList.length; index++) {
+						
+						var tag = "<button class='category-selected' id='"+categoryList[index]+"'>"
+						+categoryList[index]+"</button>";
+						
+						$(".category-selected-list").after(tag);
+					}
 					
-					var tag = "<button class='category-selected' id='"+cate+"'>"
-						+$(this).find('div').text().trim()+"</button>";
-					
-					$(".category-selected-list").after(tag);
 				});
 
 				$('#insertRcmd').click(function (event) {
@@ -83,7 +106,7 @@ define([
 //					var membNo = 
 					var member = JSON.parse(sessionStorage.getItem('member'));
 					var memberNo = member.memberNo;
-					console.log('w접속자 번호 :'+memberNo);
+					console.log('접속자 번호 :'+memberNo);
 					
 					$.getJSON(contextRoot + '/json/dest/listPermision.do?memb_no='
 							+ memberNo, function(result) {
