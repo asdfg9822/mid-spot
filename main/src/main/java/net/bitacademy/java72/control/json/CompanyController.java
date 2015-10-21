@@ -105,6 +105,9 @@ public class CompanyController {
 			sX = (String)list.getLat();
 			sY = (String)list.getLon();
 		}
+		
+		System.out.println("출발지sX" + sX);
+		System.out.println("출발지sY" + sY);
 
 
 
@@ -130,6 +133,7 @@ public class CompanyController {
 			transResult.toString();
 
 			result.put("result", transResult);
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

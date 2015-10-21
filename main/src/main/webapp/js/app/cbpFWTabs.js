@@ -8,65 +8,69 @@
  * Copyright 2014, Codrops
  * http://www.codrops.com
  */
-;( function( window ) {
+;
+(function (window) {
 
-	'use strict';
+  'use strict';
 
-	function extend( a, b ) {
-		for( var key in b ) {
-			if( b.hasOwnProperty( key ) ) {
-				a[key] = b[key];
-			}
-		}
-		return a;
-	}
+  function extend(a, b) {
+    for (var key in b) {
+      if (b.hasOwnProperty(key)) {
+        a[key] = b[key];
+      }
+    }
+    return a;
+  }
 
-	function CBPFWTabs( el, options ) {
-		this.el = el;
-		this.options = extend( {}, this.options );
-  		extend( this.options, options );
-  		this._init();
-	}
+  function CBPFWTabs(el, options) {
+    this.el = el;
+    this.options = extend({}, this.options);
+    extend(this.options, options);
+    this._init();
+  }
 
-	CBPFWTabs.prototype.options = {
-		start : 0
-	};
+  CBPFWTabs.prototype.options = {
+    start: 0
+  };
 
-	CBPFWTabs.prototype._init = function() {
-		// tabs elemes
-		this.tabs = [].slice.call( this.el.querySelectorAll( 'nav > ul > li' ) );
-		// content items
-		this.items = [].slice.call( this.el.querySelectorAll( '.result_content > section' ) );
-		// current index
-		this.current = -1;
-		// show current content item
-		this._show();
-		// init events
-		this._initEvents();
-	};
+  CBPFWTabs.prototype._init = function () {
+    // tabs elemes
+    this.tabs = [].slice.call(this.el.querySelectorAll('nav > ul > li'));
+    // content items
+    this.items = [].slice.call(this.el.querySelectorAll('.result_content > section'));
+    // current index
+    this.current = -1;
+    // show current content item
+    this._show();
+    // init events
+    this._initEvents();
+  };
 
-	CBPFWTabs.prototype._initEvents = function() {
-		var self = this;
-		this.tabs.forEach( function( tab, idx ) {
-			tab.addEventListener( 'click', function( ev ) {
-				ev.preventDefault();
-				self._show( idx );
-			} );
-		} );
-	};
+  CBPFWTabs.prototype._initEvents = function () {
+    var self = this;
+    this.tabs.forEach(function (tab, idx) {
+      tab.addEventListener('click', function (ev) {
+        ev.preventDefault();
+//        console.log("클릭입니다 ");
+  //        console.log(idx);
+        $('.button_map_first:first').off('click').trigger('click');
+        self._show(idx);
+      });
+    });
+  };
 
-	CBPFWTabs.prototype._show = function( idx ) {
-		if( this.current >= 0 ) {
-			this.tabs[ this.current ].className = '';
-			this.items[ this.current ].className = '';
-		}
-		// change current
-		this.current = idx != undefined ? idx : this.options.start >= 0 && this.options.start < this.items.length ? this.options.start : 0;
-		this.tabs[ this.current ].className = 'tab-current';
-		this.items[ this.current ].className = 'result_content-current';
-	};
+  CBPFWTabs.prototype._show = function (idx) {
+    if (this.current >= 0) {
+      this.tabs[this.current].className = '';
+      this.items[this.current].className = '';
+    }
+    // change current
+    this.current = idx != undefined ? idx : this.options.start >= 0 && this.options.start < this.items.length ? this.options.start : 0;
+    this.tabs[this.current].className = 'tab-current';
+    this.items[this.current].className = 'result_content-current';
+  };
 
-	// add to global namespace
-	window.CBPFWTabs = CBPFWTabs;
+  // add to global namespace
+  window.CBPFWTabs = CBPFWTabs;
 
-})( window );
+})(window);

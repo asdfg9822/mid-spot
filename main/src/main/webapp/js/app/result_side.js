@@ -10,7 +10,10 @@ define(['jquery', 'app/common'], function ($) {
         var second = true;
         var third = true;
 
-        $(document).on('click', '.result_map_menu> #pickSection-0', function () {
+        $(document).on('click', '.result_map_menu > #pickSection-0', function (e) {
+
+          e.preventDefault();
+          console.log("압구정클릭");
 
           if (first == true && second == false && third == true) {
 
@@ -49,8 +52,10 @@ define(['jquery', 'app/common'], function ($) {
         });
 
 
-        $(document).on('click', '.result_map_menu> #pickSection-1', function () {
+        $(document).on('click', '.result_map_menu > #pickSection-1', function (e) {
 
+          console.log("잠실역클릭");
+          e.preventDefault();
           if (first == false && second == true && third == true) {
             $("#pickSection-1").animate({
               "top": "-=150px"
@@ -74,21 +79,22 @@ define(['jquery', 'app/common'], function ($) {
 
 
           } else {
-//            $("#pickSection-1").animate({
-           //              "top": "0px"
-           //            }, "slow");
-           //
-           //            $("#stationMap").animate({
-           //              "top": "0px"
-           //            }, "slow");
-           //            first = false;
-           //            second = true;
+            //            $("#pickSection-1").animate({
+            //              "top": "0px"
+            //            }, "slow");
+            //
+            //            $("#stationMap").animate({
+            //              "top": "0px"
+            //            }, "slow");
+
           }
         });
 
 
-        $(document).on('click', '.result_map_menu> #pickSection-2', function () {
+        $(document).on('click', '.result_map_menu > #pickSection-2', function (e) {
+          e.preventDefault();
 
+          console.log("신촌역클릭");
           if (first == false && third == true && second == true) {
             $("#pickSection-1").animate({
               "top": "-=150px"
@@ -114,18 +120,18 @@ define(['jquery', 'app/common'], function ($) {
             second = true;
             third = false;
           } else {
-//            $("#pickSection-1").animate({
-         //              "top": "0px"
-         //            }, "slow");
-         //            $("#pickSection-2").animate({
-         //              "top": "0px"
-         //            }, "slow");
-         //
-         //            $("#stationMap").animate({
-         //              "top": "0px"
-         //            }, "slow");
-         //            first = false;
-         //            third = true;
+            //            $("#pickSection-1").animate({
+            //              "top": "0px"
+            //            }, "slow");
+            //            $("#pickSection-2").animate({
+            //              "top": "0px"
+            //            }, "slow");
+            //
+            //            $("#stationMap").animate({
+            //              "top": "0px"
+            //            }, "slow");
+            //            first = false;
+            //            third = true;
           }
 
 

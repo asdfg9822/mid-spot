@@ -51,7 +51,7 @@
           <div class="col-md-2">
             <div class="select-button">
               <ul class="ca-menu">
-                <li class="detail-info">
+                <li class="detail-info" data-compNo="{{no}}">
                   <a href="#">
                     <span class="ca-icon">L</span>
                     <div class="ca-content">
@@ -89,11 +89,15 @@
     <div class="table-div detail-explain-more">
       <!--map위치-->
       <div id='detail_map_id_{{@index}}' class="detail_map" data-lat="{{lat}}" data-lon="{{lon}}"></div>
+
+      <!--더보기위치-->
       <div class="detail_bar"></div>
       <div class="result_dtail_text">
       </div>
       <h3>{{companyName}} <span style="color:coral;">SPEC</span></h3>
-
+      <br>
+      <div class="result_spec_Content">
+      </div>
 
     </div>
     <div class="table-div detail-explain-find">
@@ -107,17 +111,11 @@
     <div class="table-div detail-explain-share">공유하기의 상세</div>
   </div>
   {{/each}}
-
 </script>
 
-<script id="resultPick2ContentScript" type="text/x-handlebars-template">
-  {{#each data}} {{/each}}
-</script>
-
-
+<!-- 길찾기 content 핸들바스-->
 <script id="resultRoadContentScript" type="text/x-handlebars-template">
   {{#with info}}
-
   <div class="result_road_title">
     <h4>{{firstStartStation}} <img src="images/result/arrow.png" style="width:15px;"> {{lastEndStation}}
       <span class="result_road_time">{{totalTime}}분</span> </h4> {{/with}}
@@ -131,9 +129,9 @@
       {{#list2 guide}} {{guide}} {{/list2}}
     </div>
   </div>
-
   <br> {{/each}}
 </script>
+<!-- END 길찾기 content 핸들바스-->
 
 
 <script id="resultCateTitleScript" type="text/x-handlebars-template">
@@ -152,8 +150,20 @@
     </div>
   </section>
   {{/each}}
-
 </script>
+
+
+<!-- 더보기SPEC content 핸들바스 -->
+<script id="resultSpecContentScript" type="text/x-handlebars-template">
+  {{#each data}}
+  <spen>{{spec_nm}} : {{spec_vl}}</spen>
+  <br> {{/each}}
+</script>
+<!-- END 더보기SPEC content 핸들바스 -->
+
+
+
+<!-- ******************핸들바스사용 end ***********************-->
 
 <div class="result_container">
 
@@ -164,8 +174,6 @@
     </nav>
     <div id="cateSectionArea" class="result_content">
     </div>
-    <!-- /content -->
   </div>
-  <!-- /tabs -->
+
 </div>
-<!-- END tab 수정 10.06-->
