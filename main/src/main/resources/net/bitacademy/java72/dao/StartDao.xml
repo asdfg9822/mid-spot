@@ -28,6 +28,16 @@
     WHERE parti_no=#{parti_no};
   </select>
   
+  <select id="list" parameterType="Start" resultMap="StartMap">
+  	select * from parti_tb where memb_no=#{memb_no}
+  </select>
+  
+  <update id="update">
+    update parti_tb 
+    set lat=#{lat}, lon=#{lon}
+    where memb_no=#{memb_no} and parti_no=#{parti_no} 
+  </update>
+  
 </mapper>
 
 

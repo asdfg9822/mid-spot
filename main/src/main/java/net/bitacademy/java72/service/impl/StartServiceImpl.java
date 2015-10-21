@@ -59,6 +59,16 @@ public List<Start> partiMembList(Start start) {
   // TODO Auto-generated method stub
   return startDao.partiMembList(start);
 }
+@Override
+public List<Start> list(Start start) {
+  // TODO Auto-generated method stub
+  return startDao.list(start);
+}
+@Override
+public int update(Start start) {
+  // TODO Auto-generated method stub
+  return startDao.update(start);
+}
 
   
 }

@@ -13,6 +13,8 @@ public interface StartDao {
 //  Board get(int no);
 //  int countAll();
     List<Start> partiMembList(Start start);
+    List<Start> list(Start start);
+    int update(Start start);
 }
 
 

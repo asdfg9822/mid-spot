@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mysql.fabric.xmlrpc.base.Array;
-
 import net.bitacademy.java72.domain.Start;
 import net.bitacademy.java72.service.StartService;
 
@@ -48,6 +46,18 @@ public class StartController {
 //      System.out.println(latList[index]);
 //      System.out.println(lonList[index]);
 //    }
+    
+    return result;
+  }
+  
+  @RequestMapping("/list")
+  public Object list(Start start) {
+    System.out.println("list");
+    Map<String,Object> result = 
+        new HashMap<String,Object>();
+    
+    List<Start> list = startService.partiMembList(start);
+    result.put("data", startService.list(start));
     
     return result;
   }
@@ -124,11 +134,11 @@ public class StartController {
     
     return result;
   }
-  
+  */
   @RequestMapping("/update")
-  public Object boardUpdate (Board board) throws Exception {
+  public Object update (Start start) throws Exception {
 
-    int count = boardService.update(board);
+    int count = startService.update(start);
 
     Map<String,Object> result = 
         new HashMap<String,Object>();
@@ -139,7 +149,7 @@ public class StartController {
     }
     
     return result;
-  }*/
+  }
 }
 
 

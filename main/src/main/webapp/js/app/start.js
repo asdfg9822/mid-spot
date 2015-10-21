@@ -116,6 +116,16 @@ define([
 					   
 				} //for 문 인원수 별로
 				 map.setBounds(bounds); // 지도에 마커의 위치만큼 표시
+
+				$('.parti-user-name').click(function() {
+					
+					var coord = new daum.maps.LatLng($(this).attr('lat'),$(this).attr('lon'));
+					map.panTo(coord);
+					
+					var level = 3;
+				    map.setLevel(level);
+					
+				});
 				 
 			});
 
@@ -202,8 +212,6 @@ define([
 				// 입력 받을 키워드
 				var keyword = document.getElementById('keyword').value;
 				
-//				ps.keywordSearch(keyword, placesSearchCB); 
-
 				geocoder.addr2coord(keyword, function (status, result) {
 
 					// 정상적으로 검색이 완료됐으면
@@ -230,7 +238,6 @@ define([
 						infowindow.open(map, marker);
 
 						// 지도 중심좌표를 접속위치로 변경합니다
-//						map.setCenter(coords);
 						map.panTo(coords);
 						
 						// 현재 지도의 레벨을 3으로 설정
@@ -250,15 +257,13 @@ define([
 						     infowindow.close(map, marker);  
 						});
 						
-//						console.log(result.addr[0].lat, result.addr[0].lng);
-
 					} else {
 						alert('해당 주소가 없습니다.');
 					}
 				});
 
 			}); /* 클릭 함수 */
-
+			
 
 		},
 		insertStart: function(locPosition) {
@@ -273,26 +278,54 @@ define([
 			var meetNo = sessionStorage.getItem('meetNo');
 			console.log("접속된 방 번호 :" + meetNo);
 			var member = JSON.parse(sessionStorage.getItem('member'));
+			var partiNo = sessionStorage.getItem('meetNo');
+			
 			$('#parti_no').val(meetNo);
 			$('#memb_no').val(member.memberNo);
+			
+			console.log('============');
+			console.log(member);
 
 			$('#insertLat1').click(function (event) {
 				event.preventDefault();
-				console.log('클릭');
-				$.ajax(contextRoot + '/json/start/insert.do', {
-					method: 'POST',
-					dataType: 'json',
-					data: {
-						parti_no: meetNo,
-						memb_no: member.memberNo,
-						lat: lat,
-						lon: lon
-					},
-				});
-				console.log(lat, lon);
-			});
+				
+				$.getJSON(contextRoot
+						+ '/json/start/list.do?memb_no='+member.memberNo,
+						function(result) {
+					
+					if ( (result.data[0].lat || result.data[0].lon) == null) {
+	
+							$.ajax(contextRoot + '/json/start/insert.do', {
+								method: 'POST',
+								dataType: 'json',
+								data: {
+									parti_no: meetNo,
+									memb_no: member.memberNo,
+									lat: lat,
+									lon: lon
+								},
+							});
+							$('#startMenu').trigger('click');
+						
+					} else {
+						$.ajax(contextRoot + '/json/start/update.do', {
+							method : 'POST',
+							dataType : 'json',
+							data : {
+								parti_no: meetNo,
+								memb_no : member.memberNo,
+								lat : lat,
+								lon : lon
+							}
+						});
+						$('#startMenu').trigger('click');
+					} 
+					
+				}); // 위도, 경도 존재 여부 확인
+				
+			}); /* insert() */
 			
-		}, /* insert() */
+		},
 		partiMembList: function(partiNo) {
 			var partiNo = sessionStorage.getItem('meetNo');
 			
@@ -312,6 +345,17 @@ define([
 				var tag = "<div id='parti-info-total' style='padding-left:10%;'>"+size+"</div>";
 				
 				$("#parti-info").after(tag);
+				
+//				
+//				$('.parti-user-name').click(function() {
+//					console.log($(this).attr('lat'));
+//					console.log($(this).attr('lon'));
+//					
+//					map.panTo($(this).attr('lat'),$(this).attr('lon'));
+//					
+//					
+//				});
+				
 				
 			});
 			
