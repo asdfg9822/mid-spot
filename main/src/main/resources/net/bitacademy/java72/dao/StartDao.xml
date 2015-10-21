@@ -14,6 +14,8 @@
     <result column="email"    property="email" />
     <result column="get_site"    property="get_site" />
     <result column="file_path"  property="file_path" />
+    <result column="meet_nm"  property="meet_nm" />
+    <result column="meet_dt"  property="meet_dt" />
   </resultMap>
 
   <insert id="insert" parameterType="Start">
@@ -34,10 +36,11 @@
     WHERE parti_no = #{parti_no} AND memb_no = #{memb_no}
   </select>
 
-
-  
   <select id="list" parameterType="Start" resultMap="StartMap">
-  	select * from parti_tb where memb_no=#{memb_no}
+  	select t1.parti_no,t1.memb_no,t1.lat,t1.lon,t1.status,t1.notice_dt,t2.meet_nm,t2.meet_dt
+	from parti_tb t1 
+	left outer join meet_tb t2 on t1.memb_no=t2.memb_no
+	where t1.memb_no=#{memb_no}
   </select>
 
   <update id="update">

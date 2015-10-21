@@ -1,4 +1,8 @@
 <style>
+#page-content-wrapper {
+	margin-top: 3%;
+}
+
 #content .option {
 	float: left;
 	width: 90%;
@@ -16,9 +20,10 @@
 	border: 2px solid #555555;
 	margin-left: 3%;
 	outline-style: none;
+	
 }
 
-#keyword {
+#keyword, #keyword:ACTIVE, #keyword:LINK {
 	border: 0px;
 	color: #999999;
 	width: 80%;
@@ -68,8 +73,7 @@
 
 <div class="option">
 	<div class="inputStart">
-		<input type="text" id="keyword" class="start-search"
-			value="서울특별시 서초구 서초동 1327-15번지">
+		<input type="text" id="keyword" class="start-search">
 		<button id="start-search-my"></button>
 	</div>
 	<button id="start-search-place">검 색</button>

@@ -18,7 +18,7 @@ define([
 	return {
 		init: function () {
 			console.log('->start->init()');
-
+			
 			var moduleObj = this;
 			var statusMy = 0;
 
@@ -30,7 +30,11 @@ define([
 				};
 
 			var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
+			
+			var markerPrimary = new daum.maps.Marker({
+				position: new daum.maps.LatLng(33.450701, 126.570667)
+			});
+			
 			// 지도에 현재 모임 인원 보여주기
 			var partiNo = sessionStorage.getItem('meetNo');
 
@@ -130,6 +134,8 @@ define([
 			});
 
 			$('#start-search-my').click(function () {
+				$("#searchInfo").remove();
+				
 				// 주소-좌표 변환 객체를 생성합니다
 				var geocoder = new daum.maps.services.Geocoder();
 
@@ -140,15 +146,31 @@ define([
 						lon = position.coords.longitude; // 경도
 
 					var coord = new daum.maps.LatLng(lat, lon);
-					var callback = function (status, result) {
-						if (status === daum.maps.services.Status.OK) {
-							var locPosition = new daum.maps.LatLng(lat, lon),
-								message = '<div style="padding:5px;">현재 위치</div>'; // 인포윈도우에 표시될 내용입니다
-						}
-						// 마커와 인포윈도우를 표시합니다
-						displayMarker(locPosition, message);
+					
+					if ( (markerPrimary.getPosition().zb == lat) && 
+							(markerPrimary.getPosition().yb == lon) ) {
+
+						// 지도 중심좌표를 접속위치로 변경합니다
+						map.panTo(coord);
+
+						// 현재 지도의 레벨을 3으로 설정
+					    var level = 3;
+					    map.setLevel(level);
+
+					} else {
+
+						var callback = function (status, result) {
+							if (status === daum.maps.services.Status.OK) {
+								var locPosition = new daum.maps.LatLng(lat, lon),
+									message = '<div style="padding:5px;">현재 위치</div>'; // 인포윈도우에 표시될 내용입니다
+							}
+							// 마커와 인포윈도우를 표시합니다
+							
+							displayMarker(locPosition, message);
+							markerPrimary.setPosition(coord);
+						};
 						
-					};
+					}
 
 					geocoder.coord2detailaddr({
 						coord: coord,
@@ -161,6 +183,7 @@ define([
 
 			// 지도에 마커와 인포윈도우를 표시하는 함수입니다
 			function displayMarker(locPosition, message) {
+				
 				// 마커를 생성합니다
 				var marker = new daum.maps.Marker({
 					map: map,
@@ -177,12 +200,11 @@ define([
 					content: iwContent,
 					removable: iwRemoveable
 				});
-
+				
 				// 인포윈도우를 마커위에 표시합니다
 				infowindow.open(map, marker);
 
 				// 지도 중심좌표를 접속위치로 변경합니다
-//				map.setCenter(locPosition);
 				map.panTo(locPosition);
 
 				// 현재 지도의 레벨을 3으로 설정
@@ -204,6 +226,7 @@ define([
 			}
 
 			$('#start-search-place').click(function () {
+				$("#searchInfo").remove();
 				var status = 1;
 				console.log('처음status'+status);
 				// 주소로 좌표를 검색합니다
@@ -211,63 +234,86 @@ define([
 				
 				// 입력 받을 키워드
 				var keyword = document.getElementById('keyword').value;
+				
+				if (keyword != '') {
+					geocoder.addr2coord(keyword, function (status, result) {
 
-				geocoder.addr2coord(keyword, function (status, result) {
+						// 정상적으로 검색이 완료됐으면
+						if (status === daum.maps.services.Status.OK) {
 
-					// 정상적으로 검색이 완료됐으면
-					if (status === daum.maps.services.Status.OK) {
+							var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
+							
+//							
+//							console.log('result.addr[0].lat');
+//							console.log(result.addr[0].lat);
+							
+							if ( (markerPrimary.getPosition().zb == result.addr[0].lat) && 
+									(markerPrimary.getPosition().yb == result.addr[0].lng) ) {
+								
+								// 지도 중심좌표를 접속위치로 변경합니다
+								map.panTo(coords);
 
-						var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
-						
-						// 결과값으로 받은 위치를 마커로 표시합니다
-						var marker = new daum.maps.Marker({
-							map: map,
-							clickable: true,
-							position: coords,
-							draggable: true
-						});
+								// 현재 지도의 레벨을 3으로 설정
+							    var level = 3;
+							    map.setLevel(level);
 
+							} else {
+								
+								markerPrimary.setPosition(coords);
+								
+								// 결과값으로 받은 위치를 마커로 표시합니다
+								var marker = new daum.maps.Marker({
+									map: map,
+									clickable: true,
+									position: coords,
+									draggable: true
+								});
 
-						// 인포윈도우로 장소에 대한 설명을 표시합니다
-						var infowindow = new daum.maps.InfoWindow({
-							content: '<div style="padding:5px;">검색한 위치 <br>'
-								+ result.addr[0].buildingAddress + '</div>', // 인포윈도우에 표시될 내용입니다
-							removable: true
-						});
+								// 인포윈도우로 장소에 대한 설명을 표시합니다
+								var infowindow = new daum.maps.InfoWindow({
+									content: '<div style="padding:5px;">검색한 위치 <br>'
+										+ result.addr[0].buildingAddress + '</div>', // 인포윈도우에 표시될 내용입니다
+									removable: true
+								});
 
-						infowindow.open(map, marker);
+								infowindow.open(map, marker);
 
-						// 지도 중심좌표를 접속위치로 변경합니다
-						map.panTo(coords);
+								// 지도 중심좌표를 접속위치로 변경합니다
+								map.panTo(coords);
 
-						// 현재 지도의 레벨을 3으로 설정
-					    var level = 3;
-					    map.setLevel(level);
+								// 현재 지도의 레벨을 3으로 설정
+							    var level = 3;
+							    map.setLevel(level);
 
-						moduleObj.insertStart(coords);
-						
-						// 마커에 클릭이벤트를 등록합니다
-						daum.maps.event.addListener(marker, 'click', function() {
-						      // 마커 위에 인포윈도우를 표시합니다
-						      infowindow.open(map, marker);
-						});
+								moduleObj.insertStart(coords);
+								
+								// 마커에 클릭이벤트를 등록합니다
+								daum.maps.event.addListener(marker, 'click', function() {
+								      // 마커 위에 인포윈도우를 표시합니다
+								      infowindow.open(map, marker);
+								});
 
-						daum.maps.event.addListener(marker, 'rightclick', function() {
-							marker.setVisible(false);
-						     infowindow.close(map, marker);
-						});
+								daum.maps.event.addListener(marker, 'rightclick', function() {
+									marker.setVisible(false);
+								     infowindow.close(map, marker);
+								});
+							}
 
-					} else {
-						alert('해당 주소가 없습니다.');
-					}
-				});
+						} else {
+							$('.option').after("<div id='searchInfo' style='color:red; display: inline-block;'>해당 주소가 없습니다.</div>");
+						}
+					});
+				
+				} else {
+					$('.option').after("<div id='searchInfo' style='color:red; display: inline-block;'>검색어가 없습니다.</div>");
+				}
 
 			}); /* 클릭 함수 */
 
 
 		},
 		insertStart: function(locPosition) {
-			console.log('locPosition'+locPosition);
+			$("#searchInfo").remove();
 
 			var lat = locPosition.zb;
 	        var lon = locPosition.yb;
@@ -328,8 +374,7 @@ define([
 		},
 		partiMembList: function(partiNo) {
 			var partiNo = sessionStorage.getItem('meetNo');
-
-			console.log('partiNo:'+partiNo);
+			var member = JSON.parse(sessionStorage.getItem('member'));
 
 			$.getJSON(contextRoot
 					+ '/json/start/partiMembList.do?parti_no='+partiNo,
@@ -346,17 +391,21 @@ define([
 
 				$("#parti-info").after(tag);
 
-//
-//				$('.parti-user-name').click(function() {
-//					console.log($(this).attr('lat'));
-//					console.log($(this).attr('lon'));
-//
-//					map.panTo($(this).attr('lat'),$(this).attr('lon'));
-//
-//
-//				});
+			});
+			
+			$.getJSON(contextRoot
+					+ '/json/start/list.do?memb_no='+member.memberNo,
+					function(result) { 
+				
+				console.log("console.log(result); 모임 이름바딕");
+				console.log(result.data[0].meet_nm);
+				
+				var tag = "<div id='parti-info-meetNm' style='padding-left:10%;'>"
+					+result.data[0].meet_nm
+					+"</div>";
 
-
+				$("#parti-info-title").after(tag);
+				
 			});
 
 		} ///partiMembList()

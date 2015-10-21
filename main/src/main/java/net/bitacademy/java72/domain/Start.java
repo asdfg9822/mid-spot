@@ -17,9 +17,23 @@ public class Start implements Serializable {
 	protected String email;
 	protected String get_site;
 	protected String file_path;
-
-
-
+	protected String meet_nm;
+	protected Date meet_dt;
+	
+	
+	
+	public String getMeet_nm() {
+    return meet_nm;
+  }
+  public void setMeet_nm(String meet_nm) {
+    this.meet_nm = meet_nm;
+  }
+  public Date getMeet_dt() {
+    return meet_dt;
+  }
+  public void setMeet_dt(Date meet_dt) {
+    this.meet_dt = meet_dt;
+  }
 	public String getMemb_nm() {
     return memb_nm;
   }
