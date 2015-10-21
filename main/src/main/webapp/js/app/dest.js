@@ -172,10 +172,10 @@ define([
 							}
 							
 						} ///update
-						
+						$( "#destMenu" ).trigger( "click" );
 					});
-					
 				});
+				
 
 			}, //init 종료
 			listPartiSelect: function() {
