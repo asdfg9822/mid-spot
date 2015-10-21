@@ -1,0 +1,109 @@
+<style>
+#sidebar-item2-content {
+	width: 100%;
+	min-width: 200px;
+	height: 100%;
+	min-height: 400px;
+	background-color: white;
+}
+.parti-user-list {
+	width: 100%;
+	min-width: 200px;
+	height: 100%;
+}
+
+.parti-info-title {
+	width: 40%;
+	min-width: 100px;
+	height: 100%;
+}
+
+#parti-info {
+	text-align: left;
+	font-size: 80%;
+	color: #00aba9;
+	display: inline-block;
+}
+
+#parti-info-total {
+	text-align: left;
+	font-size: 80%;
+	color: black;
+	display: inline-block;
+}
+
+.parti-user-photo {
+	width: 30%;
+	min-width: 13px;
+	max-width: 50px;
+	height: 100%;
+	min-height: 50px;
+	display: inline-block;
+	float: left;
+	margin-top: 2%;
+	margin-left: 2%;
+	background-color: white;
+}
+
+.parti-user-name {
+	width: 70%;
+	min-width: 100px;
+	height: 100%;
+	min-height: 50px;
+	display: inline-block;
+	text-align: left;
+	float: left;
+	padding-top: 8%;
+	padding-left: 5%;
+	margin-top: 2%;
+	font-size: 80%;
+	font-weight: bold;
+	background-color: white;
+}
+
+.parti-user-name:HOVER {
+	color: #00aba9;
+	font-size: 100%;
+}
+
+.parti-user-lat, .parti-user-lon{
+	color: black;
+	border: 1px solid blue;
+}
+
+</style>
+
+<script>
+	requirejs([ 'app/start' ], function(start) {
+		start.partiMembList();
+	});
+</script>
+
+<script id="parti-user-template" type="text/x-handlebars-template">
+{{#each data}}
+	<div class="parti-user-photo"><img src="{{file_path}}" style="border-radius: 50%;"></div>
+	<div class="parti-user-name" lat="{{lat}}" lon="{{lon}}">{{memb_nm}}</div>
+{{/each}}
+</script>
+
+<!-- HTML 화면 -->
+
+<div class="parti-user-list">
+	<div class="parti-info-title">
+		<div id="parti-info">모임 참여 인원</div>
+	</div>
+	<div class="parti-user-info">
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,9 +1,28 @@
-define(['jquery', 'handlebars', 'bootstrap', 'app/common'], function ($, handlebars) {
+define(['jquery', 'handlebars'], function ($, handlebars) {
 
 	return {
-		init: function () {
+		detailMeet: function (meetNo) {
 
+			$(".trigger1").click(
+				function () {
+					$(".element2").toggle(
+						$.getJSON(contextRoot + '/json/meet/detail.do?meetNo=' + 1,
+							function (result) {
+								var data = result.data;
+								$('#MeetNo').val(data.meetNo);
+								$('#MemberNo').val(data.memberNo);
+								$('#MeetName').val(data.meetName);
+								$('#MeetDate').val(data.meetDate);
+								$('#MemberName').val(data.memberName);
+								console.log(data);
+							}));
+					$(".element1").toggle();
+				});
+		},
+
+		init: function () {
 			var moduleObj = this;
+
 			//초기 Meet List
 			moduleObj.listMeet();
 			/*------- Events --------*/
@@ -112,8 +131,6 @@ define(['jquery', 'handlebars', 'bootstrap', 'app/common'], function ($, handleb
 				$.extend(result, {
 					'memberNo': member.memberNo
 				});
-				console.log(result);
-
 
 				$.extend(result, {
 					'url': contextRoot + "/test.html?meetNo="
@@ -129,18 +146,18 @@ define(['jquery', 'handlebars', 'bootstrap', 'app/common'], function ($, handleb
 
 				var template = handlebars.compile(source);
 				var content = template(result);
+				console.log(result);
+				$('#listTable tbody').html(content);
 
 				// Load Meet
 				$('#meetListArea').html(content);
-
-			});
-
-			$(document).on('click', '.enter_btn', function (event) {
-				event.preventDefault();
-				sessionStorage.setItem('meetNo', $(this).attr('data-no'));
-				console.log("session meetNo = " + sessionStorage.getItem('meetNo'));
-				$(document).trigger('enterMeet');
-			});
+				$(document).on('click', '.enter_btn', function (event) {
+					event.preventDefault();
+					sessionStorage.setItem('meetNo', $(this).attr('data-no'));
+					console.log("session meetNo = " + sessionStorage.getItem('meetNo'));
+					$(document).trigger('enterMeet');
+				});
+			})
 		},
 		deleteMeet: function (meetNo) {
 
@@ -158,6 +175,7 @@ define(['jquery', 'handlebars', 'bootstrap', 'app/common'], function ($, handleb
 				moduleObj.listMeet();
 
 			});
+
 		}
-	}
+	};
 });

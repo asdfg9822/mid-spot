@@ -47,6 +47,16 @@ public class DestServiceImpl implements DestService {
   public List<Dest> listPermision(Dest dest) {
     return destDao.listPermision(dest);
   }
+  @Override
+  public List<Dest> listPartiSelect(Dest dest) {
+    // TODO Auto-generated method stub
+    return destDao.listPartiSelect(dest);
+  }
+  @Override
+  public int delete(Dest dest) {
+    // TODO Auto-generated method stub
+    return destDao.delete(dest);
+  }
 
 
   

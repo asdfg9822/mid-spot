@@ -13,6 +13,7 @@
 		<result column="spec_vl" property="spec_vl" />
 		<result column="comp_nm" property="comp_nm" />
 		<result column="memb_no" property="memb_no" /><!--listPermision  -->
+		<result column="cate_nm1" property="cate_nm1" /><!--listPartiSelect  -->
 	</resultMap>
 
 	<insert id="insert" parameterType="Dest">
@@ -42,11 +43,24 @@
 	</insert>
 
 	<select id="listPermision" parameterType="Dest" resultMap="DestMap">
-		select meet_no
+		select t1.meet_no,t3.cate_no
 		from meet_tb t1
 		left outer join memb_tb t2 on t1.memb_no=t2.memb_no
+		left outer join rcmd_cate_tb t3 on t1.meet_no=t3.meet_no
 		where t2.memb_no=#{memb_no};
 	</select>
+
+	<select id="listPartiSelect" parameterType="Dest" resultMap="DestMap">
+		select t1.cate_no,cate_nm,cate_nm1,meet_no
+		from cate_tb t1
+		left outer join rcmd_cate_tb t2 on t1.cate_no=t2.cate_no
+		where t2.meet_no=#{meet_no};
+	</select>
+
+	<delete id="delete"  parameterType="Dest">
+		delete from rcmd_cate_tb
+		where meet_no=#{meet_no}
+	</delete>
 
 </mapper>
 

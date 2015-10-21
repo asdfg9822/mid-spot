@@ -6,7 +6,8 @@ public class Dest implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	protected int meet_no;
+
+  protected int meet_no;
 	protected int cate_no;
 	protected String cate_nm;
 	protected String spec_nm;
@@ -15,13 +16,24 @@ public class Dest implements Serializable {
 	protected String spec_vl;
 	protected String comp_nm;
 	protected int memb_no;
+	protected String cate_nm1;
 	
+
+
 	@Override
 	public String toString() {
-		return "Dest [meet_no=" + meet_no + ", cate_no=" + cate_no + ", cate_nm=" + cate_nm + ", spec_nm=" + spec_nm
-				+ ", spec_no=" + spec_no + ", comp_no=" + comp_no + ", spec_vl=" + spec_vl + ", comp_nm=" + comp_nm
-				+ ", memb_no=" + memb_no + "]";
+	  return "Dest [meet_no=" + meet_no + ", cate_no=" + cate_no + ", cate_nm=" + cate_nm + ", spec_nm=" + spec_nm
+	      + ", spec_no=" + spec_no + ", comp_no=" + comp_no + ", spec_vl=" + spec_vl + ", comp_nm=" + comp_nm
+	      + ", memb_no=" + memb_no + ", cate_nm1=" + cate_nm1 + "]";
 	}
+
+  public String getCate_nm1() {
+    return cate_nm1;
+  }
+
+  public void setCate_nm1(String cate_nm1) {
+    this.cate_nm1 = cate_nm1;
+  }
 
 	public int getMemb_no() {
 		return memb_no;

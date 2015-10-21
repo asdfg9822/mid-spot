@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  font: 12px Arial, Helvetica, sans-serif
+}
+
+h2 {
+  font-size: 14px;
+  margin: 15px 0
+}
+
+.link {
+  cursor: pointer;
+  color: #666
+}
+
+.link:hover {
+  color: #000
+}
+
+.slider {
+  position: relative;
+  overflow: hidden;
+  height: 800px;
+  margin-bottom: 20px;
+}
+
+.slidercontent {
+  position: absolute;
+  width: 95%;
+}

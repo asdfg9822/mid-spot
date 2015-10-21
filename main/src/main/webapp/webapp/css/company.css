@@ -1,0 +1,112 @@
+table.company-info-table,
+table.company-detail-table {
+	border-collapse: separate;
+	border-spacing: 0;
+	text-align: left;
+	line-height: 1.5;
+	width: 90%;
+	line-height: 1.5;
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+}
+
+table.company-info-table th,
+table.company-detail-table th {
+	width: 30%;
+	padding-top: 3%;
+	padding-right: 2%;
+	font-weight: bold;
+	vertical-align: top;
+	background: #eee;
+	text-align: right;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #fff;
+	border-left: 1px solid #fff;
+}
+
+table.company-info-table td,
+table.company-detail-table td {
+	width: 80%;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	vertical-align: top;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+table.company-info-table input,
+table.company-detail-table input {
+	margin-left: 1%;
+	padding: inherit;
+	vertical-align: top;
+	border: 0px;
+	outline-style: none;
+}
+
+.inputFileBtn {
+	width: 70%;
+	height: 30px;
+	text-align: center;
+	color: #333333;
+	background-color: #f2f2f2;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.companyTitle {
+	border: 1px solid #ccc;
+	width: 70%;
+	text-align: center;
+	font-size: 200%;
+	background-color: lightgray;
+	color: white;
+	margin-left: 4%;
+	margin-bottom: 2%;
+	padding: 1%;
+}
+
+#categoryLife-company,
+#categoryTravle-company,
+#categorySport-company,
+#categoryEducation-company,
+#categoryCulture-company,
+#categoryInstitution-company,
+#categoryTransfer-company,
+#categoryFood-company {
+	width: 30%;
+	height: 100%;
+	min-height: 45px;
+	text-align: center;
+	font-size: 100%;
+	color: #333333;
+	background-color: #f2f2f2;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin: 1%;
+}
+
+#categoryLife-company:visited,
+#categoryTravle-company:visited,
+#categorySport-company:visited,
+#categoryEducation-company:visited,
+#categoryCulture-company:visited,
+#categoryInstitution-company:visited,
+#categoryTransfer-company:visited,
+#categoryFood-company:visited,
+#categoryLife-company:active,
+#categoryTravle-company:active,
+#categorySport-company:active,
+#categoryEducation-company:active,
+#categoryCulture-company:active,
+#categoryInstitution-company:active,
+#categoryTransfer-company:active,
+#categoryFood-company:active {
+	color: #f2f2f2;
+	background-color: #333333;
+}
+
+#company-insert,
+#company-spec-insert {
+	width: 90%;
+}

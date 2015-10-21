@@ -17,31 +17,60 @@ import net.bitacademy.java72.service.StartService;
 @Controller("json.StartController")
 @RequestMapping("/json/start")
 public class StartController {
-  @Autowired StartService startService;
-  @Autowired ServletContext servletContext;
-  
-  @RequestMapping("/insert")
-  public Object insert(Start start) throws Exception {
-      System.out.println("/json/start/insert.do excute..!!");
-      int count = startService.insert(start);
-      
-      Map<String,Object> result = 
-          new HashMap<String,Object>();
-      if (count > 0) {
-        result.put("data", "success");
-      } else {
-        result.put("data", "failure");
-      }
-      
-      return result;
-  }
+	@Autowired
+	StartService startService;
+	@Autowired
+	ServletContext servletContext;
 
+	@RequestMapping("/partiMembList")
+	public Object partiMembList(Start start) {
+		System.out.println("partiMembList");
+		Map<String, Object> result = new HashMap<String, Object>();
 
+		List<Start> list = startService.partiMembList(start);
 
+		result.put("size", list.size());
+		result.put("data", startService.partiMembList(start));
 
+		return result;
+	}
+
+	@RequestMapping("/list")
+	public Object list(Start start) {
+		System.out.println("list");
+		Map<String, Object> result = new HashMap<String, Object>();
+
+		List<Start> list = startService.partiMembList(start);
+		result.put("data", startService.list(start));
+
+		return result;
+	}
+
+	@RequestMapping("/insert")
+	public Object insert(Start start) throws Exception {
+		System.out.println("/json/start/insert.do excute..!!");
+		int count = startService.insert(start);
+
+		Map<String, Object> result = new HashMap<String, Object>();
+		if (count > 0) {
+			result.put("data", "success");
+		} else {
+			result.put("data", "failure");
+		}
+
+		return result;
+	}
+
+	@RequestMapping("/update")
+	public Object update(Start start) throws Exception {
+		int count = startService.update(start);
+		Map<String, Object> result = new HashMap<String, Object>();
+		if (count > 0) {
+			result.put("data", "success");
+		} else {
+			result.put("data", "failure");
+		}
+
+		return result;
+	}
 }
-
-
-
-
-

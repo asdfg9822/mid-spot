@@ -1,0 +1,74 @@
+{
+  category: [
+    {
+      no: 1,
+      name: "traffic",
+      kname: "지하철·버스"
+    },
+    {
+      no: 2,
+      name: "food",
+      kname: "음식"
+    },
+    {
+      no: 3,
+      name: "cafe",
+      kname: "카페"
+    },
+    {
+      no: 4,
+      name: "stay",
+      kname: "숙박"
+    },
+    {
+      no: 5,
+      name: "hospital",
+      kname: "병원·의료"
+    },
+    {
+      no: 6,
+      name: "bank",
+      kname: "은행"
+    },
+    {
+      no: 7,
+      name: "parking",
+      kname: "주차장"
+    },
+    {
+      no: 8,
+      name: "mart",
+      kname: "마트"
+    },
+    {
+      no: 9,
+      name: "gasStation",
+      kname: "주유소"
+    },
+    {
+      no: 10,
+      name: "store",
+      kname: "편의점"
+    },
+    {
+      no: 11,
+      name: "living",
+      kname: "생활·편의"
+    },
+    {
+      no: 12,
+      name: "entertainment",
+      kname: "영화·공연"
+    },
+    {
+      no: 13,
+      name: "sport",
+      kname: "스포츠시설"
+    },
+    {
+      no: 14,
+      name: "publicOffice",
+      kname: "관공서"
+    }
+  ]
+}

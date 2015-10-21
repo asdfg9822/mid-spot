@@ -10,18 +10,10 @@
     <result column="lon"     	property="lon" />
     <result column="status" 	property="status" />
     <result column="notice_dt"  property="createDate" />
-  </resultMap>
-  
-  <resultMap type="PartiMemb" id="PartiMembMap">
-    <result column="parti_no"    property="partiNo" />
-    <result column="memb_no"    property="membNo" />
-    <result column="memb_nm"    property="membNm" />
+    <result column="memb_nm"    property="memb_nm" />
     <result column="email"    property="email" />
-    <result column="get_site"    property="getSite" />
-    <result column="lat"        property="lat" />
-    <result column="lon"      property="lon" />
-    <result column="status"   property="status" />
-    <result column="notice_dt"  property="noticeDate" />
+    <result column="get_site"    property="get_site" />
+    <result column="file_path"  property="file_path" />
   </resultMap>
 
   <insert id="insert" parameterType="Start">
@@ -29,12 +21,11 @@
     values(#{parti_no},#{memb_no},#{lat},#{lon},now());
   </insert>
   
-
-   <select id="partiMembList" parameterType="int" resultMap="PartiMembMap">
-    SELECT * 
+   <select id="partiMembList" parameterType="Start" resultMap="StartMap">
+    SELECT memb_nm,file_path,lat,lon
     FROM memb_tb 
     NATURAL JOIN parti_tb memb_no 
-    WHERE parti_no=#{partiNo};
+    WHERE parti_no=#{parti_no};
   </select>
 
   <select id="start" resultMap="StartMap" parameterType="map">
@@ -45,6 +36,16 @@
 
 
   
+  <select id="list" parameterType="Start" resultMap="StartMap">
+  	select * from parti_tb where memb_no=#{memb_no}
+  </select>
+
+  <update id="update">
+    update parti_tb
+    set lat=#{lat}, lon=#{lon}
+    where memb_no=#{memb_no} and parti_no=#{parti_no}
+  </update>
+
 </mapper>
 
 
