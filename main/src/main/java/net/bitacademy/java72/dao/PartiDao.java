@@ -4,6 +4,7 @@ import java.util.Map;
 
 public interface PartiDao {
   int insert(Map<String, Object> paramMap);
+  int select(Map<String, Object> paramMap);
 }
 
 

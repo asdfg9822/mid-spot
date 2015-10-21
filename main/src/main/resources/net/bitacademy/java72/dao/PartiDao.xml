@@ -8,5 +8,12 @@
 		parti_tb(parti_no,memb_no)
 		values(#{partiNo},#{membNo});
 	</insert>
+
+	 <select id="select" resultType="int" parameterType="map">
+    SELECT count(*)
+    FROM parti_tb
+    WHERE parti_no=#{partiNo} AND memb_no=#{membNo};
+  </select>
 </mapper>
+
 

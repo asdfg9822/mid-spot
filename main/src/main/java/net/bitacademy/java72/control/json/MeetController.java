@@ -114,4 +114,17 @@ public class MeetController {
     
     return result;
   }
+
+  @RequestMapping("/partiInsert")
+  public Object partiExist(
+		  @RequestParam(required=true) int membNo,
+		  @RequestParam(required=true) int meetNo) {
+
+    Map<String,Object> result =
+        new HashMap<String,Object>();
+
+    result.put("data", meetService.partiInsert(membNo, meetNo));
+
+    return result;
+  }
 }

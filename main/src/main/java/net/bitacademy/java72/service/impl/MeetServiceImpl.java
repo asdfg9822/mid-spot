@@ -89,4 +89,23 @@ public class MeetServiceImpl implements MeetService {
 
 		return list;
 	}
+
+	@Override
+	public int partiInsert(int membNo, int meetNo) {
+
+		Map<String,Object> paramMap = new HashMap<String,Object>();
+		paramMap.put("membNo", membNo);
+		paramMap.put("partiNo", meetNo);
+
+		int count = partiDao.select(paramMap);
+		int result = 0;
+		if(count == 0) {
+			result = partiDao.insert(paramMap);
+			System.out.println("parti Insert");
+		} else {
+			System.out.println("parti Exist");
+		}
+
+		return result;
+	}
 }

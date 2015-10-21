@@ -27,13 +27,24 @@
 
  	$('#meetMenu').click(function (event) {
  		event.preventDefault();
- 		$('#sidebar-item1-title > b').text('모임을 만드세요.');
- 		$('#sidebar-item1-content').load('html/meet_side.html');
+
+ 		$('#sidebar-item2-title > b').text('모임을 만드세요.');
+ 		$('#sidebar-item2-content').load('html/meet_side.html');
  		$('#content').load('html/meet_list.html');
  	});
 
- 	$(document).on('enterMeet', function (event) {
+
+ 	// Master Meet Enter Trigger
+ 	$(document).on('enterDestMeet', function (event) {
  		$('#destMenu').trigger('click');
+ 	});
+ 	//Part iMeet Enter Trigger
+ 	$(document).on('enterPartiMeet', function (event) {
+ 		$('#startMenu').trigger('click');
+ 	});
+ 	//MyMeet Enter Trigger
+ 	$(document).on('enterMyMeet', function (event) {
+ 		$('#meetMenu').trigger('click');
  	});
 
  	//Header 목적 Button
@@ -90,9 +101,9 @@
  		var urlData = $.getQuery('meetNo');
 
  		if (urlData !== false) {
- 			sessionStorage.setItem('meetNo', urlData);
- 			console.log("session meetNo", sessionStorage.getItem('meetNo'));
- 			$('#startMenu').trigger('click');
+ 			sessionStorage.setItem('inviteMeetNo', urlData);
+ 			console.log("session meetNo", sessionStorage.getItem('inviteMeetNo'));
+ 			$('#meetMenu').trigger('click');
 
  			var sessionStatus = sessionStorage.getItem('sessionStatus');
  			if (sessionStatus === "false") {
@@ -159,7 +170,7 @@
 
  	};
 
- 	var getUserInfo = function () {
+ 	var getUserInfo = function (partiExist) {
  		FB.api('/me?fields=name,email,picture,friends', function (response) {
  			$.ajax(contextRoot + '/json/member/fbGetUser.do', {
  				method: 'POST',
@@ -170,6 +181,7 @@
  				success: function (result) {
  					console.log("FACEBOOK User Info GET..!!");
  					sessionStorage.setItem('member', JSON.stringify(result.member));
+ 					partiExist();
  					console.log(result);
  				}
  			});
@@ -207,6 +219,7 @@
  				console.log("FACEBOOK User Info Insert..!!");
  				if (typeof callback === 'function') {
  					callback();
+
  				}
  			}
  		});
@@ -252,11 +265,32 @@
  		});
  	}
 
+ 	var partiExist = function () {
+
+ 		var member = JSON.parse(sessionStorage.getItem('member'));
+ 		var meetNo = sessionStorage.getItem('inviteMeetNo');
+
+ 		console.log("member!!" + member);
+ 		console.log("meetNo!!" + meetNo);
+
+ 		$.ajax(contextRoot + '/json/meet/partiInsert.do', {
+ 			method: 'POST',
+ 			dataType: 'json',
+ 			data: {
+ 				membNo: member.memberNo,
+ 				meetNo: meetNo
+ 			},
+ 			success: function (result) {
+ 				console.log(result);
+ 			}
+ 		});
+ 	}
+
  	function getProfileInfo() {
  		FB.api('/me?fields=name,email,picture,friends', function (response) {
 
  			//Checking FB User && Update User Info
- 			fbUserExist(response, getUserInfo);
+ 			fbUserExist(response, getUserInfo(partiExist));
 
  			//Change User name, Profile Image
  			$('#sideUserName').text(response.name);

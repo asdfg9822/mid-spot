@@ -15,6 +15,7 @@ public interface MeetService {
   int countAll();
   List<PartiMemb> partiMembList(int partiNo);
   List<MyMeet> myMeetList(int membNo);
+  int partiInsert(int membNo, int meetNo);
 }
 
 

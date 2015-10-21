@@ -1,25 +1,6 @@
 define(['jquery', 'handlebars'], function ($, handlebars) {
 
 	return {
-		detailMeet: function (meetNo) {
-
-			$(".trigger1").click(
-				function () {
-					$(".element2").toggle(
-						$.getJSON(contextRoot + '/json/meet/detail.do?meetNo=' + 1,
-							function (result) {
-								var data = result.data;
-								$('#MeetNo').val(data.meetNo);
-								$('#MemberNo').val(data.memberNo);
-								$('#MeetName').val(data.meetName);
-								$('#MeetDate').val(data.meetDate);
-								$('#MemberName').val(data.memberName);
-								console.log(data);
-							}));
-					$(".element1").toggle();
-				});
-		},
-
 		init: function () {
 			var moduleObj = this;
 
@@ -155,7 +136,15 @@ define(['jquery', 'handlebars'], function ($, handlebars) {
 					event.preventDefault();
 					sessionStorage.setItem('meetNo', $(this).attr('data-no'));
 					console.log("session meetNo = " + sessionStorage.getItem('meetNo'));
-					$(document).trigger('enterMeet');
+
+					if ($(this).attr('data-master') == "yes") {
+						console.log("master enter");
+						$(document).trigger('enterDestMeet');
+					} else {
+						console.log("participant enter");
+						$(document).trigger('enterPartiMeet');
+					}
+
 				});
 			})
 		},
