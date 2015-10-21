@@ -9,11 +9,11 @@ exports.db = {};
 //DB Connection
 var pool = mysql.createPool({
 	connectionLimit: 10,
-	host: '127.0.0.1',
+	host: '192.168.1.8',
 	port: 3306,
 	user: 'java72',
 	password: 'java72',
-	database: 'midspot'
+	database: 'midspot2'
 });
 
 

@@ -3,6 +3,7 @@ package net.bitacademy.java72.service;
 import java.util.List;
 
 import net.bitacademy.java72.domain.Dest;
+import net.bitacademy.java72.domain.Pick;
 
 public interface DestService {
 //  int delete(int no);
@@ -16,6 +17,9 @@ public interface DestService {
   List<Dest> listPermision(Dest dest);
   List<Dest> listPartiSelect(Dest dest);
   int delete(Dest dest);
+  
+  
+  List<Dest> specList(int compNo);
 }
 
 

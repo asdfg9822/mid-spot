@@ -9,6 +9,7 @@ import javax.servlet.ServletContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import net.bitacademy.java72.domain.Dest;
 import net.bitacademy.java72.service.DestService;
@@ -159,6 +160,23 @@ public class DestController {
     
     return result;
   }
+  
+  @RequestMapping("/specList")
+  public Object specList(
+		 @RequestParam(required = true) int compNo 
+		  ) {
+
+	  System.out.println("specList...controller");
+	  System.out.println("compNo:" + compNo);
+
+	    Map<String,Object> result =
+	        new HashMap<String,Object>();
+
+	    result.put("data", destService.specList(compNo));
+
+	    return result;
+  }
+  
 }
 
 

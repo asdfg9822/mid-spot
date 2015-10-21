@@ -61,6 +61,14 @@
 		delete from rcmd_cate_tb
 		where meet_no=#{meet_no}
 	</delete>
+	
+	<!-- 더보기 버튼 스펙리스트 select -->
+	<select id="specList" resultMap="DestMap" parameterType="int">
+		select comp_no, spec_nm, spec_vl  
+		from comp_spec_tb
+		natural join spec_tb spec_no
+		where comp_no = #{comp_no};
+	</select>
 
 </mapper>
 

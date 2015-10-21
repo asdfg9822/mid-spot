@@ -146,6 +146,9 @@ a:hover {
   .tabs nav a:before {
     margin-right: 0;
   }
+  #cateNameArea {
+    min-width: 350px;
+  }
 }
 
 @media screen and (max-width: 32em) {

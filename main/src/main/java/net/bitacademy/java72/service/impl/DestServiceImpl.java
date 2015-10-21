@@ -58,6 +58,14 @@ public class DestServiceImpl implements DestService {
     return destDao.delete(dest);
   }
 
+  @Override
+  public List<Dest> specList(int compNo) {
+
+	  System.out.println("specListserviceImpl : " + compNo);
+
+		return destDao.specList(compNo);
+}
+
 
   
 }

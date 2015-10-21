@@ -1,5 +1,5 @@
 	/*이미지*/
-
+	
 	.slideshow img {
 	  /*  position: absolute;*/
 	  /*  display: none;*/
@@ -8,7 +8,7 @@
 	  height: 100px;
 	  margin: 20px 5px 0px 5px;
 	}
-
+	
 	.result_table_border {
 	  /*  border: 1px solid lightgray;*/
 	  width: 100%;
@@ -18,13 +18,13 @@
 	  overflow: hidden;
 	  z-index: 1;
 	}
-
+	
 	.center_text {
 	  float: left;
 	  width: 35%;
 	  height: 200px;
 	}
-
+	
 	.main-title {
 	  /*  clear: both;*/
 	  position: relative;
@@ -42,7 +42,7 @@
 	  border: 1px solid lightgray;
 	  /*    line-height: 1.42857143;*/
 	}
-
+	
 	.explain {
 	  float: left;
 	  width: 100%;
@@ -54,12 +54,12 @@
 	  background: #FAFAFA;
 	  border: 1px solid lightgray;
 	}
-
+	
 	.result_distance {
 	  border-left: 2px solid cadetblue;
 	  padding-left: 2px;
 	}
-
+	
 	.detail-explain-more,
 	.detail-explain-find,
 	.detail-explain-share {
@@ -70,22 +70,20 @@
 	  border-top-right-radius: 10px;
 	  margin-bottom: 10px;
 	}
-
+	
 	.detail-explain-more {
 	  overflow: auto;
 	  overflow-x: hidden;
 	}
 	/*더보기 지도*/
-
+	
 	.detail_map {
-	  border: 1px solid black;
 	  width: 31%;
 	  height: 170px;
 	  margin: 1%;
 	  float: left;
-	  border-radius: 10px;
 	}
-
+	
 	.detail_bar {
 	  position: relative;
 	  border: 1px solid lightgray;
@@ -94,7 +92,7 @@
 	  margin-top: 1%;
 	  margin-right: 1%;
 	}
-
+	
 	.result_dtail_text {
 	  border: 1px solid cadetblue;
 	  width: 1%;
@@ -104,15 +102,15 @@
 	  background-color: cadetblue;
 	}
 	/*길찾기 지도 */
-
+	
 	.detail_road {
-	  position: border: 1px solid black;
-	  width: 30%;
-	  height: 200px;
 	  margin: 1%;
+	  width: 30%;
+	  display: block;
+	  height: 200px;
 	  float: left;
 	}
-
+	
 	.result_road_title {
 	  /*	  position: relative;*/
 	  display: inline-block;
@@ -126,21 +124,21 @@
 	  text-align: center;
 	  /*	  font-size: 1.5em;*/
 	}
-
+	
 	.result_road_time {
 	  border: 3px solid DarkSalmon;
 	  padding: 5px;
 	  border-radius: 50%;
 	  text-align: center;
 	}
-
+	
 	.result_road_guide {
 	  display: inline-block;
 	  margin-right: 1%;
 	  width: 65%;
 	  margin-top: 1%;
 	}
-
+	
 	.result_road_traffic {
 	  float: left;
 	  border-bottom: 1px solid brown;
@@ -149,7 +147,7 @@
 	  font-size: 10px;
 	  text-align: center;
 	}
-
+	
 	.result_road_text {
 	  float: left;
 	  width: 80%;
@@ -158,33 +156,33 @@
 	  margin-top: 0.5%;
 	  margin-left: 1%;
 	}
-
+	
 	.shop_detail_time dd {
 	  float: left;
 	  margin-left: 10px;
 	  margin-right: 10px;
 	}
-
+	
 	.shop_detail_time img {
 	  width: 10px;
 	}
-
+	
 	.shop_detail dt {
 	  float: left;
 	  padding-right: 3px;
 	}
-
+	
 	.shop_detail_tel dd {
 	  color: coral;
 	}
-
+	
 	.shop_detail_text {
 	  margin-top: 20px;
 	  margin-left: 5px;
 	  float: left;
 	  width: 43%;
 	}
-
+	
 	.shop_name h4 {
 	  margin: 0px;
 	  margin-bottom: 10px;
@@ -192,12 +190,12 @@
 	  text-decoration: underline;
 	  /*  margin-bottom: 10px;*/
 	}
-
+	
 	.shop_detail_text dd,
 	dt {
 	  margin-bottom: 7px;
 	}
-
+	
 	.shop_detail_recommend {
 	  clear: left;
 	  float: left;
@@ -205,12 +203,12 @@
 	  font-size: 12px;
 	  margin-top: 4px;
 	}
-
+	
 	.shop_detail_get img {
 	  width: 20px;
 	  margin-left: 6px;
 	}
-
+	
 	.shop_detail_get {
 	  border: 1px solid red;
 	  float: left;
@@ -221,70 +219,56 @@
 	  border-radius: 5px;
 	  margin-bottom: 5px;
 	}
-
+	
 	.comp_title {
 	  color: dimgrey;
 	  font-weight: bold;
 	  font-size: 1.5em;
 	}
-
+	
 	.col-md-4 {
 	  max-width: 500px;
 	}
-
+	
 	.col-md-4 img {
 	  height: 100%;
 	  width: 100%;
 	}
-	/*추천버튼 네모칸*/
-
-	.comp_like_btn {
-	  border: 1px solid dimgrey;
-	  border-radius: 5px;
-	  padding: 5px;
-	}
-
-	.comp_like_btn:hover {
-	  border-color: #FF8C00;
-	}
-
-	.height-250 {
-	  max-height: 250px;
-	}
-
+	/*result 리스트 css*/
+	
 	.img-responsive {
 	  display: block;
 	  max-height: 300px;
 	  min-height: 200px;
 	  border-radius: 10px;
 	}
-
+	
 	.vcenter {
 	  vertical-align: middle;
 	}
-
+	
 	.addr_info:before {
 	  content: "주소: ";
 	  font-weight: bold;
 	}
-
+	
 	.tel_info {
 	  color: coral;
 	}
-
+	
 	.tel_info:before {
 	  content: "전화번호: ";
 	  color: #333;
 	  font-weight: bold;
 	}
-
+	
 	.web_info:before {
 	  content: "홈페이지: ";
 	  font-weight: bold;
 	}
 	/* Landscape phones and portrait tablets */
 	/*-- Desktop Half Tab --*/
-
+	
 	@media (max-width: 950px) {
 	  .img-responsive {
 	    display: block;
@@ -297,7 +281,7 @@
 	  }
 	}
 	
-	@media (max-width: 700px) {
+	@media (max-width: 950px) {
 	  .img-responsive {
 	    display: block;
 	    border-radius: 2%;
@@ -308,9 +292,39 @@
 	    padding: 0em 0em 2em 0.5em;
 	  }
 	}
-
+	
 	@media (max-width: 950px) {
+	  /*
+	  .result_road_Content {
+	    padding: 0em 0em 0em 5em;
+	  }
+*/
 	  .detail_road {
 	    display: block;
+	    width: 60%;
+	    /*	    min-width: 0px;*/
+	    margin-left: 18%;
+	  }
+	  .result_road_title {
+	    float: none;
+	    width: 100%;
+	  }
+	  .detail-explain-find {
+	    height: auto;
+	  }
+	  .result_road_guide {
+	    width: 100%;
+	  }
+	  .result_road_traffic {
+	    width: 15%;
+	  }
+	}
+	
+	@media (max-width: 500px) {
+	  .result_road_time {
+	    display: none;
+	  }
+	  .result_road_traffic_time {
+	    display: none;
 	  }
 	}
