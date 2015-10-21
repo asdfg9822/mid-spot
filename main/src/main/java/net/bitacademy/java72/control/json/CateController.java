@@ -22,7 +22,7 @@ public class CateController {
   @RequestMapping("/list")
   public Object list(
 		 @RequestParam(required = true) int meetNo
-		  ) {
+		  ) {  
 
 	  System.out.println("CateController...controller");
 	  System.out.println("meetNo:" + meetNo);
