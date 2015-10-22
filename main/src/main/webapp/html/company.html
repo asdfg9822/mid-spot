@@ -1,3 +1,6 @@
+<a href="#top" style="position: fixed; margin-top: 60%; margin-right:5%; z-index:1; font-size: 220%; 
+text-align:center; color: white; background-color: #16499a; width: 5%; ">▲</a>
+
 <script>
 	requirejs([ 'app/company' ], function(company) {
 		company.init();
@@ -15,22 +18,37 @@
 		{{/each}}
 	</script>
 
+<div id="categorySection1" >
+	<div id="categoryNm"> 업체 화면
+	</div>
+	<!--  -->
+	<a id="categorys" class="categorys-select">
+		<div class="col-sm-4" id="categoryFood1">업체 등록</div>
+	</a> <a id="categorys" class="categorys-select">
+		<div class="col-sm-4" id="categoryLife1">상세 스펙 등록</div>
+	</a> <a id="categorys" class="categorys-select">
+		<div class="col-sm-4" id="categoryTravle1">등록된 업체 정보</div>
+	</a> 
 
-<div id="company-info">
+</div>
 
-	<div class="companyTitle">업체 등록 하기</div>
+
+<div id="categorySection2">
+	<div id="categoryNm1">업체 등록</div>
+	<div id="company-info">
+
 	<table class="company-info-table">
 		<tr class="comp_nm">
 			<th>상호명</th>
-			<td><input type="text" placeholder="상호명"  style="width:90%;"></td>
+			<td><input type="text" style="width:90%;"></td>
 		</tr>
 		<tr class="admin_tel">
 			<th>관리자 연락처</th>
-			<td><input type="tel" placeholder="관리자 연락처"  style="width:90%;"></td>
+			<td><input type="tel" style="width:90%;"></td>
 		</tr>
 		<tr class="comp_tel">
 			<th>가게 연락처</th>
-			<td><input type="tel" placeholder="가게 연락처"  style="width:90%;"></td>
+			<td><input type="tel" style="width:90%;"></td>
 		</tr>
 		<tr class="elev_bl">
 			<th>엘리베이터</th>
@@ -45,9 +63,8 @@
 			</td>
 		</tr>
 		<tr class="web_addr">
-			web_bl도 있음
 			<th>홈페이지</th>
-			<td><input type="checkbox" value="option4"> 임시로 넣어둠 <input
+			<td><input type="checkbox" value="option4"> <input
 				type="tel" placeholder="홈페이지"  style="width:60%;"></td>
 		</tr>
 		<tr class="open_dt">
@@ -72,24 +89,16 @@
 		</tr>
 		<tr class="addr_no">
 			<th>주소번호</th>
-			<td><input type="text" placeholder="주소번호" style="width:90%;"></td>
+			<td><input type="text" style="width:90%;"></td>
 		</tr>
 		<tr class="addr_old">
 			<th>구주소</th>
-			<td><input type="text" placeholder="구주소" style="width:90%;"></td>
+			<td><input type="text" style="width:90%;"></td>
 		</tr>
 		<tr class="addr_new">
 			<th>신주소</th>
-			<td><input type="text" placeholder="신주소" style="width:90%;"></td>
+			<td><input type="text" style="width:90%;"></td>
 		</tr>
-		<!-- <tr class="lat">
-			<th>위도</th>
-			<td><input type="text" placeholder="위도"></td>
-		</tr>
-		<tr class="lon">
-			<th>경도</th>
-			<td><input type="text" placeholder="경도"></td>
-		</tr> -->
 		<tr class="img_path">
 			<th>사진</th>
 			<td><input type="file" id="inputFile1" class="inputFileBtn">
@@ -101,10 +110,13 @@
 	<br>
 	<button id="company-insert" class="btn btn-default">업체
 		등록</button>
-	<br> <br> <br> <br> <br>
+	</div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<div id="categorySection3">
+	<div id="categoryNm2">상세 스펙 등록</div>
 	
-		<div class="companyTitle">상세 등록 하기</div>
-
+<div id="company-info">
 	<table class="company-detail-table">
 		<tr id="compNm"><th >현재 업체 입력</th><td><input type="text" style="width:90%;"></td></tr>
 		<tr class="comp_no">
@@ -134,6 +146,78 @@
 	<br>
 	<button id="company-spec-insert" class="btn btn-default">업체 상세
 		등록</button>
-	
-<br> <br> <br> <br> <br>
 </div>
+</div>
+
+<div id="categorySection4">
+	<div id="categoryNm3">등록된 업체 정보</div>
+	<div class="col-sm-4" id="companyList">업체 이름....</div>
+
+	<div id="company-info">
+	<table class="companyList-info-table">
+		<tr class="comp_nm">
+			<th>상호명</th>
+			<td></td>
+		</tr>
+		<tr class="admin_tel">
+			<th>관리자 연락처</th>
+			<td></td>
+		</tr>
+		<tr class="comp_tel">
+			<th>가게 연락처</th>
+			<td></td>
+		</tr>
+		<tr class="elev_bl">
+			<th>엘리베이터</th>
+			<td>
+			</td>
+		</tr>
+		<tr class="ground_bl">
+			<th>위치</th>
+			<td>
+			</td>
+		</tr>
+		<tr class="web_addr">
+			<th>홈페이지</th>
+			<td></td>
+		</tr>
+		<tr class="open_dt">
+			<th>영업 시작</th>
+			<td>
+			</td>
+		</tr>
+		<tr class="close_dt">
+			<th>마감 시작</th>
+			<td>
+			</td>
+		</tr>
+		<tr class="post_no">
+			<th>우편번호</th>
+			<td>
+			</td>
+		</tr>
+		<tr class="addr_no">
+			<th>주소번호</th>
+			<td></td>
+		</tr>
+		<tr class="addr_old">
+			<th>구주소</th>
+			<td></td>
+		</tr>
+		<tr class="addr_new">
+			<th>신주소</th>
+			<td></td>
+		</tr>
+		<tr class="img_path">
+			<th>사진</th>
+			<td>
+			</td>
+		</tr>
+	</table>
+	<br>
+	</div>
+	<br><br><br><br>
+</div>
+
+
+

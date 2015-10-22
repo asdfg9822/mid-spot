@@ -128,6 +128,7 @@ define([
 									});
 									$('#category-permision-info').remove();
 								}
+								$( "#destMenu" ).trigger( "click" );
 							} else {
 								if ($("#category-permision-info").text() == '') {
 									var permisiontag = "카테고리를 입력할 수 있는 권한이 없습니다.";
@@ -164,6 +165,7 @@ define([
 									});
 									$('#category-permision-info').remove();
 								}
+								$( "#destMenu" ).trigger( "click" );
 							} else {
 								if ($("#category-permision-info").text() == '') {
 									var permisiontag = "카테고리를 입력할 수 있는 권한이 없습니다.";
@@ -172,7 +174,7 @@ define([
 							}
 
 						} ///update
-						$( "#destMenu" ).trigger( "click" );
+						
 					});
 				});
 

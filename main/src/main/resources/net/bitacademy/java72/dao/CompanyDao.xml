@@ -18,6 +18,12 @@
 		<result column="img_path" property="imgUrl" />
 		<result column="img_no" property="imgNo" />
 	</resultMap>
+	
+	  <select id="list"  resultMap="CompanyMap">
+    SELECT *
+    FROM comp_tb
+    natural join comp_img_tb comp_no
+  </select>
 
 	<select id="listAll" parameterType="map" resultMap="CompanyMap">
 		SELECT *,

@@ -1,0 +1,77 @@
+<style>
+#sidebar-item2-content {
+	width: 100%;
+	min-width: 200px;
+	height: 100%;
+	min-height: 400px;
+	background-color: white;
+}
+.parti-user-list {
+	width: 100%;
+	min-width: 200px;
+	height: 100%;
+}
+
+.parti-info-title {
+	width: 40%;
+	min-width: 100px;
+	height: 100%;
+}
+
+#parti-info, #parti-info-title {
+	text-align: left;
+	font-size: 80%;
+	color: #00aba9;
+	display: inline-block;
+}
+
+.company-info-name {
+	width: 70%;
+	min-width: 100px;
+	height: 100%;
+	min-height: 50px;
+	display: inline-block;
+	text-align: left;
+	float: left;
+	padding-top: 8%;
+	padding-left: 5%;
+	margin-top: 2%;
+	font-size: 80%;
+	font-weight: bold;
+	background-color: white;
+}
+
+.company-info-name:HOVER {
+	color: #00aba9;
+	font-size: 100%;
+}
+
+</style>
+
+<script>
+	requirejs([ 'app/company' ], function(company) {
+		/* company.init();  */
+	});
+</script>
+
+<!-- HTML 화면 -->
+
+<div class="parti-user-list">
+	<div class="parti-info-title">
+		<div id="parti-info">등록한 업체</div>
+	</div>
+	<div class="company-info">
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

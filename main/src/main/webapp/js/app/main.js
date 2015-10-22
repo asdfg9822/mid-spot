@@ -18,6 +18,9 @@ define(
 
 			$('#resultCompany').click(function(event) {
 				event.preventDefault();
+				$('#sidebar-item1-title').remove();
+		 		$('#sidebar-item1-content').remove();
+		 		$('#sidebar-item2-content').load('html/company_side.html');
 				$('#content').load('html/company.html');
 			}); // company 이동 기능
 
