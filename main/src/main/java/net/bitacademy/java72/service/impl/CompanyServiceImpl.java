@@ -89,6 +89,12 @@ public class CompanyServiceImpl implements CompanyService {
 		return companyDao.likeCnt(compNo);
 	}
 
+  @Override
+  public List<Company> listCompany(Company company) {
+    // TODO Auto-generated method stub
+    return companyDao.listCompany(company);
+  }
+
 
 
 	/*

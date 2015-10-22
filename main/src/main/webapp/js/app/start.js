@@ -397,9 +397,6 @@ define([
 					+ '/json/start/list.do?memb_no='+member.memberNo,
 					function(result) { 
 				
-				console.log("console.log(result); 모임 이름바딕");
-				console.log(result.data[0].meet_nm);
-				
 				var tag = "<div id='parti-info-meetNm' style='padding-left:10%;'>"
 					+result.data[0].meet_nm
 					+"</div>";
@@ -407,9 +404,8 @@ define([
 				$("#parti-info-title").after(tag);
 				
 			});
-
+			
 		} ///partiMembList()
-
 
 	};
 });

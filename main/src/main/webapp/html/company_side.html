@@ -25,7 +25,7 @@
 	display: inline-block;
 }
 
-.company-info-name {
+.parti-user-name {
 	width: 70%;
 	min-width: 100px;
 	height: 100%;
@@ -41,7 +41,7 @@
 	background-color: white;
 }
 
-.company-info-name:HOVER {
+.parti-user-name:HOVER {
 	color: #00aba9;
 	font-size: 100%;
 }
@@ -54,16 +54,21 @@
 	});
 </script>
 
+<script id="parti-user-template" type="text/x-handlebars-template">
+{{#each data}}
+	<div class="parti-user-name" companyName="{{companyName}}" no="{{no}}">{{companyName}}</div>
+{{/each}}
+</script>
+
 <!-- HTML 화면 -->
 
 <div class="parti-user-list">
 	<div class="parti-info-title">
-		<div id="parti-info">등록한 업체</div>
+		<div id="parti-info-title">등록한 업체</div>
 	</div>
-	<div class="company-info">
+	<div class="parti-user-info">
 	</div>
 </div>
-
 
 
 

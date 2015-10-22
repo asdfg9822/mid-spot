@@ -36,9 +36,10 @@ public class Company implements Serializable {
 	protected float distance;
 	protected int likeCnt;
 	protected int isLike;
+	protected int cateNo;
 
 
-	@Override
+  @Override
 	public String toString() {
 		return "Company [no=" + no + ", kakaoId=" + kakaoId + ", companyName=" + companyName + ", adminTel=" + adminTel
 				+ ", addressOld=" + addressOld + ", addressNew=" + addressNew + ", lat=" + lat + ", lon=" + lon
@@ -47,6 +48,16 @@ public class Company implements Serializable {
 	}
 
 	
+  
+  public int getCateNo() {
+    return cateNo;
+  }
+  
+  
+  public void setCateNo(int cateNo) {
+    this.cateNo = cateNo;
+  }
+  
 	public int getIsLike() {
 		return isLike;
 	}

@@ -116,7 +116,9 @@ table.company-detail-table input {
 #company-spec-insert {
 	width: 90%;
 }
-
+.category {
+	background: none;
+}
 
 #categoryNm,
 #categoryNm1,
@@ -175,6 +177,7 @@ table.company-detail-table input {
 	-ms-transition: background 0.2s ease-out;
 	transition: background 0.2s ease-out;
 }
+
 
 #companyList:hover,
 #categoryLife1:HOVER {

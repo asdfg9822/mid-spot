@@ -8,7 +8,8 @@ define([ 'jquery', 'handlebars', 'bootstrap', 'jquery.ui.widget',
 		init : function() {
 			console.log('->company->init()');
 			
-			$('.companyList-info-table').hide();
+//			$('.companyList-info-table').hide();
+//			$('#company-info').hide();
 
 			$('.categorys-select').click(function (event) {
 				event.preventDefault();
@@ -33,16 +34,48 @@ define([ 'jquery', 'handlebars', 'bootstrap', 'jquery.ui.widget',
 				}  
 			});
 			
-			$('#companyList').click(function(event) {
-				event.preventDefault();
-				console.log('업체');
-				$('.companyList-info-table').toggle();
+			$.getJSON(contextRoot + '/json/company/listCompany.do', function(result) {
+				var source = $('#company-template').html();
+				var template = handlebars.compile(source);
+				var content = template(result);
+				$(".company-info-list").html(content);
+				
+				
+				var source2 = $('#parti-user-template').html();
+				var template2 = handlebars.compile(source2);
+				var content2 = template2(result);
+				$(".parti-user-info").html(content2);
+				
+				
+				
 			});
+			$('.company-info').hide();
 			
+//			$('.company-info-list').click(function(event) {
+//				event.preventDefault();
+//				console.log($(this).parents().children(".companyList-info-table"));
+//				console.log($(this).parents().children(".companyList").find('div'));
+//				$('.companyList-info-table').toggle();
+//			});
 			
-			
-			
-			
+			$(document).ready(function () {
+		        $(document).on('click', ".company-info-list .companyList", function (event) {
+		            event.preventDefault();
+		            console.log($(this).text());
+		            console.log($(this).attr('no'));
+		            
+//		            console.log($(this).find('.companyList-info-table').find('tr').find('.comp_nm').find('td'));
+//		            console.log($(this).find('.company-info').children());
+		            
+//		            $(this).slideToggle("slow");
+//		            var slideFind = $(this).parents().children(".detail-explain-find");
+//		            var slideShare = $(this).parents().children(".detail-explain-share");
+//		            var slideMore = $(this).parents().children(".detail-explain-more");
+//		            slideFind.slideUp();
+//		            slideShare.slideUp();
+//		            slideMore.slideToggle("slow");
+		          })
+		      });
 
 		},
 		listSpec : function() {

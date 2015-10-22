@@ -17,6 +17,7 @@ public interface CompanyService {
   int likeUp(int compNo, int membNo, int partiNo);
   int isLike(int compNo, int membNo, int partiNo);
   int likeDown(int compNo, int membNo, int partiNo);
+  List<Company>  listCompany(Company company);
 }
 
 

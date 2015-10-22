@@ -10,6 +10,7 @@ public interface CompanyDao {
 	List<Company> listAll(Map<String, Object> paramMap);
 	List<Company> rcmdList(Map<String, Object> paramMap);
 	List<Company> list3(Map<String, Object> paramMap);
+	List<Company> listCompany(Company company);
 	//String[] like(Map<String, Object> paramMap);
 	int likeCnt(int compNo);
 	int likeUp(Map<String, Object> paramMap);

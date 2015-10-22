@@ -17,13 +17,13 @@
 		<result column="ground_bl" property="onGround" />
 		<result column="img_path" property="imgUrl" />
 		<result column="img_no" property="imgNo" />
+		<result column="cate_no" property="cateNo" />
 	</resultMap>
 	
-	  <select id="list"  resultMap="CompanyMap">
-    SELECT *
-    FROM comp_tb
-    natural join comp_img_tb comp_no
-  </select>
+	  <select id="listCompany"  resultMap="CompanyMap">
+	    SELECT *
+	    FROM comp_tb ORDER BY comp_nm limit 4
+ 	 </select>
 
 	<select id="listAll" parameterType="map" resultMap="CompanyMap">
 		SELECT *,

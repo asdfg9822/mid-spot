@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import net.bitacademy.java72.domain.Company;
-import net.bitacademy.java72.domain.Member;
-import net.bitacademy.java72.domain.Pick;
 import net.bitacademy.java72.domain.Start;
 import net.bitacademy.java72.service.CompanyService;
 import net.bitacademy.java72.service.PickService;
@@ -177,6 +175,15 @@ public class CompanyController {
 			result.put("likeCnt", companyService.likeUp(compNo, membNo, partiNo));
 		}
 		return result;
+	}
+	@RequestMapping("/listCompany")
+	public Object listCompany(Company company) {
+	  System.out.println("/json/company/listCompany.do excute..!!");
+	  
+	  Map<String, Object> result = new HashMap<String, Object>();
+	  
+	  result.put("data", companyService.listCompany(company));
+	  return result;
 	}
 
 }

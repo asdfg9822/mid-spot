@@ -135,7 +135,6 @@ define([
 									$("#category-permision-info").append(permisiontag);
 								}
 							}
-
 							///insert
 						} else {
 							console.log('이미 자료가 있어요.');
@@ -153,6 +152,7 @@ define([
 							if((result.result == "yes") && (meetNo == result.data[0].meet_no)) {
 								//선택한 카테고리갯수 만큼 입력
 								console.log(categoryList);
+								$('#category-permision-info').remove();
 
 								for (index = 0; index < categoryList.length; index++) {
 									$.ajax(contextRoot + '/json/dest/insert.do', {
@@ -163,22 +163,20 @@ define([
 											cate_nm: categoryList[index]
 										},
 									});
-									$('#category-permision-info').remove();
 								}
 								$( "#destMenu" ).trigger( "click" );
+								
 							} else {
 								if ($("#category-permision-info").text() == '') {
 									var permisiontag = "카테고리를 입력할 수 있는 권한이 없습니다.";
 									$("#category-permision-info").append(permisiontag);
 								}
 							}
-
 						} ///update
-						
 					});
+					
 				});
-
-
+				
 			}, //init 종료
 			listPartiSelect: function() {
 				var meetNo = sessionStorage.getItem('meetNo');
@@ -186,7 +184,7 @@ define([
 				var cateNmList = new Array();
 
 				console.log('meetNo'+meetNo);
-
+				
 				$.getJSON(contextRoot + '/json/dest/listPartiSelect.do?meet_no='
 						+ meetNo, function(result) {
 
@@ -259,8 +257,8 @@ define([
 						}
 
 					}
-
 				});
+				
 			} // listPartiSelect 종료
 	};
 });
