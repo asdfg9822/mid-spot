@@ -218,8 +218,10 @@ define([
 				
 				$.getJSON(contextRoot + '/json/dest/listPartiSelect.do?meet_no='
 						+ meetNo, function(result) {
+					$('.category').remove();
 
 					for (var index=0; index < result.data.length; index++) {
+//						$('.category').remove();
 
 						if (result.data[index].cate_nm1 == '음식점') {
 							console.log(result.data[index].cate_nm);

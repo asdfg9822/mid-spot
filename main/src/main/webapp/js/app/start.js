@@ -57,12 +57,13 @@ define([
 				console.log(size);
 				// 주소로 좌표를 검색합니다
 				
-				for(var index=0; index < size; index++) {
+		/*		for(var index=0; index < size; index++) {
 					if ((result.data[index].lat || result.data[index].lon) == null) {
+						console.log("11231231");
 						result.data[index].lat = '37.55816980350889';
 						result.data[index].lon = '127.0178956224892';
 					}
-				}
+				}*/
 
 				// 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
 				var bounds = new daum.maps.LatLngBounds();
@@ -70,7 +71,11 @@ define([
 				var infowindowList = new Array();
 
 				for (var index=0; index < size; index++) {
-
+					if ((result.data[index].lat || result.data[index].lon) != null) {
+						console.log("11231231");
+						//result.data[index].lat = '37.55816980350889';
+						//result.data[index].lon = '127.0178956224892';
+					
 					    // 마커를 생성합니다
 					    var marker = new daum.maps.Marker({
 					        map: map, // 마커를 표시할 지도
@@ -128,7 +133,7 @@ define([
 						});
 
 					 bounds.extend(new daum.maps.LatLng(result.data[index].lat, result.data[index].lon));
-
+					}
 				} //for 문 인원수 별로
 				 map.setBounds(bounds); // 지도에 마커의 위치만큼 표시
 
@@ -410,8 +415,8 @@ define([
 				$(".parti-user-info").html(content);
 
 				var size = result.size;
-
-				var tag = "<div id='parti-info-total' style='padding-left:10%;'>"+size+"</div>";
+				$('.remove_info_size').remove();
+				var tag = "<div id='parti-info-total' class='remove_info_size' style='padding-left:10%;'>"+size+"</div>";
 
 				$("#parti-info").after(tag);
 
@@ -424,8 +429,11 @@ define([
 				for(var index4=0; index4 < result.data.length; index4++) {
 					
 					if ( result.data[index4].parti_no == partiNo ) {
+						
+						$('.remove_info_meetnm').remove();
+						
 						console.log(result.data[index4].meet_nm);
-						var tag = "<div id='parti-info-meetNm' style='padding-left:10%;'>"
+						var tag = "<div id='parti-info-meetNm' class='remove_info_meetnm' style='padding-left:10%;'>"
 							+result.data[index4].meet_nm
 							+"</div>";
 
