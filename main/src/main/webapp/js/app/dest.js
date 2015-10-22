@@ -106,73 +106,104 @@ define([
 					var memberNo = member.memberNo;
 					console.log('접속자 번호 :'+memberNo);
 					
+					var memberNoList = new Array();
+					var memberMaster = '';
+					
 					$.getJSON(contextRoot + '/json/dest/listPermision.do?memb_no='
 							+ memberNo, function(result) {
 						
 						console.log(result.data);
 						console.log('===================');
-
-						if (result.data[0].cate_no == 0) {
-							console.log(result.data[0].cate_nm +'은 cate_no가 없음');
-
-							if((result.result == "yes") && (meetNo == result.data[0].meet_no)) {
-								//선택한 카테고리갯수 만큼 입력
-								for (index = 0; index < categoryList.length; index++) {
-									$.ajax(contextRoot + '/json/dest/insert.do', {
-										method: 'POST',
-										dataType: 'json',
-										data: {
-											meet_no: meetNo,
-											cate_nm: categoryList[index]
-										},
-									});
-									$('#category-permision-info').remove();
-								}
-								$( "#destMenu" ).trigger( "click" );
-							} else {
-								if ($("#category-permision-info").text() == '') {
-									var permisiontag = "카테고리를 입력할 수 있는 권한이 없습니다.";
-									$("#category-permision-info").append(permisiontag);
-								}
-							}
-							///insert
-						} else {
-							console.log('이미 자료가 있어요.');
-
-							$.ajax(contextRoot + '/json/dest/delete.do', {
-								method: 'POST',
-								dataType: 'json',
-								data: {
-									meet_no: meetNo
-								},
-							});
-
-							console.log('삭제 완료');
-
-							if((result.result == "yes") && (meetNo == result.data[0].meet_no)) {
-								//선택한 카테고리갯수 만큼 입력
-								console.log(categoryList);
-								$('#category-permision-info').remove();
-
-								for (index = 0; index < categoryList.length; index++) {
-									$.ajax(contextRoot + '/json/dest/insert.do', {
-										method: 'POST',
-										dataType: 'json',
-										data: {
-											meet_no: meetNo,
-											cate_nm: categoryList[index]
-										},
-									});
-								}
-								$( "#destMenu" ).trigger( "click" );
+						
+						for (var i = 0; i < result.data.length; i++) {
+							memberNoList.push(result.data[i].meet_no);
+						}
+						
+						
+						for (var i = 0; i < result.data.length; i++) {
+							if (meetNo == memberNoList[i]) {
+								memberMaster = memberNoList[i];
+								console.log('memberMaster:'+memberMaster);
 								
-							} else {
+
+								if (result.data[i].cate_no == 0) {
+									console.log(result.data[i].cate_nm +'은 cate_no가 없음');
+
+									if(result.result == "yes") { ////here
+										//선택한 카테고리갯수 만큼 입력
+										for (index = 0; index < categoryList.length; index++) {
+											$.ajax(contextRoot + '/json/dest/insert.do', {
+												method: 'POST',
+												dataType: 'json',
+												data: {
+													meet_no: meetNo,
+													cate_nm: categoryList[index]
+												},
+											});
+											$('#category-permision-info').remove();
+										}
+										$( "#destMenu" ).trigger( "click" );
+									} else {
+										if ($("#category-permision-info").text() == '') {
+											var permisiontag = "카테고리를 입력할 수 있는 권한이 없습니다.";
+											$("#category-permision-info").append(permisiontag);
+										}
+									}
+									///insert
+								} else {
+									console.log('이미 자료가 있어요.');
+
+									$.ajax(contextRoot + '/json/dest/delete.do', {
+										method: 'POST',
+										dataType: 'json',
+										data: {
+											meet_no: meetNo
+										},
+									});
+
+									console.log('삭제 완료');
+
+									if(result.result == "yes") { ////here
+										//선택한 카테고리갯수 만큼 입력
+										console.log(categoryList);
+										$('#category-permision-info').remove();
+
+										for (index = 0; index < categoryList.length; index++) {
+											$.ajax(contextRoot + '/json/dest/insert.do', {
+												method: 'POST',
+												dataType: 'json',
+												data: {
+													meet_no: meetNo,
+													cate_nm: categoryList[index]
+												},
+											});
+										}
+										$( "#destMenu" ).trigger( "click" );
+									} else {
+										if ($("#category-permision-info").text() == '') {
+											var permisiontag = "카테고리를 입력할 수 있는 권한이 없습니다.";
+											$("#category-permision-info").append(permisiontag);
+										}
+									}
+								} ///update
+								
+								
+								
+								
+							}else {
 								if ($("#category-permision-info").text() == '') {
 									var permisiontag = "카테고리를 입력할 수 있는 권한이 없습니다.";
 									$("#category-permision-info").append(permisiontag);
 								}
-							}
-						} ///update
+							} ///권한 확인 if/else
+							
+							
+						}/////멤머 마스터 for문
+						
+						
+						
+						
+						
 					});
 					
 				});

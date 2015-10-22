@@ -24,15 +24,16 @@ define([
 
 			var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 				mapOption = {
-					center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+					center: new daum.maps.LatLng(37.50566549352417, 127.103986963718), // 지도의 중심좌표
 					level: 3
 						// 지도의 확대 레벨
 				};
 
 			var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+			console.log(' 지도를 생성합니다');
 			
 			var markerPrimary = new daum.maps.Marker({
-				position: new daum.maps.LatLng(33.450701, 126.570667)
+				position: new daum.maps.LatLng(37.55816980350889, 127.0178956224892)
 			});
 			
 			// 지도에 현재 모임 인원 보여주기
@@ -313,6 +314,7 @@ define([
 
 		},
 		insertStart: function(locPosition) {
+			
 			$("#searchInfo").remove();
 
 			var lat = locPosition.zb;
@@ -373,6 +375,7 @@ define([
 
 		},
 		partiMembList: function(partiNo) {
+			
 			var partiNo = sessionStorage.getItem('meetNo');
 			var member = JSON.parse(sessionStorage.getItem('member'));
 
