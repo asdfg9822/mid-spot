@@ -8,23 +8,23 @@ define([ 'jquery', 'handlebars', 'bootstrap', 'jquery.ui.widget',
 		init : function() {
 			console.log('->company->init()');
 			
-//			$('.companyList-info-table').hide();
-//			$('#company-info').hide();
+			var companyNameSeleted = '';
+			
+			function getOffsetTop(el) {
+				var top = -100;
+				if (el.offsetParent) {
+					do {
+						top += el.offsetTop;
+					} while (el = el.offsetParent);
+					return [top];
+				}
+			}
+			window.scroll(0, getOffsetTop(document.getElementById("categoryNm")));
 
 			$('.categorys-select').click(function (event) {
 				event.preventDefault();
-
 				var attrId = $(this).find('div').text().trim();
-
-				function getOffsetTop(el) {
-					var top = -100;
-					if (el.offsetParent) {
-						do {
-							top += el.offsetTop;
-						} while (el = el.offsetParent);
-						return [top];
-					}
-				}
+				
 				if (attrId == '업체 등록') {
 					window.scroll(0, getOffsetTop(document.getElementById("categoryNm1")));
 				} else if (attrId == '상세 스펙 등록') {
@@ -34,48 +34,53 @@ define([ 'jquery', 'handlebars', 'bootstrap', 'jquery.ui.widget',
 				}  
 			});
 			
+			$('#company-insert').click(function (event) {
+				event.preventDefault();
+				window.scroll(0, getOffsetTop(document.getElementById("categoryNm")));
+			});
+			
 			$.getJSON(contextRoot + '/json/company/listCompany.do', function(result) {
 				var source = $('#company-template').html();
 				var template = handlebars.compile(source);
 				var content = template(result);
 				$(".company-info-list").html(content);
 				
-				
 				var source2 = $('#parti-user-template').html();
 				var template2 = handlebars.compile(source2);
 				var content2 = template2(result);
 				$(".parti-user-info").html(content2);
 				
-				
-				
+				$('.parti-user-name').click(function (event) { 
+					 companyNameSeleted = $(this).text();
+		            $('#compNmSelected').val(companyNameSeleted);
+		            window.scroll(0, getOffsetTop(document.getElementById("categoryNm2")));
+				});
 			});
-			$('.company-info').hide();
-			
-//			$('.company-info-list').click(function(event) {
-//				event.preventDefault();
-//				console.log($(this).parents().children(".companyList-info-table"));
-//				console.log($(this).parents().children(".companyList").find('div'));
-//				$('.companyList-info-table').toggle();
-//			});
 			
 			$(document).ready(function () {
 		        $(document).on('click', ".company-info-list .companyList", function (event) {
 		            event.preventDefault();
-		            console.log($(this).text());
 		            console.log($(this).attr('no'));
 		            
-//		            console.log($(this).find('.companyList-info-table').find('tr').find('.comp_nm').find('td'));
-//		            console.log($(this).find('.company-info').children());
+		            companyNameSeleted = $(this).text();
 		            
-//		            $(this).slideToggle("slow");
-//		            var slideFind = $(this).parents().children(".detail-explain-find");
-//		            var slideShare = $(this).parents().children(".detail-explain-share");
-//		            var slideMore = $(this).parents().children(".detail-explain-more");
-//		            slideFind.slideUp();
-//		            slideShare.slideUp();
-//		            slideMore.slideToggle("slow");
+					function getOffsetTop(el) {
+						var top = -100;
+						if (el.offsetParent) {
+							do {
+								top += el.offsetTop;
+							} while (el = el.offsetParent);
+							return [top];
+						}
+					}
+		            
+		            $('#compNmSelected').val(companyNameSeleted);
+		            window.scroll(0, getOffsetTop(document.getElementById("categoryNm2")));
+		            
 		          })
 		      });
+			
+
 
 		},
 		listSpec : function() {
@@ -134,7 +139,7 @@ define([ 'jquery', 'handlebars', 'bootstrap', 'jquery.ui.widget',
 						});
 						
 					} /* for 문 종료 */
-					
+					window.scroll(0, getOffsetTop(document.getElementById("categoryNm")));
 					
 				});
 
