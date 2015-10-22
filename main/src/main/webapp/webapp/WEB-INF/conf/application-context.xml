@@ -68,7 +68,7 @@
   </bean>
 
   <!-- SQL 맵퍼와 인터페이스 연동을 관리하는 객체 -->
-  <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+   <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 	  <property name="basePackage"
 	       value="net.bitacademy.java72.dao" />
 	</bean>
