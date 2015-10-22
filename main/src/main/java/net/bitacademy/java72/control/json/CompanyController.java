@@ -100,8 +100,8 @@ public class CompanyController {
 
 
 		for (Start list : start) {
-			sX = (String)list.getLat();
-			sY = (String)list.getLon();
+		  sY = (String)list.getLat();
+      sX = (String)list.getLon();
 		}
 		
 		System.out.println("출발지sX" + sX);

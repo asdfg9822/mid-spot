@@ -60,14 +60,21 @@
 	  padding-left: 2px;
 	}
 	
-	.detail-explain-more,
-	.detail-explain-find,
-	.detail-explain-share {
-	  /*		border: 2px solid green;*/
+	.detail-explain-more {
+	  height: 200px;
+	  display: none;
+	  margin-bottom: 10px;
+	}
+	
+	.detail-explain-find {
 	  height: 250px;
 	  display: none;
-	  border-top-left-radius: 10px;
-	  border-top-right-radius: 10px;
+	  margin-bottom: 10px;
+	}
+	
+	.detail-explain-share {
+	  height: 120px;
+	  display: none;
 	  margin-bottom: 10px;
 	}
 	
@@ -234,6 +241,19 @@
 	  height: 100%;
 	  width: 100%;
 	}
+	/*공유하기 css*/
+	
+	.detail-explain-share img {
+	  width: 7%;
+	  margin: 1%;
+	}
+	
+	.facebook {}
+	
+	.detail-explain-share {
+	  text-align: right;
+	}
+	/*END 공유하기 css*/
 	/*result 리스트 css*/
 	
 	.img-responsive {
@@ -294,11 +314,7 @@
 	}
 	
 	@media (max-width: 950px) {
-	  /*
-	  .result_road_Content {
-	    padding: 0em 0em 0em 5em;
-	  }
-*/
+	  /* 길찾기부분*/
 	  .detail_road {
 	    display: block;
 	    width: 60%;
@@ -309,7 +325,9 @@
 	    float: none;
 	    width: 100%;
 	  }
-	  .detail-explain-find {
+	  .detail-explain-more,
+	  .detail-explain-find,
+	  .detail-explain-share {
 	    height: auto;
 	  }
 	  .result_road_guide {
@@ -318,13 +336,18 @@
 	  .result_road_traffic {
 	    width: 15%;
 	  }
+	  /* end 길찾기부분*/
 	}
 	
 	@media (max-width: 500px) {
 	  .result_road_time {
 	    display: none;
 	  }
-	  .result_road_traffic_time {
+	  /*더보기부분*/
+	  .detail_map {
+	    display: none;
+	  }
+	  .detail_bar {
 	    display: none;
 	  }
 	}

@@ -51,7 +51,7 @@
           <div class="col-md-2">
             <div class="select-button">
               <ul class="ca-menu">
-                <li class="detail-info" data-compNo="{{no}}">
+                <li class="detail-info" data-compNo="{{no}}" click-compNo="{{no}}">
                   <a href="#">
                     <span class="ca-icon">L</span>
                     <div class="ca-content">
@@ -108,7 +108,22 @@
       </div>
 
     </div>
-    <div class="table-div detail-explain-share">공유하기의 상세</div>
+    <div class="table-div detail-explain-share">
+      <!-- 공유하기 -->
+      <a href="#none" class="sns facebook" onclick="javascript:alert('준비중입니다.'); return;">
+        <img src="images/result/facebook.png">
+      </a>
+      <a href="#none" class="sns google" onclick="javascript:alert('준비중입니다.'); return;">
+        <img src="images/result/google.png">
+      </a>
+      <a href="#none" class="sns instagram" onclick="javascript:alert('준비중입니다.'); return;">
+        <img src="images/result/instagram.png">
+      </a>
+      <a href="#none" class="sns twitter" onclick="javascript:alert('준비중입니다.'); return;">
+        <img src="images/result/twitter.png">
+      </a>
+    </div>
+
   </div>
   {{/each}}
 </script>
@@ -162,8 +177,8 @@
 <!-- END 더보기SPEC content 핸들바스 -->
 
 
-
 <!-- ******************핸들바스사용 end ***********************-->
+
 
 <div class="result_container">
 

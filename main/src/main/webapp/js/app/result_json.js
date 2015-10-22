@@ -5,6 +5,7 @@ define(['jquery', 'handlebars', 'app/cbpFWTabs', 'slider', 'app/common'], functi
       console.log("->result_json->init()");
 
 
+      /*----------- handlebars 함수 ------------*/
       handlebars.registerHelper('list', function (options) {
 
         var out = "";
@@ -46,8 +47,7 @@ define(['jquery', 'handlebars', 'app/cbpFWTabs', 'slider', 'app/common'], functi
         return out;
       });
 
-
-
+      /*----------- END handlebars 함수 ------------*/
 
       var moduleObj = this;
       //Default Load
@@ -156,12 +156,12 @@ define(['jquery', 'handlebars', 'app/cbpFWTabs', 'slider', 'app/common'], functi
       });
       /*----------- End tab cate handlebars ------------*/
 
-
-
-
       /*------------Click Event------------*/
       $(document).ready(function () {
+
+        // 더보기
         $(document).on('click', ".ca-menu > .detail-info", function (event) {
+
             event.preventDefault();
             var slideFind = $(this).parents().children(".detail-explain-find");
             var slideShare = $(this).parents().children(".detail-explain-share");
@@ -169,7 +169,9 @@ define(['jquery', 'handlebars', 'app/cbpFWTabs', 'slider', 'app/common'], functi
             slideFind.slideUp();
             slideShare.slideUp();
             slideMore.slideToggle("slow");
+
           }),
+          // 길찾기
           $(document).on('click', ".ca-menu > .detail-find", function (event) {
             event.preventDefault();
             var slideFind = $(this).parents().children(".detail-explain-find");
@@ -179,6 +181,7 @@ define(['jquery', 'handlebars', 'app/cbpFWTabs', 'slider', 'app/common'], functi
             slideMore.slideUp();
             slideFind.slideToggle("slow");
           }),
+          // 공유하기
           $(document).on('click', ".ca-menu > .detail-share", function (event) {
             event.preventDefault();
             var slideFind = $(this).parents().children(".detail-explain-find");
@@ -189,15 +192,15 @@ define(['jquery', 'handlebars', 'app/cbpFWTabs', 'slider', 'app/common'], functi
             slideShare.slideToggle("slow");
           });
       });
+      /*------------END Click Event------------*/
 
-      /*------------더 보기 Map Event ------------*/
+
+      /*------------더보기 Map Event ------------*/
 
       $(document).ready(function () {
         $(document).on('click', '.ca-menu > .detail-info', function () {
           var thisArea = $(this).parents('.result_table_border_area_2');
           var detailMap = thisArea.find('.detail_map');
-
-          //$('<div>').attr('id', 'detail_map_id').css('width', '100%').css('height', '100%').appendTo(detailMap);
 
           var mapContainer = document.getElementById(detailMap.attr('id'));
           var mapOption = {
@@ -215,6 +218,8 @@ define(['jquery', 'handlebars', 'app/cbpFWTabs', 'slider', 'app/common'], functi
 
         });
       });
+      /*------------ END 더보기 Map Event ------------*/
+
 
       /*------------길찾기 Map Event ------------*/
       $(document).ready(function () {
@@ -266,13 +271,15 @@ define(['jquery', 'handlebars', 'app/cbpFWTabs', 'slider', 'app/common'], functi
 
         });
       });
+      /*------------ END 길찾기 Map Event ------------*/
 
+
+      /*----------- 길찾기 handlebars ------------*/
       $(document).on('click', '.ca-menu  > .detail-find', function () {
 
         var member = JSON.parse(sessionStorage.getItem('member'));
         var meetNo = JSON.parse(sessionStorage.getItem('meetNo'));
 
-        /*----------- 길찾기 handlebars ------------*/
         $.getJSON(contextRoot + "/json/company/pubTrans.do", {
           eX: $(this).attr('data-lon'),
           eY: $(this).attr('data-lat'),
@@ -294,14 +301,14 @@ define(['jquery', 'handlebars', 'app/cbpFWTabs', 'slider', 'app/common'], functi
           $('.result_road_Content').html(content);
 
         });
-        /*----------- End 길찾기 handlebars ------------*/
 
       });
+      /*----------- End 길찾기 handlebars ------------*/
 
 
+      /*----------- 더보기 SPEC handlebars ------------*/
       $(document).on('click', '.ca-menu  > .detail-info', function () {
 
-        /*----------- 더보기 SPEC handlebars ------------*/
         $.getJSON(contextRoot + "/json/dest/specList.do", {
 
           compNo: $(this).attr('data-compNo')
@@ -319,11 +326,9 @@ define(['jquery', 'handlebars', 'app/cbpFWTabs', 'slider', 'app/common'], functi
           $('.result_spec_Content').html(content);
 
         });
-        /*----------- End 더보기 handlebars ------------*/
 
       });
-
-
+      /*----------- End 더보기 handlebars ------------*/
 
 
     }, // End of init()
@@ -423,6 +428,9 @@ define(['jquery', 'handlebars', 'app/cbpFWTabs', 'slider', 'app/common'], functi
 
               map.setBounds(bounds); // 지도에 마커의 위치만큼 표시
             }
+
+            /*----------- END Sidebar Marker Control------------*/
+
 
             /*----------- 추천장소 handlebars ------------*/
             var meetNo = JSON.parse(sessionStorage.getItem('meetNo'));
