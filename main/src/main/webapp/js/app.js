@@ -38,7 +38,9 @@ requirejs.config({
 		'slider': 'lib/slider',
 		'datatables': 'lib/jquery.dataTables.min',
 		'hoverdir': 'lib/hoverdir/jquery.hoverdir',
-		'modernizr': 'lib/hoverdir/modernizr.custom.97074'
+		'modernizr': 'lib/hoverdir/modernizr.custom.97074',
+		'prettyPhoto': 'lib/jquery.prettyPhoto',
+		'classie': 'lib/classie'
 	},
 	shim: {
 		"datatables": {
