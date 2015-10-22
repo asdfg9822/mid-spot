@@ -72,6 +72,7 @@
 	  <property name="basePackage" 
 	       value="net.bitacademy.java72.dao" />
 	</bean>
+	<!--  
   <bean id="dataSource" 
         class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     <property name="driverClassName" 
@@ -81,6 +82,7 @@
     <property name="username" value="java72"/>
     <property name="password" value="java72"/>
   </bean>
+  -->
 </beans>
 
 
