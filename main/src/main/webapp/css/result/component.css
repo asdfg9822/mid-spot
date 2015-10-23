@@ -29,7 +29,7 @@ a:hover {
   width: 100%;
   /*overflow: hidden;*/
   /*  margin: 1em 0 2em;*/
-  margin-top: 2em;
+  /*  margin-top: 2em;*/
   /*  margin-left: 2em;*/
   /*  font-weight: 300;*/
 }
@@ -79,7 +79,7 @@ a:hover {
   overflow: hidden;
   right: auto;
   left: 100%;
-  width: 500px;
+  width: 1000px;
 }
 
 .tabs nav a {

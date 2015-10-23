@@ -45,13 +45,14 @@ body {
 	  font-weight: normal;
 	  font-style: normal;
 	}
+	/*버튼 크기*/
 	
 	.ca-menu {
 	  display: block;
 	  float: left;
 	  padding: 0;
 	  /*  margin: 20px auto;*/
-	  width: 300px;
+	  width: 210%;
 	}
 	
 	.ca-menu li {

@@ -86,7 +86,7 @@
 /*버튼 박스 배경색 */
 
 .button--quidel.button--inverted::after {
-  background: #0059AB;
+  background: #3B5999;
 }
 
 
@@ -110,14 +110,14 @@
 /*바뀌는 배경색*/
 
 .button--quidel.button--inverted::before {
-  background: PaleVioletRed;
+  background: DarkSeaGreen;
 }
 
 
 /*바뀌는 글자색 */
 
 .button--quidel.button--inverted:hover {
-  color: PaleVioletRed;
+  color: White;
 }
 
 

@@ -131,6 +131,8 @@ public class CompanyController {
 			transResult.toString();
 
 			result.put("result", transResult);
+			result.put("startx", sX);
+			result.put("starty", sY);
 			
 		} catch (Exception e) {
 			// TODO: handle exception

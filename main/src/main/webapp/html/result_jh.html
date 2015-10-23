@@ -15,8 +15,9 @@
         <div class="row">
           <div class="col-md-4 center-block text-center vcenter">
 
-            <span class="comp_title">{{companyName}}</span>
-            <img class="img-responsive img_slider first vcenter" src="{{imgUrl}}" alt="사진없음">
+            <span class="comp_title">{{companyName}}</span> {{#if imgUrl}}
+            <img class="img-responsive img_slider first vcenter" src="{{imgUrl}}"> {{else}}
+            <img class="selfie_img img-responsive img_slider first vcenter" src="images/result/selfie1.png"> {{/if}}
           </div>
 
           <hr>
