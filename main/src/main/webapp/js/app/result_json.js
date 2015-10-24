@@ -323,7 +323,14 @@ define(['jquery', 'handlebars', 'app/cbpFWTabs', 'slider', 'app/common'], functi
           partiNo: meetNo
         }, function (data) {
 
+          var compNo = $(this).attr('click-compNo');
+
+          console.log(compNo);
+
+
           var obj = JSON && JSON.parse(data.result) || $.parseJSON(data.result);
+
+          console.log(obj.result);
 
           var source = $('#resultRoadContentScript').html();
 
@@ -333,6 +340,7 @@ define(['jquery', 'handlebars', 'app/cbpFWTabs', 'slider', 'app/common'], functi
 
           $('.result_road_Content').html(content);
         });
+
       });
       /*----------- End 길찾기 handlebars ------------*/
 

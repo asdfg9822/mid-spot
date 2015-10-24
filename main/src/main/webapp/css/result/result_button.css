@@ -52,7 +52,7 @@ body {
 	  float: left;
 	  padding: 0;
 	  /*  margin: 20px auto;*/
-	  width: 210%;
+	  width: 190%;
 	}
 	
 	.ca-menu li {
@@ -200,9 +200,10 @@ body {
 	  height: 60px;
 	  top: 10px;
 	}
+	/*버튼 글자크기*/
 	
 	.ca-main {
-	  font-size: 30px;
+	  font-size: 200%;
 	  -webkit-transition: all 300ms linear;
 	  -moz-transition: all 300ms linear;
 	  -o-transition: all 300ms linear;
@@ -212,7 +213,7 @@ body {
 	
 	.ca-sub {
 	  padding: 4px;
-	  font-size: 12px;
+	  font-size: 70%;
 	  color: #666;
 	  -webkit-transition: all 300ms linear;
 	  -moz-transition: all 300ms linear;

@@ -71,6 +71,7 @@ define(
       event.preventDefault();
       $('#sidebar-item1-title').remove();
       $('#sidebar-item1-content').remove();
+      $('#sidebar-item2-title').remove();
       $('#sidebar-item2-content').load('html/result_side.html');
       $('#content').load('html/result_jh.html');
     });
