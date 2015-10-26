@@ -22,11 +22,17 @@ define(
       $('#sidebar-item1-content').remove();
       $('#sidebar-item2-content').load('html/company_side.html');
       $('#content').load('html/company.html');
+      $('#homeMenu, #meetMenu, #destMenu, #startMenu, #resultMenu, #resultCompany').removeClass('bgColor');
+      $('#resultCompany').addClass('bgColor');
+		
     }); // company 이동 기능
 
+    
     $('#homeMenu').click(function (event) {
       event.preventDefault();
       $('#content').load('html/home.html');
+      $('#homeMenu, #meetMenu, #destMenu, #startMenu, #resultMenu, #resultCompany').removeClass('bgColor');
+      $('#homeMenu').addClass('bgColor');
     });
 
     $('#meetMenu').click(function (event) {
@@ -35,6 +41,8 @@ define(
       $('#sidebar-item2-title > b').text('모임을 만드세요.');
       $('#sidebar-item2-content').load('html/meet_side.html');
       $('#content').load('html/meet_list.html');
+      $('#homeMenu, #meetMenu, #destMenu, #startMenu, #resultMenu, #resultCompany').removeClass('bgColor');
+      $('#meetMenu').addClass('bgColor');
     });
 
     // Master Meet Enter Trigger
@@ -57,6 +65,8 @@ define(
       $('#sidebar-item1-content').remove();
       $('#sidebar-item2-content').load('html/dest_side.html');
       $('#content').load('html/dest.html');
+      $('#homeMenu, #meetMenu, #destMenu, #startMenu, #resultMenu, #resultCompany').removeClass('bgColor');
+		$('#destMenu').addClass('bgColor');
     });
     // Header 출발 Button
     $('#startMenu').click(function (event) {
@@ -65,6 +75,8 @@ define(
       $('#sidebar-item1-content').remove();
       $('#sidebar-item2-content').load('html/start_side.html');
       $('#content').load('html/start.html');
+      $('#homeMenu, #meetMenu, #destMenu, #startMenu, #resultMenu, #resultCompany').removeClass('bgColor');
+		$('#startMenu').addClass('bgColor');
     });
     // Header 중간여기 Button
     $('#resultMenu').click(function (event) {
@@ -74,6 +86,8 @@ define(
       $('#sidebar-item2-title').remove();
       $('#sidebar-item2-content').load('html/result_side.html');
       $('#content').load('html/result_jh.html');
+      $('#homeMenu, #meetMenu, #destMenu, #startMenu, #resultMenu, #resultCompany').removeClass('bgColor');
+		$('#resultMenu').addClass('bgColor');
     });
 
     //$('#meetMenu').trigger('click');

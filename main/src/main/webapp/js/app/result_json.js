@@ -161,7 +161,6 @@ define(['jquery', 'handlebars', 'app/cbpFWTabs', 'slider', 'app/common'], functi
 
         // 더보기
         $(document).on('click', ".ca-menu > .detail-info", function (event) {
-
             event.preventDefault();
             var slideFind = $(this).parents().children(".detail-explain-find");
             var slideShare = $(this).parents().children(".detail-explain-share");
@@ -170,7 +169,6 @@ define(['jquery', 'handlebars', 'app/cbpFWTabs', 'slider', 'app/common'], functi
             slideShare.slideUp();
             slideMore.slideToggle("slow");
             console.log("더보기클릭");
-
           }),
           // 길찾기
           $(document).on('click', ".ca-menu > .detail-find", function (event) {
@@ -313,6 +311,7 @@ define(['jquery', 'handlebars', 'app/cbpFWTabs', 'slider', 'app/common'], functi
       /*----------- 길찾기 handlebars ------------*/
       $(document).on('click', '.ca-menu  > .detail-find', function () {
 
+        var bbb = 0;
         var member = JSON.parse(sessionStorage.getItem('member'));
         var meetNo = JSON.parse(sessionStorage.getItem('meetNo'));
 
@@ -323,9 +322,21 @@ define(['jquery', 'handlebars', 'app/cbpFWTabs', 'slider', 'app/common'], functi
           partiNo: meetNo
         }, function (data) {
 
-          var compNo = $(this).attr('click-compNo');
+
+          // compno로 구분하기
+          var compNo = $(this).attr('data-lon');
+
+
+          if (bbb === $(this).attr('click-compNo')) {
+            bbb = 1;
+          } else {
+            bbb = 2;
+          }
 
           console.log(compNo);
+          console.log(bbb);
+
+          // end compno로 구분하기
 
 
           var obj = JSON && JSON.parse(data.result) || $.parseJSON(data.result);

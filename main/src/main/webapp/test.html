@@ -52,9 +52,9 @@
 
   <!-- result_side CSS -->
   <link href="css/result_side.css" rel="stylesheet">
-
+  
   <!--  home.html 에서 필요한 css -->
-  <link rel="stylesheet" type="text/css" href="css/homecss1/home.css" />
+   <link rel="stylesheet" type="text/css" href="css/homecss1/home.css" />
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -87,7 +87,7 @@
         <li><a id="resultMenu" href="#"><i class="glyphicon glyphicon-ok"></i> Result</a></li>
         <li><a id="resultCompany" href="#"><i class="glyphicon glyphicon-ok"></i> 슬기</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right">
         <li><a id="logout" href="#" style="display:none"><i class="glyphicon glyphicon-user"></i>Logout</a></li>
       </ul>
     </nav>
@@ -111,9 +111,13 @@
 
         <div id="sidebar-item2-area" style="margin-top:3em;">
           <span id="sidebar-item2-title"><b></b></span>
-          <div id="sidebar-item2-border">
-            <div id="sidebar-item2-content">
-            </div>
+          <div style="background-color:white;margin:0.3em 5%;border:1px solid #ccc ">
+            <div id="sidebar-item2-content"><a id="loginSuccess" href="#">
+            toggle
+          </a>
+              <a id="logout" href="#">
+            logout
+          </a></div>
           </div>
         </div>
       </div>
@@ -125,8 +129,8 @@
           <a id="btnFBLogin" class="" href="#"><img src="./images/auth/facebook_login_btn.png"> <b>페이스북 로그인</b></a>
         </li>
         <!--<li>
-					<a id="btnFBLogin" class="" href="#"><img src="./images/auth/kakao_login_btn.png"> <b>카카오톡 로그인</b></a>
-				</li>-->
+          <a id="btnFBLogin" class="" href="#"><img src="./images/auth/kakao_login_btn.png"> <b>카카오톡 로그인</b></a>
+        </li>-->
         <li></li>
       </ul>
     </div>
@@ -145,25 +149,22 @@
   <script data-main='js/app' src='js/lib/require.js'></script>
 
   <div id="modalMeetCreate" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="exampleModalLabel">모임 만들기</h4>
-        </div>
+     <div class="modal-dialog">
+        <div class="modal-content">
+           <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h2 class="text-center"><img src="images/create.png" class="img-circle"><br>모임 만들기</h2>
+            </div>
         <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="recipient-name" class="control-label">모임 이름</label>
-              <input type="text" class="form-control" id="meetName">
+            <form class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0">
+                    <div class="form-group">
+                        <input type="text" class="form-control input-lg" placeholder="모임 이름" id="meetName">
+                    </div>
+                    <div class="form-group">
+                        <input type="datetime-local" class="form-control input-lg" id="meetDate">
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-              <label for="recipient-name" class="control-label">모임 시간</label>
-              <input type="text" class="form-control" id="meetDate">
-            </div>
-
-          </form>
-        </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
           <button type="button" id="btnMeetSubmit" class="btn btn-primary">생성</button>
