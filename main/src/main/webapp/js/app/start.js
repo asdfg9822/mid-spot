@@ -40,6 +40,7 @@ define([
 			var partiNo = sessionStorage.getItem('meetNo');
 
 			console.log('partiNo:'+partiNo);
+			
 
 			$.getJSON(contextRoot
 					+ '/json/start/partiMembList.do?parti_no='+partiNo,
@@ -50,9 +51,19 @@ define([
 				var content = template(result);
 
 				var size = result.size;
+				console.log('result');
+				console.log(result);
 
 				console.log(size);
 				// 주소로 좌표를 검색합니다
+				
+		/*		for(var index=0; index < size; index++) {
+					if ((result.data[index].lat || result.data[index].lon) == null) {
+						console.log("11231231");
+						result.data[index].lat = '37.55816980350889';
+						result.data[index].lon = '127.0178956224892';
+					}
+				}*/
 
 				// 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
 				var bounds = new daum.maps.LatLngBounds();
@@ -60,7 +71,11 @@ define([
 				var infowindowList = new Array();
 
 				for (var index=0; index < size; index++) {
-
+					if ((result.data[index].lat || result.data[index].lon) != null) {
+						console.log("11231231");
+						//result.data[index].lat = '37.55816980350889';
+						//result.data[index].lon = '127.0178956224892';
+					
 					    // 마커를 생성합니다
 					    var marker = new daum.maps.Marker({
 					        map: map, // 마커를 표시할 지도
@@ -92,33 +107,33 @@ define([
 						// 마커에 클릭이벤트를 등록합니다
 						daum.maps.event.addListener(marker, 'click', function() {
 
-							for (var index=0; index < size; index++) {
-								if (result.data[index].memb_nm == this.ud) {
+							for (var index1=0; index1 < size; index1++) {
+								if (result.data[index1].memb_nm == this.ud) {
 
 									infowindow.setContent('<div style="width:100%; text-align: center;">'
 											+ '<img src="'
-											+ result.data[index].file_path
+											+ result.data[index1].file_path
 											+'" style="width:40%;  border-radius:50%; padding: 2%;" >'
-											+ result.data[index].memb_nm
+											+ result.data[index1].memb_nm
 											+ '</div>');
 							      // 마커 위에 인포윈도우를 표시합니다
-									infowindow.open(map, markerList[index]);
+									infowindow.open(map, markerList[index1]);
 								}
 							} //선택한 마커의 정보를 출력
 
 						});
 
 						daum.maps.event.addListener(marker, 'rightclick', function() {
-							for (var index=0; index < size; index++) {
-								if (result.data[index].memb_nm == this.ud) {
-									markerList[index].setVisible(false);
-									infowindowList[index].close();
+							for (var index2=0; index2 < size; index2++) {
+								if (result.data[index2].memb_nm == this.ud) {
+									markerList[index2].setVisible(false);
+									infowindowList[index2].close();
 								}
 							} //선택한 마커의 정보를 출력
 						});
 
 					 bounds.extend(new daum.maps.LatLng(result.data[index].lat, result.data[index].lon));
-
+					}
 				} //for 문 인원수 별로
 				 map.setBounds(bounds); // 지도에 마커의 위치만큼 표시
 
@@ -320,9 +335,6 @@ define([
 			var lat = locPosition.zb;
 	        var lon = locPosition.yb;
 
-	        console.log("위도"+lat);
-	        console.log("경도"+lon);
-
 			var meetNo = sessionStorage.getItem('meetNo');
 			console.log("접속된 방 번호 :" + meetNo);
 			var member = JSON.parse(sessionStorage.getItem('member'));
@@ -334,40 +346,54 @@ define([
 			console.log('============');
 			console.log(member);
 
+	        console.log("위도"+lat);
+	        console.log("경도"+lon);
+
 			$('#insertLat1').click(function (event) {
 				event.preventDefault();
 
 				$.getJSON(contextRoot
 						+ '/json/start/list.do?memb_no='+member.memberNo,
 						function(result) {
+					
+					for(var index3=0; index3 < result.data.length; index3++) {
+						
+						if ( result.data[index3].parti_no == partiNo ) {
+							
+							if ( (result.data[index3].lat && result.data[index3].lon) == (null || '')) {
+								
+								$.ajax(contextRoot + '/json/start/insert.do', {
+									method: 'POST',
+									dataType: 'json',
+									data: {
+										parti_no: meetNo,
+										memb_no: member.memberNo,
+										lat: lat,
+										lon: lon
+									},
+								});
+								$('#startMenu').trigger('click');
 
-					if ( (result.data[0].lat || result.data[0].lon) == null) {
-
-							$.ajax(contextRoot + '/json/start/insert.do', {
-								method: 'POST',
-								dataType: 'json',
-								data: {
-									parti_no: meetNo,
-									memb_no: member.memberNo,
-									lat: lat,
-									lon: lon
-								},
-							});
-							$('#startMenu').trigger('click');
-
-					} else {
-						$.ajax(contextRoot + '/json/start/update.do', {
-							method : 'POST',
-							dataType : 'json',
-							data : {
-								parti_no: meetNo,
-								memb_no : member.memberNo,
-								lat : lat,
-								lon : lon
+							} else {
+								
+								$.ajax(contextRoot + '/json/start/update.do', {
+									method : 'POST',
+									dataType : 'json',
+									data : {
+										parti_no: meetNo,
+										memb_no : member.memberNo,
+										lat : lat,
+										lon : lon
+									}
+								});
+								$('#startMenu').trigger('click');
 							}
-						});
-						$('#startMenu').trigger('click');
-					}
+							
+						}else {
+							console.log('입력 실패...');
+						}
+						
+					} ///for문 종료
 
 				}); // 위도, 경도 존재 여부 확인
 
@@ -389,8 +415,8 @@ define([
 				$(".parti-user-info").html(content);
 
 				var size = result.size;
-
-				var tag = "<div id='parti-info-total' style='padding-left:10%;'>"+size+"</div>";
+				$('.remove_info_size').remove();
+				var tag = "<div id='parti-info-total' class='remove_info_size' style='padding-left:10%;'>"+size+"</div>";
 
 				$("#parti-info").after(tag);
 
@@ -400,11 +426,20 @@ define([
 					+ '/json/start/list.do?memb_no='+member.memberNo,
 					function(result) { 
 				
-				var tag = "<div id='parti-info-meetNm' style='padding-left:10%;'>"
-					+result.data[0].meet_nm
-					+"</div>";
+				for(var index4=0; index4 < result.data.length; index4++) {
+					
+					if ( result.data[index4].parti_no == partiNo ) {
+						
+						$('.remove_info_meetnm').remove();
+						
+						console.log(result.data[index4].meet_nm);
+						var tag = "<div id='parti-info-meetNm' class='remove_info_meetnm' style='padding-left:10%;'>"
+							+result.data[index4].meet_nm
+							+"</div>";
 
-				$("#parti-info-title").after(tag);
+						$("#parti-info-title").after(tag);
+					}
+				}
 				
 			});
 			

@@ -73,4 +73,27 @@ public class StartController {
 
 		return result;
 	}
+	
+	
+	 @RequestMapping("/coordinate")
+	  public Object start(
+			 @RequestParam(required = true) int parti_no,
+			 @RequestParam(required = true) int memb_no
+			  ) {
+
+		  System.out.println("coordinate...controller");
+		  System.out.println("parti_no:" + parti_no);
+		  System.out.println("memb_no:" + memb_no);
+
+		    Map<String,Object> result =
+		        new HashMap<String,Object>();
+
+		    result.put("data", startService.start(parti_no, memb_no));
+
+
+
+		    return result;
+	  }
+	
+	
 }

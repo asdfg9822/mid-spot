@@ -10,7 +10,9 @@ define(['jquery', 'app/common'], function ($) {
         var second = true;
         var third = true;
 
+
         $(document).on('click', '.result_map_menu > #pickSection-0', function (e) {
+
 
           e.preventDefault();
           console.log("압구정클릭");

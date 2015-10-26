@@ -161,7 +161,6 @@ define(['jquery', 'handlebars', 'app/cbpFWTabs', 'slider', 'app/common'], functi
 
         // 더보기
         $(document).on('click', ".ca-menu > .detail-info", function (event) {
-
             event.preventDefault();
             var slideFind = $(this).parents().children(".detail-explain-find");
             var slideShare = $(this).parents().children(".detail-explain-share");
@@ -169,7 +168,7 @@ define(['jquery', 'handlebars', 'app/cbpFWTabs', 'slider', 'app/common'], functi
             slideFind.slideUp();
             slideShare.slideUp();
             slideMore.slideToggle("slow");
-
+            console.log("더보기클릭");
           }),
           // 길찾기
           $(document).on('click', ".ca-menu > .detail-find", function (event) {
@@ -180,6 +179,7 @@ define(['jquery', 'handlebars', 'app/cbpFWTabs', 'slider', 'app/common'], functi
             slideShare.slideUp();
             slideMore.slideUp();
             slideFind.slideToggle("slow");
+            console.log("길찾기클릭");
           }),
           // 공유하기
           $(document).on('click', ".ca-menu > .detail-share", function (event) {
@@ -190,6 +190,7 @@ define(['jquery', 'handlebars', 'app/cbpFWTabs', 'slider', 'app/common'], functi
             slideFind.slideUp();
             slideMore.slideUp();
             slideShare.slideToggle("slow");
+            console.log("공유하기클릭");
           });
       });
       /*------------END Click Event------------*/
@@ -223,52 +224,85 @@ define(['jquery', 'handlebars', 'app/cbpFWTabs', 'slider', 'app/common'], functi
 
       /*------------길찾기 Map Event ------------*/
       $(document).ready(function () {
-        $(document).on('click', '.ca-menu  > .detail-find', function () {
-          var thisArea = $(this).parents('.result_table_border_area_2');
-          var detailMap = thisArea.find('.detail_road');
 
-          //$('<div>').attr('id', 'detail_map_id').css('width', '100%').css('height', '100%').appendTo(detailMap);
+        var member = JSON.parse(sessionStorage.getItem('member'));
+        var meetNo = JSON.parse(sessionStorage.getItem('meetNo'));
 
-          var mapContainer = document.getElementById(detailMap.attr('id'));
-          var mapOption = {
-            center: new daum.maps.LatLng(detailMap.attr('data-lat'), detailMap.attr('data-lon')),
-            level: 5
-          };
-          var map = new daum.maps.Map(mapContainer, mapOption);
+        $.getJSON(contextRoot + "/json/start/coordinate.do", {
+
+          memb_no: member.memberNo,
+          parti_no: meetNo
+
+        }, function (result) {
+
+          $(document).on('click', '.ca-menu  > .detail-find', function () {
+
+            var obj = result.data[0];
+
+            var lat = obj.lat;
+            var lon = obj.lon;
+
+            var thisArea = $(this).parents('.result_table_border_area_2');
+            var detailMap = thisArea.find('.detail_road');
+
+            //$('<div>').attr('id', 'detail_map_id').css('width', '100%').css('height', '100%').appendTo(detailMap);
+
+            var mapContainer = document.getElementById(detailMap.attr('id'));
+            var mapOption = {
+              center: new daum.maps.LatLng(37.497941, 127.027609),
+              //              center: new daum.maps.LatLng(detailMap.attr('data-lat'), detailMap.attr('data-lon')),
+              level: 5
+            };
+            var map = new daum.maps.Map(mapContainer, mapOption);
 
 
-          var imageSrc = "http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/blue_drag.png";
-          //http://127.0.0.1:9999/main/images/marker/marker_1.png
-          // 마커 이미지의 이미지 크기 입니다
-          var imageSize = new daum.maps.Size(30, 44);
+            var points = [
+              new daum.maps.LatLng(lat, lon),
+              new daum.maps.LatLng(detailMap.attr('data-lat'), detailMap.attr('data-lon')) //도착지
+            ];
 
-          // 마커 이미지를 생성합니다
-          var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
+            // 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
+            var bounds = new daum.maps.LatLngBounds();
 
-          // 마커를 생성합니다
-          var marker = new daum.maps.Marker({
-            map: map, // 마커를 표시할 지도
-            position: new daum.maps.LatLng(detailMap.attr('data-lat'), detailMap.attr('data-lon')),
-            // 마커를 표시할 위치
-            image: markerImage // 마커 이미지
+
+
+            /** 도착표시 **/
+            var imageSrc = "http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/blue_drag.png";
+            var imageSize = new daum.maps.Size(30, 44);
+            var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
+            /** END 도착표시 **/
+
+            /** 출발표시 **/
+            var startSrc = "http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/red_b.png";
+            var startSize = new daum.maps.Size(28, 35);
+            var startImage = new daum.maps.MarkerImage(startSrc, startSize);
+            /** END 출발표시 **/
+
+            var i, marker;
+            for (i = 0; i < points.length; i++) {
+              // 배열의 좌표들이 잘 보이게 마커를 지도에 추가합니다
+              if (i == 0) {
+                marker = new daum.maps.Marker({
+                  position: points[i],
+                  image: startImage
+                });
+
+              } else {
+                marker = new daum.maps.Marker({
+                  position: points[i],
+                  image: markerImage
+                });
+              }
+
+              marker.setMap(map);
+
+              // LatLngBounds 객체에 좌표를 추가합니다
+              bounds.extend(points[i]);
+            }
+
+            map.setBounds(bounds);
+
           });
-
-          //            var startSrc = "http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/red_b.png";
-          //
-          //            var startSize = new daum.maps.Size(30, 44);
-          //
-          //            // 마커 이미지를 생성합니다
-          //            var startImage = new daum.maps.MarkerImage(startSrc, startSize);
-          //
-          //            // 마커를 생성합니다
-          //            var startMarker = new daum.maps.Marker({
-          //              map: map, // 마커를 표시할 지도
-          //              position: new daum.maps.LatLng(detailMap.attr('data-lat'), detailMap.attr('data-lon')),
-          //              image: startImage // 마커 이미지
-          //            });
-          // 지도에 마커를 표시합니다
-          marker.setMap(map);
-
         });
       });
       /*------------ END 길찾기 Map Event ------------*/
@@ -277,6 +311,7 @@ define(['jquery', 'handlebars', 'app/cbpFWTabs', 'slider', 'app/common'], functi
       /*----------- 길찾기 handlebars ------------*/
       $(document).on('click', '.ca-menu  > .detail-find', function () {
 
+        var bbb = 0;
         var member = JSON.parse(sessionStorage.getItem('member'));
         var meetNo = JSON.parse(sessionStorage.getItem('meetNo'));
 
@@ -287,19 +322,34 @@ define(['jquery', 'handlebars', 'app/cbpFWTabs', 'slider', 'app/common'], functi
           partiNo: meetNo
         }, function (data) {
 
+
+          // compno로 구분하기
+          var compNo = $(this).attr('data-lon');
+
+
+          if (bbb === $(this).attr('click-compNo')) {
+            bbb = 1;
+          } else {
+            bbb = 2;
+          }
+
+          console.log(compNo);
+          console.log(bbb);
+
+          // end compno로 구분하기
+
+
           var obj = JSON && JSON.parse(data.result) || $.parseJSON(data.result);
 
-          //console.log(obj);
+          console.log(obj.result);
 
           var source = $('#resultRoadContentScript').html();
 
           var template = handlebars.compile(source);
 
-          console.log(data);
           var content = template(obj.result.path[0]);
 
           $('.result_road_Content').html(content);
-
         });
 
       });
@@ -412,12 +462,12 @@ define(['jquery', 'handlebars', 'app/cbpFWTabs', 'slider', 'app/common'], functi
                 markerList.push(marker);
 
                 // 인포윈도우로 장소에 대한 설명을 표시합니다
-                var infowindow = new daum.maps.InfoWindow({
-                  content: '<div style="padding:5px;">' + result.data[index].companyName + '</div>', // 인포윈도우에 표시될 내용입니다
-                  removable: true
-                });
-
-                infowindowList.push(infowindow);
+                //                var infowindow = new daum.maps.InfoWindow({
+                //                  content: '<div style="padding:5px;">' + result.data[index].companyName + '</div>', // 인포윈도우에 표시될 내용입니다
+                //                  removable: true
+                //                });
+                //
+                //                infowindowList.push(infowindow);
 
                 //                infowindow.open(map, marker);
 

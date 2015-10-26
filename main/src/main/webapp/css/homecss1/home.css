@@ -1,26 +1,4 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
-body {
-	background: #e5e5e5;
-	color: #999;
-}
-
-h1,
-h2,
-h3 {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 20px;
-}
-
-h4,
-h5,
-h6 {
-	color: #777;
-	font-weight: 3em;
-	text-align: center;
-}
-
 #bottom {
 	height: 600px;
 	width: 300px;
@@ -41,9 +19,9 @@ h6 {
 	background-attachment: fixed;
 	background-size: cover;
 	background-position: 50% 50%;
-	background-repeat: no-repeat padding: 200px 0;
-	color: #fff;
+	background-repeat: no-repeat;
 	padding: 200px 0;
+	color: #fff;
 }
 
 #main-slider .item {

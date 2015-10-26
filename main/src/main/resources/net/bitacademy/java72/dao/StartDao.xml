@@ -37,7 +37,7 @@
 
   
   <select id="list" parameterType="Start" resultMap="StartMap">
-  	select * from parti_tb where memb_no=#{memb_no}
+  	select * from parti_tb natural join meet_tb where memb_no=#{memb_no}
   </select>
 
   <update id="update">

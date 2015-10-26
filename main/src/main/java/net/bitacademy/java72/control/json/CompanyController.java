@@ -101,7 +101,7 @@ public class CompanyController {
 
 		for (Start list : start) {
 		  sY = (String)list.getLat();
-      sX = (String)list.getLon();
+          sX = (String)list.getLon();
 		}
 		
 		System.out.println("출발지sX" + sX);
@@ -131,6 +131,8 @@ public class CompanyController {
 			transResult.toString();
 
 			result.put("result", transResult);
+			result.put("startx", sX);
+			result.put("starty", sY);
 			
 		} catch (Exception e) {
 			// TODO: handle exception
