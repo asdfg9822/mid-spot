@@ -4,17 +4,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.plaf.synth.SynthSeparatorUI;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import net.bitacademy.java72.dao.CompanyDao;
+import net.bitacademy.java72.dao.PartiDao;
+import net.bitacademy.java72.dao.SubwayDao;
 import net.bitacademy.java72.domain.Company;
+import net.bitacademy.java72.domain.PartiOrigin;
+import net.bitacademy.java72.domain.Subway;
 import net.bitacademy.java72.service.CompanyService;
 
 @Service
 public class CompanyServiceImpl implements CompanyService {
 	@Autowired
 	CompanyDao companyDao;
+	@Autowired
+	PartiDao partiDao;
+	@Autowired
+	SubwayDao subwayDao;
 
 	@Override
 	public List<Company> list(int currCnt, int listCnt, int cateNo, int membNo, int partiNo) {
@@ -26,6 +36,28 @@ public class CompanyServiceImpl implements CompanyService {
 		paramMap.put("cateNo", cateNo);
 		paramMap.put("membNo", membNo);
 		paramMap.put("partiNo", partiNo);
+
+		float latAll = 0;
+		float lonAll = 0;
+		List<PartiOrigin> list = partiDao.partiAll(partiNo);
+		for (PartiOrigin partiOrigin : list) {
+			System.out.println(partiOrigin);
+			latAll+=Float.parseFloat(partiOrigin.getLat());
+			lonAll+=Float.parseFloat(partiOrigin.getLon());
+		}
+
+		System.out.println("latAvg = " + (latAll/list.size()));
+		System.out.println("lonAvg = " + (lonAll/list.size()));
+
+		paramMap.put("latAvg", latAll/list.size());
+		paramMap.put("lonAvg", lonAll/list.size());
+
+		List<Subway> sublist = subwayDao.list(paramMap);
+		System.out.println("----Sub List----");
+		for (Subway subway : sublist) {
+			System.out.println(subway.getLat() + " / " + subway.getLon());
+		}
+		System.out.println("----End of Sub List----");
 
 		return companyDao.rcmdList(paramMap);
 	}

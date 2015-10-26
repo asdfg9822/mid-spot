@@ -196,7 +196,7 @@
 	.navbar-blue .open>a,
 	.navbar-blue .open>a:hover,
 	.navbar-blue .open>a:focus {
-		background-color: #548aff;
+		background-color: transparent;
 		color: white;
 	}
 	
@@ -407,6 +407,12 @@
 		#sidebar a,
 		#sidebar-footer a {
 			padding-left: 3px;
+		}
+		#sidebar-wrapper {
+			/*margin-top: 0px;*/
+		}
+		.navbar-fixed-top {
+			position: fixed;
 		}
 	}
 	

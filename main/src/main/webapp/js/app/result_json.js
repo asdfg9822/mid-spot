@@ -1,533 +1,543 @@
 define(['jquery', 'handlebars', 'app/cbpFWTabs', 'slider', 'app/common'], function ($, handlebars) {
-  return {
-    init: function () {
+	return {
+		init: function () {
 
-      console.log("->result_json->init()");
+			console.log("->result_json->init()");
 
 
-      /*----------- handlebars 함수 ------------*/
-      handlebars.registerHelper('list', function (options) {
+			/*----------- handlebars 함수 ------------*/
+			handlebars.registerHelper('list', function (options) {
 
-        var out = "";
+				var out = "";
 
-        if (options == 3) {
-          out = "walk<img src='images/result/walk.png' style='width:20px;'>";
-        } else if (options == 2) {
-          out = "bus<img src='images/result/bus.png' style='width:20px;'>";
-        } else {
-          out = "subway<img src='images/result/subway.png' style='width:20px;'>";
-        }
+				if (options == 3) {
+					out = "walk<img src='images/result/walk.png' style='width:20px;'>";
+				} else if (options == 2) {
+					out = "bus<img src='images/result/bus.png' style='width:20px;'>";
+				} else {
+					out = "subway<img src='images/result/subway.png' style='width:20px;'>";
+				}
 
-        return out;
-      });
+				return out;
+			});
 
-      handlebars.registerHelper('list2', function (options) {
+			handlebars.registerHelper('list2', function (options) {
 
-        var value = options;
+				var value = options;
 
-        value = value.replace(/&gt;/g, "");
-        value = value.replace(/&lt;/g, "");
+				value = value.replace(/&gt;/g, "");
+				value = value.replace(/&lt;/g, "");
 
 
-        return value;
-      });
+				return value;
+			});
 
-      handlebars.registerHelper('list3', function (options) {
+			handlebars.registerHelper('list3', function (options) {
 
-        var out = "";
+				var out = "";
 
-        if (options == 3) {
-          out = "walk<img src='images/result/walk.png' style='width:20px;'>";
-        } else if (options == 2) {
-          out = "bus<img src='images/result/bus.png' style='width:20px;'>";
-        } else {
-          out = "subway<img src='images/result/subway.png' style='width:20px;'>";
-        }
+				if (options == 3) {
+					out = "walk<img src='images/result/walk.png' style='width:20px;'>";
+				} else if (options == 2) {
+					out = "bus<img src='images/result/bus.png' style='width:20px;'>";
+				} else {
+					out = "subway<img src='images/result/subway.png' style='width:20px;'>";
+				}
 
-        return out;
-      });
+				return out;
+			});
 
-      /*----------- END handlebars 함수 ------------*/
+			/*----------- END handlebars 함수 ------------*/
 
-      var moduleObj = this;
-      //Default Load
+			var moduleObj = this;
+			//Default Load
 
 
-      $('#tabs').on('click', '.btnCate', function (event) {
-        event.preventDefault();
-        event.stopPropagation();
+			$('#tabs').on('click', '.btnCate', function (event) {
+				event.preventDefault();
+				event.stopPropagation();
 
-        var section = $($(this).attr('data-section'));
-        section.find('.result_table_border_area').empty();
-        moduleObj.listCompany(0, 10, section);
-      });
+				var section = $($(this).attr('data-section'));
+				section.find('.result_table_border_area').empty();
+				moduleObj.listCompany(0, 10, section);
+			});
 
-      $(window).scroll(function () {
-        var scrollTop = $(window).scrollTop();
-        var documentTop = $(document).height() - $(window).height();
-        if (scrollTop - 1 <= documentTop && documentTop < scrollTop + 1) {
-          var section = $($('.tab-current a').attr('data-section'));
-          moduleObj.listCompany($('.result_table_border_area > div').length, 5, section);
-        }
-      });
+			$(window).scroll(function () {
+				var scrollTop = $(window).scrollTop();
+				var documentTop = $(document).height() - $(window).height();
+				if (scrollTop - 1 <= documentTop && documentTop < scrollTop + 1) {
+					var section = $($('.tab-current a').attr('data-section'));
+					moduleObj.listCompany($('.result_table_border_area > div').length, 5, section);
+				}
+			});
 
-      //Like Button Click Event
-      $('#tabs').on('click', '.comp_like_btn', function (event) {
-        event.preventDefault();
-        var currBtn = $(this);
-        moduleObj.like(currBtn);
-      });
-
-
-      /*----------- 추천장소 ------------*/
-      $(document).ready(function () {
-
-        $(document).on('click', '.result_map_menu> #pickSection-0', function (event) {
-            event.preventDefault();
-            $.getJSON(contextRoot + "/json/pick/get.do", {
-              pick: $(this).attr('data-rcmdPlc'),
-              eX: $(this).attr('data-lon'),
-              eY: $(this).attr('data-lat')
-
-            }, function (result) {
-
-              $('.result_pick').html(result.date);
-            });
-          }),
-          $(document).on('click', '.result_map_menu> #pickSection-1', function (event) {
-            event.preventDefault();
-            $.getJSON(contextRoot + "/json/pick/get.do", {
-              pick: $(this).attr('data-rcmdPlc'),
-              eX: $(this).attr('data-lon'),
-              eY: $(this).attr('data-lat')
-
-            }, function (result) {
-
-              console.log(result);
-              $('.result_pick').html(result.date);
-            });
-          });
-        $(document).on('click', '.result_map_menu> #pickSection-2', function (event) {
-          event.preventDefault();
-          $.getJSON(contextRoot + "/json/pick/get.do", {
-            pick: $(this).attr('data-rcmdPlc'),
-            eX: $(this).attr('data-lon'),
-            eY: $(this).attr('data-lat')
-
-          }, function (result) {
-            console.log(result);
-
-            $('.result_pick').html(result.date);
-          });
-        });
-      });
-      /*----------- End 추천장소 ------------*/
-
-
-      /*----------- tab cate handlebars ------------*/
-      $(document).ready(function () {
-
-        var meetNo = JSON.parse(sessionStorage.getItem('meetNo'));
-        var moduleObj = this;
-
-        $.getJSON(contextRoot + "/json/cate/list.do", {
-          meetNo: meetNo
-        }, function (result) {
-
-          console.log("test---------");
-          console.log(result);
-
-          var source = $('#resultCateTitleScript').html();
-          var template = handlebars.compile(source);
-          var content = template(result);
-
-          var source2 = $('#resultCateSectionScript').html();
-          var template2 = handlebars.compile(source2);
-          var content2 = template2(result);
-
-          $('#cateNameArea').html(content);
-          $('#cateSectionArea').html(content2);
-
-          new CBPFWTabs(document.getElementById('tabs'));
-
-          $('#tabs .btnCate:first').off('click').trigger('click');
-
-        });
-      });
-      /*----------- End tab cate handlebars ------------*/
-
-      /*------------Click Event------------*/
-      $(document).ready(function () {
-
-        // 더보기
-        $(document).on('click', ".ca-menu > .detail-info", function (event) {
-            event.preventDefault();
-            var slideFind = $(this).parents().children(".detail-explain-find");
-            var slideShare = $(this).parents().children(".detail-explain-share");
-            var slideMore = $(this).parents().children(".detail-explain-more");
-            slideFind.slideUp();
-            slideShare.slideUp();
-            slideMore.slideToggle("slow");
-            console.log("더보기클릭");
-          }),
-          // 길찾기
-          $(document).on('click', ".ca-menu > .detail-find", function (event) {
-            event.preventDefault();
-            var slideFind = $(this).parents().children(".detail-explain-find");
-            var slideShare = $(this).parents().children(".detail-explain-share");
-            var slideMore = $(this).parents().children(".detail-explain-more");
-            slideShare.slideUp();
-            slideMore.slideUp();
-            slideFind.slideToggle("slow");
-            console.log("길찾기클릭");
-          }),
-          // 공유하기
-          $(document).on('click', ".ca-menu > .detail-share", function (event) {
-            event.preventDefault();
-            var slideFind = $(this).parents().children(".detail-explain-find");
-            var slideShare = $(this).parents().children(".detail-explain-share");
-            var slideMore = $(this).parents().children(".detail-explain-more");
-            slideFind.slideUp();
-            slideMore.slideUp();
-            slideShare.slideToggle("slow");
-            console.log("공유하기클릭");
-          });
-      });
-      /*------------END Click Event------------*/
-
-
-      /*------------더보기 Map Event ------------*/
-
-      $(document).ready(function () {
-        $(document).on('click', '.ca-menu > .detail-info', function () {
-          var thisArea = $(this).parents('.result_table_border_area_2');
-          var detailMap = thisArea.find('.detail_map');
-
-          var mapContainer = document.getElementById(detailMap.attr('id'));
-          var mapOption = {
-            center: new daum.maps.LatLng(detailMap.attr('data-lat'), detailMap.attr('data-lon')),
-            level: 5
-          };
-          var map = new daum.maps.Map(mapContainer, mapOption);
-
-          var marker = new daum.maps.Marker({
-            // 지도 중심좌표에 마커를 생성합니다
-            position: map.getCenter()
-          });
-          // 지도에 마커를 표시합니다
-          marker.setMap(map);
-
-        });
-      });
-      /*------------ END 더보기 Map Event ------------*/
-
-
-      /*------------길찾기 Map Event ------------*/
-      $(document).ready(function () {
-
-        var member = JSON.parse(sessionStorage.getItem('member'));
-        var meetNo = JSON.parse(sessionStorage.getItem('meetNo'));
-
-        $.getJSON(contextRoot + "/json/start/coordinate.do", {
-
-          memb_no: member.memberNo,
-          parti_no: meetNo
-
-        }, function (result) {
-
-          $(document).on('click', '.ca-menu  > .detail-find', function () {
-
-            var obj = result.data[0];
-
-            var lat = obj.lat;
-            var lon = obj.lon;
-
-            var thisArea = $(this).parents('.result_table_border_area_2');
-            var detailMap = thisArea.find('.detail_road');
-
-            //$('<div>').attr('id', 'detail_map_id').css('width', '100%').css('height', '100%').appendTo(detailMap);
-
-            var mapContainer = document.getElementById(detailMap.attr('id'));
-            var mapOption = {
-              center: new daum.maps.LatLng(37.497941, 127.027609),
-              //              center: new daum.maps.LatLng(detailMap.attr('data-lat'), detailMap.attr('data-lon')),
-              level: 5
-            };
-            var map = new daum.maps.Map(mapContainer, mapOption);
-
-
-            var points = [
+			//Like Button Click Event
+			$('#tabs').on('click', '.comp_like_btn', function (event) {
+				event.preventDefault();
+				var currBtn = $(this);
+				moduleObj.like(currBtn);
+			});
+
+
+			/*----------- 추천장소 ------------*/
+			$(document).ready(function () {
+
+				$(document).on('click', '.result_map_menu> #pickSection-0', function (event) {
+						event.preventDefault();
+						$.getJSON(contextRoot + "/json/pick/get.do", {
+							pick: $(this).attr('data-rcmdPlc'),
+							eX: $(this).attr('data-lon'),
+							eY: $(this).attr('data-lat')
+
+						}, function (result) {
+
+							$('.result_pick').html(result.date);
+						});
+					}),
+					$(document).on('click', '.result_map_menu> #pickSection-1', function (event) {
+						event.preventDefault();
+						$.getJSON(contextRoot + "/json/pick/get.do", {
+							pick: $(this).attr('data-rcmdPlc'),
+							eX: $(this).attr('data-lon'),
+							eY: $(this).attr('data-lat')
+
+						}, function (result) {
+
+							console.log(result);
+							$('.result_pick').html(result.date);
+						});
+					});
+				$(document).on('click', '.result_map_menu> #pickSection-2', function (event) {
+					event.preventDefault();
+					$.getJSON(contextRoot + "/json/pick/get.do", {
+						pick: $(this).attr('data-rcmdPlc'),
+						eX: $(this).attr('data-lon'),
+						eY: $(this).attr('data-lat')
+
+					}, function (result) {
+						console.log(result);
+
+						$('.result_pick').html(result.date);
+					});
+				});
+			});
+			/*----------- End 추천장소 ------------*/
+
+
+			/*----------- tab cate handlebars ------------*/
+			$(document).ready(function () {
+
+				var meetNo = JSON.parse(sessionStorage.getItem('meetNo'));
+				var moduleObj = this;
+
+				$.getJSON(contextRoot + "/json/cate/list.do", {
+					meetNo: meetNo
+				}, function (result) {
+
+					console.log("test---------");
+					console.log(result);
+
+					var source = $('#resultCateTitleScript').html();
+					var template = handlebars.compile(source);
+					var content = template(result);
+
+					var source2 = $('#resultCateSectionScript').html();
+					var template2 = handlebars.compile(source2);
+					var content2 = template2(result);
+
+					$('#cateNameArea').html(content);
+					$('#cateSectionArea').html(content2);
+
+					new CBPFWTabs(document.getElementById('tabs'));
+
+					$('#tabs .btnCate:first').off('click').trigger('click');
+
+				});
+			});
+			/*----------- End tab cate handlebars ------------*/
+
+			/*------------Click Event------------*/
+			$(document).ready(function () {
+
+				// 더보기
+				$(document).on('click', ".ca-menu > .detail-info", function (event) {
+						event.preventDefault();
+						var slideFind = $(this).parents().children(".detail-explain-find");
+						var slideShare = $(this).parents().children(".detail-explain-share");
+						var slideMore = $(this).parents().children(".detail-explain-more");
+						slideFind.slideUp();
+						slideShare.slideUp();
+						slideMore.slideToggle("slow");
+						console.log("더보기클릭");
+					}),
+					// 길찾기
+					$(document).on('click', ".ca-menu > .detail-find", function (event) {
+						event.preventDefault();
+						var slideFind = $(this).parents().children(".detail-explain-find");
+						var slideShare = $(this).parents().children(".detail-explain-share");
+						var slideMore = $(this).parents().children(".detail-explain-more");
+						slideShare.slideUp();
+						slideMore.slideUp();
+						slideFind.slideToggle("slow");
+						console.log("길찾기클릭");
+					}),
+					// 공유하기
+					$(document).on('click', ".ca-menu > .detail-share", function (event) {
+						event.preventDefault();
+						var slideFind = $(this).parents().children(".detail-explain-find");
+						var slideShare = $(this).parents().children(".detail-explain-share");
+						var slideMore = $(this).parents().children(".detail-explain-more");
+						slideFind.slideUp();
+						slideMore.slideUp();
+						slideShare.slideToggle("slow");
+						console.log("공유하기클릭");
+					});
+			});
+			/*------------END Click Event------------*/
+
+
+			/*------------더보기 Map Event ------------*/
+
+			$(document).ready(function () {
+				$(document).on('click', '.ca-menu > .detail-info', function () {
+					var thisArea = $(this).parents('.result_table_border_area_2');
+					var detailMap = thisArea.find('.detail_map');
+
+					var mapContainer = document.getElementById(detailMap.attr('id'));
+					var mapOption = {
+						center: new daum.maps.LatLng(detailMap.attr('data-lat'), detailMap.attr('data-lon')),
+						level: 5
+					};
+					var map = new daum.maps.Map(mapContainer, mapOption);
+
+					var marker = new daum.maps.Marker({
+						// 지도 중심좌표에 마커를 생성합니다
+						position: map.getCenter()
+					});
+					// 지도에 마커를 표시합니다
+					marker.setMap(map);
+
+				});
+			});
+			/*------------ END 더보기 Map Event ------------*/
+
+
+			/*------------길찾기 Map Event ------------*/
+			$(document).ready(function () {
+
+				var member = JSON.parse(sessionStorage.getItem('member'));
+				var meetNo = JSON.parse(sessionStorage.getItem('meetNo'));
+
+				$.getJSON(contextRoot + "/json/start/coordinate.do", {
+
+					memb_no: member.memberNo,
+					parti_no: meetNo
+
+				}, function (result) {
+
+					$(document).on('click', '.ca-menu  > .detail-find', function () {
+
+						var obj = result.data[0];
+
+						var lat = obj.lat;
+						var lon = obj.lon;
+
+						var thisArea = $(this).parents('.result_table_border_area_2');
+						var detailMap = thisArea.find('.detail_road');
+
+						//$('<div>').attr('id', 'detail_map_id').css('width', '100%').css('height', '100%').appendTo(detailMap);
+
+						var mapContainer = document.getElementById(detailMap.attr('id'));
+						var mapOption = {
+							center: new daum.maps.LatLng(37.497941, 127.027609),
+							//              center: new daum.maps.LatLng(detailMap.attr('data-lat'), detailMap.attr('data-lon')),
+							level: 5
+						};
+						var map = new daum.maps.Map(mapContainer, mapOption);
+
+
+						var points = [
               new daum.maps.LatLng(lat, lon),
               new daum.maps.LatLng(detailMap.attr('data-lat'), detailMap.attr('data-lon')) //도착지
             ];
 
-            // 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
-            var bounds = new daum.maps.LatLngBounds();
+						// 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
+						var bounds = new daum.maps.LatLngBounds();
 
 
 
-            /** 도착표시 **/
-            var imageSrc = "http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/blue_drag.png";
-            var imageSize = new daum.maps.Size(30, 44);
-            var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
-            /** END 도착표시 **/
+						/** 도착표시 **/
+						var imageSrc = "http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/blue_drag.png";
+						var imageSize = new daum.maps.Size(30, 44);
+						var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
+						/** END 도착표시 **/
 
-            /** 출발표시 **/
-            var startSrc = "http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/red_b.png";
-            var startSize = new daum.maps.Size(28, 35);
-            var startImage = new daum.maps.MarkerImage(startSrc, startSize);
-            /** END 출발표시 **/
+						/** 출발표시 **/
+						var startSrc = "http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/red_b.png";
+						var startSize = new daum.maps.Size(28, 35);
+						var startImage = new daum.maps.MarkerImage(startSrc, startSize);
+						/** END 출발표시 **/
 
-            var i, marker;
-            for (i = 0; i < points.length; i++) {
-              // 배열의 좌표들이 잘 보이게 마커를 지도에 추가합니다
-              if (i == 0) {
-                marker = new daum.maps.Marker({
-                  position: points[i],
-                  image: startImage
-                });
+						var i, marker;
+						for (i = 0; i < points.length; i++) {
+							// 배열의 좌표들이 잘 보이게 마커를 지도에 추가합니다
+							if (i == 0) {
+								marker = new daum.maps.Marker({
+									position: points[i],
+									image: startImage
+								});
 
-              } else {
-                marker = new daum.maps.Marker({
-                  position: points[i],
-                  image: markerImage
-                });
-              }
+							} else {
+								marker = new daum.maps.Marker({
+									position: points[i],
+									image: markerImage
+								});
+							}
 
-              marker.setMap(map);
+							marker.setMap(map);
 
-              // LatLngBounds 객체에 좌표를 추가합니다
-              bounds.extend(points[i]);
-            }
+							// LatLngBounds 객체에 좌표를 추가합니다
+							bounds.extend(points[i]);
+						}
 
-            map.setBounds(bounds);
+						map.setBounds(bounds);
 
-          });
-        });
-      });
-      /*------------ END 길찾기 Map Event ------------*/
+					});
+				});
+			});
+			/*------------ END 길찾기 Map Event ------------*/
 
 
-      /*----------- 길찾기 handlebars ------------*/
-      $(document).on('click', '.ca-menu  > .detail-find', function () {
+			/*----------- 길찾기 handlebars ------------*/
+			$(document).on('click', '.ca-menu  > .detail-find', function () {
 
-        var bbb = 0;
-        var member = JSON.parse(sessionStorage.getItem('member'));
-        var meetNo = JSON.parse(sessionStorage.getItem('meetNo'));
+				var bbb = 0;
+				var member = JSON.parse(sessionStorage.getItem('member'));
+				var meetNo = JSON.parse(sessionStorage.getItem('meetNo'));
 
-        $.getJSON(contextRoot + "/json/company/pubTrans.do", {
-          eX: $(this).attr('data-lon'),
-          eY: $(this).attr('data-lat'),
-          membNo: member.memberNo,
-          partiNo: meetNo
-        }, function (data) {
+				$.getJSON(contextRoot + "/json/company/pubTrans.do", {
+					eX: $(this).attr('data-lon'),
+					eY: $(this).attr('data-lat'),
+					membNo: member.memberNo,
+					partiNo: meetNo
+				}, function (data) {
 
+					// compno로 구분하기
+					var compNo = $(this).attr('data-lon');
 
-          // compno로 구분하기
-          var compNo = $(this).attr('data-lon');
 
+					if (bbb === $(this).attr('click-compNo')) {
+						bbb = 1;
+					} else {
+						bbb = 2;
+					}
 
-          if (bbb === $(this).attr('click-compNo')) {
-            bbb = 1;
-          } else {
-            bbb = 2;
-          }
+					var obj = JSON && JSON.parse(data.result) || $.parseJSON(data.result);
 
-          console.log(compNo);
-          console.log(bbb);
+					console.info(obj);
 
-          // end compno로 구분하기
+					if (obj.result === "undefined") {
+						var source = $('#resultNoRoadContentScript').html();
+						var template = handlebars.compile(source);
+						var content = template(obj);
+					} else {
+						var source = $('#resultRoadContentScript').html();
+						var template = handlebars.compile(source);
+						var content = template(obj.result.path[0]);
+					}
 
+					$('.result_road_Content').html(content);
+				});
 
-          var obj = JSON && JSON.parse(data.result) || $.parseJSON(data.result);
+			});
+			/*----------- End 길찾기 handlebars ------------*/
 
-          console.log(obj.result);
 
-          var source = $('#resultRoadContentScript').html();
+			/*----------- 더보기 SPEC handlebars ------------*/
+			$(document).on('click', '.ca-menu  > .detail-info', function () {
 
-          var template = handlebars.compile(source);
+				$.getJSON(contextRoot + "/json/dest/specList.do", {
 
-          var content = template(obj.result.path[0]);
+					compNo: $(this).attr('data-compNo')
 
-          $('.result_road_Content').html(content);
-        });
+				}, function (result) {
 
-      });
-      /*----------- End 길찾기 handlebars ------------*/
+					console.log(result);
 
+					if (result.data.length == 0) {
 
-      /*----------- 더보기 SPEC handlebars ------------*/
-      $(document).on('click', '.ca-menu  > .detail-info', function () {
+						console.info("Spec이 존재하지 않습니다.");
+						var source = $('#resultNoSpecContentScript').html();
+						var template = handlebars.compile(source);
+						var content = template(result);
 
-        $.getJSON(contextRoot + "/json/dest/specList.do", {
+					} else {
 
-          compNo: $(this).attr('data-compNo')
+						console.info("Spec존재");
+						var source = $('#resultSpecContentScript').html();
+						var template = handlebars.compile(source);
+						var content = template(result);
+					}
 
-        }, function (result) {
 
-          console.log(result);
 
-          var source = $('#resultSpecContentScript').html();
 
-          var template = handlebars.compile(source);
+					$('.result_spec_Content').html(content);
 
-          var content = template(result);
+				});
 
-          $('.result_spec_Content').html(content);
+			});
+			/*----------- End 더보기 handlebars ------------*/
 
-        });
 
-      });
-      /*----------- End 더보기 handlebars ------------*/
+		}, // End of init()
+		listCompany: function (currCnt, listCnt, section) {
 
+			$(document).ready(function () {
 
-    }, // End of init()
-    listCompany: function (currCnt, listCnt, section) {
+				var member = JSON.parse(sessionStorage.getItem('member'));
+				var meetNo = JSON.parse(sessionStorage.getItem('meetNo'));
 
-      $(document).ready(function () {
+				console.log("meetNo----------------");
+				console.log(meetNo);
+				console.log(member);
+				$.ajax(contextRoot + '/json/company/list.do', {
+					method: 'POST',
+					dataType: 'json',
+					data: {
+						membNo: member.memberNo,
+						partiNo: meetNo,
+						cateNo: section.attr('data-cate-no'),
+						currCnt: currCnt,
+						listCnt: listCnt
+					},
+					success: function (result) {
+						console.log(result);
 
-        var member = JSON.parse(sessionStorage.getItem('member'));
-        var meetNo = JSON.parse(sessionStorage.getItem('meetNo'));
+						/*----------- handlebars : Content ------------*/
+						var source = $('#resultContentScript').html();
+						var template = handlebars.compile(source);
+						var content = template(result);
+						//load가 아님 append
 
-        console.log("meetNo----------------");
-        console.log(meetNo);
-        console.log(member);
-        $.ajax(contextRoot + '/json/company/list.do', {
-          method: 'POST',
-          dataType: 'json',
-          data: {
-            membNo: member.memberNo,
-            partiNo: meetNo,
-            cateNo: section.attr('data-cate-no'),
-            currCnt: currCnt,
-            listCnt: listCnt
-          },
-          success: function (result) {
-            /*----------- handlebars : Content ------------*/
-            var source = $('#resultContentScript').html();
-            var template = handlebars.compile(source);
-            var content = template(result);
-            //load가 아님 append
 
-            console.log(result);
+						section.find('.result_table_border_area').append(content);
+						$('.like_img[data-isLike=' + 1 + ']').attr('src', '. /images/result/like_img.png');
 
-            section.find('.result_table_border_area').append(content);
-            $('.like_img[data-isLike=' + 1 + ']').attr('src', '. /images/result/like_img.png');
+						/*----------- handlebars : Sidebar ------------*/
+						source = $('#resultSideScript').html();
+						template = handlebars.compile(source);
+						content = template(result);
+						$('#resultSideArea').html(content);
 
-            /*----------- handlebars : Sidebar ------------*/
-            source = $('#resultSideScript').html();
-            template = handlebars.compile(source);
-            content = template(result);
-            $('#resultSideArea').html(content);
 
 
+						/*----------- Sidebar Marker Control------------*/
 
-            /*----------- Sidebar Marker Control------------*/
+						sideMapControl(result);
 
-            sideMapControl(result);
+						function sideMapControl(result) {
 
-            function sideMapControl(result) {
+							var mapContainer = document.getElementById('stationMap'), // 지도를 표시할 div
+								mapOption = {
+									center: new daum.maps.LatLng(37.497941, 127.027609), // 지도의 중심좌표
+									level: 8 // 지도의 확대 레벨
+								};
 
-              var mapContainer = document.getElementById('stationMap'), // 지도를 표시할 div
-                mapOption = {
-                  center: new daum.maps.LatLng(37.497941, 127.027609), // 지도의 중심좌표
-                  level: 8 // 지도의 확대 레벨
-                };
+							var map = new daum.maps.Map(mapContainer, mapOption);
 
-              var map = new daum.maps.Map(mapContainer, mapOption);
+							// 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
+							var bounds = new daum.maps.LatLngBounds();
+							var markerList = new Array();
+							var infowindowList = new Array();
 
-              // 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
-              var bounds = new daum.maps.LatLngBounds();
-              var markerList = new Array();
-              var infowindowList = new Array();
+							for (var index = 0; index < result.length; index++) {
 
-              for (var index = 0; index < result.length; index++) {
+								var imageSrc = "images/Marker.png";
 
-                var imageSrc = "images/Marker.png";
+								var imageSize = new daum.maps.Size(24, 35);
 
-                var imageSize = new daum.maps.Size(24, 35);
+								// 마커 이미지를 생성합니다
+								var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
 
-                // 마커 이미지를 생성합니다
-                var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
 
+								// 마커를 생성합니다
+								var marker = new daum.maps.Marker({
+									map: map, // 마커를 표시할 지도
+									clickable: true,
+									position: new daum.maps.LatLng(result.data[index].lat, result.data[index].lon), // 마커를 표시할 위치
+									title: result.data[index].companyName, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+									image: markerImage // 마커 이미지
+								});
+								markerList.push(marker);
 
-                // 마커를 생성합니다
-                var marker = new daum.maps.Marker({
-                  map: map, // 마커를 표시할 지도
-                  clickable: true,
-                  position: new daum.maps.LatLng(result.data[index].lat, result.data[index].lon), // 마커를 표시할 위치
-                  title: result.data[index].companyName, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                  image: markerImage // 마커 이미지
-                });
-                markerList.push(marker);
+								// 인포윈도우로 장소에 대한 설명을 표시합니다
+								//                var infowindow = new daum.maps.InfoWindow({
+								//                  content: '<div style="padding:5px;">' + result.data[index].companyName + '</div>', // 인포윈도우에 표시될 내용입니다
+								//                  removable: true
+								//                });
+								//
+								//                infowindowList.push(infowindow);
 
-                // 인포윈도우로 장소에 대한 설명을 표시합니다
-                //                var infowindow = new daum.maps.InfoWindow({
-                //                  content: '<div style="padding:5px;">' + result.data[index].companyName + '</div>', // 인포윈도우에 표시될 내용입니다
-                //                  removable: true
-                //                });
-                //
-                //                infowindowList.push(infowindow);
+								//                infowindow.open(map, marker);
 
-                //                infowindow.open(map, marker);
 
+								bounds.extend(new daum.maps.LatLng(result.data[index].lat, result.data[index].lon));
 
-                bounds.extend(new daum.maps.LatLng(result.data[index].lat, result.data[index].lon));
+							} //for 문 인원수 별로
 
-              } //for 문 인원수 별로
+							map.setBounds(bounds); // 지도에 마커의 위치만큼 표시
+						}
 
-              map.setBounds(bounds); // 지도에 마커의 위치만큼 표시
-            }
+						/*----------- END Sidebar Marker Control------------*/
 
-            /*----------- END Sidebar Marker Control------------*/
 
+						/*----------- 추천장소 handlebars ------------*/
+						var meetNo = JSON.parse(sessionStorage.getItem('meetNo'));
 
-            /*----------- 추천장소 handlebars ------------*/
-            var meetNo = JSON.parse(sessionStorage.getItem('meetNo'));
+						$.getJSON(contextRoot + "/json/pick/list.do", {
+							meetNo: meetNo
+						}, function (result) {
 
-            $.getJSON(contextRoot + "/json/pick/list.do", {
-              meetNo: meetNo
-            }, function (result) {
+							var source = $('#resultPickContentScript').html();
+							var template = handlebars.compile(source);
+							var content = template(result);
 
-              var source = $('#resultPickContentScript').html();
-              var template = handlebars.compile(source);
-              var content = template(result);
+							console.log(result);
 
-              console.log(result);
+							$('.pick_name').html(content);
 
-              $('.pick_name').html(content);
+							// 지도버튼 첫번째 강제 클릭부분
+							$('.button_map_first:first').off('click').trigger('click');
 
-              // 지도버튼 첫번째 강제 클릭부분
-              $('.button_map_first:first').off('click').trigger('click');
+						});
+						/*----------- End 추천장소 handlebars ------------*/
 
-            });
-            /*----------- End 추천장소 handlebars ------------*/
+					}
+				});
+			});
+		},
+		like: function (currBtn) {
 
-          }
-        });
-      });
-    },
-    like: function (currBtn) {
+			var member = JSON.parse(sessionStorage.getItem('member'));
+			var meetNo = JSON.parse(sessionStorage.getItem('meetNo'));
 
-      var member = JSON.parse(sessionStorage.getItem('member'));
-      var meetNo = JSON.parse(sessionStorage.getItem('meetNo'));
+			$.getJSON(contextRoot + "/json/company/likeUp.do", {
+					compNo: currBtn.attr('data-no'),
+					membNo: member.memberNo,
+					partiNo: meetNo
+				},
+				function (result) {
 
-      $.getJSON(contextRoot + "/json/company/likeUp.do", {
-          compNo: currBtn.attr('data-no'),
-          membNo: member.memberNo,
-          partiNo: meetNo
-        },
-        function (result) {
+					console.log(result);
 
-          console.log(result);
-
-          if (result.like == "off") {
-            currBtn.find('img').attr('src', './images/result/like_img_off1.png');
-          } else {
-            currBtn.find('img').attr('src', './images/result/like_img.png');
-          }
-          currBtn.find('span').text(result.likeCnt);
-        });
-    }
-  };
+					if (result.like == "off") {
+						currBtn.find('img').attr('src', './images/result/like_img_off1.png');
+					} else {
+						currBtn.find('img').attr('src', './images/result/like_img.png');
+					}
+					currBtn.find('span').text(result.likeCnt);
+				});
+		}
+	};
 });

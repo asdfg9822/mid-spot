@@ -35,11 +35,8 @@ public class CompanyController {
 	PickService pickService;
 
 	@RequestMapping("/list")
-	public Object list(
-			@RequestParam(required = true) int membNo,
-			@RequestParam(required = true) int partiNo,
-			@RequestParam(required = true) int currCnt,
-			@RequestParam(required = true) int listCnt,
+	public Object list(@RequestParam(required = true) int membNo, @RequestParam(required = true) int partiNo,
+			@RequestParam(required = true) int currCnt, @RequestParam(required = true) int listCnt,
 			@RequestParam(required = true) int cateNo) {
 
 		System.out.println("membNo:" + membNo);
@@ -47,21 +44,6 @@ public class CompanyController {
 		System.out.println("cateNo:" + cateNo);
 		System.out.println("currCnt:" + currCnt);
 		System.out.println("listCnt:" + listCnt);
-
-//		String lat = null;
-//		String lon = null;
-//
-//		List<Pick> pickGet = pickService.pickGet();
-//
-//		for (Pick list : pickGet) {
-//			lat = (String)list.getLat();
-//			lon = (String)list.getLon();
-//		}
-//
-//		System.out.println("picklat:" + lat);
-//		System.out.println("picklon:" + lon);
-
-
 
 		Map<String, Object> result = new HashMap<String, Object>();
 
@@ -79,17 +61,15 @@ public class CompanyController {
 	}
 
 	@RequestMapping("/pubTrans")
-	public Object pubTrans(
-			@RequestParam(required = true) int membNo,
-			@RequestParam(required = true) int partiNo,
+	public Object pubTrans(@RequestParam(required = true) int membNo, @RequestParam(required = true) int partiNo,
 			@RequestParam(required = false, defaultValue = "127.13806175828525") String eX,
 			@RequestParam(required = false, defaultValue = "37.48078441518208") String eY) {
 		// int count = companyService.delete(no);
 
 		Map<String, Object> result = new HashMap<String, Object>();
 
-		System.out.println("eX"+eX);
-		System.out.println("eY"+eY);
+		System.out.println("eX" + eX);
+		System.out.println("eY" + eY);
 		String sX = null;
 		String sY = null;
 
@@ -98,16 +78,13 @@ public class CompanyController {
 
 		List<Start> start = startService.start(partiNo, membNo);
 
-
 		for (Start list : start) {
-		  sY = (String)list.getLat();
-          sX = (String)list.getLon();
+			sY = (String) list.getLat();
+			sX = (String) list.getLon();
 		}
-		
+
 		System.out.println("출발지sX" + sX);
 		System.out.println("출발지sY" + sY);
-
-
 
 		BufferedReader rd = null;
 		try {
@@ -133,7 +110,7 @@ public class CompanyController {
 			result.put("result", transResult);
 			result.put("startx", sX);
 			result.put("starty", sY);
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -161,9 +138,7 @@ public class CompanyController {
 	}
 
 	@RequestMapping("/likeUp")
-	public Object likeUp(
-			@RequestParam(required = true) int compNo,
-			@RequestParam(required = true) int membNo,
+	public Object likeUp(@RequestParam(required = true) int compNo, @RequestParam(required = true) int membNo,
 			@RequestParam(required = true) int partiNo) {
 
 		System.out.println("/json/company/likeUp.do excute..!!");
@@ -178,14 +153,15 @@ public class CompanyController {
 		}
 		return result;
 	}
+
 	@RequestMapping("/listCompany")
 	public Object listCompany(Company company) {
-	  System.out.println("/json/company/listCompany.do excute..!!");
-	  
-	  Map<String, Object> result = new HashMap<String, Object>();
-	  
-	  result.put("data", companyService.listCompany(company));
-	  return result;
+		System.out.println("/json/company/listCompany.do excute..!!");
+
+		Map<String, Object> result = new HashMap<String, Object>();
+
+		result.put("data", companyService.listCompany(company));
+		return result;
 	}
 
 }

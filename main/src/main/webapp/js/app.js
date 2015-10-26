@@ -40,13 +40,17 @@ requirejs.config({
 		'hoverdir': 'lib/hoverdir/jquery.hoverdir',
 		'modernizr': 'lib/hoverdir/modernizr.custom.97074',
 		'prettyPhoto': 'lib/jquery.prettyPhoto',
-		'classie': 'lib/classie'
+		'classie': 'lib/classie',
+		'clip': 'lib/ZeroClipboard'
 	},
 	shim: {
 		"datatables": {
 			"deps": ['jquery']
 		},
 		"bootstrap": {
+			"deps": ['jquery']
+		},
+		"clip": {
 			"deps": ['jquery']
 		}
 	}

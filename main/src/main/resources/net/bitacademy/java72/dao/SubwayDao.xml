@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.bitacademy.java72.dao.SubwayDao">
+  <resultMap type="Subway" id="SubwayMap">
+	<id     column="sub_no"   property="subNo" />
+    <result column="sub_nm"    property="subName" />
+    <result column="lat"        property="lat" />
+    <result column="lon"     	property="lon" />
+    <result column="distance"     	property="distance" />
+  </resultMap>
+
+  <select id="list" parameterType="map" resultMap="SubwayMap">
+    SELECT *,
+    round( 6371 * acos( cos( radians(#{latAvg}) ) * cos( radians(
+    lat ) ) * cos( radians( lon ) - radians(#{lonAvg}) )+
+    sin( radians(#{latAvg}) ) * sin( radians( lat ) ) ) ,2) AS
+    distance
+    FROM subway_tb
+    HAVING distance &lt; 30
+    ORDER BY distance
+    LIMIT
+    0, 15
+  </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

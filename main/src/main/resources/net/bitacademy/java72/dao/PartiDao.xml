@@ -3,6 +3,14 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="net.bitacademy.java72.dao.PartiDao">
+  <resultMap type="PartiOrigin" id="PartiOriginMap">
+    <result column="parti_no" property="partiNo" />
+    <result column="memb_no" property="memberNo" />
+    <result column="lat" property="lat" />
+    <result column="lon" property="lon" />
+  </resultMap>
+
+
 	<insert id="insert" parameterType="map">
 		INSERT INTO
 		parti_tb(parti_no,memb_no)
@@ -13,6 +21,12 @@
     SELECT count(*)
     FROM parti_tb
     WHERE parti_no=#{partiNo} AND memb_no=#{membNo};
+  </select>
+
+  <select id="partiAll" resultMap="PartiOriginMap" parameterType="int">
+    SELECT parti_no, memb_no, lat, lon
+    FROM parti_tb
+    WHERE parti_no=#{partiNo} AND lat IS NOT NULL AND lon IS NOT NULL
   </select>
 </mapper>
 

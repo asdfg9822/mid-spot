@@ -1,4 +1,4 @@
-define(['jquery', 'handlebars'], function ($, handlebars) {
+define(['jquery', 'handlebars', 'clip'], function ($, handlebars, ZeroClipboard) {
 
 	return {
 		init: function () {
@@ -6,7 +6,11 @@ define(['jquery', 'handlebars'], function ($, handlebars) {
 
 			//초기 Meet List
 			moduleObj.listMeet();
-			/*------- Events --------*/
+			//상단 Start, Dest, Result 버튼 숨기기
+			$(document).trigger('hideNavbar');
+
+
+			/*-------Add Events --------*/
 			$('#btnMeetSubmit').off('click').click(function (e) {
 				e.preventDefault();
 				moduleObj.insertMeet();
@@ -21,7 +25,6 @@ define(['jquery', 'handlebars'], function ($, handlebars) {
 				e.preventDefault();
 				moduleObj.deleteMeet(sessionStorage.getItem('removeMeetNo'));
 			});
-
 			/*---- End of Events ----*/
 
 		},
@@ -117,7 +120,6 @@ define(['jquery', 'handlebars'], function ($, handlebars) {
 					'url': contextRoot + "/test.html?meetNo="
 				});
 
-
 				// Meet Count Zero Exception Processing
 				if (result.data.length > 0) {
 					var source = $('#meetListScript').html();
@@ -137,6 +139,9 @@ define(['jquery', 'handlebars'], function ($, handlebars) {
 					sessionStorage.setItem('meetNo', $(this).attr('data-no'));
 					console.log("session meetNo = " + sessionStorage.getItem('meetNo'));
 
+					/*-- Menu Toggle --*/
+					$(document).trigger('showNavbar');
+
 					if ($(this).attr('data-master') == "yes") {
 						console.log("master enter");
 						$(document).trigger('enterDestMeet');
@@ -145,6 +150,12 @@ define(['jquery', 'handlebars'], function ($, handlebars) {
 						$(document).trigger('enterPartiMeet');
 					}
 
+				});
+
+				$(document).ready(function () {
+					var clip = new ZeroClipboard($(".copy_button"), {
+						moviePath: "./ZeroClipboard.swf"
+					});
 				});
 			})
 		},

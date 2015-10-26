@@ -25,13 +25,18 @@ a.active {
 	color: #18bc9c;
 }
 
-.navbar-nav a,
+.navbar-nav a {
+	outline: 0;
+	color: #7E98B2;
+}
+
+.navbar-nav .active
 .navbar-nav a:hover,
 .navbar-nav a:focus,
 .navbar-nav a:active,
 .navbar-nav a.active {
 	outline: 0;
-	color: #7E98B2;
+	color: white;
 }
 
 h1,

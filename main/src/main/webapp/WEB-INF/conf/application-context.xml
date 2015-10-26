@@ -72,17 +72,15 @@
 	  <property name="basePackage" 
 	       value="net.bitacademy.java72.dao" />
 	</bean>
-	<!--  
   <bean id="dataSource" 
         class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     <property name="driverClassName" 
         value="com.mysql.jdbc.Driver"/>
     <property name="url" 
-        value="jdbc:mysql://127.0.0.1:3306/midspot"/>
-    <property name="username" value="java72"/>
-    <property name="password" value="java72"/>
+        value="jdbc:mysql://ec2-52-24-151-108.us-west-2.compute.amazonaws.com:3306/midspot"/>
+    <property name="username" value="root"/>
+    <property name="password" value="1111"/>
   </bean>
-  -->
 </beans>
 
 
