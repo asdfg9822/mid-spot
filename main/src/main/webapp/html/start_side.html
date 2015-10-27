@@ -1,90 +1,187 @@
 <style>
 #sidebar-item2-content {
-	width: 100%;
-	min-width: 200px;
-	height: 100%;
-	min-height: 400px;
-	background-color: white;
+   width: 100%;
+   min-width: 200px;
+   height: 100%;
+   min-height: 400px;
+   background-color: white;
 }
 .parti-user-list {
-	width: 100%;
-	min-width: 200px;
-	height: 100%;
+   width: 100%;
+   min-width: 200px;
+   height: 100%;
 }
 .parti-info-title {
-	width: 40%;
-	min-width: 100px;
-	height: 100%;
+   width: 40%;
+   min-width: 220px;
+   height: 100%;
+   text-align: left;
 }
-#parti-info, #parti-info-title {
-	text-align: left;
-	font-size: 80%;
-	color: #00aba9;
-	display: inline-block;
+#parti-info{
+   text-align: left;
+   font-size: 80%;
+   color: #00aba9;
+   display: inline-block;
+   margin-top: 5%;
 }
+
+#parti-info-title {
+   text-align: left;
+   font-size: 80%;
+   color: #00aba9;
+   display: inline-block;
+}
+
 #parti-info-total, #parti-info-meetNm {
-	text-align: left;
-	font-size: 80%;
-	color: black;
-	display: inline-block;
+   text-align: left;
+   font-size: 80%;
+   color: black;
+   display: inline-block;
 }
 .parti-user-photo {
-	width: 30%;
-	min-width: 13px;
-	max-width: 50px;
-	height: 100%;
-	min-height: 50px;
-	display: inline-block;
-	float: left;
-	margin-top: 2%;
-	margin-left: 2%;
-	background-color: white;
+   width: 30%;
+   min-width: 13px;
+   max-width: 50px;
+   height: 100%;
+   min-height: 50px;
+   display: inline-block;
+   float: left;
+   margin-top: 2%;
+   margin-left: 2%;
+   background-color: white;
 }
 .parti-user-name {
-	width: 70%;
-	min-width: 100px;
-	height: 100%;
-	min-height: 50px;
-	display: inline-block;
-	text-align: left;
-	float: left;
-	padding-top: 8%;
-	padding-left: 5%;
-	margin-top: 2%;
-	font-size: 80%;
-	font-weight: bold;
-	background-color: white;
+   width: 70%;
+   min-width: 100px;
+   height: 100%;
+   min-height: 50px;
+   display: inline-block;
+   text-align: left;
+   float: left;
+   padding-top: 8%;
+   padding-left: 5%;
+   margin-top: 2%;
+   font-size: 80%;
+   font-weight: bold;
+   background-color: white;
 }
 .parti-user-name:HOVER {
-	color: #00aba9;
-	font-size: 100%;
+   color: #00aba9;
+   font-size: 100%;
 }
 .parti-user-lat, .parti-user-lon{
-	color: black;
-	border: 1px solid blue;
+   color: black;
+   border: 1px solid blue;
 }
+
+.parti-result-station {
+   color: #00aba9;
+   text-align: left;
+   font-size: 80%;
+   margin-top: 5%;
+}
+
+.station {
+   font-size: 100%;
+   width: 33%;
+   float: left;
+   min-height: 30px;
+   color: #999999;
+   background-color: white;
+   border: 1px solid #999999;
+   text-align: center;
+   padding-top: 2%;
+}
+
+.station:HOVER {
+   color: #00aba9;
+   border: 1px solid #00aba9;
+   font-weight: bold;
+   cursor:pointer;
+}
+
+.stationClick {
+   color: white;
+   border: 1px solid #00aba9;
+   font-weight: bold;
+   background-color: #00aba9;
+}
+
+.stationClick:HOVER {
+   color: white;
+   border: 1px solid #00aba9;
+   font-weight: bold;
+   background-color: #00aba9;
+   cursor:pointer;
+}
+
+#parti-result-show {
+   font-size: 100%;
+   width: 90%;
+   float: left;
+   min-height: 30px;
+   color: #999999;
+   background-color: white;
+   border: 1px solid #999999;
+   text-align: center;
+   margin-top: 5%;
+   margin-left: 5%;
+   padding-top: 2%;
+}
+
+#parti-result-show:HOVER { 
+   color: #00aba9;
+   border: 1px solid #00aba9;
+   font-weight: bold;
+   cursor:pointer;
+}
+
+
 </style>
 
 <script>
-	requirejs([ 'app/start' ], function(start) {
-		start.partiMembList();
-	});
+   requirejs([ 'app/start' ], function(start) {
+      start.partiMembList();
+   });
 </script>
 
 <script id="parti-user-template" type="text/x-handlebars-template">
 {{#each data}}
-	<div class="parti-user-photo"><img src="{{file_path}}" style="border-radius: 50%;"></div>
-	<div class="parti-user-name" lat="{{lat}}" lon="{{lon}}">{{memb_nm}}</div>
+   <div class="parti-user-photo"><img src="{{file_path}}" style="border-radius: 50%;"></div>
+   <div class="parti-user-name" lat="{{lat}}" lon="{{lon}}">
+  {{memb_nm}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; x분</div>
 {{/each}}
 </script>
 
 <!-- HTML 화면 -->
 
 <div class="parti-user-list">
-	<div class="parti-info-title">
-		<div id="parti-info-title">모임명</div>
-		<div id="parti-info">모임 참여 인원</div>
-	</div>
-	<div class="parti-user-info">
-	</div>
+   <div class="parti-info-title">
+      <div id="parti-info-title">모임명</div>
+      
+      <div class="parti-result-station">추천역</div>
+      <div class="station" id="station1">강남역</div>
+      <div class="station" id="station2">잠실역</div>
+      <div class="station" id="station3">건대입구역</div>
+      
+      <div id="parti-info">모임 참여 인원</div>
+   </div>
+   <div class="parti-user-info"></div>
+   
+   <div id="parti-result-show">결과 보기</div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
