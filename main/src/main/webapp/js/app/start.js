@@ -301,6 +301,12 @@ define([
 									marker.setVisible(false);
 									infowindow.close(map, marker);
 								});
+
+								daum.maps.event.addListener(marker, 'dragend', function () {
+									marker.getPosition();
+									console.log(marker.getPosition().zb);
+									console.log(marker.getPosition().yb);
+								});
 							}
 
 						} else {

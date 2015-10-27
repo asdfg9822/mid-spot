@@ -50,6 +50,19 @@
 		#{currCnt},#{listCnt}
 	</select>
 
+	 <select id="rcmdListCnt" parameterType="map" resultType="int">
+    SELECT count(*),
+    round( 6371 * acos( cos( radians(#{subLat}) ) * cos( radians(
+    comp_tb.lat ) ) * cos( radians( comp_tb.lon ) - radians(#{subLon}) )+
+    sin( radians(#{subLat}) ) * sin( radians( comp_tb.lat ) ) ) ,2) AS
+    distance
+    FROM comp_tb
+    natural join comp_cate_tb comp_no
+    where cate_no=2
+    HAVING distance &lt; 1
+    ORDER BY distance
+  </select>
+
 	<select id="list3" parameterType="map" resultMap="CompanyMap">
     SELECT *,
     round( 6371 * acos( cos( radians(37.539523) ) * cos( radians(
@@ -61,7 +74,7 @@
     left outer join comp_img_tb using(comp_no)
     natural join comp_cate_tb comp_no
     where cate_no=#{cateNo}
-    HAVING distance &lt; 5
+    HAVING distance &lt; 2
     ORDER BY distance
     LIMIT
     #{currCnt},#{listCnt}

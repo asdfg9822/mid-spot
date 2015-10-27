@@ -9,6 +9,7 @@ public interface CompanyDao {
 	// List<Company> list(Map<String,Object> paramMap);
 	List<Company> listAll(Map<String, Object> paramMap);
 	List<Company> rcmdList(Map<String, Object> paramMap);
+	int rcmdListCnt(Map<String, Object> paramMap);
 	List<Company> list3(Map<String, Object> paramMap);
 	List<Company> listCompany(Company company);
 	//String[] like(Map<String, Object> paramMap);

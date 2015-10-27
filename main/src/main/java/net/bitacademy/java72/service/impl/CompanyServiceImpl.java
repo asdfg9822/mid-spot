@@ -37,25 +37,31 @@ public class CompanyServiceImpl implements CompanyService {
 		paramMap.put("membNo", membNo);
 		paramMap.put("partiNo", partiNo);
 
+		//중간지점 찾기
 		float latAll = 0;
 		float lonAll = 0;
 		List<PartiOrigin> list = partiDao.partiAll(partiNo);
 		for (PartiOrigin partiOrigin : list) {
 			System.out.println(partiOrigin);
-			latAll+=Float.parseFloat(partiOrigin.getLat());
-			lonAll+=Float.parseFloat(partiOrigin.getLon());
+			latAll += Float.parseFloat(partiOrigin.getLat());
+			lonAll += Float.parseFloat(partiOrigin.getLon());
 		}
 
-		System.out.println("latAvg = " + (latAll/list.size()));
-		System.out.println("lonAvg = " + (lonAll/list.size()));
+		System.out.println("latAvg = " + (latAll / list.size()));
+		System.out.println("lonAvg = " + (lonAll / list.size()));
 
-		paramMap.put("latAvg", latAll/list.size());
-		paramMap.put("lonAvg", lonAll/list.size());
+		paramMap.put("latAvg", latAll / list.size());
+		paramMap.put("lonAvg", lonAll / list.size());
 
+		//중간 지점으로 추천 장소 찾기
 		List<Subway> sublist = subwayDao.list(paramMap);
 		System.out.println("----Sub List----");
 		for (Subway subway : sublist) {
 			System.out.println(subway.getLat() + " / " + subway.getLon());
+			paramMap.put("subLat", subway.getLat());
+			paramMap.put("subLon", subway.getLon());
+
+			System.out.println("company Count = " + companyDao.rcmdListCnt(paramMap));
 		}
 		System.out.println("----End of Sub List----");
 
@@ -69,7 +75,6 @@ public class CompanyServiceImpl implements CompanyService {
 
 		paramMap.put("currCnt", currCnt);
 		paramMap.put("listCnt", listCnt);
-
 
 		return companyDao.listAll(paramMap);
 	}
@@ -86,7 +91,7 @@ public class CompanyServiceImpl implements CompanyService {
 		paramMap.put("compNo", compNo);
 		paramMap.put("membNo", membNo);
 		paramMap.put("partiNo", partiNo);
-		if(companyDao.likeUp(paramMap) > 0) {
+		if (companyDao.likeUp(paramMap) > 0) {
 			System.out.println("like Success");
 		} else {
 			System.out.println("like Fail");
@@ -112,7 +117,7 @@ public class CompanyServiceImpl implements CompanyService {
 		paramMap.put("compNo", compNo);
 		paramMap.put("membNo", membNo);
 		paramMap.put("partiNo", partiNo);
-		if(companyDao.likeDown(paramMap) > 0) {
+		if (companyDao.likeDown(paramMap) > 0) {
 			System.out.println("like Down Success");
 		} else {
 			System.out.println("like Down Fail");
@@ -121,26 +126,10 @@ public class CompanyServiceImpl implements CompanyService {
 		return companyDao.likeCnt(compNo);
 	}
 
-  @Override
-  public List<Company> listCompany(Company company) {
-    // TODO Auto-generated method stub
-    return companyDao.listCompany(company);
-  }
+	@Override
+	public List<Company> listCompany(Company company) {
+		// TODO Auto-generated method stub
+		return companyDao.listCompany(company);
+	}
 
-
-
-	/*
-	 * @Override public int delete(int no) { return boardDao.delete(no); }
-	 *
-	 * @Override public int update(Board board) { return boardDao.update(board);
-	 * }
-	 *
-	 * @Override public int insert(Board board) { return boardDao.insert(board);
-	 * }
-	 *
-	 * @Override public Board get(int no) { return boardDao.get(no); }
-	 *
-	 * @Override public int countAll() { return boardDao.countAll(); }
-	 *
-	 */
 }
