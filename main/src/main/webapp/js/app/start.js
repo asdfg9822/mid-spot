@@ -322,7 +322,8 @@ define([
 	                                infowindow.close(map, marker);
 	                           });
 	                        }
-
+	                        
+	                        
 	                     } 
 	                     
 	                  });

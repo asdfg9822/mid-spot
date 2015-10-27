@@ -34,9 +34,9 @@
 
 	<select id="rcmdList" parameterType="map" resultMap="CompanyMap">
 		SELECT *,
-		round( 6371 * acos( cos( radians(37.539523) ) * cos( radians(
-		comp_tb.lat ) ) * cos( radians( comp_tb.lon ) - radians(127.228149) )+
-		sin( radians(37.539523) ) * sin( radians( comp_tb.lat ) ) ) ,2) AS
+		round( 6371 * acos( cos( radians(37.497941) ) * cos( radians(
+		comp_tb.lat ) ) * cos( radians( comp_tb.lon ) - radians(127.027620) )+
+		sin( radians(37.497941) ) * sin( radians( comp_tb.lat ) ) ) ,2) AS
 		distance,
 		(select count(like_comp_tb.comp_no) from like_comp_tb where like_comp_tb.comp_no=comp_tb.comp_no) as likeCnt,
 		(select count(like_comp_tb.comp_no) from like_comp_tb where like_comp_tb.comp_no=comp_tb.comp_no AND parti_no=#{partiNo} AND memb_no=#{membNo}) as isLike
@@ -65,9 +65,9 @@
 
 	<select id="list3" parameterType="map" resultMap="CompanyMap">
     SELECT *,
-    round( 6371 * acos( cos( radians(37.539523) ) * cos( radians(
-    comp_tb.lat ) ) * cos( radians( comp_tb.lon ) - radians(127.228149) )+
-    sin( radians(37.539523) ) * sin( radians( comp_tb.lat ) ) ) ,2) AS
+    round( 6371 * acos( cos( radians(37.497941) ) * cos( radians(
+    comp_tb.lat ) ) * cos( radians( comp_tb.lon ) - radians(127.027620) )+
+    sin( radians(37.497941) ) * sin( radians( comp_tb.lat ) ) ) ,2) AS
     distance,
     (select count(like_comp_tb.comp_no) from like_comp_tb where like_comp_tb.comp_no=comp_tb.comp_no) as likeCnt
     FROM comp_tb
