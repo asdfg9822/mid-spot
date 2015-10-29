@@ -15,6 +15,11 @@
     <result column="get_site"    property="get_site" />
     <result column="file_path"  property="file_path" />
   </resultMap>
+  
+   <resultMap type="RcmdCompCate" id="RcmdCompCateMap">
+    <result column="meet_no"    property="meetNo" />
+   <result column="cate_no"     property="cateNo" />
+  </resultMap>
 
   <insert id="insert" parameterType="Start">
     insert into parti_tb(parti_no, memb_no, lat, lon, notice_dt) 
@@ -26,6 +31,10 @@
     FROM memb_tb 
     NATURAL JOIN parti_tb memb_no 
     WHERE parti_no=#{parti_no};
+  </select>
+  
+  <select id="partiCateList" parameterType="int" resultMap="RcmdCompCateMap">
+    select * from rcmd_cate_Tb where meet_no=#{value};
   </select>
 
   <select id="start" resultMap="StartMap" parameterType="map">

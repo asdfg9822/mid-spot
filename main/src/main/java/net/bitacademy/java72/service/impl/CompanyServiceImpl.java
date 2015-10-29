@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.plaf.synth.SynthSeparatorUI;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -57,11 +55,16 @@ public class CompanyServiceImpl implements CompanyService {
 		List<Subway> sublist = subwayDao.list(paramMap);
 		System.out.println("----Sub List----");
 		for (Subway subway : sublist) {
-			System.out.println(subway.getLat() + " / " + subway.getLon());
+			System.out.println(subway.getSubName() + " = " + subway.getLat() + " / " + subway.getLon());
 			paramMap.put("subLat", subway.getLat());
-			paramMap.put("subLon", subway.getLon());
+			paramMap.put("subLon", subway.getLon()); 
 
-			System.out.println("company Count = " + companyDao.rcmdListCnt(paramMap));
+			if(companyDao.rcmdListCnt(paramMap).size() == 0 ) {
+				System.out.println("rcmdListCnt : 0");
+				continue;
+			}
+			
+			System.out.println("company Count = " + companyDao.rcmdListCnt(paramMap).size());
 		}
 		System.out.println("----End of Sub List----");
 

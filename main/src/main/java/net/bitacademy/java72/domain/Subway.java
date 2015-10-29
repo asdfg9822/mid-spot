@@ -1,7 +1,6 @@
 package net.bitacademy.java72.domain;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 public class Subway implements Serializable {
 
@@ -12,7 +11,23 @@ public class Subway implements Serializable {
 	protected String lat;
 	protected String lon;
 	protected String distance;
+	protected int timeAvg;
+	
+	public String getDistance() {
+		return distance;
+	}
 
+	public void setDistance(String distance) {
+		this.distance = distance;
+	}
+
+	public int getTimeAvg() {
+		return timeAvg;
+	}
+
+	public void setTimeAvg(int timeAvg) {
+		this.timeAvg = timeAvg;
+	}
 
 	public int getSubNo() {
 		return subNo;
@@ -49,9 +64,7 @@ public class Subway implements Serializable {
 	@Override
 	public String toString() {
 		return "Subway [subNo=" + subNo + ", subName=" + subName + ", lat=" + lat + ", lon=" + lon + ", distance="
-				+ distance + "]";
+				+ distance + ", timeAvg=" + timeAvg + "]";
 	}
-
-
 
 }

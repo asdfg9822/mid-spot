@@ -64,6 +64,9 @@ public class StartController {
 	@RequestMapping("/update")
 	public Object update(Start start) throws Exception {
 		int count = startService.update(start);
+		
+		startService.savePlace(start);
+		
 		Map<String, Object> result = new HashMap<String, Object>();
 		if (count > 0) {
 			result.put("data", "success");
@@ -94,6 +97,6 @@ public class StartController {
 
 		    return result;
 	  }
-	
+	 
 	
 }
